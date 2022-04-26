@@ -56,7 +56,7 @@ CREATE TABLE `Appartamento` (
   PRIMARY KEY (`id_annuncio`),
   KEY `username_locatore` (`username_locatore`),
   CONSTRAINT `Appartamento_ibfk_1` FOREIGN KEY (`username_locatore`) REFERENCES `Locatore` (`username`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +79,7 @@ CREATE TABLE `FAQ` (
   `domanda` varchar(200) NOT NULL,
   `risposta` varchar(700) NOT NULL,
   PRIMARY KEY (`domanda`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +109,7 @@ CREATE TABLE `Locatario` (
   `psw` varchar(50) NOT NULL,
   PRIMARY KEY (`username`),
   CONSTRAINT `locatario_chk_1` CHECK ((`email` like _utf8mb4'%@%.%'))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +138,7 @@ CREATE TABLE `Locatore` (
   `psw` varchar(50) NOT NULL,
   PRIMARY KEY (`username`),
   CONSTRAINT `CONSTRAINT_1` CHECK ((`email` like _utf8mb4'%@%.%'))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `Messaggio` (
   CONSTRAINT `Messaggio_ibfk_2` FOREIGN KEY (`username_locatore`) REFERENCES `Locatore` (`username`) ON UPDATE CASCADE,
   CONSTRAINT `Messaggio_ibfk_3` FOREIGN KEY (`id_appartamento`) REFERENCES `Appartamento` (`id_annuncio`) ON UPDATE CASCADE,
   CONSTRAINT `Messaggio_ibfk_4` FOREIGN KEY (`id_posto_letto`) REFERENCES `Posto_Letto` (`id_annuncio`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,7 +224,7 @@ CREATE TABLE `Posto_Letto` (
   PRIMARY KEY (`id_annuncio`),
   KEY `username_locatore` (`username_locatore`),
   CONSTRAINT `Posto_Letto_ibfk_1` FOREIGN KEY (`username_locatore`) REFERENCES `Locatore` (`username`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
