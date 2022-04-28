@@ -1,31 +1,38 @@
--- MySQL dump 10.13  Distrib 8.0.27, for macos12.0 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: RentAdvisor
--- ------------------------------------------------------
--- Server version	8.0.27
+-- Host: localhost:8889
+-- Creato il: Apr 28, 2022 alle 15:15
+-- Versione del server: 5.7.34
+-- Versione PHP: 7.4.21
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `Appartamento`
+-- Database: `RentAdvisor`
+--
+CREATE DATABASE IF NOT EXISTS `RentAdvisor` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `RentAdvisor`;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `Appartamento`
 --
 
-DROP TABLE IF EXISTS `Appartamento`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Appartamento` (
   `titolo_annuncio` varchar(100) NOT NULL,
   `descrizione` varchar(700) NOT NULL,
-  `id_annuncio` mediumint NOT NULL AUTO_INCREMENT,
+  `id_annuncio` mediumint(9) NOT NULL,
   `data_inserimento_annuncio` date NOT NULL,
   `provincia` char(2) NOT NULL,
   `citta` varchar(50) NOT NULL,
@@ -33,13 +40,13 @@ CREATE TABLE `Appartamento` (
   `zona_di_localizzazione` varchar(50) DEFAULT NULL,
   `indirizzo` varchar(100) NOT NULL,
   `numero_civico` varchar(6) NOT NULL,
-  `piano` tinyint unsigned NOT NULL,
+  `piano` tinyint(3) UNSIGNED NOT NULL,
   `opzionato` tinyint(1) NOT NULL DEFAULT '0',
-  `dimensioni_appartamento` tinyint unsigned NOT NULL,
+  `dimensioni_appartamento` tinyint(3) UNSIGNED NOT NULL,
   `tipologia` enum('appartamento','casa indipendente') NOT NULL,
-  `numero_camere` tinyint unsigned NOT NULL,
-  `numero_posti_letto_totali` tinyint unsigned NOT NULL,
-  `numero_bagni` tinyint unsigned NOT NULL,
+  `numero_camere` tinyint(3) UNSIGNED NOT NULL,
+  `numero_posti_letto_totali` tinyint(3) UNSIGNED NOT NULL,
+  `numero_bagni` tinyint(3) UNSIGNED NOT NULL,
   `presenza_cucina` tinyint(1) NOT NULL DEFAULT '0',
   `presenza_locale_ricreativo` tinyint(1) NOT NULL DEFAULT '0',
   `ascensore` tinyint(1) NOT NULL DEFAULT '0',
@@ -47,57 +54,31 @@ CREATE TABLE `Appartamento` (
   `parcheggio` tinyint(1) NOT NULL DEFAULT '0',
   `wi_fi` tinyint(1) NOT NULL DEFAULT '0',
   `canone_affitto` double(6,2) NOT NULL,
-  `durata_minima_locazione` tinyint unsigned DEFAULT NULL,
+  `durata_minima_locazione` tinyint(3) UNSIGNED DEFAULT NULL,
   `genere_preferito` enum('M','F','ND') NOT NULL,
-  `eta_preferita` tinyint unsigned DEFAULT NULL,
+  `eta_preferita` tinyint(3) UNSIGNED DEFAULT NULL,
   `periodo_disponibilita_inizio` date NOT NULL,
   `periodo_disponibilita_fine` date NOT NULL,
-  `username_locatore` varchar(40) NOT NULL,
-  PRIMARY KEY (`id_annuncio`),
-  KEY `username_locatore` (`username_locatore`),
-  CONSTRAINT `Appartamento_ibfk_1` FOREIGN KEY (`username_locatore`) REFERENCES `Locatore` (`username`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `username_locatore` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `Appartamento`
+-- Struttura della tabella `FAQ`
 --
 
-LOCK TABLES `Appartamento` WRITE;
-/*!40000 ALTER TABLE `Appartamento` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Appartamento` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `FAQ`
---
-
-DROP TABLE IF EXISTS `FAQ`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `FAQ` (
   `domanda` varchar(200) NOT NULL,
-  `risposta` varchar(700) NOT NULL,
-  PRIMARY KEY (`domanda`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `risposta` varchar(700) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `FAQ`
+-- Struttura della tabella `Locatario`
 --
 
-LOCK TABLES `FAQ` WRITE;
-/*!40000 ALTER TABLE `FAQ` DISABLE KEYS */;
-/*!40000 ALTER TABLE `FAQ` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Locatario`
---
-
-DROP TABLE IF EXISTS `Locatario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Locatario` (
   `username` varchar(40) NOT NULL,
   `nome` varchar(40) NOT NULL,
@@ -106,28 +87,15 @@ CREATE TABLE `Locatario` (
   `data_nascita` date NOT NULL,
   `email` varchar(40) NOT NULL,
   `telefono` char(13) DEFAULT NULL,
-  `psw` varchar(50) NOT NULL,
-  PRIMARY KEY (`username`),
-  CONSTRAINT `locatario_chk_1` CHECK ((`email` like _utf8mb4'%@%.%'))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `psw` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `Locatario`
+-- Struttura della tabella `Locatore`
 --
 
-LOCK TABLES `Locatario` WRITE;
-/*!40000 ALTER TABLE `Locatario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Locatario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Locatore`
---
-
-DROP TABLE IF EXISTS `Locatore`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Locatore` (
   `username` varchar(40) NOT NULL,
   `nome` varchar(40) NOT NULL,
@@ -135,66 +103,45 @@ CREATE TABLE `Locatore` (
   `data_nascita` date NOT NULL,
   `email` varchar(40) NOT NULL,
   `telefono` char(13) DEFAULT NULL,
-  `psw` varchar(50) NOT NULL,
-  PRIMARY KEY (`username`),
-  CONSTRAINT `CONSTRAINT_1` CHECK ((`email` like _utf8mb4'%@%.%'))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `psw` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `Locatore`
+-- Struttura della tabella `Messaggio`
 --
 
-LOCK TABLES `Locatore` WRITE;
-/*!40000 ALTER TABLE `Locatore` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Locatore` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Messaggio`
---
-
-DROP TABLE IF EXISTS `Messaggio`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Messaggio` (
   `username_locatario` varchar(40) NOT NULL,
   `username_locatore` varchar(40) NOT NULL,
-  `id_appartamento` mediumint DEFAULT NULL,
-  `id_posto_letto` mediumint DEFAULT NULL,
   `data_invio` datetime NOT NULL,
-  `testo` varchar(500) NOT NULL,
-  PRIMARY KEY (`username_locatore`,`username_locatario`,`data_invio`),
-  KEY `Messaggio_ibfk_1` (`username_locatario`),
-  KEY `Messaggio_ibfk_3` (`id_appartamento`),
-  KEY `Messaggio_ibfk_4` (`id_posto_letto`),
-  CONSTRAINT `Messaggio_ibfk_1` FOREIGN KEY (`username_locatario`) REFERENCES `Locatario` (`username`) ON UPDATE CASCADE,
-  CONSTRAINT `Messaggio_ibfk_2` FOREIGN KEY (`username_locatore`) REFERENCES `Locatore` (`username`) ON UPDATE CASCADE,
-  CONSTRAINT `Messaggio_ibfk_3` FOREIGN KEY (`id_appartamento`) REFERENCES `Appartamento` (`id_annuncio`) ON UPDATE CASCADE,
-  CONSTRAINT `Messaggio_ibfk_4` FOREIGN KEY (`id_posto_letto`) REFERENCES `Posto_Letto` (`id_annuncio`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `testo` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `Messaggio`
+-- Struttura della tabella `Opzione`
 --
 
-LOCK TABLES `Messaggio` WRITE;
-/*!40000 ALTER TABLE `Messaggio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Messaggio` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `Opzione` (
+  `username_locatore` varchar(40) NOT NULL,
+  `username_locatario` varchar(40) NOT NULL,
+  `id_appartamento` mediumint(9) NOT NULL,
+  `id_posto_letto` mediumint(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `Posto_Letto`
+-- Struttura della tabella `Posto_Letto`
 --
 
-DROP TABLE IF EXISTS `Posto_Letto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Posto_Letto` (
   `titolo_annuncio` varchar(100) NOT NULL,
   `descrizione` varchar(700) NOT NULL,
-  `id_annuncio` mediumint NOT NULL AUTO_INCREMENT,
+  `id_annuncio` mediumint(9) NOT NULL,
   `data_inserimento_annuncio` date NOT NULL,
   `provincia` char(2) NOT NULL,
   `citta` varchar(50) NOT NULL,
@@ -202,47 +149,128 @@ CREATE TABLE `Posto_Letto` (
   `zona_di_localizzazione` varchar(50) DEFAULT NULL,
   `indirizzo` varchar(100) NOT NULL,
   `numero_civico` varchar(6) NOT NULL,
-  `piano` tinyint unsigned NOT NULL,
+  `piano` tinyint(3) UNSIGNED NOT NULL,
   `opzionato` tinyint(1) NOT NULL DEFAULT '0',
-  `dimensioni_camera` tinyint unsigned NOT NULL,
+  `dimensioni_camera` tinyint(3) UNSIGNED NOT NULL,
   `tipologia` enum('singola','condivisa') NOT NULL,
-  `letti_nella_camera` tinyint unsigned NOT NULL,
-  `numero_posti_letto_totali` tinyint unsigned NOT NULL,
-  `numero_bagni` tinyint unsigned NOT NULL,
+  `letti_nella_camera` tinyint(3) UNSIGNED NOT NULL,
+  `numero_posti_letto_totali` tinyint(3) UNSIGNED NOT NULL,
+  `numero_bagni` tinyint(3) UNSIGNED NOT NULL,
   `disponibilita_angolo_studio` tinyint(1) NOT NULL DEFAULT '0',
   `ascensore` tinyint(1) NOT NULL DEFAULT '0',
   `fumatori` tinyint(1) NOT NULL DEFAULT '0',
   `parcheggio` tinyint(1) NOT NULL DEFAULT '0',
   `wi_fi` tinyint(1) NOT NULL DEFAULT '0',
   `canone_affitto` double(6,2) NOT NULL,
-  `durata_minima_locazione` tinyint unsigned DEFAULT NULL,
+  `durata_minima_locazione` tinyint(3) UNSIGNED DEFAULT NULL,
   `genere_preferito` enum('M','F','ND') NOT NULL,
-  `eta_preferita` tinyint unsigned DEFAULT NULL,
+  `eta_preferita` tinyint(3) UNSIGNED DEFAULT NULL,
   `periodo_disponibilita_inizio` date NOT NULL,
   `periodo_disponibilita_fine` date NOT NULL,
-  `username_locatore` varchar(40) NOT NULL,
-  PRIMARY KEY (`id_annuncio`),
-  KEY `username_locatore` (`username_locatore`),
-  CONSTRAINT `Posto_Letto_ibfk_1` FOREIGN KEY (`username_locatore`) REFERENCES `Locatore` (`username`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `username_locatore` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Posto_Letto`
+-- Indici per le tabelle scaricate
 --
 
-LOCK TABLES `Posto_Letto` WRITE;
-/*!40000 ALTER TABLE `Posto_Letto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Posto_Letto` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+--
+-- Indici per le tabelle `Appartamento`
+--
+ALTER TABLE `Appartamento`
+  ADD PRIMARY KEY (`id_annuncio`),
+  ADD KEY `username_locatore` (`username_locatore`);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indici per le tabelle `FAQ`
+--
+ALTER TABLE `FAQ`
+  ADD PRIMARY KEY (`domanda`);
+
+--
+-- Indici per le tabelle `Locatario`
+--
+ALTER TABLE `Locatario`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indici per le tabelle `Locatore`
+--
+ALTER TABLE `Locatore`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indici per le tabelle `Messaggio`
+--
+ALTER TABLE `Messaggio`
+  ADD PRIMARY KEY (`username_locatore`,`username_locatario`,`data_invio`),
+  ADD KEY `Messaggio_ibfk_1` (`username_locatario`);
+
+--
+-- Indici per le tabelle `Opzione`
+--
+ALTER TABLE `Opzione`
+  ADD PRIMARY KEY (`username_locatore`,`username_locatario`,`id_appartamento`,`id_posto_letto`),
+  ADD KEY `username_locatario` (`username_locatario`),
+  ADD KEY `id_appartamento` (`id_appartamento`),
+  ADD KEY `id_posto_letto` (`id_posto_letto`);
+
+--
+-- Indici per le tabelle `Posto_Letto`
+--
+ALTER TABLE `Posto_Letto`
+  ADD PRIMARY KEY (`id_annuncio`),
+  ADD KEY `username_locatore` (`username_locatore`);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella `Appartamento`
+--
+ALTER TABLE `Appartamento`
+  MODIFY `id_annuncio` mediumint(9) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `Posto_Letto`
+--
+ALTER TABLE `Posto_Letto`
+  MODIFY `id_annuncio` mediumint(9) NOT NULL AUTO_INCREMENT;
+
+--
+-- Limiti per le tabelle scaricate
+--
+
+--
+-- Limiti per la tabella `Appartamento`
+--
+ALTER TABLE `Appartamento`
+  ADD CONSTRAINT `Appartamento_ibfk_1` FOREIGN KEY (`username_locatore`) REFERENCES `Locatore` (`username`) ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `Messaggio`
+--
+ALTER TABLE `Messaggio`
+  ADD CONSTRAINT `Messaggio_ibfk_1` FOREIGN KEY (`username_locatario`) REFERENCES `Locatario` (`username`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `Messaggio_ibfk_2` FOREIGN KEY (`username_locatore`) REFERENCES `Locatore` (`username`) ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `Opzione`
+--
+ALTER TABLE `Opzione`
+  ADD CONSTRAINT `opzione_ibfk_1` FOREIGN KEY (`username_locatore`) REFERENCES `Locatore` (`username`),
+  ADD CONSTRAINT `opzione_ibfk_2` FOREIGN KEY (`username_locatario`) REFERENCES `Locatario` (`username`),
+  ADD CONSTRAINT `opzione_ibfk_3` FOREIGN KEY (`id_appartamento`) REFERENCES `Appartamento` (`id_annuncio`),
+  ADD CONSTRAINT `opzione_ibfk_4` FOREIGN KEY (`id_posto_letto`) REFERENCES `Posto_Letto` (`id_annuncio`);
+
+--
+-- Limiti per la tabella `Posto_Letto`
+--
+ALTER TABLE `Posto_Letto`
+  ADD CONSTRAINT `Posto_Letto_ibfk_1` FOREIGN KEY (`username_locatore`) REFERENCES `Locatore` (`username`) ON UPDATE CASCADE;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2022-04-26 19:10:46
