@@ -41,7 +41,7 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #333333;
   font-size: 15px;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 .no-padding {
@@ -2357,7 +2357,7 @@ img {
   display: inline;
   float: left;
   height: 220px;
-  overflow: hidden;
+  overflow: auto;
   width: 100%;
 }
 #aa-gallery .aa-gallery-area .aa-gallery-content .aa-gallery-body .aa-single-gallery .aa-single-gallery-item .aa-single-gallery-img img {
