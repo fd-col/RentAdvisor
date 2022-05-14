@@ -35,11 +35,11 @@ class CreateAnnuncioTable extends Migration
             $table->boolean('ascensore')->default(false);
             $table->double('canone_affitto',6,2);
             $table->unsignedTinyInteger('durata_minima_locazione');
-            $table->enum('genere_preferito', ['M','F','ND']);
-            $table->unsignedTinyInteger('eta_preferita_min');
-            $table->unsignedTinyInteger('eta_preferita_max');
+            $table->enum('genere_preferito', ['M','F', 'ND']);
+            $table->unsignedTinyInteger('eta_preferita_min')->nullable();
+            $table->unsignedTinyInteger('eta_preferita_max')->nullable();
             $table->date('periodo_disponibilita_inizio');
-            $table->date('periodo_disponibilita_fine');
+            $table->date('periodo_disponibilita_fine')->nullable();
             $table->foreign('username_locatore')->references('username')->on('utente')->onUpdate('cascade');
         });
     }

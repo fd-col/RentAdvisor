@@ -19,7 +19,7 @@ class CreateMessaggioTable extends Migration
             $table->dateTime('data_invio');
             $table->string('testo', 500);
             $table->enum('mittente', ['locatore', 'locatario']);
-            $table->primary(['username_locatore', 'username_locatario', 'data_invio'], 'chiave_primaria');
+            $table->primary(['username_locatore', 'username_locatario', 'data_invio'], 'chiave_primaria_tabella_messaggio');
             $table->foreign('username_locatore')->references('username')->on('utente')->onUpdate('cascade');
             $table->foreign('username_locatario')->references('username')->on('utente')->onUpdate('cascade');
         });
