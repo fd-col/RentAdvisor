@@ -820,7 +820,9 @@ img {
 .aa-properties-item .aa-properties-item-content .aa-properties-detial a {
   float: right;
 }
-
+.aa-properties-info table{
+	width: 100%;
+}
 /*==================
  SERVICE SECTION
 ====================*/
@@ -1489,12 +1491,17 @@ img {
   float: left;
   padding: 10px 20px;
   width: 100%;
+  margin-bottom: 20px;
 }
 #aa-properties .aa-properties-sidebar .aa-properties-single-sidebar {
   display: inline;
   float: left;
   margin-bottom: 20px;
   width: 100%;
+  padding-left: 10px;
+}
+#aa-properties .aa-properties-sidebar .aa-properties-single-sidebar ul{
+	list-style: circle;
 }
 #aa-properties .aa-properties-sidebar .aa-properties-single-sidebar h3 {
   text-transform: uppercase;
@@ -1734,7 +1741,20 @@ img {
   display: inline;
   float: left;
   width: 100%;
+  text-align: center;
+  font-size: 15px;
 }
+#aa-blog .aa-blog-area h3{
+	display: inline;
+	clear: none;
+}
+#aa-blog .aa-blog-area p{
+  padding-bottom: 40px;	
+}
+#aa-blog .aa-blog-area ol{
+  list-style-position:inside;
+}
+
 #aa-blog .aa-blog-area .aa-blog-content {
   display: inline;
   float: left;
@@ -1842,7 +1862,7 @@ img {
 }
 #aa-blog .aa-blog-area .aa-blog-sidebar .aa-blog-sidebar-single .aa-blog-recent-post .media .media-body p {
   margin-bottom: 5px;
-  font-size: 12px;
+  font-size: 15px;
 }
 #aa-blog .aa-blog-area .aa-blog-sidebar .aa-blog-sidebar-single .aa-blog-recent-post .media .media-body span {
   font-size: 14px;
