@@ -40,9 +40,21 @@
     <![endif]-->
 
     <script type="text/javascript">
-        function tipologia(){
-            document.getElementById('tipologia_appartamento').style.display='none';
-            document.getElementById('caratteristiche_appartamento').style.display='none';
+        function tipologia(tipologia){
+            if (tipologia="appartamento") {
+                document.getElementById("singola").setAttribute("disabled","true")
+                document.getElementById("condivisa").setAttribute("disabled","true")
+                document.getElementById("dimensioni_camera").setAttribute("disabled","true")
+                document.getElementById("letti_camera").setAttribute("disabled","true")
+                document.getElementById("angolo_studio").setAttribute("disabled","true")
+            } else if (tipologia="posto_letto"){
+                document.getElementById("appartamento").setAttribute("disabled","true")
+                document.getElementById("casa_indipendente").setAttribute("disabled","true")
+                document.getElementById("numero_camere").setAttribute("disabled","true")
+                document.getElementById("dimensioni_appartamento").setAttribute("disabled","true")
+                document.getElementById("cucina").setAttribute("disabled","true")
+                document.getElementById("locale_ricreativo").setAttribute("disabled","true")
+            }
         }
     </script>
 </head>
@@ -194,9 +206,9 @@
 
                                         <p class="comment-form-author">
                                             <label for="appartamento_casa">Appartamento/Casa indipendente</label>
-                                            <input type="radio" name="tipologia" id="appartamento_casa" value="appartamento_casa" checked required="required">
+                                            <input type="radio" name="tipologia" id="appartamento_casa" value="appartamento_casa" checked required="required" onclick="tipologia('appartamento')" onload="tipologia('appartamento')">
                                             <label for="posto_letto">Posto letto</label>
-                                            <input type="radio" name="tipologia" id="posto_letto" value="posto_letto" required="required">
+                                            <input type="radio" name="tipologia" id="posto_letto" value="posto_letto" required="required" onclick="tipologia('posto_letto')">
                                         </p>
                                     </fieldset>
 
@@ -346,15 +358,15 @@
                                             <label>Eta preferita degli affittuari</label>
                                             <label for="eta_preferita_min">Minima età preferita degli affittuari (lasciare il campo vuoto se è indifferente)</label>
                                             <input type="number" name="eta_preferita_min" id="eta_preferita_min" value="" min="18" max="100">
-                                            <label for="eta_preferita_max">Massima età preferita degli affittuari (lasciare il campo vuot0 se è indifferente)</label>
+                                            <label for="eta_preferita_max">Massima età preferita degli affittuari (lasciare il campo vuoto se è indifferente)</label>
                                             <input type="number" name="eta_preferita_max" id="eta_preferita_max" value="" min="18" max="100">
                                         </p>
                                         <p class="comment-form-author">
-                                            <label for="disponibilita_inizio">L'alloggio è disponibile da:<span class="required">*</span></label>
+                                            <label for="disponibilita_inizio">L'alloggio è disponibile dal:<span class="required">*</span></label>
                                             <input type="date" name="disponibilita_inizio" id="disponibilita_inizio" value=""  required="required">
                                         </p>
                                         <p class="comment-form-author">
-                                            <label for="disponibilita_fine">L'alloggio è disponibile fino al:</label>
+                                            <label for="disponibilita_fine" >L'alloggio è disponibile fino al:</label>
                                             <input type="date" name="disponibilita_fine" id="disponibilita_fine" value="">
                                         </p>
                                     </fieldset>
@@ -366,15 +378,12 @@
                                             <input type="file" name="foto-annuncio" id="foto-annuncio"  multiple accept="image/jpeg">
                                         </p>
                                     </fieldset>
-                                    <p class="form-inline">
-                                        <p class="form-submit">
+                                        <p class="form-submit" style="display: inline">
                                             <input type="reset" name="reset" class="aa-browse-btn" value="Reset">
                                         </p>
-                                        <p class="form-submit">
+                                        <p class="form-submit" style="display: inline">
                                             <input type="submit" name="submit" class="aa-browse-btn" value="Inserisci annuncio">
                                         </p>
-                                    </p>
-
                                 </form>
                             </div>
                         </div>
