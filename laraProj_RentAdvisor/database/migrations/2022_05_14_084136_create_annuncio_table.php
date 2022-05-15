@@ -17,7 +17,7 @@ class CreateAnnuncioTable extends Migration
             $table->bigIncrements('id');
             $table->string('username_locatore', 40);
             $table->string('titolo', 200);
-            $table->string('descrizione', 700);
+            $table->string('descrizione', 1000);
             $table->date('data_inserimento');
             $table->boolean('disponibile')->default(true);
             $table->char('provincia', 2);
@@ -34,6 +34,7 @@ class CreateAnnuncioTable extends Migration
             $table->boolean('wi_fi')->default(false);
             $table->boolean('ascensore')->default(false);
             $table->double('canone_affitto',6,2);
+            $table->double('caparra',6,2);
             $table->unsignedTinyInteger('durata_minima_locazione');
             $table->enum('genere_preferito', ['M','F', 'ND']);
             $table->unsignedTinyInteger('eta_preferita_min')->nullable();
