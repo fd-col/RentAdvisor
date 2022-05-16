@@ -17,8 +17,8 @@ Route::get('/selTopCat/{topCatId}/selCat/{catId}', 'PublicController@showCatalog
 Route::get('/selTopCat/{topCatId}', 'PublicController@showCatalog2')
         ->name('catalog2');
 
-Route::get('/', 'PublicController@showCatalog1')
-        ->name('catalog1');
+Route::view('/', 'views_html/index')
+        ->name('home');
 
 Route::get('/admin/newproduct', 'AdminController@addProduct')
         ->name('newproduct');
@@ -53,6 +53,6 @@ Route::view('/where', 'where')
 Route::view('/who', 'who')
         ->name('who');
 
-// Rotte inserite dal comando artisan "ui vue --auth" 
+// Rotte inserite dal comando artisan "ui vue --auth"
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
