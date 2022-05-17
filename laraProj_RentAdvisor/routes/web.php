@@ -47,8 +47,8 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 
 Route::post('register', 'Auth\RegisterController@register');
 
-Route::view('/where', 'where')
-        ->name('where');
+Route::view('/faq', 'views_html/faq')
+        ->name('faq');
 
 Route::view('/who', 'who')
         ->name('who');

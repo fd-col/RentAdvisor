@@ -1341,7 +1341,7 @@ img {
 ====================*/
 
 #aa-property-header {
-  background-image: url("../images/slider/Milano\-\ Copia.jpg");
+  background-image: url("{{ asset('images/slider/Milano_Copia}}");
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;

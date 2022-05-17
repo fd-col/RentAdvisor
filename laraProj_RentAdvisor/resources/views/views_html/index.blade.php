@@ -104,7 +104,7 @@
             <li class="active"><a href="{{ route('home') }}">HOME</a></li>
 			      <li><a href="catalog.html">CATALOGO</a></li>
             <li><a href="contact.html">CONTATTI</a></li>
-            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="{{ route('faq') }}">FAQ</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -561,7 +561,7 @@
             <div class="col-md-6 col-sm-12 col-xs-12">
               <div class="aa-footer-right">
                 <a href="{{ route('home') }}">Home</a>
-                <a href="faq.html">FAQ</a>
+                <a href="{{ route('faq') }}">FAQ</a>
                 <a href="contact.html">Contatti</a>
               </div>
             </div>
