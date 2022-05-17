@@ -2745,16 +2745,19 @@ img {
 }
 
 .send-button {
+  display: inline;
   float: right;
   background: #0066A2;
   color: rgb(255, 255, 255);
   border-style: outset;
   border-color: #0066A2;
+  margin-top: 30px;
 }
 
 .textarea-style {
-  width: 636px; 
-  height: 70px; 
+  display: inline;
+  width: 670px;
+  height: 86px; 
   resize: none;
 }
 
