@@ -36,6 +36,7 @@
 */
 /* BASE - Base tyles, Variables, Mixins, etc. */
 
+
 body {
   background-color: #ffffff;
   font-family: "Open Sans", sans-serif;
@@ -2728,6 +2729,37 @@ img {
 .round-button:hover {
   background: #c43e0d;
 }
+
+.messaggi-inviati {
+  text-align: right;
+  background-color:#20ceb3;
+  border-radius: 10px;
+  
+}
+
+.messaggi-ricevuti {
+  text-align: left;
+  background-color:greenyellow;
+  border-radius: 10px;
+}
+
+.send-button {
+  float: right;
+  background: #0066A2;
+  color: rgb(255, 255, 255);
+  border-style: outset;
+  border-color: #0066A2;
+}
+
+.textarea-style {
+  width: 636px; 
+  height: 70px; 
+  resize: none;
+}
+
+
+
+
 
 /*==================
  RESPONSIVE DESIGN
