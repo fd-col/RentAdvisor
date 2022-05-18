@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RentAdvisor | Home</title>
+    <title>RentAdvisor | Accesso</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/home_house.png') }}" type="image/x-icon">
@@ -67,7 +67,7 @@
                 </div>
                 <div class="aa-single-submit">
                   <input type="submit" value="Accedi" class="aa-browse-btn" name="submit">
-                  <p>Non hai ancora un account? <a href="{{ route('register') }}p">Crealo ora!</a></p>
+                  <p>Non hai ancora un account? <a href="{{ route('register') }}">Crealo ora!</a></p>
                 </div>
               </form>
             </div>
