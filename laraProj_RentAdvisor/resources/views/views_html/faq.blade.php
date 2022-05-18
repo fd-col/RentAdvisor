@@ -69,8 +69,8 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-6">
                             <div class="aa-header-right">
-                                <a href="register.html" class="aa-register">Registrati</a>
-                                <a href="signin.html" class="aa-login">Accedi</a>
+                                <a href="register.blade.php" class="aa-register">Registrati</a>
+                                <a href="signin.blade.php" class="aa-login">Accedi</a>
                             </div>
                         </div>
                     </div>
@@ -102,9 +102,9 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
                     <li class="active"><a href="{{ route('home') }}">HOME</a></li>
-                    <li><a href="catalog.html">CATALOGO</a></li>
-                    <li><a href="contact.html">CONTATTI</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="{{ route('catalog') }}">CATALOGO</a></li>
+                    <li><a href="{{ route('contact') }}">CONTATTI</a></li>
+                    <li><a href="{{ route('faq') }}">FAQ</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -179,10 +179,10 @@
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
               <div class="aa-footer-right">
-                <a href="index.blade.php">Home</a>
-                <a href="catalog.html">Catalogo</a>
-                <a href="faq.html">FAQ</a>
-                <a href="contatti.html">Contatti</a>
+                <a href="{{ route('home') }}">Home</a>
+                <a href="{{ route('catalog') }}">Catalogo</a>
+                <a href="{{ route('faq') }}">FAQ</a>
+                <a href="{{ route('contact') }}">Contatti</a>
               </div>
             </div>
           </div>

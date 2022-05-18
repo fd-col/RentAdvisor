@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RentAdvisor | Contatti</title>
+    <title>RentAdvisor | Home</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/home_house.png" type="image/x-icon">
-
+    <link rel="shortcut icon" href="{{ asset('images/home_house.png') }}" type="image/x-icon">
 
     <!-- Font awesome -->
-    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/nouislider.css') }}">
     <!-- Fancybox slider -->
-    <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}" type="text/css" media="screen" />
     <!-- Theme color -->
-    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="{{ asset('css/theme-color/default-theme.css') }}" rel="stylesheet">
 
     <!-- Main style sheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 
     <!-- Google Font -->
@@ -35,12 +34,11 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-  </head>
+</head>
   <body>
 
   <!-- Pre Loader -->
@@ -72,8 +70,8 @@
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="aa-header-right">
-                  <a href="register.html" class="aa-register">Registrati</a>
-                  <a href="signin.html" class="aa-login">Accesso</a>
+                  <a href="{{ route('register') }}" class="aa-register">Registrati</a>
+                  <a href="{{ route('login') }}" class="aa-login">Accesso</a>
                 </div>
               </div>
             </div>
@@ -83,6 +81,7 @@
     </div>
   </header>
   <!-- End header section -->
+
   <!-- Start menu section -->
   <section id="aa-menu-area">
     <nav class="navbar navbar-default main-navbar" role="navigation">
@@ -97,16 +96,16 @@
           </button>
           <!-- LOGO -->
           <!-- Text based logo -->
-          <a class="navbar-brand aa-logo" href="index.blade.php"> <span>RentAdvisor</span></a>
+          <a class="navbar-brand aa-logo" href="{{ route('home') }}"> <span>RentAdvisor</span></a>
           <!-- Image based logo -->
-          <!-- <a class="navbar-brand aa-logo-img" href="index.blade.php"><img src="img/logo.png" alt="logo"></a> -->
+          <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-            <li><a href="index.blade.php">HOME</a></li>
-            <li> <a href="catalog.html">CATALOGO</a></li>
-            <li class="active"><a href="contact.html">CONTATTI</a></li>
-            <li><a href="faq.blade.php">FAQ</a></li>
+            <li><a href="{{ route('home') }}">HOME</a></li>
+            <li> <a href="{{ route('catalog') }}">CATALOGO</a></li>
+            <li class="active"><a href="{{ route('contact') }}">CONTATTI</a></li>
+            <li><a href="{{ route('faq') }}">FAQ</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -114,29 +113,120 @@
   </section>
   <!-- End menu section -->
 
-  <!-- Start Proerty header  -->
-
-  <section id="aa-property-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="aa-property-header-inner">
-            <h2>CONTATTI</h2>
-            <ol class="breadcrumb">
-            <li><a href="index.blade.php">HOME</a></li>
-            <li class="active">Contatti</li>
-          </ol>
+  <!-- Start slider  -->
+  <section id="aa-slider">
+    <div class="aa-slider-area">
+      <!-- Top slider -->
+      <div class="aa-top-slider">
+        <!-- Top slider single slide -->
+        <div class="aa-top-slider-single">
+          <img src="{{ asset('images/slider/Milano.jpg') }}" alt="img">
+          <!-- Top slider content -->
+          <div class="aa-top-slider-content">
+              <div class="aa-property-header-inner">
+                <h2>CONTATTI</h2>
+                <ol class="breadcrumb">
+                  <li><a href="{{ route('home') }}">HOME</a></li>
+                  <li class="active">CONTATTI</li>
+                </ol>
+              </div>
           </div>
+          <!-- / Top slider content -->
         </div>
+        <!-- / Top slider single slide -->
+        <!-- Top slider single slide -->
+        <div class="aa-top-slider-single">
+          <img src="{{ asset('images/slider/Bologna.jpeg') }}" alt="img">
+          <!-- Top slider content -->
+          <div class="aa-top-slider-content">
+            <div class="aa-property-header-inner">
+              <h2>CONTATTI</h2>
+              <ol class="breadcrumb">
+                <li><a href="{{ route('home') }}">HOME</a></li>
+                <li class="active">CONTATTI</li>
+              </ol>
+            </div>
+          </div>
+          <!-- / Top slider content -->
+        </div>
+        <!-- / Top slider single slide -->
+        <!-- Top slider single slide -->
+        <div class="aa-top-slider-single">
+          <img src="{{ asset('images/slider/Ancona.jpeg') }}" alt="img">
+          <!-- Top slider content -->
+          <div class="aa-top-slider-content">
+            <div class="aa-property-header-inner">
+              <h2>CONTATTI</h2>
+              <ol class="breadcrumb">
+                <li><a href="{{ route('home') }}">HOME</a></li>
+                <li class="active">CONTATTI</li>
+              </ol>
+            </div>
+          </div>
+          <!-- / Top slider content -->
+        </div>
+        <!-- / Top slider single slide -->
+         <!-- Top slider single slide -->
+        <div class="aa-top-slider-single">
+          <img src="{{ asset('images/slider/Lecce.jpeg') }}" alt="img">
+          <!-- Top slider content -->
+          <div class="aa-top-slider-content">
+            <div class="aa-property-header-inner">
+              <h2>CONTATTI</h2>
+              <ol class="breadcrumb">
+                <li><a href="{{ route('home') }}">HOME</a></li>
+                <li class="active">CONTATTI</li>
+              </ol>
+            </div>
+          </div>
+          <!-- / Top slider content -->
+        </div>
+        <!-- / Top slider single slide -->
+         <!-- Top slider single slide -->
+        <div class="aa-top-slider-single">
+          <img src="{{ asset('images/slider/Pescara.jpeg') }}" alt="img">
+          <!-- Top slider content -->
+          <div class="aa-top-slider-content">
+            <div class="aa-property-header-inner">
+              <h2>CONTATTI</h2>
+              <ol class="breadcrumb">
+                <li><a href="{{ route('home') }}">HOME</a></li>
+                <li class="active">CONTATTI</li>
+              </ol>
+            </div>
+          </div>
+          <!-- / Top slider content -->
+        </div>
+        <!-- / Top slider single slide -->
+         <!-- Top slider single slide -->
+        <div class="aa-top-slider-single">
+          <img src="{{ asset('images/slider/Roma.jpeg') }}" alt="img">
+          <!-- Top slider content -->
+          <div class="aa-top-slider-content">
+            <div class="aa-property-header-inner">
+              <h2>CONTATTI</h2>
+              <ol class="breadcrumb">
+                <li><a href="{{ route('home') }}">HOME</a></li>
+                <li class="active">CONTATTI</li>
+              </ol>
+            </div>
+          </div>
+          <!-- / Top slider content -->
+        </div>
+        <!-- / Top slider single slide -->
       </div>
     </div>
   </section>
-  <!-- End Proerty header  -->
+  <!-- End slider  -->
 
  <section id="aa-contact">
    <div class="container">
      <div class="row">
        <div class="col-md-12">
+          <div class="aa-title">
+            <h2>Pagina dei Contatti</h2>
+            <span></span>
+          </div>
           <div class="aa-contact-area">
             <div class="aa-contact-top">
               <div class="aa-contact-top-left">
@@ -204,9 +294,9 @@
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
               <div class="aa-footer-right">
-                <a href="index.blade.php">Home</a>
-                <a href="faq.blade.php">FAQ</a>
-                <a href="contact.html">CONTATTI</a>
+                <a href="{{ route('home') }}">Home</a>
+                <a href="{{ route('faq') }}">FAQ</a>
+                <a href="{{ route('contact') }}">CONTATTI</a>
               </div>
             </div>
           </div>
@@ -219,19 +309,19 @@
 
   <!-- jQuery library -->
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-  <script src="js/jquery.min.js"></script>
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap_layout.js"></script>
+  <script src="{{ asset('js/bootstrap_layout.js') }}"></script>
   <!-- slick slider -->
-  <script type="text/javascript" src="js/slick.js"></script>
+  <script type="text/javascript" src="{{ asset('js/slick.js') }}"></script>
   <!-- Price picker slider -->
-  <script type="text/javascript" src="js/nouislider.js"></script>
-   <!-- mixit slider -->
-  <script type="text/javascript" src="js/jquery.mixitup.js"></script>
+  <script type="text/javascript" src="{{ asset('js/nouislider.js') }}"></script>
+  <!-- mixit slider -->
+  <script type="text/javascript" src="{{ asset('js/jquery.mixitup.js') }}"></script>
   <!-- Add fancyBox -->
-  <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.fancybox.pack.js') }}"></script>
   <!-- Custom js -->
-  <script src="js/custom.js"></script>
+  <script src="{{ asset('js/custom.js') }}"></script>
 
   </body>
 </html>

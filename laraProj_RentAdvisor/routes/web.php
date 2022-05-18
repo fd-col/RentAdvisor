@@ -10,18 +10,20 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
-
-Route::get('/selTopCat/{topCatId}/selCat/{catId}', 'PublicController@showCatalog3')
-        ->name('catalog3');
-
-Route::get('/selTopCat/{topCatId}', 'PublicController@showCatalog2')
-        ->name('catalog2');
-
 Route::view('/', 'views_html/index')
-        ->name('home');
+    ->name('home');
 
-Route::get('/admin/newproduct', 'AdminController@addProduct')
-        ->name('newproduct');
+Route::view('/catalog', 'views_html/catalog')
+    ->name('catalog');
+
+Route::view('/faq', 'views_html/faq')
+    ->name('faq');
+
+Route::view('/contact', 'views_html/contact')
+    ->name('contact');
+
+Route::view('/propertydetails', 'views_html/dettagli_annuncio')
+        ->name('dettagli_annuncio');
 
 Route::post('/admin/newproduct', 'AdminController@storeProduct')
         ->name('newproduct.store');
@@ -33,7 +35,7 @@ Route::get('/user', 'UserController@index')
         ->name('user')->middleware('can:isUser');
 
 // Rotte per l'autenticazione
-Route::get('login', 'Auth\LoginController@showLoginForm')
+Route::view('login', 'views_html/signin')
         ->name('login');
 
 Route::post('login', 'Auth\LoginController@login');
@@ -42,16 +44,12 @@ Route::post('logout', 'Auth\LoginController@logout')
         ->name('logout');
 
 // Rotte per la registrazione
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')
+Route::view('register', 'views_html/register')
         ->name('register');
 
 Route::post('register', 'Auth\RegisterController@register');
 
-Route::view('/faq', 'views_html/faq')
-        ->name('faq');
 
-Route::view('/who', 'who')
-        ->name('who');
 
 // Rotte inserite dal comando artisan "ui vue --auth"
 // Auth::routes();

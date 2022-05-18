@@ -7,23 +7,23 @@
     <title>RentAdvisor | Home</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('images/home_house.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="img/home_house.png" type="image/x-icon">
 
     <!-- Font awesome -->
-    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/nouislider.css') }}">
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
     <!-- Fancybox slider -->
-    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen" />
     <!-- Theme color -->
-    <link id="switcher" href="{{ asset('css/theme-color/default-theme.css') }}" rel="stylesheet">
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
 
     <!-- Main style sheet -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
 
     <!-- Google Font -->
@@ -69,8 +69,10 @@
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="aa-header-right">
-                  <a href="{{ route('register') }}" class="aa-register">Registrati</a>
-                  <a href="{{ route('login') }}" class="aa-login">Accedi</a>
+                    <a href="area_personale.html" class="aa-login"><span class="fa fa-user"></span>  PROPRIETARIO</a> |
+                    <a href="messaggio.html" class="aa-login"><span class="fa fa-envelope"></span> </a>|
+                    <a href="area_personale.html#aa-contact" class="aa-login"><span class="fa fa-edit"></span> </a>|
+                    <a href="index.html" class="aa-login"><span class="fa fa-sign-out"></span> </a>
                 </div>
               </div>
             </div>
@@ -95,16 +97,17 @@
           </button>
           <!-- LOGO -->
           <!-- Text based logo -->
-           <a class="navbar-brand aa-logo" href="{{ route('home') }}"> <span>RentAdvisor</span> </a>
+           <a class="navbar-brand aa-logo" href="index.html"> <span>RentAdvisor</span> </a>
            <!-- Image based logo -->
-           <!-- <a class="navbar-brand aa-logo-img" href="index.blade.php"><img src="img/logo.png" alt="logo"></a> -->
+           <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-            <li class="active"><a href="{{ route('home') }}">HOME</a></li>
-			      <li><a href="{{ route('catalog') }}">CATALOGO</a></li>
-            <li><a href="{{ route('contact') }}">CONTATTI</a></li>
-            <li><a href="{{ route('faq') }}">FAQ</a></li>
+            <li class="active"><a href="index.html">HOME</a></li>
+			<li><a href="area_personale.html">AREA PERSONALE</a></li>
+			      <li><a href="catalog.blade.php">CATALOGO</a></li>
+            <li><a href="contact.blade.php">CONTATTI</a></li>
+            <li><a href="faq.html">FAQ</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -119,7 +122,7 @@
       <div class="aa-top-slider">
         <!-- Top slider single slide -->
         <div class="aa-top-slider-single">
-          <img src="{{ asset('images/slider/Milano.jpg') }}" alt="img">
+          <img src="img/slider/Milano.jpg" alt="img">
           <!-- Top slider content -->
           <div class="aa-top-slider-content">
             <span class="aa-top-slider-catg">Milano</span>
@@ -133,7 +136,7 @@
         <!-- / Top slider single slide -->
         <!-- Top slider single slide -->
         <div class="aa-top-slider-single">
-          <img src="{{ asset('images/slider/Bologna.jpeg') }}" alt="img">
+          <img src="img/slider/Bologna.jpeg" alt="img">
           <!-- Top slider content -->
           <div class="aa-top-slider-content">
             <span class="aa-top-slider-catg">Bologna</span>
@@ -147,7 +150,7 @@
         <!-- / Top slider single slide -->
         <!-- Top slider single slide -->
         <div class="aa-top-slider-single">
-          <img src="{{ asset('images/slider/Ancona.jpeg') }}" alt="img">
+          <img src="img/slider/Ancona.jpeg" alt="img">
           <!-- Top slider content -->
           <div class="aa-top-slider-content">
             <span class="aa-top-slider-catg">Ancona</span>
@@ -161,7 +164,7 @@
         <!-- / Top slider single slide -->
          <!-- Top slider single slide -->
         <div class="aa-top-slider-single">
-          <img src="{{ asset('images/slider/Lecce.jpeg') }}" alt="img">
+          <img src="img/slider/Lecce.jpeg" alt="img">
           <!-- Top slider content -->
           <div class="aa-top-slider-content">
             <span class="aa-top-slider-catg">Lecce</span>
@@ -175,7 +178,7 @@
         <!-- / Top slider single slide -->
          <!-- Top slider single slide -->
         <div class="aa-top-slider-single">
-          <img src="{{ asset('images/slider/Pescara.jpeg') }}" alt="img">
+          <img src="img/slider/Pescara.jpeg" alt="img">
           <!-- Top slider content -->
           <div class="aa-top-slider-content">
             <span class="aa-top-slider-catg">Pescara</span>
@@ -189,7 +192,7 @@
         <!-- / Top slider single slide -->
          <!-- Top slider single slide -->
         <div class="aa-top-slider-single">
-          <img src="{{ asset('images/slider/Roma.jpeg') }}" alt="img">
+          <img src="img/slider/Roma.jpeg" alt="img">
           <!-- Top slider content -->
           <div class="aa-top-slider-content">
             <span class="aa-top-slider-catg">Roma</span>
@@ -222,7 +225,7 @@
             <div class="col-md-4">
               <article class="aa-properties-item">
                 <a href="#" class="aa-properties-item-img">
-                  <img src="{{ asset('images/item/1.jpg') }}" alt="img">
+                  <img src="img/item/1.jpg" alt="img">
                 </a>
                 <div class="aa-tag for-sale">
                   For Sale
@@ -250,7 +253,7 @@
             <div class="col-md-4">
               <article class="aa-properties-item">
                 <a href="#" class="aa-properties-item-img">
-                  <img src="{{ asset('images/item/2.jpg') }}" alt="img">
+                  <img src="img/item/2.jpg" alt="img">
                 </a>
                 <div class="aa-tag for-rent">
                   For Rent
@@ -278,7 +281,7 @@
             <div class="col-md-4">
               <article class="aa-properties-item">
                 <a href="#" class="aa-properties-item-img">
-                  <img src="{{ asset('images/item/3.jpg') }}" alt="img">
+                  <img src="img/item/3.jpg" alt="img">
                 </a>
                 <div class="aa-tag sold-out">
                   Sold Out
@@ -306,7 +309,7 @@
             <div class="col-md-4">
               <article class="aa-properties-item">
                 <a href="#" class="aa-properties-item-img">
-                  <img src="{{ asset('images/item/4.jpg') }}" alt="img">
+                  <img src="img/item/4.jpg" alt="img">
                 </a>
                 <div class="aa-tag for-sale">
                   For Sale
@@ -334,7 +337,7 @@
             <div class="col-md-4">
               <article class="aa-properties-item">
                 <a href="#" class="aa-properties-item-img">
-                  <img src="{{ asset('images/item/5.jpg') }}" alt="img">
+                  <img src="img/item/5.jpg" alt="img">
                 </a>
                 <div class="aa-tag sold-out">
                   Sold Out
@@ -362,7 +365,7 @@
             <div class="col-md-4">
               <article class="aa-properties-item">
                 <a href="#" class="aa-properties-item-img">
-                  <img src="{{ asset('images/item/6.jpg') }}" alt="img">
+                  <img src="img/item/6.jpg" alt="img">
                 </a>
                 <div class="aa-tag for-rent">
                   For Rent
@@ -480,7 +483,7 @@
                  <li>
                   <div class="aa-single-agents">
                     <div class="aa-agents-img">
-                      <img src="{{ asset('images/agents/agent-1.png') }}" alt="agent member image">
+                      <img src="img/agents/agent-1.png" alt="agent member image">
                     </div>
                     <div class="aa-agetns-info">
                       <h4><a href="#">Andrea Civitarese</a></h4>
@@ -493,7 +496,7 @@
                 <li>
                   <div class="aa-single-agents">
                     <div class="aa-agents-img">
-                      <img src="{{ asset('images/agents/agent-5.png') }}" alt="agent member image">
+                      <img src="img/agents/agent-5.png" alt="agent member image">
                     </div>
                     <div class="aa-agetns-info">
                       <h4><a href="#">Francesco Camplese</a></h4>
@@ -506,7 +509,7 @@
                 <li>
                   <div class="aa-single-agents">
                     <div class="aa-agents-img">
-                      <img src="{{ asset('images/agents/agent-3.png') }}" alt="agent member image">
+                      <img src="img/agents/agent-3.png" alt="agent member image">
                     </div>
                     <div class="aa-agetns-info">
                       <h4><a href="#">Federico Colleluori</a></h4>
@@ -519,7 +522,7 @@
                 <li>
                   <div class="aa-single-agents">
                     <div class="aa-agents-img">
-                      <img src="{{ asset('images/agents/agent-4.png') }}" alt="agent member image">
+                      <img src="img/agents/agent-4.png" alt="agent member image">
                     </div>
                     <div class="aa-agetns-info">
                       <h4><a href="#">Paolo Cappelletti</a></h4>
@@ -560,9 +563,9 @@
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
               <div class="aa-footer-right">
-                <a href="{{ route('home') }}">Home</a>
-                <a href="{{ route('faq') }}">FAQ</a>
-                <a href="{{ route('contact') }}">Contatti</a>
+                <a href="index.html">Home</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.blade.php">Contatti</a>
               </div>
             </div>
           </div>
@@ -577,19 +580,19 @@
 
   <!-- jQuery library -->
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-  <script src="{{ asset('js/jquery.min.js') }}"></script>
+  <script src="js/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="{{ asset('js/bootstrap_layout.js') }}"></script>
+  <script src="js/bootstrap_layout.js"></script>
   <!-- slick slider -->
-  <script type="text/javascript" src="{{ asset('js/slick.js') }}"></script>
+  <script type="text/javascript" src="js/slick.js"></script>
   <!-- Price picker slider -->
-  <script type="text/javascript" src="{{ asset('js/nouislider.js') }}"></script>
+  <script type="text/javascript" src="js/nouislider.js"></script>
    <!-- mixit slider -->
-  <script type="text/javascript" src="{{ asset('js/jquery.mixitup.js') }}"></script>
+  <script type="text/javascript" src="js/jquery.mixitup.js"></script>
   <!-- Add fancyBox -->
-  <script type="text/javascript" src="{{ asset('js/jquery.fancybox.pack.js') }}"></script>
+  <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
   <!-- Custom js -->
-  <script src="{{ asset('js/custom.js') }}"></script>
+  <script src="js/custom.js"></script>
 
   </body>
 </html>
