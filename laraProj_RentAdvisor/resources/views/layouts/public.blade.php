@@ -180,7 +180,7 @@
             </div>
         </section>
         <!-- End slider  -->
-
+        
         <!-- Start content  -->
             @yield('content')
         <!-- End content  -->
