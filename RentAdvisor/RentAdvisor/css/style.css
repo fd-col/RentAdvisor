@@ -36,6 +36,7 @@
 */
 /* BASE - Base tyles, Variables, Mixins, etc. */
 
+
 body {
   background-color: #ffffff;
   font-family: "Open Sans", sans-serif;
@@ -501,6 +502,10 @@ img {
   width: 100%;
   height: 500px;
 }
+#aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single-half img {
+  width: 100%;
+  height: 400px;
+}
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content {
   background-color: rgba(255, 255, 255, 0.8);
   left: 20%;
@@ -731,7 +736,7 @@ img {
   display: inline;
   float: left;
   width: 100%;
-  padding: 100px 0;
+  padding: 50px 0;
 }
 #aa-latest-property .aa-latest-property-area {
   display: inline;
@@ -1341,7 +1346,6 @@ img {
 ====================*/
 
 #aa-property-header {
-  background-image: url("../img/slider/Milano\ -\ Copia.jpg");
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
@@ -2508,13 +2512,12 @@ img {
 ====================*/
 
 #aa-signin {
-  background-image: url("../img/signin-bg.jpg");
+  background-image: url("../img/slider/Pescara.jpeg");
   background-position: center center;
   background-size: cover;
   bottom: 0;
   height: 100%;
   left: 0;
-  position: fixed;
   right: 0;
   top: 0;
   overflow-y: auto;
@@ -2523,7 +2526,6 @@ img {
 #aa-signin:before {
   background-color: rgba(0, 0, 0, 0.8);
   content: '';
-  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -2532,7 +2534,7 @@ img {
 #aa-signin .aa-signin-area {
   display: inline;
   float: left;
-  padding: 4% 20%;
+  padding: 10%;
   width: 100%;
 }
 #aa-signin .aa-signin-area .aa-signin-form {
@@ -2716,11 +2718,11 @@ img {
   line-height:180px;
   border: 8px solid #f5f5f5;
   border-radius: 50%;
-  margin-left: 40px;
+  margin: 0 auto;
   color:#005bf7;
   text-align:center;
   text-decoration:none;
-  background: #D2691E;
+  background: #ea9309;
   box-shadow: 0 0 3px gray;
   font-size:16px;
   font-weight:bold;
@@ -2728,6 +2730,40 @@ img {
 .round-button:hover {
   background: #c43e0d;
 }
+
+.messaggi-inviati {
+  text-align: right;
+  background-color:#20ceb3;
+  border-radius: 10px;
+  
+}
+
+.messaggi-ricevuti {
+  text-align: left;
+  background-color:greenyellow;
+  border-radius: 10px;
+}
+
+.send-button {
+  display: inline;
+  float: right;
+  background: #0066A2;
+  color: rgb(255, 255, 255);
+  border-style: outset;
+  border-color: #0066A2;
+  margin-top: 30px;
+}
+
+.textarea-style {
+  display: inline;
+  width: 670px;
+  height: 86px; 
+  resize: none;
+}
+
+
+
+
 
 /*==================
  RESPONSIVE DESIGN

@@ -36,6 +36,7 @@
 */
 /* BASE - Base tyles, Variables, Mixins, etc. */
 
+
 body {
   background-color: #ffffff;
   font-family: "Open Sans", sans-serif;
@@ -314,7 +315,7 @@ img {
 /*Preloader*/
 #aa-preloader-area {
   background-color: #F8F8F8;
-  position: fixed;
+  position: fixed; 
   left: 0;
   right: 0;
   top: 0;
@@ -500,6 +501,10 @@ img {
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single img {
   width: 100%;
   height: 500px;
+}
+#aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single-half img {
+  width: 100%;
+  height: 400px;
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content {
   background-color: rgba(255, 255, 255, 0.8);
@@ -731,7 +736,7 @@ img {
   display: inline;
   float: left;
   width: 100%;
-  padding: 100px 0;
+  padding: 50px 0;
 }
 #aa-latest-property .aa-latest-property-area {
   display: inline;
@@ -920,7 +925,7 @@ img {
 ====================*/
 
 #aa-promo-banner {
-  background-image: url("../images/promo-banner.jpg");
+  background-image: url("../img/promo-banner.jpg");
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
@@ -1057,7 +1062,7 @@ img {
 
 #aa-client-testimonial {
   background-attachment: fixed;
-  background-image: url("../images/testimonial-bg.jpg");
+  background-image: url("../img/testimonial-bg.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1341,7 +1346,6 @@ img {
 ====================*/
 
 #aa-property-header {
-  background-image: url("{{ asset('images/slider/Milano_Copia}}");
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
@@ -1763,7 +1767,7 @@ img {
 	clear: none;
 }
 #aa-blog .aa-blog-area p{
-  padding-bottom: 40px;
+  padding-bottom: 40px;	
 }
 #aa-blog .aa-blog-area ol{
   list-style-position:inside;
@@ -2508,13 +2512,12 @@ img {
 ====================*/
 
 #aa-signin {
-  background-image: url("../images/signin-bg.jpg");
+  background-image: url("../img/slider/Pescara.jpeg");
   background-position: center center;
   background-size: cover;
   bottom: 0;
   height: 100%;
   left: 0;
-  position: fixed;
   right: 0;
   top: 0;
   overflow-y: auto;
@@ -2523,7 +2526,6 @@ img {
 #aa-signin:before {
   background-color: rgba(0, 0, 0, 0.8);
   content: '';
-  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -2532,7 +2534,7 @@ img {
 #aa-signin .aa-signin-area {
   display: inline;
   float: left;
-  padding: 4% 20%;
+  padding: 10%;
   width: 100%;
 }
 #aa-signin .aa-signin-area .aa-signin-form {
@@ -2716,11 +2718,11 @@ img {
   line-height:180px;
   border: 8px solid #f5f5f5;
   border-radius: 50%;
-  margin-left: 40px;
+  margin: 0 auto;
   color:#005bf7;
   text-align:center;
   text-decoration:none;
-  background: #D2691E;
+  background: #ea9309;
   box-shadow: 0 0 3px gray;
   font-size:16px;
   font-weight:bold;
@@ -2728,6 +2730,40 @@ img {
 .round-button:hover {
   background: #c43e0d;
 }
+
+.messaggi-inviati {
+  text-align: right;
+  background-color:#20ceb3;
+  border-radius: 10px;
+  
+}
+
+.messaggi-ricevuti {
+  text-align: left;
+  background-color:greenyellow;
+  border-radius: 10px;
+}
+
+.send-button {
+  display: inline;
+  float: right;
+  background: #0066A2;
+  color: rgb(255, 255, 255);
+  border-style: outset;
+  border-color: #0066A2;
+  margin-top: 30px;
+}
+
+.textarea-style {
+  display: inline;
+  width: 670px;
+  height: 86px; 
+  resize: none;
+}
+
+
+
+
 
 /*==================
  RESPONSIVE DESIGN
@@ -2784,7 +2820,7 @@ img {
   }
 
   .pulse {
-    left: 46%;
+    left: 46%;  
   }
 
 }
@@ -2874,7 +2910,7 @@ img {
   }
 
   .pulse {
-    left: 44%;
+    left: 44%;  
   }
 
 }
@@ -3253,7 +3289,7 @@ img {
   }
 
   .pulse {
-    left: 43%;
+    left: 43%;  
   }
 
 }
@@ -3453,7 +3489,7 @@ img {
   }
 
   .pulse {
-    left: 39%;
+    left: 39%;  
   }
 }
 @media (max-width: 320px) {
@@ -3477,7 +3513,7 @@ img {
     left: 17%;
   }
 
-  #aa-header .aa-header-area .aa-header-left .aa-telephone-no {
+  #aa-header .aa-header-area .aa-header-left .aa-telephone-no {  
     font-size: 13px;
     margin-top: 3px;
   }
@@ -3500,7 +3536,7 @@ img {
   }
 
   .pulse {
-    left: 38%;
+    left: 38%;  
   }
-
+  
 }
