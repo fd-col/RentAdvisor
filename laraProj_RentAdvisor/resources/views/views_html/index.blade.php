@@ -242,7 +242,7 @@
                     <span class="aa-price">
                       $35000
                     </span>
-                    <a href="#" class="aa-secondary-btn">Dettagli</a>
+                    <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
                   </div>
                 </div>
               </article>
@@ -270,7 +270,7 @@
                     <span class="aa-price">
                       $11000
                     </span>
-                    <a href="#" class="aa-secondary-btn">Dettagli</a>
+                    <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
                   </div>
                 </div>
               </article>
@@ -298,7 +298,7 @@
                     <span class="aa-price">
                       $15000
                     </span>
-                    <a href="#" class="aa-secondary-btn">Dettagli</a>
+                    <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
                   </div>
                 </div>
               </article>
@@ -326,7 +326,7 @@
                     <span class="aa-price">
                       $35000
                     </span>
-                    <a href="#" class="aa-secondary-btn">Dettagli</a>
+                    <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
                   </div>
                 </div>
               </article>
@@ -354,7 +354,7 @@
                     <span class="aa-price">
                       $11000
                     </span>
-                    <a href="#" class="aa-secondary-btn">Dettagli</a>
+                    <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
                   </div>
                 </div>
               </article>
@@ -382,7 +382,7 @@
                     <span class="aa-price">
                       $15000
                     </span>
-                    <a href="#" class="aa-secondary-btn">Dettagli</a>
+                    <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
                   </div>
                 </div>
               </article>
