@@ -27,13 +27,12 @@
                                 </a>
                                 <div class="aa-properties-item-content">
                                     <div class="aa-properties-info">
-                                        <span>{{ $annuncio->citta }}</span>
+                                        <span>Città: {{ $annuncio->citta }}</span>
                                         <span>Tipologia: {{ str_replace('_', ' ', $annuncio->tipologia) }}</span>
-                                        <span>Posti letto totali: {{ $annuncio->numero_posti_letto_totali_alloggio }}</span>
                                     </div>
                                     <div class="aa-properties-about">
-                                        <h3><a href="#">{{ $annuncio->titolo }}</a></h3>
-                                        <p>{{ $annuncio->descrizione }}</p>
+                                        <h3><a href="#">{{ substr($annuncio->titolo, 0, 50) }}</a></h3>
+                                        <p>{{ substr($annuncio->descrizione, 0, 150) }} ...</p>
                                     </div>
                                     <div class="aa-properties-detial">
                                          <span class="aa-price">

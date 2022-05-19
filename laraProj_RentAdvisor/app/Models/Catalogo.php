@@ -11,8 +11,11 @@ use Illuminate\Support\Facades\DB;
 
 class Catalogo extends Model
 {
-    public function get_annunci() {
-        $annunci = Annuncio::select()->get();
+    public function get_annunci($numero_annunci=null) {
+        if (is_null($numero_annunci))
+            $annunci = Annuncio::select()->orderBy('data_inserimento')->get();
+        else
+            $annunci = Annuncio::select()->orderBy('data_inserimento')->get()->take($numero_annunci);
         return $annunci;
     }
 }

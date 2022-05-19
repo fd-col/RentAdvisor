@@ -10,7 +10,7 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
-Route::view('/', 'views_html/index')
+Route::get('/', 'CatalogoController@home')
     ->name('home');
 
 Route::get('/catalog', 'CatalogoController@catalogo_senza_filtri')
