@@ -13,7 +13,7 @@ class CreateUtenteTable extends Migration
      */
     public function up()
     {
-        Schema::create('utente', function (Blueprint $table) {
+        Schema::create('Utente', function (Blueprint $table) {
             $table->string('username',40)->primary();
             $table->string('nome', 40);
             $table->string('cognome', 40);

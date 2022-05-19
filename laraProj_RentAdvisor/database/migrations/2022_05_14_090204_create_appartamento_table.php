@@ -13,13 +13,13 @@ class CreateAppartamentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('appartamento', function (Blueprint $table) {
+        Schema::create('Appartamento', function (Blueprint $table) {
             $table->unsignedBigInteger('id_annuncio')->primary();
             $table->unsignedTinyInteger('numero_camere');
             $table->unsignedSmallInteger('dimensioni_appartamento');
             $table->boolean('presenza_cucina')->default(false);
             $table->boolean('presenza_locale_ricreativo')->default(false);
-            $table->enum('tipologia', ['appartamento', 'casa indipendente']);
+            $table->enum('tipologia_appartamento', ['appartamento', 'casa indipendente']);
             $table->foreign('id_annuncio')->references('id')->on('annuncio')->onUpdate('cascade');
         });
     }

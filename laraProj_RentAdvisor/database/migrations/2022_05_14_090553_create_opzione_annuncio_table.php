@@ -13,7 +13,7 @@ class CreateOpzioneAnnuncioTable extends Migration
      */
     public function up()
     {
-        Schema::create('opzione_annuncio', function (Blueprint $table) {
+        Schema::create('Opzione_Annuncio', function (Blueprint $table) {
             $table->string('username_locatario', 40);
             $table->unsignedBigInteger('id_annuncio');
             $table->primary(['username_locatario', 'id_annuncio']);

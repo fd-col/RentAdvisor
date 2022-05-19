@@ -13,7 +13,7 @@ class CreateMessaggioTable extends Migration
      */
     public function up()
     {
-        Schema::create('messaggio', function (Blueprint $table) {
+        Schema::create('Messaggio', function (Blueprint $table) {
             $table->string('username_locatore', 40);
             $table->string('username_locatario', 40);
             $table->dateTime('data_invio');

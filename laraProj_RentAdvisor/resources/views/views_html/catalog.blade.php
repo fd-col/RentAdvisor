@@ -4,6 +4,8 @@
 
 @section('content')
 
+    @isset($annunci)
+
     <!-- Catalogo -->
     <section id="aa-latest-property">
         <div class="container">
@@ -15,6 +17,9 @@
                 </div>
                 <div class="aa-latest-properties-content">
                     <div class="row">
+
+
+                        @foreach($annunci as $annuncio)
                         <div class="col-md-4">
                             <article class="aa-properties-item">
                                 <a href="#" class="aa-properties-item-img">
@@ -22,150 +27,24 @@
                                 </a>
                                 <div class="aa-properties-item-content">
                                     <div class="aa-properties-info">
-                                        <span>5 Rooms</span>
-                                        <span>2 Beds</span>
-                                        <span>3 Baths</span>
-                                        <span>1100 SQ FT</span>
+                                        <span>{{ $annuncio->citta }}</span>
+                                        <span>Tipologia: {{ str_replace('_', ' ', $annuncio->tipologia) }}</span>
+                                        <span>Posti letto totali: {{ $annuncio->numero_posti_letto_totali_alloggio }}</span>
                                     </div>
                                     <div class="aa-properties-about">
-                                        <h3><a href="#">Appartment Title</a></h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
+                                        <h3><a href="#">{{ $annuncio->titolo }}</a></h3>
+                                        <p>{{ $annuncio->descrizione }}</p>
                                     </div>
                                     <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $35000
-                    </span>
+                                         <span class="aa-price">
+                                            {{$annuncio->canone_affitto}}€
+                                         </span>
                                         <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
                                     </div>
                                 </div>
                             </article>
                         </div>
-                        <div class="col-md-4">
-                            <article class="aa-properties-item">
-                                <a href="#" class="aa-properties-item-img">
-                                    <img src="{{ asset('images/item/2.jpg') }}" alt="img">
-                                </a>
-                                <div class="aa-properties-item-content">
-                                    <div class="aa-properties-info">
-                                        <span>5 Rooms</span>
-                                        <span>2 Beds</span>
-                                        <span>3 Baths</span>
-                                        <span>1100 SQ FT</span>
-                                    </div>
-                                    <div class="aa-properties-about">
-                                        <h3><a href="#">Appartment Title</a></h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-                                    </div>
-                                    <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $11000
-                    </span>
-                                        <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-md-4">
-                            <article class="aa-properties-item">
-                                <a href="#" class="aa-properties-item-img">
-                                    <img src="{{ asset('images/item/3.jpg') }}" alt="img">
-                                </a>
-                                <div class="aa-properties-item-content">
-                                    <div class="aa-properties-info">
-                                        <span>5 Rooms</span>
-                                        <span>2 Beds</span>
-                                        <span>3 Baths</span>
-                                        <span>1100 SQ FT</span>
-                                    </div>
-                                    <div class="aa-properties-about">
-                                        <h3><a href="#">Appartment Title</a></h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-                                    </div>
-                                    <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $15000
-                    </span>
-                                        <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-md-4">
-                            <article class="aa-properties-item">
-                                <a href="#" class="aa-properties-item-img">
-                                    <img src="{{ asset('images/item/4.jpg') }}" alt="img">
-                                </a>
-                                <div class="aa-properties-item-content">
-                                    <div class="aa-properties-info">
-                                        <span>5 Rooms</span>
-                                        <span>2 Beds</span>
-                                        <span>3 Baths</span>
-                                        <span>1100 SQ FT</span>
-                                    </div>
-                                    <div class="aa-properties-about">
-                                        <h3><a href="#">Appartment Title</a></h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-                                    </div>
-                                    <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $35000
-                    </span>
-                                        <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-md-4">
-                            <article class="aa-properties-item">
-                                <a href="#" class="aa-properties-item-img">
-                                    <img src="{{ asset('images/item/5.jpg') }}" alt="img">
-                                </a>
-                                <div class="aa-properties-item-content">
-                                    <div class="aa-properties-info">
-                                        <span>5 Rooms</span>
-                                        <span>2 Beds</span>
-                                        <span>3 Baths</span>
-                                        <span>1100 SQ FT</span>
-                                    </div>
-                                    <div class="aa-properties-about">
-                                        <h3><a href="#">Appartment Title</a></h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-                                    </div>
-                                    <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $11000
-                    </span>
-                                        <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-md-4">
-                            <article class="aa-properties-item">
-                                <a href="#" class="aa-properties-item-img">
-                                    <img src="{{ asset('images/item/6.jpg') }}" alt="img">
-                                </a>
-                                <div class="aa-properties-item-content">
-                                    <div class="aa-properties-info">
-                                        <span>5 Rooms</span>
-                                        <span>2 Beds</span>
-                                        <span>3 Baths</span>
-                                        <span>1100 SQ FT</span>
-                                    </div>
-                                    <div class="aa-properties-about">
-                                        <h3><a href="#">Appartment Title</a></h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-                                    </div>
-                                    <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $15000
-                    </span>
-                                        <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
+                        @endforeach
                 </div>
             </div>
             <!-- Start properties content bottom -->
@@ -194,4 +73,5 @@
         </div>
     </section>
     <!-- / Latest property -->
+    @endisset()
 @endsection

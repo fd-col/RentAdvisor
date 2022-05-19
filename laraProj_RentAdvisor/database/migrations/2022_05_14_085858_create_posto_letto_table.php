@@ -13,12 +13,12 @@ class CreatePostoLettoTable extends Migration
      */
     public function up()
     {
-        Schema::create('posto_letto', function (Blueprint $table) {
+        Schema::create('Posto_Letto', function (Blueprint $table) {
             $table->unsignedBigInteger('id_annuncio')->primary();
             $table->unsignedTinyInteger('dimensioni_camera');
             $table->unsignedSmallInteger('letti_nella_camera');
             $table->boolean('presenza_angolo_studio')->default(false);
-            $table->enum('tipologia', ['singola', 'condivisa']);
+            $table->enum('tipologia_posto_letto', ['singola', 'condivisa']);
             $table->foreign('id_annuncio')->references('id')->on('annuncio')->onUpdate('cascade');
         });
     }

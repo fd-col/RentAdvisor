@@ -13,11 +13,12 @@ class CreateAnnuncioTable extends Migration
      */
     public function up()
     {
-        Schema::create('annuncio', function (Blueprint $table) {
+        Schema::create('Annuncio', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('username_locatore', 40);
             $table->string('titolo', 200);
             $table->string('descrizione', 1000);
+            $table->enum('tipologia', ['appartamento', 'posto_letto']);
             $table->date('data_inserimento');
             $table->boolean('disponibile')->default(true);
             $table->char('provincia', 2);

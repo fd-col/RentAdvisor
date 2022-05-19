@@ -13,7 +13,7 @@ class CreateFaqTable extends Migration
      */
     public function up()
     {
-        Schema::create('faq', function (Blueprint $table) {
+        Schema::create('FAQ', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('domanda', 300);
             $table->string('risposta', 1000);

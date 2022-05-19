@@ -13,7 +13,7 @@
 Route::view('/', 'views_html/index')
     ->name('home');
 
-Route::view('/catalog', 'views_html/catalog')
+Route::get('/catalog', 'CatalogoController@catalogo_senza_filtri')
     ->name('catalog');
 
 Route::view('/faq', 'views_html/faq')
