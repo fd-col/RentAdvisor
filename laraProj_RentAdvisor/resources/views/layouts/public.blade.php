@@ -130,39 +130,39 @@
                     <!-- / Top slider single slide -->
                     <!-- Top slider single slide -->
                     <div class="aa-top-slider-single">
-                        <img src="{{ asset('images/slider/Lecce.jpeg') }}" alt="img">
-                        <!-- Top slider content -->
-                        <div class="aa-top-slider-content">
-                            <div class="aa-property-header-inner">
-                                <h2>@yield('title', 'Home')</h2>
-                                <ol class="breadcrumb">
-                                    <li><a href="{{ route('home') }}">Home</a></li>
-                                    <li class="active">@yield('title', 'Home')</li>
-                                </ol>
-                            </div>
-                        </div>
-                        <!-- / Top slider content -->
-                    </div>
-                    <!-- / Top slider single slide -->
-                    <!-- Top slider single slide -->
-                    <div class="aa-top-slider-single">
-                        <img src="{{ asset('images/slider/Pescara.jpeg') }}" alt="img">
-                        <!-- Top slider content -->
-                        <div class="aa-top-slider-content">
-                            <div class="aa-property-header-inner">
-                                <h2>@yield('title', 'Home')</h2>
-                                <ol class="breadcrumb">
-                                    <li><a href="{{ route('home') }}">Home</a></li>
-                                    <li class="active">@yield('title', 'Home')</li>
-                                </ol>
-                            </div>
-                        </div>
-                        <!-- / Top slider content -->
-                    </div>
-                    <!-- / Top slider single slide -->
-                    <!-- Top slider single slide -->
-                    <div class="aa-top-slider-single">
                         <img src="{{ asset('images/slider/Roma.jpeg') }}" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <div class="aa-property-header-inner">
+                                <h2>@yield('title', 'Home')</h2>
+                                <ol class="breadcrumb">
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li class="active">@yield('title', 'Home')</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>
+                    <!-- / Top slider single slide -->
+                    <!-- Top slider single slide -->
+                    <div class="aa-top-slider-single">
+                        <img src="{{ asset('images/slider/Pescara.png') }}" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <div class="aa-property-header-inner">
+                                <h2>@yield('title', 'Home')</h2>
+                                <ol class="breadcrumb">
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li class="active">@yield('title', 'Home')</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>
+                    <!-- / Top slider single slide -->
+                    <!-- Top slider single slide -->
+                    <div class="aa-top-slider-single">
+                        <img src="{{ asset('images/slider/Torino.jpg') }}" alt="img">
                         <!-- Top slider content -->
                         <div class="aa-top-slider-content">
                             <div class="aa-property-header-inner">
