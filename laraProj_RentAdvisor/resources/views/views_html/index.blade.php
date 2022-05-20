@@ -22,7 +22,7 @@
               @foreach($annunci as $annuncio)
             <div class="col-md-4">
               <article class="aa-properties-item">
-                <a href="#" class="aa-properties-item-img">
+                <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}" class="aa-properties-item-img">
                   <img src="{{ asset('images/item/1.jpg') }}" alt="img">
                 </a>
                 <div class="aa-tag for-sale">
@@ -34,14 +34,14 @@
                       <span>Tipologia: {{ str_replace('_', ' ', $annuncio->tipologia) }}</span>
                   </div>
                   <div class="aa-properties-about">
-                      <h3><a href="#">{{ substr($annuncio->titolo, 0, 50) }}</a></h3>
+                      <h3><a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}">{{ substr($annuncio->titolo, 0, 50) }}</a></h3>
                       <p>{{ substr($annuncio->descrizione, 0, 150) }} ...</p>
                   </div>
                   <div class="aa-properties-detial">
                     <span class="aa-price">
                       {{$annuncio->canone_affitto}}€
                     </span>
-                    <a href="{{ route('dettagli_annuncio') }}" class="aa-secondary-btn">Dettagli</a>
+                    <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}" class="aa-secondary-btn">Dettagli</a>
                   </div>
                 </div>
               </article>

@@ -3,7 +3,9 @@
 @section('title', 'Dettagli Annuncio')
 
 @section('content')
-
+    @isset($annuncio)
+        @isset($caratteristiche)
+            @isset($locatore)
 
   <!-- Start Properties  -->
   <section id="aa-properties">
@@ -19,52 +21,67 @@
                <img src="{{ asset('images/slider/3.jpg') }}" alt="img">
              </div>
              <div class="aa-properties-info">
-               <h2>TITOLO ANNUNCIO</h2>
-               <span class="aa-price">$65000</span>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptatibus veniam non voluptate, ipsa eius magni aliquid ratione sit, odio reprehenderit in quis repudiandae dolor.</p>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequatur, veritatis, ducimus in aliquam magnam voluptatibus ullam libero fugiat temporibus at, aliquid explicabo placeat eligendi, assumenda magni saepe eius consequuntur.</p>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium dicta aliquid, autem, cum, impedit nostrum, rem molestias quisquam ab iure enim totam? Itaque esse ut adipisci officiis nulla repellendus ratione dolore, iste ex doloribus tenetur eos provident quam quasi maxime.</p>
+               <h2>{{ $annuncio->titolo }}</h2>
+               <span class="aa-price">{{ $annuncio->canone_affitto }}€</span>
+                 <p>Caparra: {{$annuncio->caparra}}€</p>
+               <p>{{ $annuncio->descrizione }}</p>
+               <p>Tipologia: {{ str_replace('_', ' ', $annuncio->tipologia) }}</p>
+               <p>Data inserimento annuncio: {{ $annuncio->data_inserimento }}</p>
                <h4>Servizi inclusi</h4>
-               <ul><table><tr><td><li>4 Bedroom</li></td>
-                <td> <li>3 Baths</li></td></tr>
-                 <tr><td><li>Kitchen</li></td>
-                 <td><li>Air Condition</li></td></tr>
-                 <tr><td><li>Belcony</li></td>
-                 <td><li>Gym</li></td></tr>
-                 <tr><td><li>Garden</li></td>
-                 <td><li>CCTV</li></td></tr>
-                 <tr><td><li>Children Play Ground</li></td>
-                 <td><li>Comunity Center</li></td></tr>
-                 <tr><td><li>Security System</li>
-               </table></ul>
+                 <ul><table><tr><td><li><span class="fa fa-bed"></span> Posti letto totali nell'alloggio: {{ $annuncio->numero_posti_letto_totali_alloggio }}</li></td></tr>
+                <tr><td><li>Numero bagni: {{ $annuncio->numero_bagni }}</li></td></tr>
+                         @if($annuncio->fumatori == true)  <tr><td><li>Fumatori accetti</li></td> @else <tr><td><li>Fumatori non accetti</li></td></tr> @endif
+                         @if($annuncio->parcheggio == true)<tr><td><li><span class="fa fa-car"></span> Parcheggio</li></td></tr> @endif
+                         @if($annuncio->wi_fi == true)<tr><td><li><span class="fa fa-wifi"></span> Wi-Fi</li></td></tr> @endif
+                         @if($annuncio->ascensore == true)<tr><td><li>Ascensore</li></td></tr>@endif
+                     </table></ul>
+
+                 @if($annuncio->tipologia == 'appartamento')
+                     <h4>Caratteristiche appartamento</h4>
+                     <ul><table>
+                             <tr><td><li>Tipologia appartamento: {{str_replace('_', ' ',$caratteristiche->tipologia_appartamento)}}</li></td></tr>
+                             <tr><td><li>Numero camere: {{$caratteristiche->numero_camere}}</li></td></tr>
+                             <tr><td><li>Dimensioni appartamento: {{$caratteristiche->dimensioni_appartamento}}mq</li></td></tr>
+                             @if($caratteristiche->presenza_cucina == true)<tr><td><li><span class="fa fa-fire"></span> Cucina</li></td></tr>@endif
+                             @if($caratteristiche->presenza_locale_ricreativo == true)<tr><td><li>Locale ricreativo</li></td></tr>@endif
+                     </table></ul>
+                         @endif
+
+                 @if($annuncio->tipologia == 'posto_letto')
+                     <h4>Caratteristiche posto letto</h4>
+                     <ul><table>
+                             <tr><td><li>Tipologia camera: {{$caratteristiche->tipologia_posto_letto}}</li></td>
+                             <tr><td><li>Dimensioni camera: {{$caratteristiche->dimensioni_camera}}mq</li></td></tr>
+                             <tr><td><li>Letti nella camera: {{$caratteristiche->letti_nella_camera}}</li></td></tr>
+                             @if($caratteristiche->presenza_angolo_studio == true)<tr><td><li><span class="fa fa-book"></span> Angolo studio</li></td></tr>@endif
+                     </table></ul>
+                         @endif
+
+
+                 <h4>Condizioni di locazione</h4>
+                 <p>Durata minima di locazione: {{$annuncio->durata_minima_locazione}} mesi</p>
+                 @if($annuncio->genere_preferito != 'ND')<p>Genere preferito dei locatari: {{$annuncio->genere_preferito}}</p>@endif
+                 @if(!is_null($annuncio->eta_preferita_min))<p>Età mimima locatari: {{$annuncio->eta_preferita_min}}</p>@endif
+                 @if(!is_null($annuncio->eta_preferita_max))<p>Età massima locatari: {{$annuncio->eta_preferita_max}}</p>@endif
+                 <p>Inizio disponibilità alloggio: {{$annuncio->periodo_disponibilita_inizio}}</p>
+                 @if(!is_null($annuncio->periodo_disponibilita_fine))<p>Fine disponibilità alloggio: {{$annuncio->periodo_disponibilita_fine}}</p>@endif
+                 <p>Indirizzo: {{$annuncio->indirizzo}},{{$annuncio->numero_civico}}, {{$annuncio->citta}} ({{$annuncio->provincia}}) {{$annuncio->cap}}</p>
+                 <p>Zona di localizzazione: {{$annuncio->zona_di_localizzazione}}</p>
+                 <p>Piano: {{$annuncio->piano}}</p>
                <h4>Mappa</h4>
-               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6851.201919469417!2d-86.11773906635584!3d33.47324776828677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888bdb60cc49c571%3A0x40451ca6baf275c7!2s36008+AL-77%2C+Talladega%2C+AL+35160%2C+USA!5e0!3m2!1sbn!2sbd!4v1460452919256" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+               <iframe src="https://www.google.it/maps/place?{{str_replace(' ','+',$annuncio->indirizzo)}},{{$annuncio->numero_civico}},{{$annuncio->cap}},{{$annuncio->citta}},{{$annuncio->provincia}}" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
              </div>
             </div>
           </div>
         </div>
         <!-- Start properties sidebar -->
         <div class="col-md-4">
-          <aside class="aa-properties-sidebar">
-            <!-- Start Single properties sidebar -->
-            <div class="aa-properties-single-sidebar">
-              <h3>Dettagli</h3>
-				<p>
-					<ul>
-						<li>100 mq</li>
-						<li> 3 bagni</li>
-						<li> 7 posti letto</li>
-						<li>...</li>
-					</ul>
-				</p>
-            </div>
-          </aside>
 		  <aside class="aa-properties-sidebar">
 			<div class="aa-properties-single-sidebar">
-				<h3>Mario rossi</h3>
-				<p>mario_rossi@gmail.com<br>
-				0771777777<br>
-				canone di affitto: 300€
+                <h3>Locatore</h3>
+				<h4>{{$locatore->nome}} {{$locatore->cognome}}</h4>
+				<p>e-mail: {{$locatore->email}}<br>
+                    telefono: {{$locatore->telefono}}<br>
 				</p>
 			</div>
 		  </aside>
@@ -73,4 +90,7 @@
     </div>
   </section>
   <!-- / Properties  -->
+            @endisset
+        @endisset
+    @endisset
 @endsection

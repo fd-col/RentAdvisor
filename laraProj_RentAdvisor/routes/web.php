@@ -22,7 +22,7 @@ Route::view('/faq', 'views_html/faq')
 Route::view('/contact', 'views_html/contact')
     ->name('contact');
 
-Route::view('/propertydetails', 'views_html/dettagli_annuncio')
+Route::get('/dettagliannuncio/{id_annuncio}', 'CatalogoController@dettagli_annuncio')
         ->name('dettagli_annuncio');
 
 Route::post('/admin/newproduct', 'AdminController@storeProduct')

@@ -28,4 +28,17 @@ class CatalogoController extends Controller
         return view('views_html/catalog')
             ->with('annunci', $annunci);
     }
+
+    public function dettagli_annuncio($id_annuncio) {
+
+        $annuncio = $this->modello_catalogo->get_annuncio($id_annuncio);
+        $caratteristiche = $this->modello_catalogo->get_caratteristiche_annuncio($annuncio);
+        $locatore = $this->modello_catalogo->get_locatore_annuncio($annuncio);
+
+        return view('views_html/dettagli_annuncio')
+            ->with('annuncio', $annuncio)
+            ->with('caratteristiche', $caratteristiche)
+            ->with('locatore', $locatore);
+
+    }
 }
