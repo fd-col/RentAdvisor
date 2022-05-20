@@ -69,7 +69,7 @@
                  <p>Zona di localizzazione: {{$annuncio->zona_di_localizzazione}}</p>
                  <p>Piano: {{$annuncio->piano}}</p>
                <h4>Mappa</h4>
-               <iframe src="https://www.google.it/maps/place?{{str_replace(' ','+',$annuncio->indirizzo)}},{{$annuncio->numero_civico}},{{$annuncio->cap}},{{$annuncio->citta}},{{$annuncio->provincia}}" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+               <iframe src="https://maps.google.com/maps?q={{str_replace(' ','%20',$annuncio->indirizzo)}},{{$annuncio->numero_civico}},{{$annuncio->cap}},{{$annuncio->citta}},{{$annuncio->provincia}}&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
              </div>
             </div>
           </div>
