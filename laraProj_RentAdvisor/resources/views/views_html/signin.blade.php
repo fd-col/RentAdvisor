@@ -39,7 +39,7 @@
     <![endif]-->
 
 </head>
-  <body style="background-image:url({{URL::asset('images/slider/Pescara.jpeg') }}); background-size:cover">
+  <body>
   <section id="aa-signin">
     <div class="container">
       <div class="row">
