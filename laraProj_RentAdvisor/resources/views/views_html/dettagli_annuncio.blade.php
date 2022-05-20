@@ -81,7 +81,7 @@
                 <h3>Locatore</h3>
 				<h4>{{$locatore->nome}} {{$locatore->cognome}}</h4>
 				<p>e-mail: {{$locatore->email}}<br>
-                    telefono: {{$locatore->telefono}}<br>
+                    @if(!is_null($locatore->telefono))telefono: {{$locatore->telefono}}<br>@endif
 				</p>
 			</div>
 		  </aside>

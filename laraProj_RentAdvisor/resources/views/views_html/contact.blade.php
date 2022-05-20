@@ -20,7 +20,7 @@
                 <h2>Contatti</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae placeat aspernatur aperiam, quisquam voluptas enim tempore ab itaque nam modi eos corrupti distinctio nobis labore dolorum quae tenetur. Sapiente, sequi.</p>
                 <ul class="contact-info-list">
-                  <li> <i class="fa fa-phone"></i> 071xxxxxx</li>
+                  <li> <i class="fa fa-phone"></i> 1234567890</li>
                   <li> <i class="fa fa-envelope-o"></i> info@rentadvisor.com</li>
                   <li> <i class="fa fa-map-marker"></i> Ancona, AN, 60125, Italia</li>
                 </ul>
@@ -42,9 +42,9 @@
                   <br>
                   <p><strong >Servizio assistenza clienti </strong></p>
                   <p></p>
-                  <p>333xxxxx</p>
+                  <p>1234567890</p>
                   <p></p>
-                  <p>071xxxxxx</p>
+                  <p>1234567890</p>
                 </fieldset>
               </div>
 

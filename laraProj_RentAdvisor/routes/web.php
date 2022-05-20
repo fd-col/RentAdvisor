@@ -16,7 +16,7 @@ Route::get('/', 'CatalogoController@home')
 Route::get('/catalog', 'CatalogoController@catalogo_senza_filtri')
     ->name('catalog');
 
-Route::view('/faq', 'views_html/faq')
+Route::get('/faq', 'FaqController@pagina_faq')
     ->name('faq');
 
 Route::view('/contact', 'views_html/contact')

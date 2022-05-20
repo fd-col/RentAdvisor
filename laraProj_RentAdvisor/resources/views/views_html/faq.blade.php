@@ -3,6 +3,7 @@
 @section('title', 'Faq')
 
 @section('content')
+    @isset($faq)
   <!-- Content FAQ-->
   <section id="aa-blog">
     <div class="container">
@@ -15,14 +16,12 @@
 			</div>
 				<fieldset style="border: 1px solid black; padding-top:40px;">
 				<div class="aa-blog-area">
-				<ol>
-					<li><h3>DOMANDA 1</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p></li>
-					<li><h3>DOMANDA 2</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-					</li><li><h3>DOMANDA 3</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-				</li></ol>
+				<ul>
+                    @foreach($faq as $faq_singola)
+                        <li><h3><span class="fa fa-question-circle"></span> {{$faq_singola->domanda}}</h3>
+					<p><span class="fa fa-check-circle"></span>{{$faq_singola->risposta}}</p></li>
+                    @endforeach
+				</li></ul>
 				</div>
 				</fieldset>
 
@@ -31,4 +30,5 @@
     </div>
   </section>
   <!-- / Content FAQ-->
+    @endisset
 @endsection
