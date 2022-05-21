@@ -42,7 +42,7 @@ class CreateAnnuncioTable extends Migration
             $table->unsignedTinyInteger('eta_preferita_max')->nullable();
             $table->date('periodo_disponibilita_inizio');
             $table->date('periodo_disponibilita_fine')->nullable();
-            $table->foreign('username_locatore')->references('username')->on('utente')->onUpdate('cascade');
+            $table->foreign('username_locatore')->references('username')->on('users')->onUpdate('cascade');
         });
     }
 

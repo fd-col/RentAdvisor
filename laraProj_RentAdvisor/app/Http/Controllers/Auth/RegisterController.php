@@ -28,8 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    
-    //protected $redirectTo = '/home';
+
     protected $redirectTo = '/';
 
     /**
@@ -51,11 +50,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'min:8', 'unique:users'],
+            'nome' => ['required', 'string', 'max:255'],
+            'cognome' => ['required', 'string', 'max:255'],
+            'genere' => ['required', 'string', 'max:2'],
+            'data_nascita' => ['required', 'date'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'telefono' => ['max:13'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'string'],
         ]);
     }
 
@@ -68,11 +71,15 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'surname' => $data['surname'],
-            'email' => $data['email'],
             'username' => $data['username'],
+            'nome' => $data['nome'],
+            'cognome' => $data['cognome'],
+            'genere' => $data['genere'],
+            'data_nascita' => $data['data_nascita'],
+            'email' => $data['email'],
+            'telefono' => $data['telefono'],
             'password' => Hash::make($data['password']),
+            'role' => $data['role'],
         ]);
     }
 }

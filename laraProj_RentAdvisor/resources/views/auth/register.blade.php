@@ -1,88 +1,202 @@
-@extends('layouts.public')
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RentAdvisor | Registrazione</title>
 
-@section('title', 'Registrazione')
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('images/home_house.png') }}" type="image/x-icon">
 
-@section('content')
-<div class="static">
-    <h3>Registrazione</h3>
-    <p>Utilizza questa form per registrarti al sito</p>
+    <!-- Font awesome -->
+    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/nouislider.css') }}">
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}" type="text/css" media="screen" />
+    <!-- Theme color -->
+    <link id="switcher" href="{{ asset('css/theme-color/default-theme.css') }}" rel="stylesheet">
 
-    <div class="container-contact">
-        <div class="wrap-contact1">
-            {{ Form::open(array('route' => 'register', 'class' => 'contact-form')) }}
+    <!-- Main style sheet -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-            <div  class="wrap-input">
-                {{ Form::label('name', 'Nome', ['class' => 'label-input']) }}
-                {{ Form::text('name', '', ['class' => 'input', 'id' => 'name']) }}
-                @if ($errors->first('name'))
-                <ul class="errors">
-                    @foreach ($errors->get('name') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
 
-            <div  class="wrap-input">
-                {{ Form::label('surname', 'Cognome', ['class' => 'label-input']) }}
-                {{ Form::text('surname', '', ['class' => 'input', 'id' => 'surname']) }}
-                @if ($errors->first('surname'))
-                <ul class="errors">
-                    @foreach ($errors->get('surname') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-            
-             <div  class="wrap-input">
-                {{ Form::label('email', 'Email', ['class' => 'label-input']) }}
-                {{ Form::text('email', '', ['class' => 'input','id' => 'email']) }}
-                @if ($errors->first('email'))
-                <ul class="errors">
-                    @foreach ($errors->get('email') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-            
-             <div  class="wrap-input">
-                {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
-                {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
-                @if ($errors->first('username'))
-                <ul class="errors">
-                    @foreach ($errors->get('username') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-            
-             <div  class="wrap-input">
-                {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
-                {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}
-                @if ($errors->first('password'))
-                <ul class="errors">
-                    @foreach ($errors->get('password') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-            <div  class="wrap-input">
-                {{ Form::label('password-confirm', 'Conferma password', ['class' => 'label-input']) }}
-                {{ Form::password('password_confirmation', ['class' => 'input', 'id' => 'password-confirm']) }}
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<section id="aa-signin">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-signin-area">
+                    <div class="aa-signin-form">
+                        <div class="aa-signin-form-title">
+                            <h1>Registrazione</h1>
+                            <h3>Crea il tuo account e accedi ai servizi <br><br></h3>
+                        </div>
+                        {{ Form::open(array('route' => 'register', 'class' => 'contactform')) }}
+                            <div class="aa-properties-content-body">
+                                <ul class="aa-properties-nav">
+                                    <li>
+                                        <div class="col-xs-6"> <!-- stile bootstrap -->
+                                            <div  class="aa-single-field">
+                                                {{ Form::label('username', 'Username*') }}
+                                                {{ Form::text('username', '', ['id' => 'username', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('username'))
+                                                    <ul class="required">
+                                                        @foreach ($errors->get('username') as $message)
+                                                            <li>{{ $message }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </div>
+                                            <div class="aa-single-field">
+                                                {{ Form::label('nome', 'Nome*') }}
+                                                {{ Form::text('nome', '', ['id' => 'nome', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('nome'))
+                                                    <ul class="required">
+                                                        @foreach ($errors->get('nome') as $message)
+                                                            <li>{{ $message }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </div>
+                                            <div  class="aa-single-field">
+                                                {{ Form::label('cognome', 'Cognome*') }}
+                                                {{ Form::text('cognome', '', ['id' => 'cognome', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('cognome'))
+                                                    <ul class="required">
+                                                        @foreach ($errors->get('cognome') as $message)
+                                                            <li>{{ $message }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </div>
+                                            <div  class="aa-single-field">
+                                                {{ Form::label('email', 'Email*') }}
+                                                {{ Form::text('email', '', ['id' => 'email', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('email'))
+                                                    <ul class="required">
+                                                        @foreach ($errors->get('email') as $message)
+                                                            <li>{{ $message }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </div>
+                                            <div  class="aa-single-field">
+                                                {{ Form::label('password', 'Password*') }}
+                                                {{ Form::password('password', ['id' => 'password', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('password'))
+                                                    <ul class="required">
+                                                        @foreach ($errors->get('password') as $message)
+                                                            <li>{{ $message }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="col-xs-6">
+                                            <div class="aa-single-field">
+                                                {{ Form::label('role', 'Tipologia di utente*') }}
+                                                <br>
+                                                {{ Form::select('role', ['locatore' => 'Locatore', 'locatario' => 'Locatario'], ['id' => 'role', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('role'))
+                                                    <ul class="required">
+                                                        @foreach ($errors->get('role') as $message)
+                                                            <li>{{ $message }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </div>
+                                            <div class="aa-single-field">
+                                                {{ Form::label('data_nascita', 'Data di nascita*') }}
+                                                <br>
+                                                {{ Form::date('data_nascita', '1990-01-01',['id' => 'data_nascita', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('data_nascita'))
+                                                    <ul class="required">
+                                                        @foreach ($errors->get('data_nascita') as $message)
+                                                            <li>{{ $message }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </div>
+                                            <div class="aa-single-field">
+                                                {{ Form::label('telefono', 'Telefono') }}
+                                                {{ Form::text('telefono', 'null', ['id' => 'telefono', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('telefono'))
+                                                    <ul class="required">
+                                                        @foreach ($errors->get('telefono') as $message)
+                                                            <li>{{ $message }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </div>
+                                            <div class="aa-single-field">
+                                                {{ Form::label('genere', 'Genere*') }}
+                                                {{ Form::select('genere', ['M' => 'Uomo', 'D' => 'Donna', 'ND' => 'Preferisco non dichiararlo'], ['id' => 'genere', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('genere'))
+                                                    <ul class="required">
+                                                        @foreach ($errors->get('genere') as $message)
+                                                            <li>{{ $message }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </div>
+                                            <div  class="aa-single-field">
+                                                {{ Form::label('password-confirm', 'Conferma password*') }}
+                                                {{ Form::password('password_confirmation', ['id' => 'password-confirm', 'aria-required' => 'true']) }}
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="aa-single-submit">
+                                {{ Form::submit('Registrati') }}
+                            </div>
+                        {{ Form::close() }}
+                    </div>
+                </div>
             </div>
-            
-            <div class="container-form-btn">                
-                {{ Form::submit('Registra', ['class' => 'form-btn1']) }}
-            </div>
-            
-            {{ Form::close() }}
         </div>
     </div>
+</section>
 
-</div>
-@endsection
+
+<!-- jQuery library -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ asset('js/bootstrap_layout.js') }}"></script>
+<!-- slick slider -->
+<script type="text/javascript" src="{{ asset('js/slick.js') }}"></script>
+<!-- Price picker slider -->
+<script type="text/javascript" src="{{ asset('js/nouislider.js') }}"></script>
+<!-- mixit slider -->
+<script type="text/javascript" src="{{ asset('js/jquery.mixitup.js') }}"></script>
+<!-- Add fancyBox -->
+<script type="text/javascript" src="{{ asset('js/jquery.fancybox.pack.js') }}"></script>
+<!-- Custom js -->
+<script src="{{ asset('js/custom.js') }}"></script>
+
+</body>
+</html>
+

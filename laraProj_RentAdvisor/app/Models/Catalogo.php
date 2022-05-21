@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\Annuncio;
 use App\Models\Resources\Posto_Letto;
 use App\Models\Resources\Appartamento;
-use App\Models\Resources\Utente;
+use App\User;
 
 
 class Catalogo extends Model
@@ -38,7 +38,7 @@ class Catalogo extends Model
 
     public function get_locatore_annuncio($annuncio) {
 
-        $locatore = Utente::where('username', $annuncio->username_locatore)->get()->first();
+        $locatore = User::where('username', $annuncio->username_locatore)->get()->first();
         return $locatore;
     }
 }

@@ -19,7 +19,7 @@ Route::get('/catalog', 'CatalogoController@catalogo_senza_filtri')
 Route::get('/faq', 'FaqController@pagina_faq')
     ->name('faq');
 
-Route::view('/contact', 'views_html/contact')
+Route::view('/contact', 'views_html/contatti')
     ->name('contact');
 
 Route::get('/dettagliannuncio/{id_annuncio}', 'CatalogoController@dettagli_annuncio')
@@ -35,17 +35,17 @@ Route::get('/user', 'UserController@index')
         ->name('user')->middleware('can:isUser');
 
 // Rotte per l'autenticazione
-Route::view('login', 'views_html/signin')
-        ->name('login');
+Route::get('login', 'Auth\LoginController@showLoginForm')
+    ->name('login');
 
 Route::post('login', 'Auth\LoginController@login');
 
 Route::post('logout', 'Auth\LoginController@logout')
-        ->name('logout');
+    ->name('logout');
 
 // Rotte per la registrazione
-Route::view('register', 'views_html/register')
-        ->name('register');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')
+    ->name('register');
 
 Route::post('register', 'Auth\RegisterController@register');
 

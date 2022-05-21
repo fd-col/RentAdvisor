@@ -17,7 +17,7 @@ class CatalogoController extends Controller
 
         $annunci = $this->modello_catalogo->get_annunci(6);
 
-        return view('views_html/index')
+        return view('views_html/home')
             ->with('annunci', $annunci);
     }
 
@@ -25,7 +25,7 @@ class CatalogoController extends Controller
 
         $annunci = $this->modello_catalogo->get_annunci();
 
-        return view('views_html/catalog')
+        return view('views_html/catalogo')
             ->with('annunci', $annunci);
     }
 
