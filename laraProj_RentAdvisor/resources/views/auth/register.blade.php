@@ -49,6 +49,8 @@
                         <div class="aa-signin-form-title">
                             <h1>Registrazione</h1>
                             <h3>Crea il tuo account e accedi ai servizi <br><br></h3>
+                            <p class="richiesta">I campi contrassegnati con * sono obbligatori</p>
+                            <br>
                         </div>
                         {{ Form::open(array('route' => 'register', 'class' => 'contactform')) }}
                             <div class="aa-properties-content-body">
@@ -59,9 +61,9 @@
                                                 {{ Form::label('username', 'Username*') }}
                                                 {{ Form::text('username', '', ['id' => 'username', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('username'))
-                                                    <ul class="required">
+                                                    <ul>
                                                         @foreach ($errors->get('username') as $message)
-                                                            <li>{{ $message }}</li>
+                                                            <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -70,9 +72,9 @@
                                                 {{ Form::label('nome', 'Nome*') }}
                                                 {{ Form::text('nome', '', ['id' => 'nome', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('nome'))
-                                                    <ul class="required">
+                                                    <ul>
                                                         @foreach ($errors->get('nome') as $message)
-                                                            <li>{{ $message }}</li>
+                                                            <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -81,9 +83,9 @@
                                                 {{ Form::label('cognome', 'Cognome*') }}
                                                 {{ Form::text('cognome', '', ['id' => 'cognome', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('cognome'))
-                                                    <ul class="required">
+                                                    <ul>
                                                         @foreach ($errors->get('cognome') as $message)
-                                                            <li>{{ $message }}</li>
+                                                            <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -92,9 +94,9 @@
                                                 {{ Form::label('email', 'Email*') }}
                                                 {{ Form::text('email', '', ['id' => 'email', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('email'))
-                                                    <ul class="required">
+                                                    <ul>
                                                         @foreach ($errors->get('email') as $message)
-                                                            <li>{{ $message }}</li>
+                                                            <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -103,9 +105,9 @@
                                                 {{ Form::label('password', 'Password*') }}
                                                 {{ Form::password('password', ['id' => 'password', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('password'))
-                                                    <ul class="required">
+                                                    <ul>
                                                         @foreach ($errors->get('password') as $message)
-                                                            <li>{{ $message }}</li>
+                                                            <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -119,9 +121,9 @@
                                                 <br>
                                                 {{ Form::select('role', ['locatore' => 'Locatore', 'locatario' => 'Locatario'], ['id' => 'role', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('role'))
-                                                    <ul class="required">
+                                                    <ul>
                                                         @foreach ($errors->get('role') as $message)
-                                                            <li>{{ $message }}</li>
+                                                            <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -131,9 +133,9 @@
                                                 <br>
                                                 {{ Form::date('data_nascita', '1990-01-01',['id' => 'data_nascita', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('data_nascita'))
-                                                    <ul class="required">
+                                                    <ul>
                                                         @foreach ($errors->get('data_nascita') as $message)
-                                                            <li>{{ $message }}</li>
+                                                            <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -142,9 +144,9 @@
                                                 {{ Form::label('telefono', 'Telefono') }}
                                                 {{ Form::text('telefono', 'null', ['id' => 'telefono', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('telefono'))
-                                                    <ul class="required">
+                                                    <ul>
                                                         @foreach ($errors->get('telefono') as $message)
-                                                            <li>{{ $message }}</li>
+                                                            <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -153,9 +155,9 @@
                                                 {{ Form::label('genere', 'Genere*') }}
                                                 {{ Form::select('genere', ['M' => 'Uomo', 'D' => 'Donna', 'ND' => 'Preferisco non dichiararlo'], ['id' => 'genere', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('genere'))
-                                                    <ul class="required">
+                                                    <ul>
                                                         @foreach ($errors->get('genere') as $message)
-                                                            <li>{{ $message }}</li>
+                                                            <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif

@@ -56,9 +56,9 @@
                                 {{ Form::label('username', 'Username') }}
                                 {{ Form::text('username', '', ['class' => 'input','id' => 'username', 'aria-required' => 'true']) }}
                                 @if ($errors->first('username'))
-                                    <ul class="required">
+                                    <ul>
                                         @foreach ($errors->get('username') as $message)
-                                            <li>{{ $message }}</li>
+                                            <li class="richiesta">{{ $message }}</li>
                                         @endforeach
                                     </ul>
                                 @endif
@@ -67,9 +67,9 @@
                                 {{ Form::label('password', 'Password') }}
                                 {{ Form::password('password', ['id' => 'password']) }}
                                 @if ($errors->first('password'))
-                                    <ul class="required">
+                                    <ul>
                                         @foreach ($errors->get('password') as $message)
-                                            <li>{{ $message }}</li>
+                                            <li class="richiesta">{{ $message }}</li>
                                         @endforeach
                                     </ul>
                                 @endif
