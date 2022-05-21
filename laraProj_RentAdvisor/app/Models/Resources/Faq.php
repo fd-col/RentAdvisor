@@ -13,4 +13,8 @@ class Faq extends Model
     public function get_faq() {
         return $this::select()->get();
     }
+
+    public function get_faq_singola($id_faq) {
+        return $this::where('id', $id_faq)->get()->first();
+    }
 }
