@@ -126,9 +126,11 @@
                                                             <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
-                                                @endif
+                                                @endif                                               
                                             </div>
+                                            
                                             <div class="aa-single-field">
+                                                <br>
                                                 {{ Form::label('data_nascita', 'Data di nascita*') }}
                                                 <br>
                                                 {{ Form::date('data_nascita', '1990-01-01',['id' => 'data_nascita', 'aria-required' => 'true']) }}
@@ -141,17 +143,7 @@
                                                 @endif
                                             </div>
                                             <div class="aa-single-field">
-                                                {{ Form::label('telefono', 'Telefono') }}
-                                                {{ Form::text('telefono', 'null', ['id' => 'telefono', 'aria-required' => 'true']) }}
-                                                @if ($errors->first('telefono'))
-                                                    <ul>
-                                                        @foreach ($errors->get('telefono') as $message)
-                                                            <li class="richiesta">{{ $message }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                @endif
-                                            </div>
-                                            <div class="aa-single-field">
+                                                <br>
                                                 {{ Form::label('genere', 'Genere*') }}
                                                 {{ Form::select('genere', ['M' => 'Uomo', 'D' => 'Donna', 'ND' => 'Preferisco non dichiararlo'], ['id' => 'genere', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('genere'))
@@ -162,7 +154,19 @@
                                                     </ul>
                                                 @endif
                                             </div>
-                                            <div  class="aa-single-field">
+                                            <div class="aa-single-field">
+                                                <br>                                               
+                                                {{ Form::label('telefono', 'Telefono') }}
+                                                {{ Form::text('telefono', 'null', ['id' => 'telefono', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('telefono'))
+                                                    <ul>
+                                                        @foreach ($errors->get('telefono') as $message)
+                                                            <li class="richiesta">{{ $message }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </div>                                        
+                                            <div  class="aa-single-field">                                               
                                                 {{ Form::label('password-confirm', 'Conferma password*') }}
                                                 {{ Form::password('password_confirmation', ['id' => 'password-confirm', 'aria-required' => 'true']) }}
                                             </div>

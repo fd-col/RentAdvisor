@@ -89,25 +89,26 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-                    <li class="active"><a href="{{ route('home') }}">HOME</a></li>
+                    
+                    <li class="{{ Route::is('home') ? 'active' : '' }}"><a href="{{ route('home') }}">HOME</a></li>
 
                     @can('isLocatario')
-                        <li><a href="#">RICERCA</a></li>
-                        <li><a href="#">VISUALIZZA PROFILO</a></li>
+                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">RICERCA</a></li>
+                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">VISUALIZZA PROFILO</a></li>
                     @else
-                        <li><a href="{{ route('catalog') }}">CATALOGO</a></li>
+                        <li class="{{ Route::is('catalog') ? 'active' : '' }}"><a href="{{ route('catalog') }}">CATALOGO</a></li>
                     @endcan
 
                     @can('isAdmin')
-                        <li><a href="#">STATISTICHE</a></li>
+                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">STATISTICHE</a></li>
                     @endcan
 
                     @can('isLocatore')
-                        <li><a href="#">AREA PERSONALE</a></li>
+                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">AREA PERSONALE</a></li>
                     @endcan
 
-                    <li><a href="{{ route('contact') }}">CONTATTI</a></li>
-                    <li><a href="{{ route('faq') }}">FAQ</a></li>
+                    <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">CONTATTI</a></li>
+                    <li class="{{ Route::is('faq') ? 'active' : '' }}"><a href="{{ route('faq') }}">FAQ</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

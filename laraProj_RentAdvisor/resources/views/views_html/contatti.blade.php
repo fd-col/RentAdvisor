@@ -25,7 +25,7 @@
                                 <ul class="contact-info-list">
                                     <li><i class="fa fa-phone"></i> 1234567890</li>
                                     <li><i class="fa fa-envelope-o"></i> info@rentadvisor.com</li>
-                                    <li><i class="fa fa-map-marker"></i> Ancona, AN, 60125, Italia</li>
+                                    <li><i class="fa fa-map-marker"></i> Ancona, AN, 60131, Italia</li>
                                 </ul>
                             </div>
                         </div>
