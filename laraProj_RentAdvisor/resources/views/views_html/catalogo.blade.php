@@ -8,7 +8,7 @@
 	@include('layouts._search')
 	<!-- / Advance Search -->
 	@endcan
-	
+
     @isset($annunci)
 
         <!-- Catalogo -->
@@ -30,7 +30,7 @@
                                     <article class="aa-properties-item">
                                         <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}"
                                            class="aa-properties-item-img">
-                                            <img src="{{ asset('images/slider/appartamenti/appartamento1.1.jpg') }}" alt="img">
+                                            <img src="{{ asset('images/slider/appartamenti/1_1.jpg') }}" alt="img">
                                         </a>
                                         <div class="aa-properties-item-content">
                                             <div class="aa-properties-info">

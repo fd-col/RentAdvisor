@@ -23,7 +23,15 @@
                                     <article class="aa-properties-item">
                                         <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}"
                                            class="aa-properties-item-img">
-                                            <img src="{{ asset('images/slider/appartamenti/appartamento1.0.jpg') }}" alt="img">
+                                            @isset($immagini)
+                                                @foreach($immagini as $immagine)
+                                                    @if($annuncio->id == $immagine->id_annuncio)
+                                                        <img src="{{ asset("images/$immagine->nome_immagine") }}" alt="img">
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                <img src="{{ asset('images/image_not_avaiable.jpg') }}" alt="img">
+                                            @endisset
                                         </a>
                                         <div class="aa-tag for-sale">
                                             Affittasi

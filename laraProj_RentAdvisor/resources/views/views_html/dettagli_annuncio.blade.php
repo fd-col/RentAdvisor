@@ -21,9 +21,13 @@
 
                                     <div class="aa-properties-details">
                                         <div class="aa-properties-details-img">
-                                            <img src="{{ asset('images/slider/appartamenti/appartamento1.0.jpg') }}" alt="img">
-                                            <img src="{{ asset('images/slider/appartamenti/appartamento1.1.jpg') }}" alt="img">
-                                            <img src="{{ asset('images/slider/appartamenti/appartamento1.2.jpg') }}" alt="img">
+                                            @isset($immagini)
+                                                @foreach($immagini as $immagine)
+                                                    <img src="{{ asset("images/$immagine->nome_immagine") }}" alt="img">
+                                                @endforeach
+                                            @else
+                                                <img src="{{ asset('images/image_not_avaiable.jpg') }}" alt="img">
+                                            @endisset
                                         </div>
                                         <div class="aa-properties-info">
 

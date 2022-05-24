@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\Annuncio;
 use App\Models\Resources\Posto_Letto;
 use App\Models\Resources\Appartamento;
+use App\Models\Resources\Immagine;
 use App\User;
 
 
@@ -36,8 +37,18 @@ class Catalogo extends Model
         }
     }
 
-    public function get_locatore_annuncio($annuncio) {
+    public function get_immagini_annuncio($id_annuncio) {
+        $immagini = Immagine::where('id_annuncio', $id_annuncio)->get();
+        return $immagini;
+    }
 
+    public function get_immagini_annunci($annunci) {
+        $id_annunci = $annunci->map->only(['id']);
+        $immagini = Immagine::whereIn('id_annuncio', $id_annunci)->get();
+        return $immagini;
+    }
+
+    public function get_locatore_annuncio($annuncio) {
         $locatore = User::where('username', $annuncio->username_locatore)->get()->first();
         return $locatore;
     }
