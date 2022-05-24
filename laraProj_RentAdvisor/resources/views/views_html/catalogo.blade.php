@@ -3,7 +3,12 @@
 @section('title', 'Catalogo')
 
 @section('content')
-
+	@can('isLocatario')
+	<!-- Advance Search -->
+	@include('layouts._search')
+	<!-- / Advance Search -->
+	@endcan
+	
     @isset($annunci)
 
         <!-- Catalogo -->
@@ -15,6 +20,7 @@
                         <span></span>
                         <p>Ecco a te tutti gli annunci inseriti in RentAdvisor!</p>
                     </div>
+
                     <div class="aa-latest-properties-content">
                         <div class="row">
 

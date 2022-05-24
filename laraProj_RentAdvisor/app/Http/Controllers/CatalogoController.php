@@ -41,4 +41,7 @@ class CatalogoController extends Controller
             ->with('locatore', $locatore);
 
     }
+	public function catalogo_con_filtri(){
+		
+	}
 }
