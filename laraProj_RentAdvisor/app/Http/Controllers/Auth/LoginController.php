@@ -32,10 +32,7 @@ use AuthenticatesUsers;
      * @var string
      */
 
-    protected function redirectTo() {
-        $username = auth()->user()->username;
-        return "/home/$username";
-    }
+    protected $redirectTo = '/';
 
     /**
      * Override:: Login con 'username' al posto di 'email'.

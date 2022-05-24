@@ -40,7 +40,7 @@
                         @can('isLocatario')
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
-                                    <a href="" class="aa-login"><span class="fa fa-user"></span>  LOCATARIO</a> |
+                                    <a href="{{ route('visualizza_profilo_locatario', [auth()->user()->username]) }}" class="aa-login"><span class="fa fa-user"></span>  LOCATARIO</a> |
                                     <a href="#" class="aa-login"><span class="fa fa-envelope"></span> </a>|
                                     <a href="#" class="aa-login"><span class="fa fa-edit"></span> </a>|
                                     <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span></a>
@@ -94,9 +94,7 @@
 
                     @can('isLocatario')
                         <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">RICERCA</a></li>
-                        @isset($user)
-                        <li class="{{ Route::is('visualizza_profilo_locatario') ? 'active' : '' }}"><a href="{{ route('visualizza_profilo_locatario', [$user->username]) }}">VISUALIZZA PROFILO</a></li>
-                        @endisset
+                        <li class="{{ Route::is('visualizza_profilo_locatario') ? 'active' : '' }}"><a href="{{ route('visualizza_profilo_locatario', [auth()->user()->username]) }}">VISUALIZZA PROFILO</a></li>
                     @else
                         <li class="{{ Route::is('catalog') ? 'active' : '' }}"><a href="{{ route('catalog') }}">CATALOGO</a></li>
                     @endcan

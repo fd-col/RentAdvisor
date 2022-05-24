@@ -10,12 +10,8 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
-Route::get('/home/{username}', 'CatalogoController@home')
+Route::get('/', 'CatalogoController@home')
     ->name('home');
-
-Route::get('/home', 'CatalogoController@home')
-    ->name('home');
-
 
 Route::get('/catalogo', 'CatalogoController@catalogo_senza_filtri')
     ->name('catalog');

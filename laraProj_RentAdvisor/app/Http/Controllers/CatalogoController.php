@@ -16,16 +16,8 @@ class CatalogoController extends Controller
     public function home($username = null) {
 
         $annunci = $this->modello_catalogo->get_annunci(6);
-
-        if (is_null($username))
-            return view('views_html/home')
-                ->with('annunci', $annunci);
-
-        $user = $this->modello_catalogo->get_utente($username);
-
         return view('views_html/home')
-            ->with('annunci', $annunci)
-            ->with('user', $user);
+            ->with('annunci', $annunci);
 
     }
 
