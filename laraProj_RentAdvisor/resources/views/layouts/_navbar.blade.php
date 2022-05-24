@@ -94,7 +94,7 @@
 
                     @can('isLocatario')
                         <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">RICERCA</a></li>
-                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">VISUALIZZA PROFILO</a></li>
+                        <li class="{{ Route::is('visualizza_profilo_locatario') ? 'active' : '' }}"><a href="{{ route('visualizza_profilo_locatario') }}">VISUALIZZA PROFILO</a></li>
                     @else
                         <li class="{{ Route::is('catalog') ? 'active' : '' }}"><a href="{{ route('catalog') }}">CATALOGO</a></li>
                     @endcan
