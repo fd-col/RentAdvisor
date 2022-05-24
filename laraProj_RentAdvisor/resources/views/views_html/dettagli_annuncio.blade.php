@@ -14,11 +14,11 @@
                             <div class="col-md-8">
                                 <div class="aa-properties-content">
                                     <!-- Start properties content body -->
-                                    <fieldset id="properties-title">
+                                    <fieldset id="properties-title" style="border: hidden">
                                         <h2>{{ $annuncio->titolo }}</h2>
-                                    </fieldset>   
+                                    </fieldset>
 
-                                    
+
                                     <div class="aa-properties-details">
                                         <div class="aa-properties-details-img">
                                             <img src="{{ asset('images/slider/appartamenti/appartamento1.0.jpg') }}" alt="img">
@@ -26,8 +26,8 @@
                                             <img src="{{ asset('images/slider/appartamenti/appartamento1.2.jpg') }}" alt="img">
                                         </div>
                                         <div class="aa-properties-info">
-                                            
-                                            <span class="aa-price">Canone d'affitto : {{ $annuncio->canone_affitto }}€</span>                                           
+
+                                            <span class="aa-price">Canone d'affitto : {{ $annuncio->canone_affitto }}€</span>
                                             <h4>■ Descrizione :<br></h4>
                                             <h5>{{ $annuncio->descrizione }}</h5>
                                             <p>■ Tipologia: {{ str_replace('_', ' ', $annuncio->tipologia) }}</p>

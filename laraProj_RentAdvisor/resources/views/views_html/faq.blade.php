@@ -21,7 +21,7 @@
                                         <li>
                                             <h3>
                                                 {{$faq_singola->domanda}}
-                                                
+
                                             </h3>
                                                 @can('isAdmin')
                                                     <a href="{{ route('modifica_faq', [$faq_singola->id]) }}"><span class="fa fa-edit"> <ul><li>Modifica</li></ul></span></a>

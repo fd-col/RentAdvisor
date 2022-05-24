@@ -43,7 +43,7 @@
 <section id="aa-signin">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="aa-signin-area">
                     <div class="aa-signin-form">
                         <div class="aa-signin-form-title">
@@ -56,7 +56,7 @@
                             <div class="aa-properties-content-body">
                                 <ul class="aa-properties-nav">
                                     <li>
-                                        <div class="col-xs-6"> <!-- stile bootstrap -->
+                                        <div class="col-sm-5"> <!-- stile bootstrap -->
                                             <div  class="aa-single-field">
                                                 {{ Form::label('username', 'Username*') }}
                                                 {{ Form::text('username', '', ['id' => 'username', 'aria-required' => 'true']) }}
@@ -115,7 +115,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="col-xs-6">
+                                        <div class="col-sm-5">
                                             <div class="aa-single-field">
                                                 {{ Form::label('role', 'Tipologia di utente*') }}
                                                 <br>
@@ -126,9 +126,9 @@
                                                             <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
-                                                @endif                                               
+                                                @endif
                                             </div>
-                                            
+
                                             <div class="aa-single-field">
                                                 <br>
                                                 {{ Form::label('data_nascita', 'Data di nascita*') }}
@@ -145,7 +145,7 @@
                                             <div class="aa-single-field">
                                                 <br>
                                                 {{ Form::label('genere', 'Genere*') }}
-                                                {{ Form::select('genere', ['M' => 'Uomo', 'D' => 'Donna', 'ND' => 'Preferisco non dichiararlo'], ['id' => 'genere', 'aria-required' => 'true']) }}
+                                                {{ Form::select('genere', ['M' => 'Uomo', 'D' => 'Donna', 'ND' => 'Non dichiarato'], ['id' => 'genere', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('genere'))
                                                     <ul>
                                                         @foreach ($errors->get('genere') as $message)
@@ -155,9 +155,9 @@
                                                 @endif
                                             </div>
                                             <div class="aa-single-field">
-                                                <br>                                               
+                                                <br>
                                                 {{ Form::label('telefono', 'Telefono') }}
-                                                {{ Form::text('telefono', 'null', ['id' => 'telefono', 'aria-required' => 'true']) }}
+                                                {{ Form::text('telefono', '', ['id' => 'telefono', 'aria-required' => 'true']) }}
                                                 @if ($errors->first('telefono'))
                                                     <ul>
                                                         @foreach ($errors->get('telefono') as $message)
@@ -165,8 +165,8 @@
                                                         @endforeach
                                                     </ul>
                                                 @endif
-                                            </div>                                        
-                                            <div  class="aa-single-field">                                               
+                                            </div>
+                                            <div  class="aa-single-field">
                                                 {{ Form::label('password-confirm', 'Conferma password*') }}
                                                 {{ Form::password('password_confirmation', ['id' => 'password-confirm', 'aria-required' => 'true']) }}
                                             </div>

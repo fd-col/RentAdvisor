@@ -89,7 +89,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-                    
+
                     <li class="{{ Route::is('home') ? 'active' : '' }}"><a href="{{ route('home') }}">HOME</a></li>
 
                     @can('isLocatario')
@@ -107,8 +107,8 @@
                         <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">AREA PERSONALE</a></li>
                     @endcan
 
-                    <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">CONTATTI</a></li>
-                    <li class="{{ Route::is('faq') ? 'active' : '' }}"><a href="{{ route('faq') }}">FAQ</a></li>
+                    <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}"> CONTATTI</a></li>
+                    <li class="{{ Route::is('faq') ? 'active' : '' }}"><a href="{{ route('faq') }}">@can('isAdmin')MODIFICA @endcan FAQ</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
