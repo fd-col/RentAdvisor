@@ -21,8 +21,7 @@
                             @foreach($annunci as $annuncio)
                                 <div class="col-md-4">
                                     <article class="aa-properties-item">
-                                        <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}"
-                                           class="aa-properties-item-img">
+                                        <div class="aa-properties-details-img">
                                             @isset($immagini)
                                                 @foreach($immagini as $immagine)
                                                     @if($annuncio->id == $immagine->id_annuncio)
@@ -32,7 +31,7 @@
                                             @else
                                                 <img src="{{ asset('images/image_not_avaiable.jpg') }}" alt="img">
                                             @endisset
-                                        </a>
+                                        </div>
                                         <div class="aa-tag for-sale">
                                             Affittasi
                                         </div>

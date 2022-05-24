@@ -14,9 +14,9 @@ class CreateImmagineTable extends Migration
     public function up()
     {
         Schema::create('Immagine', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('id_annuncio');
             $table->string('nome_immagine');
-            $table->primary(['id_annuncio', 'nome_immagine']);
             $table->foreign('id_annuncio')->references('id')->on('Annuncio')->onUpdate('cascade');
         });
     }
