@@ -6,66 +6,119 @@
 <!-- CONTENT -->
 @section('content')
     @isset($user)
-    <!-- Start form section -->
-    <!-- Le classi di stile utilizzate sono quelle della form di contatto in modo da non doverle rifare-->
-    <section id="aa-contact">
-                    <div class="aa-contact-area">
-                        <div class="aa-contact-bottom">
-                            <div class="aa-title">
-                                <h2>Profilo</h2>
-                                <span></span>
-                                <p>I dati relativi al tuo profilo </p>
-                            </div>
-                            <div class="aa-contact-form">
-                                {{ Form::open(array('route' => 'visualizza_profilo_locatario', 'class' => 'contactform')) }}
-                                <form class="contactform" action="" name="visualizza_profilo" method="get" enctype="multipart/form-data">
-                                    <div class="aa-properties-content-body">
-                                        <ul class="aa-properties-nav">
-                                            <li>
-                                                <div class="col-xs-6">
-                                                    <div class="aa-single-field">
-                                                        <label for="username">Username <span class="required">*</span></label>
-                                                        <input type="text" size="30" value="{{ $user->username }}" required="required" aria-required="true" value="" name="username">
+        <!-- Start form section -->
+        <!-- Le classi di stile utilizzate sono quelle della form di contatto in modo da non doverle rifare-->
+        <section id="aa-contact">
+                        <div class="aa-contact-area">
+                            <div class="aa-contact-bottom">
+                                <div class="aa-title">
+                                    <h2>Profilo</h2>
+                                    <span></span>
+                                    <p>I dati relativi al tuo profilo </p>
+                                </div>
+                                <div class="aa-contact-form">
+                                        {{ Form::open(array('class' => 'contactform')) }}
+                                        <div class="aa-properties-content-body">
+                                            <ul class="aa-properties-nav">
+                                                <li>
+                                                    <div class="col-xs-6">
+                                                        <div class="aa-single-field">
+                                                            {{ Form::label('username', 'Username*') }}
+                                                            {{ Form::text('username', "$user->username", ['id' => 'username', 'aria-required' => 'true']) }}
+                                                            @if ($errors->first('username'))
+                                                            <ul>
+                                                                @foreach ($errors->get('username') as $message)
+                                                                    <li class="richiesta">{{ $message }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                            @endif
+                                                        </div>
+                                                        <div class="aa-single-field">
+                                                            {{ Form::label('nome', 'Nome*') }}
+                                                            {{ Form::text('nome', "$user->nome", ['id' => 'nome', 'aria-required' => 'true']) }}
+                                                            @if ($errors->first('nome'))
+                                                            <ul>
+                                                                @foreach ($errors->get('nome') as $message)
+                                                                    <li class="richiesta">{{ $message }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                            @endif
+                                                        </div>
+                                                        <div class="aa-single-field">
+                                                            {{ Form::label('cognome', 'Cognome*') }}
+                                                            {{ Form::text('cognome', "$user->cognome", ['id' => 'cognome', 'aria-required' => 'true']) }}
+                                                            @if ($errors->first('cognome'))
+                                                            <ul>
+                                                                @foreach ($errors->get('cognome') as $message)
+                                                                    <li class="richiesta">{{ $message }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                            @endif
+                                                        </div>
+                                                        <div class="aa-single-field">
+                                                            {{ Form::label('email', 'Email*') }}
+                                                            {{ Form::text('email', "$user->email", ['id' => 'email', 'aria-required' => 'true']) }}
+                                                            @if ($errors->first('email'))
+                                                            <ul>
+                                                                @foreach ($errors->get('email') as $message)
+                                                                    <li class="richiesta">{{ $message }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                            @endif
+                                                        </div>
                                                     </div>
-                                                    <div class="aa-single-field">
-                                                        <label for="nome">Nome <span class="required">*</span></label>
-                                                        <input type="text" value="{{ $user->nome }}" required="required" aria-required="true" value="" name="nome">
+                                                </li>
+                                                <li>
+                                                    <div class="col-xs-6">
+                                                        <div class="aa-single-field">
+                                                            
+                                                        </div>
+                                                        <div class="aa-single-field">
+                                                        {{ Form::label('data_nascita', 'Data di nascita*') }}
+                                                            {{ Form::text('data_nascita', "$user->data_nascita", ['id' => 'data_nascita', 'aria-required' => 'true']) }}
+                                                            @if ($errors->first('cognome'))
+                                                            <ul>
+                                                                @foreach ($errors->get('data_nascita') as $message)
+                                                                    <li class="richiesta">{{ $message }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                            @endif
+                                                        </div>
+                                                        <div class="aa-single-field">
+                                                            {{ Form::label('telefono', 'Telefono*') }}
+                                                            {{ Form::text('telefono', "$user->telefono", ['id' => 'telefono', 'aria-required' => 'true']) }}
+                                                            @if ($errors->first('telefono'))
+                                                            <ul>
+                                                                @foreach ($errors->get('telefono') as $message)
+                                                                    <li class="richiesta">{{ $message }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                            @endif
+                                                        </div>
+                                                        <div class="aa-single-field">
+                                                            {{ Form::label('genere', 'Genere*') }}
+                                                            {{ Form::text('genere', "$user->genere", ['id' => 'genere', 'aria-required' => 'true']) }}
+                                                            @if ($errors->first('genere'))
+                                                            <ul>
+                                                                @foreach ($errors->get('genere') as $message)
+                                                                    <li class="richiesta">{{ $message }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                            @endif
+                                                        </div>
                                                     </div>
-                                                    <div class="aa-single-field">
-                                                        <label for="cognome">Cognome <span class="required">*</span></label>
-                                                        <input type="text" size="30" value="{{ $user->cognome }}" required="required" aria-required="true" value="" name="cognome">
-                                                    </div>
-                                                    <div class="aa-single-field">
-                                                        <label for="email">Email <span class="required">*</span></label>
-                                                        <input type="email" size="30" value="{{ $user->email }}" required="required" aria-required="true" value="" name="email">
-                                                    </div>
-                                                  </div>
-                                            </li>
-                                            <li>
-                                                <div class="col-xs-6">
-                                                    <div class="aa-single-field">
-                                                        <label for="data_nascita">Data nascita <span class="required">*</span></label>
-                                                        <input type="text" value="{{ $user->data_nascita }}" required="required" aria-required="true" value="" name="data_nascita">
-                                                    </div>
-                                                    <div class="aa-single-field">
-                                                        <label for="tel">Telefono<span class="required">*</span></label>
-                                                        <input type="text" value="{{ $user->telefono }}" name="tel" id="tel" value="" size="30" maxlength="10" required="required">
-                                                    </div>
-                                                    <div class="aa-single-field">
-                                                        <label for="gen">Genere<span class="required">*</span></label>
-                                                        <input type="text" value="{{ $user->genere }}" name="gen" id="gen" value="M/F/ND" size="30" maxlength="1" required="required">
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <p class="form-submit">
-                                        <input type="submit" name="submit" class="aa-browse-btn" value="Modifica">
-                                    </p>
-                                </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <p class="form-submit">
+                                            {{ Form::submit('Modifica') }}
+                                        </p>
+                                    </form>
+                                    {{ Form::close() }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-    </section>
+        </section>
+        <!-- / End form section -->
     @endisset
-    @endsection
+@endsection
