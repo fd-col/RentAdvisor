@@ -14,19 +14,25 @@
                             <div class="col-md-8">
                                 <div class="aa-properties-content">
                                     <!-- Start properties content body -->
+                                    <fieldset id="properties-title" style="border: hidden">
+                                        <h2>{{ $annuncio->titolo }}</h2>
+                                    </fieldset>
+
+
                                     <div class="aa-properties-details">
                                         <div class="aa-properties-details-img">
-                                            <img src="{{ asset('images/slider/1.jpg') }}" alt="img">
-                                            <img src="{{ asset('images/slider/2.jpg') }}" alt="img">
-                                            <img src="{{ asset('images/slider/3.jpg') }}" alt="img">
+                                            <img src="{{ asset('images/slider/appartamenti/appartamento1.0.jpg') }}" alt="img">
+                                            <img src="{{ asset('images/slider/appartamenti/appartamento1.1.jpg') }}" alt="img">
+                                            <img src="{{ asset('images/slider/appartamenti/appartamento1.2.jpg') }}" alt="img">
                                         </div>
                                         <div class="aa-properties-info">
-                                            <h2>{{ $annuncio->titolo }}</h2>
-                                            <span class="aa-price">{{ $annuncio->canone_affitto }}€</span>
-                                            <p>Caparra: {{$annuncio->caparra}}€</p>
-                                            <p>{{ $annuncio->descrizione }}</p>
-                                            <p>Tipologia: {{ str_replace('_', ' ', $annuncio->tipologia) }}</p>
-                                            <p>Data inserimento annuncio: {{ $annuncio->data_inserimento }}</p>
+
+                                            <span class="aa-price">Canone d'affitto : {{ $annuncio->canone_affitto }}€</span>
+                                            <h4>■ Descrizione :<br></h4>
+                                            <h5>{{ $annuncio->descrizione }}</h5>
+                                            <p>■ Tipologia: {{ str_replace('_', ' ', $annuncio->tipologia) }}</p>
+                                            <h5>■ Data inserimento annuncio: {{ $annuncio->data_inserimento }}</h5>
+                                            <h5>■ Caparra: {{$annuncio->caparra}}€</h5><br>
                                             <h4>Servizi inclusi</h4>
                                             <ul>
                                                 <table>
@@ -156,27 +162,27 @@
 
 
                                             <h4>Condizioni di locazione</h4>
-                                            <p>Durata minima di locazione: {{$annuncio->durata_minima_locazione}}
+                                            <p>■ Durata minima di locazione: {{$annuncio->durata_minima_locazione}}
                                                 mesi</p>
                                             @if($annuncio->genere_preferito != 'ND')
-                                                <p>Genere preferito dei locatari: {{$annuncio->genere_preferito}}</p>
+                                                <p>■ Genere preferito dei locatari: {{$annuncio->genere_preferito}}</p>
                                             @endif
                                             @if(!is_null($annuncio->eta_preferita_min))
-                                                <p>Età mimima locatari: {{$annuncio->eta_preferita_min}}</p>
+                                                <p>■ Età mimima locatari: {{$annuncio->eta_preferita_min}}</p>
                                             @endif
                                             @if(!is_null($annuncio->eta_preferita_max))
-                                                <p>Età massima locatari: {{$annuncio->eta_preferita_max}}</p>
+                                                <p>■ Età massima locatari: {{$annuncio->eta_preferita_max}}</p>
                                             @endif
-                                            <p>Inizio disponibilità
+                                            <p>■ Inizio disponibilità
                                                 alloggio: {{$annuncio->periodo_disponibilita_inizio}}</p>
                                             @if(!is_null($annuncio->periodo_disponibilita_fine))
                                                 <p>Fine disponibilità
                                                     alloggio: {{$annuncio->periodo_disponibilita_fine}}</p>
                                             @endif
-                                            <p>Indirizzo: {{$annuncio->indirizzo}},{{$annuncio->numero_civico}}
+                                            <p>■ Indirizzo: {{$annuncio->indirizzo}},{{$annuncio->numero_civico}}
                                                 , {{$annuncio->citta}} ({{$annuncio->provincia}}) {{$annuncio->cap}}</p>
-                                            <p>Zona di localizzazione: {{$annuncio->zona_di_localizzazione}}</p>
-                                            <p>Piano: {{$annuncio->piano}}</p>
+                                            <p>■ Zona di localizzazione: {{$annuncio->zona_di_localizzazione}}</p>
+                                            <p>■ Piano: {{$annuncio->piano}}</p>
                                             <h4>Mappa</h4>
                                             <iframe
                                                 src="https://maps.google.com/maps?q={{str_replace(' ','%20',$annuncio->indirizzo)}},{{$annuncio->numero_civico}},{{$annuncio->cap}},{{$annuncio->citta}},{{$annuncio->provincia}}&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -190,6 +196,7 @@
                             <div class="col-md-4">
                                 <aside class="aa-properties-sidebar">
                                     <div class="aa-properties-single-sidebar">
+                                        <br><br>
                                         <h3>Locatore</h3>
                                         <h4>{{$locatore->nome}} {{$locatore->cognome}}</h4>
                                         <p>e-mail: {{$locatore->email}}<br>
@@ -197,6 +204,7 @@
                                                 telefono: {{$locatore->telefono}}<br>
                                             @endif
                                         </p>
+                                        <br><br>
                                     </div>
                                 </aside>
                             </div>

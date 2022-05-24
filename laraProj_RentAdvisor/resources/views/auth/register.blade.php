@@ -43,7 +43,7 @@
 <section id="aa-signin">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="aa-signin-area">
                     <div class="aa-signin-form">
                         <div class="aa-signin-form-title">
@@ -56,7 +56,7 @@
                             <div class="aa-properties-content-body">
                                 <ul class="aa-properties-nav">
                                     <li>
-                                        <div class="col-xs-6"> <!-- stile bootstrap -->
+                                        <div class="col-sm-5"> <!-- stile bootstrap -->
                                             <div  class="aa-single-field">
                                                 {{ Form::label('username', 'Username*') }}
                                                 {{ Form::text('username', '', ['id' => 'username', 'aria-required' => 'true']) }}
@@ -115,7 +115,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="col-xs-6">
+                                        <div class="col-sm-5">
                                             <div class="aa-single-field">
                                                 {{ Form::label('role', 'Tipologia di utente*') }}
                                                 <br>
@@ -128,7 +128,9 @@
                                                     </ul>
                                                 @endif
                                             </div>
+
                                             <div class="aa-single-field">
+                                                <br>
                                                 {{ Form::label('data_nascita', 'Data di nascita*') }}
                                                 <br>
                                                 {{ Form::date('data_nascita', '1990-01-01',['id' => 'data_nascita', 'aria-required' => 'true']) }}
@@ -141,22 +143,24 @@
                                                 @endif
                                             </div>
                                             <div class="aa-single-field">
-                                                {{ Form::label('telefono', 'Telefono') }}
-                                                {{ Form::text('telefono', 'null', ['id' => 'telefono', 'aria-required' => 'true']) }}
-                                                @if ($errors->first('telefono'))
+                                                <br>
+                                                {{ Form::label('genere', 'Genere*') }}
+                                                {{ Form::select('genere', ['M' => 'Uomo', 'D' => 'Donna', 'ND' => 'Non dichiarato'], ['id' => 'genere', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('genere'))
                                                     <ul>
-                                                        @foreach ($errors->get('telefono') as $message)
+                                                        @foreach ($errors->get('genere') as $message)
                                                             <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
                                             </div>
                                             <div class="aa-single-field">
-                                                {{ Form::label('genere', 'Genere*') }}
-                                                {{ Form::select('genere', ['M' => 'Uomo', 'D' => 'Donna', 'ND' => 'Preferisco non dichiararlo'], ['id' => 'genere', 'aria-required' => 'true']) }}
-                                                @if ($errors->first('genere'))
+                                                <br>
+                                                {{ Form::label('telefono', 'Telefono') }}
+                                                {{ Form::text('telefono', '', ['id' => 'telefono', 'aria-required' => 'true']) }}
+                                                @if ($errors->first('telefono'))
                                                     <ul>
-                                                        @foreach ($errors->get('genere') as $message)
+                                                        @foreach ($errors->get('telefono') as $message)
                                                             <li class="richiesta">{{ $message }}</li>
                                                         @endforeach
                                                     </ul>

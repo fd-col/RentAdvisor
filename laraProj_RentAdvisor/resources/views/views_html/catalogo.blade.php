@@ -30,12 +30,12 @@
                                     <article class="aa-properties-item">
                                         <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}"
                                            class="aa-properties-item-img">
-                                            <img src="{{ asset('images/item/1.jpg') }}" alt="img">
+                                            <img src="{{ asset('images/slider/appartamenti/appartamento1.1.jpg') }}" alt="img">
                                         </a>
                                         <div class="aa-properties-item-content">
                                             <div class="aa-properties-info">
-                                                <span>Città: {{ $annuncio->citta }}</span>
-                                                <span>Tipologia: {{ str_replace('_', ' ', $annuncio->tipologia) }}</span>
+                                                <span><strong>Città</strong> : {{ $annuncio->citta }}</span>
+                                                <span><strong>Tipologia</strong> : {{ str_replace('_', ' ', $annuncio->tipologia) }}</span>
                                             </div>
                                             <div class="aa-properties-about">
                                                 <h3>
@@ -65,11 +65,11 @@
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li class="active"><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
+                                <li class="{{ Route::is('   1 pagina catalogo   ') ? 'active' : '' }}"><a href="#">1</a></li>
+                                <li class="{{ Route::is('   2 pagina catalogo   ') ? 'active' : '' }}"><a href="#">2</a></li>
+                                <li class="{{ Route::is('   3 pagina catalogo   ') ? 'active' : '' }}"><a href="#">3</a></li>
+                                <li class="{{ Route::is('   4 pagina catalogo   ') ? 'active' : '' }}"><a href="#">4</a></li>
+                                <li class="{{ Route::is('   5 pagina catalogo   ') ? 'active' : '' }}"><a href="#">5</a></li>
                                 <li>
                                     <a href="#" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>

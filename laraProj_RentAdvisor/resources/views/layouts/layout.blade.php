@@ -41,7 +41,7 @@
 <body>
 
 <!-- Start navbar section -->
-@include('layouts._navbar')
+    @include('layouts._navbar')
 <!-- End navbar section -->
 
 <!-- Start slider  -->

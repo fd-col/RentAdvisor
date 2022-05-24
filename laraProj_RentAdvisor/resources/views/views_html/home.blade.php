@@ -2,7 +2,6 @@
 
 @section('title', 'Home')
 
-
 <!-- CONTENT -->
 @section('content')
     @isset($annunci)
@@ -24,15 +23,15 @@
                                     <article class="aa-properties-item">
                                         <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}"
                                            class="aa-properties-item-img">
-                                            <img src="{{ asset('images/item/1.jpg') }}" alt="img">
+                                            <img src="{{ asset('images/slider/appartamenti/appartamento1.0.jpg') }}" alt="img">
                                         </a>
                                         <div class="aa-tag for-sale">
                                             Affittasi
                                         </div>
                                         <div class="aa-properties-item-content">
                                             <div class="aa-properties-info">
-                                                <span>Città: {{ $annuncio->citta }}</span>
-                                                <span>Tipologia: {{ str_replace('_', ' ', $annuncio->tipologia) }}</span>
+                                                <span><strong>Città</strong> : {{ $annuncio->citta }}</span>
+                                                <span><strong>Tipologia</strong> : {{ str_replace('_', ' ', $annuncio->tipologia) }}</span>
                                             </div>
                                             <div class="aa-properties-about">
                                                 <h3>
@@ -67,8 +66,9 @@
                     <div class="aa-service-area">
                         <div class="aa-title">
                             <h2>Chi siamo</h2>
-                            <span></span>
-                            <p>Alcuni dei nostri servizi professionali per i clienti. </p>
+                            <span></span><br>
+                            <q>Fide et Fiducia</q><hr>
+                            <p>Ecco alcuni dei nostri servizi professionali per i clienti : </p>
                         </div>
                         <!-- service content -->
                         <div class="aa-service-content">
@@ -80,8 +80,9 @@
                                         </div>
                                         <div class="aa-single-service-content">
                                             <h4><a href="#">Affitti appartamenti</a></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
-                                                repellendus quasi asperiores itaque dolorem at.</p>
+                                            <p>Siamo un'<strong>azienda Leader</strong> nel settore degli affitti immobiliari.
+                                            Da <strong>15 anni </strong>lavoriamo per offire le migliori soluzioni ai
+                                            locatori e agli <strong>studenti universitari</strong> .</p>
                                         </div>
                                     </div>
                                 </div>
@@ -92,8 +93,8 @@
                                         </div>
                                         <div class="aa-single-service-content">
                                             <h4><a href="#">Affitti posti letto</a></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
-                                                repellendus quasi asperiores itaque dolorem at.</p>
+                                            <p>Troviamo <strong>soluzioni ad hoc</strong> per soddisfare le neccessità
+                                            di ciascun Locatore e Studente che si rivolge al nostro sito.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -104,8 +105,8 @@
                                         </div>
                                         <div class="aa-single-service-content">
                                             <h4><a href="#">Assistenza personale</a></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
-                                                repellendus quasi asperiores itaque dolorem at.</p>
+                                            <p>Fai affidamento al nostro servizio assistenza attivo <strong>24h</strong>
+                                            al giorno, <strong>7/7g</strong> .</p>
                                         </div>
                                     </div>
                                 </div>
@@ -116,8 +117,10 @@
                                         </div>
                                         <div class="aa-single-service-content">
                                             <h4><a href="#">Trasparenza e Sicurezza</a></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
-                                                repellendus quasi asperiores itaque dolorem at.</p>
+                                            <p>Sarai sempre <b>informato</b> su ciò che per te è importante, e <b>libero</b>
+                                            di agire su i tuoi dati personali, e gli appartamenti  <br>
+                                            (in tuo possesso o di tuo interesse) .
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -178,12 +181,12 @@
                                 <li>
                                     <div class="aa-single-agents">
                                         <div class="aa-agents-img">
-                                            <img src="{{ asset('images/agents/agent-3.png') }}"
+                                            <img src="{{ asset('images/agents/colleluori.jpg') }}"
                                                  alt="agent member image">
                                         </div>
                                         <div class="aa-agetns-info">
                                             <h4><a href="#">Federico Colleluori</a></h4>
-                                            <span>Consulente</span>
+                                            <span>Consulente Specializzato</span>
                                             <div class="aa-agent-social">
                                             </div>
                                         </div>

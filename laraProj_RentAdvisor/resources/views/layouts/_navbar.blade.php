@@ -27,7 +27,7 @@
                         @can('isLocatore')
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
-                                    <a href="index.html" class="aa-login"><span class="fa fa-user"></span>  LOCATORE</a> |
+                                    <a href="" class="aa-login"><span class="fa fa-user"></span>  LOCATORE</a> |
                                     <a href="#" class="aa-login"><span class="fa fa-envelope"></span> </a>|
                                     <a href="#" class="aa-login"><span class="fa fa-edit"></span> </a>|
                                     <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span></a>
@@ -40,7 +40,7 @@
                         @can('isLocatario')
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
-                                    <a href="index.html" class="aa-login"><span class="fa fa-user"></span>  LOCATARIO</a> |
+                                    <a href="{{ route('visualizza_profilo_locatario', [auth()->user()->username]) }}" class="aa-login"><span class="fa fa-user"></span>  LOCATARIO</a> |
                                     <a href="#" class="aa-login"><span class="fa fa-envelope"></span> </a>|
                                     <a href="#" class="aa-login"><span class="fa fa-edit"></span> </a>|
                                     <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span></a>
@@ -53,7 +53,7 @@
                         @can('isAdmin')
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
-                                    <a href="index.html" class="aa-login"><span class="fa fa-user"></span>  ADMIN</a> |
+                                    <a href="" class="aa-login"><span class="fa fa-user"></span>  ADMIN</a> |
                                     <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span></a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
@@ -89,25 +89,26 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-                    <li class="active"><a href="{{ route('home') }}">HOME</a></li>
+
+                    <li class="{{ Route::is('home') ? 'active' : '' }}"><a href="{{ route('home') }}">HOME</a></li>
 
                     @can('isLocatario')
-                        <li><a href="#">RICERCA</a></li>
-                        <li><a href="#">VISUALIZZA PROFILO</a></li>
+                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">RICERCA</a></li>
+                        <li class="{{ Route::is('visualizza_profilo_locatario') ? 'active' : '' }}"><a href="{{ route('visualizza_profilo_locatario', [auth()->user()->username]) }}">VISUALIZZA PROFILO</a></li>
                     @else
-                        <li><a href="{{ route('catalog') }}">CATALOGO</a></li>
+                        <li class="{{ Route::is('catalog') ? 'active' : '' }}"><a href="{{ route('catalog') }}">CATALOGO</a></li>
                     @endcan
 
                     @can('isAdmin')
-                        <li><a href="#">STATISTICHE</a></li>
+                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">STATISTICHE</a></li>
                     @endcan
 
                     @can('isLocatore')
-                        <li><a href="#">AREA PERSONALE</a></li>
+                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">AREA PERSONALE</a></li>
                     @endcan
 
-                    <li><a href="{{ route('contact') }}">CONTATTI</a></li>
-                    <li><a href="{{ route('faq') }}">FAQ</a></li>
+                    <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}"> CONTATTI</a></li>
+                    <li class="{{ Route::is('faq') ? 'active' : '' }}"><a href="{{ route('faq') }}">@can('isAdmin')MODIFICA @endcan FAQ</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

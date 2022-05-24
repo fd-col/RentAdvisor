@@ -43,18 +43,19 @@
 <section id="aa-signin">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="aa-signin-area">
                     <div class="aa-signin-form">
                         <div class="aa-signin-form-title">
                             <h1>Accedi</h1>
-                            <h3>Accedi al tuo profilo per visualizzarne le opzioni</h3>
+                            <h3>Accedi al tuo profilo per sfuttare tutte le funzionalità di RentAdvisor</h3>
+                        <div class="col-sm-8 col-sm-offset-1">
                         </div>
                         {{ Form::open(array('route' => 'login', 'class' => 'contactform')) }}
                             <div class="aa-single-field">
                                 <br>
                                 {{ Form::label('username', 'Username') }}
-                                {{ Form::text('username', '', ['class' => 'input','id' => 'username', 'aria-required' => 'true']) }}
+                                {{ Form::text('username', '', ['id' => 'username', 'aria-required' => 'true']) }}
                                 @if ($errors->first('username'))
                                     <ul>
                                         @foreach ($errors->get('username') as $message)
@@ -65,7 +66,7 @@
                             </div>
                             <div class="aa-single-field">
                                 {{ Form::label('password', 'Password') }}
-                                {{ Form::password('password', ['id' => 'password']) }}
+                                {{ Form::password('password', ['id' => 'password', 'aria-required' => 'true']) }}
                                 @if ($errors->first('password'))
                                     <ul>
                                         @foreach ($errors->get('password') as $message)
@@ -79,6 +80,7 @@
                                 <p>Non hai ancora un account? <a href="{{ route('register') }}">Crealo ora!</a></p>
                             </div>
                         {{ Form::close() }}
+                        </div>
                     </div>
                 </div>
             </div>
