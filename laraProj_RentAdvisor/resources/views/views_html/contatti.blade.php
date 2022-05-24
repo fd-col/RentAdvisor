@@ -19,9 +19,10 @@
                             </div>
                             <div class="aa-contact-top-right">
                                 <h2>Contatti</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae placeat aspernatur
-                                    aperiam, quisquam voluptas enim tempore ab itaque nam modi eos corrupti distinctio
-                                    nobis labore dolorum quae tenetur. Sapiente, sequi.</p>
+                                <p>Puoi torvarci all'Università Politecnica delle Marche, nel palazzo di ingegneria. <br>
+                                    Oppure puoi contattarci per email, ti risponderemo il prima possibile. <br>
+                                    Il nostro centralino è invece disponibile dal lunedì al venerdì dalle 9:30 alle 12:30 e dalle 15:30 alle 18:30.
+                                </p>
                                 <ul class="contact-info-list">
                                     <li><i class="fa fa-phone"></i> 1234567890</li>
                                     <li><i class="fa fa-envelope-o"></i> info@rentadvisor.com</li>
@@ -33,7 +34,6 @@
                             <div class="aa-title">
                                 <fieldset style="border: 1px solid black">
                                     <h2>Email</h2>
-                                    <br>
                                     <p><strong>Servizio assistenza clienti </strong></p>
                                     <p></p>
                                     <p>info@rentadvisor.com</p>
@@ -42,7 +42,6 @@
                             <div class="aa-title">
                                 <fieldset style="border: 1px solid black">
                                     <h2>Telefoni</h2>
-                                    <br>
                                     <p><strong>Servizio assistenza clienti </strong></p>
                                     <p></p>
                                     <p>1234567890</p>
@@ -50,12 +49,10 @@
                                     <p>1234567890</p>
                                 </fieldset>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 @endsection
