@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{{ asset('js/jquery.js') }}"></script>
     <title>RentAdvisor | @yield('title', 'Home')</title>
 
     <!-- Favicon -->
@@ -194,7 +195,6 @@
 <!-- jQuery library -->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/jquery.js') }}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('js/bootstrap_layout.js') }}"></script>
 <!-- slick slider -->
