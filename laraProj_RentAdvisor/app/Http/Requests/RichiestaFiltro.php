@@ -25,10 +25,10 @@ class RichiestaFiltro extends FormRequest {
      */
     public function rules() {
         return [
-            'titolo' => 'alphanumeric|max:300',
-			'tipologia' => 'alphanumeric|required',
-			'genere' => 'alphanumeric|required',
-			'citta' => 'max:100'
+            'titolo' => 'string|max:300',
+			'tipologia' => 'string|required',
+			'genere' => 'string|required',
+			'citta' => 'max:100',
 			'zona' => 'max:100',
 			'caparra_max' => 'numeric',
 			'affitto_max' => 'numeric',
@@ -37,20 +37,20 @@ class RichiestaFiltro extends FormRequest {
 			'bagni' => 'integer',
 			'n_posti_letto_totali' => 'integer',
 			'piano' => 'integer',
-			'fumatori' => 'alphanumeric|max:6',
-			'parcheggio' => 'alphanumeric|max:6' ,
-			'wi_fi' => 'alphanumeric|max:6',
-			'ascensore' => 'alphanumeric|max:6',
+			'fumatori' => 'string|max:6',
+			'parcheggio' => 'string|max:6' ,
+			'wi_fi' => 'string|max:6',
+			'ascensore' => 'string|max:6',
 			'numero_camere' => 'integer',
-			'appartamento_min' => 'integer', 
+			'appartamento_min' => 'integer',
 			'appartamento_max' => 'integer',
 			'tipologia_appartamento' => 'required',
-			'locale_ricreativo' => 'alphanumeric|max:6',
+			'locale_ricreativo' => 'string|max:6',
 			'letti_camera' => 'integer',
 			'dim_camera_min' => 'integer',
 			'dim_camera_max'=> 'integer',
 			'tipologia_posto_letto' => 'required',
-			'angolo_studio' => 'alphanumeric|max:6'
+			'angolo_studio' => 'string|max:6'
         ];
     }
 

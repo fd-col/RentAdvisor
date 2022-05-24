@@ -56,7 +56,7 @@ $('#tipologia').change(function(){
 
               <div class="col-md-2">
                 <div class="aa-single-advance-search">
-				{{Form::submit('SEARCH' ,['class' => 'aa-search-btn'] )}}
+				{{Form::submit('CERCA' ,['class' => 'aa-search-btn'] )}}
                 </div>
               </div>
             </div>
