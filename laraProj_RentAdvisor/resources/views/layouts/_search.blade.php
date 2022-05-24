@@ -1,17 +1,17 @@
 
 <script>
-$(function(){
-$('#tipologia').onChange(function(){
-		$val= $('select[name="tipologia"]').value();
+jQuery(function(){
+$('#tipologia').change(function(){
+		$val= $('select[name="tipologia"]').val();
 		switch($val){
-			case 1: $("#appartamento").hide();
+			case '1': $("#appartamento").show();
 					$("#posti_letto").hide();
 					break;
-			case 2:	 $("#appartamento").hide();
+			case '2':	 $("#appartamento").hide();
 					$("#posti_letto").show();
 					break;
 			default:  $("#appartamento").hide();
-					$("#posti_letto").show();
+					$("#posti_letto").hide();
 					break;
 		}
 	});
@@ -56,7 +56,7 @@ $('#tipologia').onChange(function(){
               
               <div class="col-md-2">
                 <div class="aa-single-advance-search">
-                  <input class="aa-search-btn" type="submit" value="Search">
+				{{Form::submit('SEARCH' ,['class', 'aa-search-btn'] )}}
                 </div>
               </div>
             </div>
