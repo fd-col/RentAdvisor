@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{{ asset('js/jquery.js') }}"></script>
     <title>RentAdvisor | @yield('title', 'Home')</title>
 
     <!-- Favicon -->
@@ -169,10 +170,10 @@
                         </div>
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="aa-footer-middle">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                                <a href="#"><i class="fa fa-youtube"></i></a>
+                                <a href="https://github.com/AndreaCiv/RentAdvisor"><i class="fa fa-github"></i></a>
+                                <a href="https://www.univpm.it/Entra/"><i class="fa fa-university"></i></a>
+                                <a href="https://www.free-css.com/free-css-templates/page236/home-property"><i class="fa fa-html5"></i></a>
+                                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fa fa-youtube"></i></a>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
@@ -194,7 +195,6 @@
 <!-- jQuery library -->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/jquery.js') }}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('js/bootstrap_layout.js') }}"></script>
 <!-- slick slider -->
