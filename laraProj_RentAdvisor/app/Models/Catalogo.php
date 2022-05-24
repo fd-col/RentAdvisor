@@ -41,4 +41,9 @@ class Catalogo extends Model
         $locatore = User::where('username', $annuncio->username_locatore)->get()->first();
         return $locatore;
     }
+
+    public function get_utente($username) {
+        $user = User::where('username', $username)->get()->first();
+        return $user;
+    }
 }

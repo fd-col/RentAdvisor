@@ -1,7 +1,6 @@
-@extends('layouts.layout')
+@extends('layouts.layout', ['user' => $user])
 
 @section('title', 'Home')
-
 
 <!-- CONTENT -->
 @section('content')
@@ -67,7 +66,7 @@
                     <div class="aa-service-area">
                         <div class="aa-title">
                             <h2>Chi siamo</h2>
-                            <span></span><br>                           
+                            <span></span><br>
                             <q>Fide et Fiducia</q><hr>
                             <p>Ecco alcuni dei nostri servizi professionali per i clienti : </p>
                         </div>
@@ -81,8 +80,8 @@
                                         </div>
                                         <div class="aa-single-service-content">
                                             <h4><a href="#">Affitti appartamenti</a></h4>
-                                            <p>Siamo un'<strong>azienda Leader</strong> nel settore degli affitti immobiliari. 
-                                            Da <strong>15 anni </strong>lavoriamo per offire le migliori soluzioni ai 
+                                            <p>Siamo un'<strong>azienda Leader</strong> nel settore degli affitti immobiliari.
+                                            Da <strong>15 anni </strong>lavoriamo per offire le migliori soluzioni ai
                                             locatori e agli <strong>studenti universitari</strong> .</p>
                                         </div>
                                     </div>
@@ -106,7 +105,7 @@
                                         </div>
                                         <div class="aa-single-service-content">
                                             <h4><a href="#">Assistenza personale</a></h4>
-                                            <p>Fai affidamento al nostro servizio assistenza attivo <strong>24h</strong> 
+                                            <p>Fai affidamento al nostro servizio assistenza attivo <strong>24h</strong>
                                             al giorno, <strong>7/7g</strong> .</p>
                                         </div>
                                     </div>
