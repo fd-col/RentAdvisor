@@ -13,12 +13,20 @@ class CatalogoController extends Controller
         $this->modello_catalogo = new Catalogo;
     }
 
-    public function home() {
+    public function home($username = null) {
 
         $annunci = $this->modello_catalogo->get_annunci(6);
 
+        if (is_null($username))
+            return view('views_html/home')
+                ->with('annunci', $annunci);
+
+        $user = $this->modello_catalogo->get_utente($username);
+
         return view('views_html/home')
-            ->with('annunci', $annunci);
+            ->with('annunci', $annunci)
+            ->with('user', $user);
+
     }
 
     public function catalogo_senza_filtri() {

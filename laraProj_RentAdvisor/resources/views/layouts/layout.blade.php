@@ -41,7 +41,7 @@
 <body>
 
 <!-- Start navbar section -->
-@include('layouts._navbar')
+@include('layouts._navbar', ['user' => $user])
 <!-- End navbar section -->
 
 <!-- Start slider  -->

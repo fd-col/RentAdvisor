@@ -9,14 +9,14 @@ use App\User;
 class ProfiloController extends Controller
 {
     protected $modello_user;
-    
-    public function __contruct(){
-        $this->modello_user=new User;
+
+    public function __construct(){
+        $this->modello_user = new User;
     }
     public function pagina_profilo_locatario($username_locatario){
-        
+
         $user = $this->modello_user::where('username', $username_locatario)->get()->first();
-        return view(visualizza_profilo_locatario)
+        return view('views_html/visualizza_profilo_locatario')
         ->with('user', $user);
-    }   
+    }
 }
