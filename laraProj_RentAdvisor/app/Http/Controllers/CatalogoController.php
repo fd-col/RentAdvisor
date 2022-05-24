@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\RichiestaFiltro;
 use App\Models\Resources\Immagine;
+
 use Illuminate\Http\Request;
 use App\Models\Catalogo;
 
@@ -48,4 +51,12 @@ class CatalogoController extends Controller
             ->with('immagini', $immagini);
 
     }
+
+	public function catalogo_con_filtri(RichiestaFiltro $richiesta){
+		$dati_validi=$richiesta->validated();
+		$annunci=$this->modello_catalogo->get_annunci_filtrati($dati_validi);
+		return view('views_html/catalogo')
+			->with('annunci', $annunci);
+		
+	}
 }
