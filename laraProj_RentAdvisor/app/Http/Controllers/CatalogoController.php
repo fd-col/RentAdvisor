@@ -27,9 +27,11 @@ class CatalogoController extends Controller
     public function catalogo_senza_filtri() {
 
         $annunci = $this->modello_catalogo->get_annunci();
+        $immagini = $this->modello_catalogo->get_immagini_annunci($annunci);
 
         return view('views_html/catalogo')
-            ->with('annunci', $annunci);
+            ->with('annunci', $annunci)
+            ->with('immagini', $immagini);
     }
 
     public function dettagli_annuncio($id_annuncio) {

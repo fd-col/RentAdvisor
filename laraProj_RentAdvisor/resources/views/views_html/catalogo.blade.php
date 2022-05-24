@@ -28,10 +28,18 @@
                             @foreach($annunci as $annuncio)
                                 <div class="col-md-4">
                                     <article class="aa-properties-item">
-                                        <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}"
-                                           class="aa-properties-item-img">
-                                            <img src="{{ asset('images/slider/appartamenti/1_1.jpg') }}" alt="img">
-                                        </a>
+                                        <div href="{{ route('dettagli_annuncio', [$annuncio->id]) }}"
+                                           class="aa-properties-details-img">
+                                            @isset($immagini)
+                                                @foreach($immagini as $immagine)
+                                                    @if($immagine->id_annuncio == $annuncio->id)
+                                                        <img src="{{ asset("images/$immagine->nome_immagine") }}" alt="img">
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                <img src="{{ asset("images/image_not_avaiable.jpg") }}" alt="img">
+                                            @endisset
+                                        </div>
                                         <div class="aa-properties-item-content">
                                             <div class="aa-properties-info">
                                                 <span><strong>Città</strong> : {{ $annuncio->citta }}</span>
