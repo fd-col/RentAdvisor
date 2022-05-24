@@ -27,7 +27,7 @@
                         @can('isLocatore')
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
-                                    <a href="" class="aa-login"><span class="fa fa-user"></span>  LOCATORE</a> |
+                                    <a href="" class="aa-login"><span class="fa fa-user"></span>  {{ auth()->user()->nome }} {{ auth()->user()->cognome }}</a> |
                                     <a href="#" class="aa-login"><span class="fa fa-envelope"></span> </a>|
                                     <a href="#" class="aa-login"><span class="fa fa-edit"></span> </a>|
                                     <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span></a>
@@ -40,7 +40,7 @@
                         @can('isLocatario')
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
-                                    <a href="{{ route('visualizza_profilo_locatario', [auth()->user()->username]) }}" class="aa-login"><span class="fa fa-user"></span>  LOCATARIO</a> |
+                                    <a href="{{ route('visualizza_profilo_locatario') }}" class="aa-login"><span class="fa fa-user"></span>  {{ auth()->user()->nome }} {{ auth()->user()->cognome }}</a> |
                                     <a href="#" class="aa-login"><span class="fa fa-envelope"></span> </a>|
                                     <a href="#" class="aa-login"><span class="fa fa-edit"></span> </a>|
                                     <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span></a>
@@ -53,7 +53,7 @@
                         @can('isAdmin')
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
-                                    <a href="" class="aa-login"><span class="fa fa-user"></span>  ADMIN</a> |
+                                    <a href="" class="aa-login"><span class="fa fa-user"></span>  {{ auth()->user()->nome }} {{ auth()->user()->cognome }}</a> |
                                     <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span></a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
@@ -94,7 +94,7 @@
 
                     @can('isLocatario')
                         <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="{{ route('catalog') }}">RICERCA</a></li>
-                        <li class="{{ Route::is('visualizza_profilo_locatario') ? 'active' : '' }}"><a href="{{ route('visualizza_profilo_locatario', [auth()->user()->username]) }}">VISUALIZZA PROFILO</a></li>
+                        <li class="{{ Route::is('visualizza_profilo_locatario') ? 'active' : '' }}"><a href="{{ route('visualizza_profilo_locatario') }}">VISUALIZZA PROFILO</a></li>
                     @else
                         <li class="{{ Route::is('catalog') ? 'active' : '' }}"><a href="{{ route('catalog') }}">CATALOGO</a></li>
                     @endcan
@@ -104,7 +104,7 @@
                     @endcan
 
                     @can('isLocatore')
-                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">AREA PERSONALE</a></li>
+                        <li class="{{ Route::is('area_personale_locatore') ? 'active' : '' }}"><a href="{{ route('area_personale_locatore') }}">AREA PERSONALE</a></li>
                     @endcan
 
                     <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}"> CONTATTI</a></li>

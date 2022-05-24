@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appartamento extends Model
 {
-    protected $table = 'appartamento';
+    protected $table = 'Appartamento';
     protected $primaryKey = 'id_annuncio';
     public $timestamps = false;
 

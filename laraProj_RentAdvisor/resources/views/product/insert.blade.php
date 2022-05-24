@@ -91,11 +91,11 @@
                 </ul>
                 @endif
             </div>
-            
-            <div class="container-form-btn">                
+
+            <div class="container-form-btn">
                 {{ Form::submit('Aggiungi Prodotto', ['class' => 'form-btn1']) }}
             </div>
-            
+
             {{ Form::close() }}
         </div>
     </div>

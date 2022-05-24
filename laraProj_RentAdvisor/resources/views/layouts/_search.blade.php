@@ -16,7 +16,7 @@ $('#tipologia').change(function(){
 		}
 	});
 })
-</script> 
+</script>
   <section id="aa-advance-search">
     <div class="container">
       <div class="aa-advance-search-area">
@@ -53,10 +53,10 @@ $('#tipologia').change(function(){
 				 'F' => 'Femmina',))}}
               </div>
               </div>
-              
+
               <div class="col-md-2">
                 <div class="aa-single-advance-search">
-				{{Form::submit('SEARCH' ,['class', 'aa-search-btn'] )}}
+				{{Form::submit('SEARCH' ,['class' => 'aa-search-btn'] )}}
                 </div>
               </div>
             </div>
@@ -87,14 +87,14 @@ $('#tipologia').change(function(){
                     @endif
                 </div>
             </div>
-		   </div>  
+		   </div>
          </div>
 		 <div class="aa-advance-search-bottom">
            <div class="row">
 				<div class="col-md-0">
 					<label>Caparra massima</label>
 				</div>
-				
+
 				<div class="col-md-1">
 					<div class="aa-single-advance-search">
 						{{ Form::text('caparra_max', '', ['class' => 'search-input','id' => 'caparra_max',]) }}
@@ -108,7 +108,7 @@ $('#tipologia').change(function(){
 					</div>
 				</div>
 		   </div>
-		 </div>  
+		 </div>
 		 <div class="aa-advance-search-bottom">
            <div class="row">
 				<div class="col-md-0">
@@ -137,9 +137,9 @@ $('#tipologia').change(function(){
 				<label>Inizio</label>
 				</div>
 				<div class="col-md-2">
-				
+
 					<div class="aa-single-advance-search">
-					
+
 						{{ Form::date('locazione_inizio', '1990-01-01',['id' => 'locazione_inizio']) }}
                             @if ($errors->first('locazione_inizio'))
                                 <ul>
@@ -191,7 +191,7 @@ $('#tipologia').change(function(){
 				</div>
 				<div class="col-md-1">
 					<div class="aa-single-advance-search">
-					
+
 						{{ Form::text('n_posti_letto_totali', '', ['class' => 'search-input','id' => 'n_posti_letto_totali',]) }}
 				    @if ($errors->first('n_posti_letto_totali'))
                         <ul>
@@ -218,9 +218,9 @@ $('#tipologia').change(function(){
 					</div>
 				</div>
 		   </div>
-		  
+
 		  </div>
-        
+
 		 <div class="aa-advance-search-bottom">
            <div class="row">
 		   <div class="col-md-12">
@@ -289,7 +289,7 @@ $('#tipologia').change(function(){
                 </div>
               </div>
 			  </div>
-			  
+
 			  <div id="row" style="margin-top:25px;">
 				<div id="col-md-12">
 			  {{Form::checkbox('cucina', 'true')}}
@@ -299,7 +299,7 @@ $('#tipologia').change(function(){
 				</div>
 				</div>
 			</div>
-		  
+
 		  <!-- parte solo posti letto -->
 		  <div class="aa-advance-search-bottom" id="posti_letto" hidden>
 			<div class="row">
@@ -356,12 +356,11 @@ $('#tipologia').change(function(){
 				<label>Presenza angolo studio</label>
 				</div>
 				</div>
-			
+
 		  </div>
 		  {{Form::close()}}
         </div>
-		
+
       </div>
     </div>
   </section>
-  

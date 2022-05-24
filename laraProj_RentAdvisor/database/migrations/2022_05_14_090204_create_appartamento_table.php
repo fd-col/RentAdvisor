@@ -20,7 +20,7 @@ class CreateAppartamentoTable extends Migration
             $table->boolean('presenza_cucina')->default(false);
             $table->boolean('presenza_locale_ricreativo')->default(false);
             $table->enum('tipologia_appartamento', ['appartamento', 'casa indipendente']);
-            $table->foreign('id_annuncio')->references('id')->on('annuncio')->onUpdate('cascade');
+            $table->foreign('id_annuncio')->references('id')->on('Annuncio')->onUpdate('cascade');
         });
     }
 

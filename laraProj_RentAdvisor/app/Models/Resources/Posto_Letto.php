@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Posto_Letto extends Model
 {
-    protected $table = 'posto_letto';
+    protected $table = 'Posto_Letto';
     protected $primaryKey = 'id_annuncio';
     public $timestamps = false;
 

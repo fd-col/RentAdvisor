@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests\RichiestaFiltro;
+use App\Models\Resources\Immagine;
+
 use Illuminate\Http\Request;
 use App\Models\Catalogo;
 
@@ -14,11 +17,13 @@ class CatalogoController extends Controller
         $this->modello_catalogo = new Catalogo;
     }
 
-    public function home($username = null) {
+    public function home() {
 
         $annunci = $this->modello_catalogo->get_annunci(6);
+        $immagini = $this->modello_catalogo->get_immagini_annunci($annunci);
         return view('views_html/home')
-            ->with('annunci', $annunci);
+            ->with('annunci', $annunci)
+            ->with('immagini', $immagini);
 
     }
 
@@ -35,13 +40,16 @@ class CatalogoController extends Controller
         $annuncio = $this->modello_catalogo->get_annuncio($id_annuncio);
         $caratteristiche = $this->modello_catalogo->get_caratteristiche_annuncio($annuncio);
         $locatore = $this->modello_catalogo->get_locatore_annuncio($annuncio);
+        $immagini = $this->modello_catalogo->get_immagini_annuncio($id_annuncio);
 
         return view('views_html/dettagli_annuncio')
             ->with('annuncio', $annuncio)
             ->with('caratteristiche', $caratteristiche)
-            ->with('locatore', $locatore);
+            ->with('locatore', $locatore)
+            ->with('immagini', $immagini);
 
     }
+
 	public function catalogo_con_filtri(RichiestaFiltro $richiesta){
 		$dati_validi=$richiesta->validated();
 		$annunci=$this->modello_catalogo->get_annunci_filtrati($dati_validi);

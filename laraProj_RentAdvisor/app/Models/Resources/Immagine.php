@@ -4,9 +4,10 @@ namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Annuncio extends Model
+class Immagine extends Model
 {
-    protected $table = 'Annuncio';
+    protected $table = 'Immagine';
     protected $primaryKey = 'id';
     public $timestamps = false;
+
 }

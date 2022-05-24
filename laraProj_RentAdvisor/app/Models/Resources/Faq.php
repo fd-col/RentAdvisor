@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Faq extends Model
 {
-    protected $table = 'faq';
+    protected $table = 'FAQ';
     protected $primaryKey = 'id';
     public $timestamps = false;
 

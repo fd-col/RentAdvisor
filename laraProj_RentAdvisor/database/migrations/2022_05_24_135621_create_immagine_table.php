@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOpzioneAnnuncioTable extends Migration
+class CreateImmagineTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateOpzioneAnnuncioTable extends Migration
      */
     public function up()
     {
-        Schema::create('Opzione_Annuncio', function (Blueprint $table) {
-            $table->string('username_locatario', 40);
+        Schema::create('Immagine', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('id_annuncio');
-            $table->primary(['username_locatario', 'id_annuncio']);
-            $table->foreign('username_locatario')->references('username')->on('users')->onUpdate('cascade');
+            $table->string('nome_immagine');
             $table->foreign('id_annuncio')->references('id')->on('Annuncio')->onUpdate('cascade');
         });
     }
@@ -29,6 +28,6 @@ class CreateOpzioneAnnuncioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('opzione_annuncio');
+        Schema::dropIfExists('immagine');
     }
 }

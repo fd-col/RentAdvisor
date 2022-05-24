@@ -96,6 +96,28 @@ class DatabaseSeeder extends Seeder {
             ['domanda' => 'Dove posso vedere tutti gli annunci che ho inserito?', 'risposta' => 'Tutti gli annunci da te inseriti sono all\'interno della tua area personale alla quale pui accedere dalla navbar dopo aver fatto il log-in']
         ]);
 
+        DB::table('Immagine')->insert([
+            ['id_annuncio' => 1, 'nome_immagine' => '1_0.jpg'],
+            ['id_annuncio' => 1, 'nome_immagine' => '1_1.jpg'],
+            ['id_annuncio' => 1, 'nome_immagine' => '1_2.jpg'],
+            ['id_annuncio' => 2, 'nome_immagine' => '2_0.jpg'],
+            ['id_annuncio' => 2, 'nome_immagine' => '2_1.jpg'],
+            ['id_annuncio' => 2, 'nome_immagine' => '2_2.jpg'],
+            ['id_annuncio' => 3, 'nome_immagine' => '3_0.jpg'],
+            ['id_annuncio' => 3, 'nome_immagine' => '3_1.jpg'],
+            ['id_annuncio' => 3, 'nome_immagine' => '3_2.jpg'],
+            ['id_annuncio' => 4, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 5, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 6, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 7, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 8, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 9, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 10, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 11, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 12, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 13, 'nome_immagine' => 'image_not_avaiable.jpg'],
+        ]);
+
     }
 
 }
