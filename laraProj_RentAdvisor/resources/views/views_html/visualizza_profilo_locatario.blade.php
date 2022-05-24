@@ -17,7 +17,7 @@
                                 <p>I dati relativi al tuo profilo </p>
                             </div>
                             <div class="aa-contact-form">
-                                {{ Form::open(array('route' => 'visualizza_profilo_locatario', 'class' => 'contactform')) }}
+                                {{ Form::open(array('class' => 'contactform')) }}
                                 <form class="contactform" action="" name="visualizza_profilo" method="get" enctype="multipart/form-data">
                                     <div class="aa-properties-content-body">
                                         <ul class="aa-properties-nav">

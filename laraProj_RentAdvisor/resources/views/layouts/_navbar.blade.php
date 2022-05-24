@@ -93,7 +93,7 @@
                     <li class="{{ Route::is('home') ? 'active' : '' }}"><a href="{{ route('home') }}">HOME</a></li>
 
                     @can('isLocatario')
-                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">RICERCA</a></li>
+                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="{{ route('catalog') }}">RICERCA</a></li>
                         <li class="{{ Route::is('visualizza_profilo_locatario') ? 'active' : '' }}"><a href="{{ route('visualizza_profilo_locatario', [auth()->user()->username]) }}">VISUALIZZA PROFILO</a></li>
                     @else
                         <li class="{{ Route::is('catalog') ? 'active' : '' }}"><a href="{{ route('catalog') }}">CATALOGO</a></li>
