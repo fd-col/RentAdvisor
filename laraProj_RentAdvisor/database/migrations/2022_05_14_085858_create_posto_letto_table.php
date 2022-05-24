@@ -19,7 +19,7 @@ class CreatePostoLettoTable extends Migration
             $table->unsignedSmallInteger('letti_nella_camera');
             $table->boolean('presenza_angolo_studio')->default(false);
             $table->enum('tipologia_posto_letto', ['singola', 'condivisa']);
-            $table->foreign('id_annuncio')->references('id')->on('annuncio')->onUpdate('cascade');
+            $table->foreign('id_annuncio')->references('id')->on('Annuncio')->onUpdate('cascade');
         });
     }
 
