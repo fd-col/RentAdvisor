@@ -4,10 +4,10 @@ jQuery(function(){
 $('#tipologia').change(function(){
 		$val= $('select[name="tipologia"]').val();
 		switch($val){
-			case '1': $("#appartamento").show();
+			case 'appartamento': $("#appartamento").show();
 					$("#posti_letto").hide();
 					break;
-			case '2':	 $("#appartamento").hide();
+			case 'posto_letto':	 $("#appartamento").hide();
 					$("#posti_letto").show();
 					break;
 			default:  $("#appartamento").hide();
@@ -21,7 +21,7 @@ $('#tipologia').change(function(){
     <div class="container">
       <div class="aa-advance-search-area">
         <div class="form">
-		{{ Form::open(array('route' => 'catalog', )) }}
+		{{ Form::open(array('route' => 'catalog_filtered' )) }}
          <div class="aa-advance-search-top">
             <div class="row">
               <div class="col-md-4">
@@ -39,18 +39,18 @@ $('#tipologia').change(function(){
               <div class="col-md-2">
                 <div class="aa-single-advance-search">
 				{{Form::select('tipologia', array(
-				  '0' => 'Alloggio',
-				  '1' => 'Appartamento',
-				'2' => 'Posto letto',), null, ['class' =>'tipologia', 'id'=>'tipologia'] ) }}
+				  'false' => 'Alloggio',
+				  'appartamento' => 'Appartamento',
+				'posto_letto' => 'Posto letto',), null, ['class' =>'tipologia', 'id'=>'tipologia'] ) }}
                 </div>
               </div>
 
               <div class="col-md-2">
                  <div class="aa-single-advance-search">
-				 {{ Form::select('tipologia', array(
-				 '0' => 'Genere Preferito',
-				 '1' => 'Maschio',
-				 '2' => 'Femmina',))}}
+				 {{ Form::select('genere', array(
+				 'false' => 'Genere Preferito',
+				 'M' => 'Maschio',
+				 'F' => 'Femmina',))}}
               </div>
               </div>
               
@@ -283,9 +283,9 @@ $('#tipologia').change(function(){
 				<div class="col-md-2">
                 <div class="aa-single-advance-search">
 				{{ Form::select('tipologia_appartamento', array(
-				  '0'=> 'Tipologia',
-				  '1' => 'Appartamento',
-				'2' => 'Casa indipendente',)) }}
+				  'false'=> 'Tipologia',
+				  'appartamento' => 'Appartamento',
+				'casa_indipendente' => 'Casa indipendente',)) }}
                 </div>
               </div>
 			  </div>
@@ -344,9 +344,9 @@ $('#tipologia').change(function(){
 				<div class="col-md-2">
 					<div class="aa-single-advance-search">
 					{{Form::select('tipologia_posto_letto', array(
-						'0' => 'Tipologia',
-						'1' => 'Camera singola',
-					'2' => 'Camera condivisa'))}}
+						'false' => 'Tipologia',
+						'camera_singola' => 'Camera singola',
+					'camera_condivisa' => 'Camera condivisa'))}}
 					</div>
 				</div>
 				</div>

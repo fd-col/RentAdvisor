@@ -41,6 +41,8 @@ Route::get('/user', 'UserController@index')
 Route::get('/visualizza_profilo_locatario/{username_locatario}', 'ProfiloController@pagina_profilo_locatario')
         ->name('visualizza_profilo_locatario')->middleware('can:isLocatario');
 
+Route::post('/catalogo', 'CatalogoController@catalogo_con_filtri')
+		->name('catalog_filtered')->middleware('can:isLocatario');
 // link amministratore
 
 Route::get('/faq/modifica/{id_faq}', 'FaqController@pagina_modifica_faq')
