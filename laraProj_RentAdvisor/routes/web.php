@@ -36,6 +36,11 @@ Route::get('/admin', 'AdminController@index')
 Route::get('/user', 'UserController@index')
         ->name('user')->middleware('can:isUser');
 
+// link locatore (proprietario)
+
+Route::get('/area_personale_locatore', 'ProfiloController@pagina_profilo_locatore')
+        ->name('area_personale_locatore')->middleware('can:isLocatore');
+
 // link locatario (studente)
 
 Route::get('/visualizza_profilo_locatario', 'ProfiloController@pagina_profilo_locatario')

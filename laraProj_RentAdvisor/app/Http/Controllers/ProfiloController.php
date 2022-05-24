@@ -19,4 +19,10 @@ class ProfiloController extends Controller
         return view('views_html/visualizza_profilo_locatario')
         ->with('user', $user);
     }
+    public function pagina_profilo_locatore(){
+
+        $user = $this->modello_user::where('username', auth()->user()->username)->get()->first();
+        return view('views_html/area_personale_locatore')
+        ->with('user', $user);
+    }
 }

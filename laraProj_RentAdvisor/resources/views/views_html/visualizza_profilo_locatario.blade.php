@@ -6,8 +6,7 @@
 <!-- CONTENT -->
 @section('content')
     @isset($user)
-        <!-- Start form section -->
-        <!-- Le classi di stile utilizzate sono quelle della form di contatto in modo da non doverle rifare-->
+        <!-- Start profile section -->
         <section id="aa-contact">
                         <div class="aa-contact-area">
                             <div class="aa-contact-bottom">
@@ -119,6 +118,6 @@
                             </div>
                         </div>
         </section>
-        <!-- / End form section -->
+        <!-- / End profile section -->
     @endisset
 @endsection

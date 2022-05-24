@@ -104,7 +104,7 @@
                     @endcan
 
                     @can('isLocatore')
-                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">AREA PERSONALE</a></li>
+                        <li class="{{ Route::is('area_personale_locatore') ? 'active' : '' }}"><a href="{{ route('area_personale_locatore') }}">AREA PERSONALE</a></li>
                     @endcan
 
                     <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}"> CONTATTI</a></li>
