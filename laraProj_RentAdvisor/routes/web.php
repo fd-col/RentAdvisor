@@ -38,7 +38,7 @@ Route::get('/user', 'UserController@index')
 
 // link locatario (studente)
 
-Route::get('/visualizza_profilo_locatario/{username_locatario}', 'ProfiloController@pagina_profilo_locatario')
+Route::get('/visualizza_profilo_locatario', 'ProfiloController@pagina_profilo_locatario')
         ->name('visualizza_profilo_locatario')->middleware('can:isLocatario');
 
 // link amministratore
