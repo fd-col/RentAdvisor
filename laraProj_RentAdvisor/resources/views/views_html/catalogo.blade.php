@@ -64,29 +64,8 @@
                             @endforeach
                         </div>
                     </div>
-                    <!-- Start properties content bottom -->
-                    <div class="aa-properties-content-bottom">
-                        <nav>
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="{{ Route::is('   1 pagina catalogo   ') ? 'active' : '' }}"><a href="#">1</a></li>
-                                <li class="{{ Route::is('   2 pagina catalogo   ') ? 'active' : '' }}"><a href="#">2</a></li>
-                                <li class="{{ Route::is('   3 pagina catalogo   ') ? 'active' : '' }}"><a href="#">3</a></li>
-                                <li class="{{ Route::is('   4 pagina catalogo   ') ? 'active' : '' }}"><a href="#">4</a></li>
-                                <li class="{{ Route::is('   5 pagina catalogo   ') ? 'active' : '' }}"><a href="#">5</a></li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <!-- / End properties content bottom -->
+                    <!--Paginazione-->
+                    @include('pagination.paginator', ['paginator' => $annunci])
                 </div>
         </section>
         <!-- / Latest property -->

@@ -1,33 +1,29 @@
+<!-- Start properties content bottom -->
 @if ($paginator->lastPage() != 1)
-<div id="pagination">
-    {{ $paginator->firstItem() }} - {{ $paginator->lastItem() }} di {{ $paginator->total() }} ---
-
-    <!-- Link alla prima pagina -->
-    @if (!$paginator->onFirstPage())
-        <a href="{{ $paginator->url(1) }}">Inizio</a> |
-    @else
-        Inizio |
-    @endif
-
-    <!-- Link alla pagina precedente -->
-    @if ($paginator->currentPage() != 1)
-        <a href="{{ $paginator->previousPageUrl() }}">&lt; Precedente</a> |
-    @else
-        &lt; Precedente |
-    @endif
-
-    <!-- Link alla pagina successiva -->
-    @if ($paginator->hasMorePages())
-        <a href="{{ $paginator->nextPageUrl() }}">Successivo &gt;</a> |
-    @else
-        Successivo &gt; |
-    @endif
-
-    <!-- Link all'ultima pagina -->
-    @if ($paginator->hasMorePages())
-        <a href="{{ $paginator->url($paginator->lastPage()) }}">Fine</a>
-    @else
-        Fine
-    @endif
-</div>
+    <div class="aa-properties-content-bottom">
+        <nav>
+            <ul class="pagination">
+                <li>
+                    <!-- Link alla pagina precedente -->
+                    @if ($paginator->currentPage() != 1)
+                        <a href="{{ $paginator->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                    @else
+                        <span aria-hidden="true">&laquo;</span>
+                    @endif
+                </li>
+                @for($i = 1; $i <= $paginator->lastPage(); $i++)
+                    <li class="{{ $paginator->currentPage()==$i ? 'active' : '' }}"><a href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
+                @endfor
+                <li>
+                    <!-- Link alla pagina successiva -->
+                    @if ($paginator->hasMorePages())
+                        <a href="{{ $paginator->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                    @else
+                        <span aria-hidden="true">&raquo;</span>
+                    @endif
+                </li>
+            </ul>
+        </nav>
+    </div>
 @endif
+<!-- / End properties content bottom -->

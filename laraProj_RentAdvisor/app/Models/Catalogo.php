@@ -14,7 +14,7 @@ class Catalogo extends Model
 {
     public function get_annunci($numero_annunci=null) {
         if (is_null($numero_annunci))
-            $annunci = Annuncio::select()->where('disponibile', true)->orderBy('data_inserimento')->get();
+            $annunci = Annuncio::select()->where('disponibile', true)->orderBy('data_inserimento')->paginate(9);
         else
             $annunci = Annuncio::select()->where('disponibile', true)->orderBy('data_inserimento')->get()->take($numero_annunci);
         return $annunci;
@@ -43,7 +43,10 @@ class Catalogo extends Model
     }
 
     public function get_immagini_annunci($annunci) {
-        $id_annunci = $annunci->map->only(['id']);
+        $id_annunci = array();
+        foreach ($annunci as $annuncio)
+            array_push($id_annunci, $annuncio->id);
+        //$id_annunci = $annunci->map->only(['id']);
         $immagini = Immagine::whereIn('id_annuncio', $id_annunci)->get();
         return $immagini;
     }
@@ -109,7 +112,7 @@ class Catalogo extends Model
 		$annunci=$annunci->where('Posto_Letto.tipologia_posto_letto', $filtri['tipologia_posto_letto']);
 	if(isset($filtri['angolo_studio']))
 		$annunci=$annunci->where('Posto_Letto.presenza_angolo_studio', $filtri['angolo_studio']);
-	
+
 	return $annunci;
 	}
 }
