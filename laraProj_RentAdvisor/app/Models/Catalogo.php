@@ -46,7 +46,6 @@ class Catalogo extends Model
         $id_annunci = array();
         foreach ($annunci as $annuncio)
             array_push($id_annunci, $annuncio->id);
-        //$id_annunci = $annunci->map->only(['id']);
         $immagini = Immagine::whereIn('id_annuncio', $id_annunci)->get();
         return $immagini;
     }
@@ -54,6 +53,11 @@ class Catalogo extends Model
     public function get_locatore_annuncio($annuncio) {
         $locatore = User::where('username', $annuncio->username_locatore)->get()->first();
         return $locatore;
+    }
+
+    public function get_annunci_locatore($username_locatore) {
+        $annunci = Annuncio::where('username_locatore', $username_locatore)->orderBy('data_inserimento')->paginate(4);
+        return $annunci;
     }
 	public function get_annunci_filtrati($filtri){
 	$annunci=Annuncio::join('Appartamento', 'Annuncio.id', 'Appartamento.id_annuncio');

@@ -55,8 +55,7 @@
                                          <span class="aa-price">
                                             {{$annuncio->canone_affitto}}€
                                          </span>
-                                                <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}"
-                                                   class="aa-secondary-btn">Dettagli</a>
+                                                <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}" class="aa-secondary-btn">Dettagli</a>
                                             </div>
                                         </div>
                                     </article>

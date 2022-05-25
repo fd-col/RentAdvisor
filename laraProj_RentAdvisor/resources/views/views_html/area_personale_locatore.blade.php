@@ -5,166 +5,92 @@
 
 <!-- CONTENT -->
 @section('content')
+
+    <!-- Script per attivare la modifica dei dati -->
+    <script>
+        jQuery(function(){
+            $('#bottone_modifica').click(function(){
+                $('#nome').removeAttr('readonly');
+                $('#cognome').removeAttr('readonly');
+                $('#data_nascita').removeAttr('readonly');
+                $('#telefono').removeAttr('readonly');
+                $('#genere').removeAttr('readonly');
+                $('#bottone_salva_dati').show();
+                $('#bottone_modifica').hide();
+            });
+        })
+    </script>
+
+
     @isset($user)
     <!-- Start Properties  -->
     <section id="aa-properties">
         <div class="aa-title">
         <h2>La tua area personale</h2>
-        <span></span>
-        <p>In questa pagina puoi trovare tutte le informazioni sui tuoi annunci pubblicati, la possbilità di inserire un annuncio, di comunicare con le persone interessate e di modificare i dati relativi al tuo profilo. </p>
+        <div class="col-md-10 col-md-offset-1">
+            <span></span>
+            <p>In questa pagina puoi trovare tutte le informazioni sui tuoi annunci pubblicati, la possibilità di inserire un annuncio, di comunicare con le persone interessate e, in fondo alla pagina, di visualizzare e modificare i dati relativi al tuo profilo. </p>
+        </div>
         </div>
         <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <div class="aa-properties-content">
-                    <!-- start properties content head -->
-                    <div class="aa-properties-content-head">
-                        I tuoi annunci
-                        <div class="aa-properties-content-head-right">
-                            <a id="aa-grid-properties" href="#"><span class="fa fa-th"></span></a>
-                            <a id="aa-list-properties" href="#"><span class="fa fa-list"></span></a>
-                        </div>
-                    </div>
-
+                @isset($annunci)
                 <!-- Start properties content body -->
                 <div class="aa-properties-content-body">
+                    <h2>I tuoi annunci</h2>
+                    <p>Qui puoi trovare tutti gli annunci che hai inserito, per modificare un annuncio premi sul pulsante "Dettagli"</p>
                 <ul class="aa-properties-nav">
+                    @foreach($annunci as $annuncio)
                     <li>
                     <article class="aa-properties-item">
-                        <a class="aa-properties-item-img" href="#">
-                        <img alt="img" src="{{ asset('images/slider/appartamenti/appartamento2.0.jpg') }}">
-                        </a>
-                        <div class="aa-tag for-rent">
-                        For Rent
+                        <div class="aa-properties-details-img">
+                            @isset($immagini)
+                                @foreach($immagini as $immagine)
+                                    @if($immagine->id_annuncio == $annuncio->id)
+                                        <img src="{{ asset("images/$immagine->nome_immagine") }}" alt="img">
+                                    @endif
+                                @endforeach
+                            @else
+                                <img src="{{ asset("images/image_not_avaiable.jpg") }}" alt="img">
+                            @endisset
                         </div>
+                        @if($annuncio->disponibile == true)
+                            <div class="aa-tag for-rent">
+                                Affittasi
+                            </div>
+                        @else
+                            <div class="aa-tag sold-out">
+                                Non disponibile
+                            </div>
+                        @endif
                         <div class="aa-properties-item-content">
                         <div class="aa-properties-info">
-                            <span>5 Rooms</span>
-                            <span>2 Beds</span>
-                            <span>3 Baths</span>
-                            <span>1100 SQ FT</span>
+                            <span><strong>Città</strong> : {{ $annuncio->citta }}</span>
+                            <span><strong>Tipologia</strong> : {{ str_replace('_', ' ', $annuncio->tipologia) }}</span>
                         </div>
                         <div class="aa-properties-about">
-                            <h3><a href="#">Appartment Title</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
+                            <h3>
+                                <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}">{{ substr($annuncio->titolo, 0, 50) }}</a>
+                            </h3>
+                            <p>{{ substr($annuncio->descrizione, 0, 150) }} ...</p>
                         </div>
                         <div class="aa-properties-detial">
                             <span class="aa-price">
-                            $35000
+                                {{$annuncio->canone_affitto}}€
                             </span>
-                            <a class="aa-secondary-btn" href="#">View Details</a>
+                            <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}" class="aa-secondary-btn">Dettagli</a>
                         </div>
                         </div>
                     </article>
                     </li>
-                    <li>
-                    <article class="aa-properties-item">
-                        <a class="aa-properties-item-img" href="#">
-                        <img alt="img" src="{{ asset('images/slider/appartamenti/appartamento1.0.jpg') }}">
-                        </a>
-                        <div class="aa-tag sold-out">
-                        Sold Out
-                        </div>
-                        <div class="aa-properties-item-content">
-                        <div class="aa-properties-info">
-                            <span>5 Rooms</span>
-                            <span>2 Beds</span>
-                            <span>3 Baths</span>
-                            <span>1100 SQ FT</span>
-                        </div>
-                        <div class="aa-properties-about">
-                            <h3><a href="#">Appartment Title</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-                        </div>
-                        <div class="aa-properties-detial">
-                            <span class="aa-price">
-                            $35000
-                            </span>
-                            <a class="aa-secondary-btn" href="#">View Details</a>
-                        </div>
-                        </div>
-                    </article>
-                    </li>
-                    <li>
-                    <article class="aa-properties-item">
-                        <a class="aa-properties-item-img" href="#">
-                        <img alt="img" src="{{ asset('images/slider/appartamenti/appartamento3.0.jpg') }}">
-                        </a>
-                        <div class="aa-tag sold-out">
-                        Sold Out
-                        </div>
-                        <div class="aa-properties-item-content">
-                        <div class="aa-properties-info">
-                            <span>5 Rooms</span>
-                            <span>2 Beds</span>
-                            <span>3 Baths</span>
-                            <span>1100 SQ FT</span>
-                        </div>
-                        <div class="aa-properties-about">
-                            <h3><a href="#">Appartment Title</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-                        </div>
-                        <div class="aa-properties-detial">
-                            <span class="aa-price">
-                            $35000
-                            </span>
-                            <a class="aa-secondary-btn" href="#">View Details</a>
-                        </div>
-                        </div>
-                    </article>
-                    </li>
-                    <li>
-                    <article class="aa-properties-item">
-                        <a class="aa-properties-item-img" href="#">
-                        <img alt="img" src="{{ asset('images/slider/appartamenti/appartamento2.2.jpg') }}">
-                        </a>
-                        <div class="aa-tag for-sale">
-                        For Sale
-                        </div>
-                        <div class="aa-properties-item-content">
-                        <div class="aa-properties-info">
-                            <span>5 Rooms</span>
-                            <span>2 Beds</span>
-                            <span>3 Baths</span>
-                            <span>1100 SQ FT</span>
-                        </div>
-                        <div class="aa-properties-about">
-                            <h3><a href="#">Appartment Title</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-                        </div>
-                        <div class="aa-properties-detial">
-                            <span class="aa-price">
-                            $35000
-                            </span>
-                            <a class="aa-secondary-btn" href="#">View Details</a>
-                        </div>
-                        </div>
-                    </article>
-                    </li>
+                    @endforeach
                 </ul>
+                @endisset
                 </div>
-                <!-- Start properties content bottom -->
-                <div class="aa-properties-content-bottom">
-                <nav>
-                    <ul class="pagination">
-                    <li>
-                        <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="{{ Route::is('   1 pagina catalogo   ') ? 'active' : '' }}"><a href="#">1</a></li>
-                    <li class="{{ Route::is('   2 pagina catalogo   ') ? 'active' : '' }}"><a href="#">2</a></li>
-                    <li class="{{ Route::is('   3 pagina catalogo   ') ? 'active' : '' }}"><a href="#">3</a></li>
-                    <li class="{{ Route::is('   4 pagina catalogo   ') ? 'active' : '' }}"><a href="#">4</a></li>
-                    <li class="{{ Route::is('   5 pagina catalogo   ') ? 'active' : '' }}"><a href="#">5</a></li>
-                    <li class="{{ Route::is('   Next pagina catalogo   ') ? 'active' : '' }}">
-                        <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                    </ul>
-                </nav>
-                </div>
+                <!-- Paginazione annunci locatore -->
+                @include('pagination.paginator', ['paginator' => $annunci])
             </div>
             </div>
             <!-- Start properties sidebar -->
@@ -172,56 +98,37 @@
             <aside class="aa-properties-sidebar">
                 <!-- Start Single properties sidebar -->
                 <div class="aa-properties-single-sidebar">
-                    <a href="inserimento_annuncio.html" class="round-button">INSERISCI</a>
+                    <a href="inserimento_annuncio.html" class="round-button">INSERISCI ANNUNCIO</a>
                     <br>
                     <div class="aa-title">
-                    <span></span>
-                    <h2>Chat</h2>
+                        <span></span>
+                        <h2>Chat</h2>
+                        <p>Le tue ultime chat</p>
                     </div>
-                <!-- comment threats -->
+                </div>
+                <!-- chat threats -->
                 <div class="col-md-12">
                 <div class="aa-comments-area">
-                    <h3>2 Comments</h3>
                     <div class="comments">
                     <ul class="commentlist">
+                        @isset($messaggi)
+                            @foreach($messaggi as $messaggio)
                         <li>
                         <div class="media">
                             <div class="media-left">
                                 <img alt="img" src="{{ asset('images/generic-user-image.jpeg') }}" class="media-object news-img">
                             </div>
                             <div class="media-body">
-                            <h4 class="author-name">Adam Barney</h4>
-                            <span class="comments-date"> 20th April, 2016</span>
-                            <p>Ultimo messaggio inviato o ricevuto</p>
+                            <h4 class="author-name">{{$messaggio->username_locatario}}</h4>
                             <a class="reply-btn" href="#">Reply</a>
                             </div>
                         </div>
                         </li>
-                        <li>
-                        <div class="media">
-                            <div class="media-left">
-                                <img alt="img" src="{{ asset('images/generic-user-image.jpeg') }}" class="media-object news-img">
-                            </div>
-                            <div class="media-body">
-                            <h4 class="author-name">John Smith</h4>
-                            <span class="comments-date"> 20th April, 2016</span>
-                            <p>Ultimo messaggio inviato o ricevuto</p>
-                            <a class="reply-btn" href="#">Reply</a>
-                            </div>
-                        </div>
-                        </li>
-                <!-- comments pagination -->
-                <nav>
-                    <ul class="pagination comments-pagination">
-                    <li>
-                        <a aria-label="Previous" href="#">
-                        <span aria-hidden="true">«</span>
-                        <span aria-hidden="true">»</span>
-                        </a>
-                    </li>
+                            @endforeach
+                        @endisset
                     </ul>
-                </nav>
-
+                    </div>
+                </div>
                 </div>
             </aside>
             </div>
@@ -232,115 +139,119 @@
 
     <!-- Start profile section -->
     <section id="aa-contact">
-                    <div class="aa-contact-area">
-                        <div class="aa-contact-bottom">
-                            <div class="aa-title">
-                                <h2>I Tuoi Dati</h2>
-                                <span></span>
-                                <p>I dati relativi al tuo profilo </p>
-                            </div>
-                            <div class="aa-contact-form">
-                                    {{ Form::open(array('class' => 'contactform')) }}
-                                    <div class="aa-properties-content-body">
-                                        <ul class="aa-properties-nav">
-                                            <li>
-                                                <div class="col-xs-6">
-                                                    <div class="aa-single-field">
-                                                        {{ Form::label('username', 'Username*') }}
-                                                        {{ Form::text('username', "$user->username", ['id' => 'username', 'aria-required' => 'true']) }}
-                                                        @if ($errors->first('username'))
-                                                        <ul>
-                                                            @foreach ($errors->get('username') as $message)
-                                                                <li class="richiesta">{{ $message }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                        @endif
-                                                    </div>
-                                                    <div class="aa-single-field">
-                                                        {{ Form::label('nome', 'Nome*') }}
-                                                        {{ Form::text('nome', "$user->nome", ['id' => 'nome', 'aria-required' => 'true']) }}
-                                                        @if ($errors->first('nome'))
-                                                        <ul>
-                                                            @foreach ($errors->get('nome') as $message)
-                                                                <li class="richiesta">{{ $message }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                        @endif
-                                                    </div>
-                                                    <div class="aa-single-field">
-                                                        {{ Form::label('cognome', 'Cognome*') }}
-                                                        {{ Form::text('cognome', "$user->cognome", ['id' => 'cognome', 'aria-required' => 'true']) }}
-                                                        @if ($errors->first('cognome'))
-                                                        <ul>
-                                                            @foreach ($errors->get('cognome') as $message)
-                                                                <li class="richiesta">{{ $message }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                        @endif
-                                                    </div>
-                                                    <div class="aa-single-field">
-                                                        {{ Form::label('email', 'Email*') }}
-                                                        {{ Form::text('email', "$user->email", ['id' => 'email', 'aria-required' => 'true']) }}
-                                                        @if ($errors->first('email'))
-                                                        <ul>
-                                                            @foreach ($errors->get('email') as $message)
-                                                                <li class="richiesta">{{ $message }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col-xs-6">
-                                                    <div class="aa-single-field">
-                                                        
-                                                    </div>
-                                                    <div class="aa-single-field">
-                                                    {{ Form::label('data_nascita', 'Data di nascita*') }}
-                                                        {{ Form::text('data_nascita', "$user->data_nascita", ['id' => 'data_nascita', 'aria-required' => 'true']) }}
-                                                        @if ($errors->first('cognome'))
-                                                        <ul>
-                                                            @foreach ($errors->get('data_nascita') as $message)
-                                                                <li class="richiesta">{{ $message }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                        @endif
-                                                    </div>
-                                                    <div class="aa-single-field">
-                                                        {{ Form::label('telefono', 'Telefono*') }}
-                                                        {{ Form::text('telefono', "$user->telefono", ['id' => 'telefono', 'aria-required' => 'true']) }}
-                                                        @if ($errors->first('telefono'))
-                                                        <ul>
-                                                            @foreach ($errors->get('telefono') as $message)
-                                                                <li class="richiesta">{{ $message }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                        @endif
-                                                    </div>
-                                                    <div class="aa-single-field">
-                                                        {{ Form::label('genere', 'Genere*') }}
-                                                        {{ Form::text('genere', "$user->genere", ['id' => 'genere', 'aria-required' => 'true']) }}
-                                                        @if ($errors->first('genere'))
-                                                        <ul>
-                                                            @foreach ($errors->get('genere') as $message)
-                                                                <li class="richiesta">{{ $message }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
+        <div class="aa-contact-area">
+            <div class="aa-contact-bottom">
+                <div class="aa-title">
+                    <h2>I Tuoi Dati</h2>
+                    <span></span>
+                    <p>Qui puoi trovare i dati del tuo profilo e modificarli, i campi obbligatori sono contrassegnati con *</p>
+                </div>
+                <div class="aa-contact-form">
+                    {{ Form::open(array('route' => 'modifica_dati_locatore' ,'class' => 'contactform')) }}
+                    <div class="aa-properties-content-body">
+                        <ul class="aa-properties-nav">
+                            <li>
+                                <div class="col-xs-6">
+                                    <div class="aa-single-field">
+                                        {{ Form::label('username', 'Username (non modificabile)') }}
+                                        {{ Form::text('username', "$user->username", ['id' => 'username', 'aria-required' => 'true', 'readonly' => 'true']) }}
+                                        @if ($errors->first('username'))
+                                            <ul>
+                                                @foreach ($errors->get('username') as $message)
+                                                    <li class="richiesta">{{ $message }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
                                     </div>
-                                    <p class="form-submit">
-                                        {{ Form::submit('Modifica') }}
-                                    </p>
-                                </form>
-                                {{ Form::close() }}
-                            </div>
-                        </div>
+                                    <div class="aa-single-field">
+                                        {{ Form::label('nome', 'Nome*') }}
+                                        {{ Form::text('nome', "$user->nome", ['id' => 'nome', 'aria-required' => 'true', 'readonly' => 'true']) }}
+                                        @if ($errors->first('nome'))
+                                            <ul>
+                                                @foreach ($errors->get('nome') as $message)
+                                                    <li class="richiesta">{{ $message }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </div>
+                                    <div class="aa-single-field">
+                                        {{ Form::label('cognome', 'Cognome*') }}
+                                        {{ Form::text('cognome', "$user->cognome", ['id' => 'cognome', 'aria-required' => 'true', 'readonly' => 'true']) }}
+                                        @if ($errors->first('cognome'))
+                                            <ul>
+                                                @foreach ($errors->get('cognome') as $message)
+                                                    <li class="richiesta">{{ $message }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </div>
+                                    <div class="aa-single-field">
+                                        {{ Form::label('email', 'Email (non modificabile)') }}
+                                        {{ Form::text('email', "$user->email", ['id' => 'email', 'aria-required' => 'true', 'readonly' => 'true']) }}
+                                        @if ($errors->first('email'))
+                                            <ul>
+                                                @foreach ($errors->get('email') as $message)
+                                                    <li class="richiesta">{{ $message }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-xs-6">
+                                    <div class="aa-single-field">
+
+                                    </div>
+                                    <div class="aa-single-field">
+                                        {{ Form::label('data_nascita', 'Data di nascita* (AAAA-MM-GG)') }}
+                                        {{ Form::text('data_nascita', "$user->data_nascita", ['id' => 'data_nascita', 'aria-required' => 'true', 'readonly' => 'true']) }}
+                                        @if ($errors->first('cognome'))
+                                            <ul>
+                                                @foreach ($errors->get('data_nascita') as $message)
+                                                    <li class="richiesta">{{ $message }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </div>
+                                    <div class="aa-single-field">
+                                        {{ Form::label('telefono', 'Telefono') }}
+                                        {{ Form::text('telefono', "$user->telefono", ['id' => 'telefono', 'aria-required' => 'true', 'readonly' => 'true']) }}
+                                        @if ($errors->first('telefono'))
+                                            <ul>
+                                                @foreach ($errors->get('telefono') as $message)
+                                                    <li class="richiesta">{{ $message }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </div>
+                                    <div class="aa-single-field">
+                                        {{ Form::label('genere', 'Genere* (M/F/ND)') }}
+                                        {{ Form::text('genere', "$user->genere", ['id' => 'genere', 'aria-required' => 'true', 'readonly' => 'true']) }}
+                                        @if ($errors->first('genere'))
+                                            <ul>
+                                                @foreach ($errors->get('genere') as $message)
+                                                    <li class="richiesta">{{ $message }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
+                    <p class="form-submit" style="display: none" id="bottone_salva_dati">
+                        {{ Form::submit('Salva') }}
+                    </p>
+                    {{ Form::close() }}
+                    <div class="col-md-2 col-md-offset-5">
+                        <p class="form-submit">
+                            <input type="button" id="bottone_modifica" value="Modifica dati personali">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- / End profile section -->
     @endisset

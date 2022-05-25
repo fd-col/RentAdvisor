@@ -32,13 +32,12 @@ class FaqController extends Controller
 
     public function modifica_faq(RichiestaModificaFaq $richiesta) {
 
-        $faq = new Faq;
         $dati_validi = $richiesta->validated();
-        $faq::where('id', $dati_validi['id'])
+        $this->modello_faq::where('id', $dati_validi['id'])
             ->limit(1)
             ->update(['domanda' => $dati_validi['domanda']]);
 
-         $faq::where('id', $dati_validi['id'])
+        $this->modello_faq::where('id', $dati_validi['id'])
              ->limit(1)
              ->update(['risposta' => $dati_validi['risposta']]);
 
@@ -50,9 +49,8 @@ class FaqController extends Controller
     }
 
     public function aggiungi_faq(RichiestaInserisciFaq $richiesta) {
-        $faq = new Faq;
         $dati_validi = $richiesta->validated();
-        $faq::insert(['domanda' => $dati_validi['domanda'], 'risposta' => $dati_validi['risposta']]);
+        $this->modello_faq::insert(['domanda' => $dati_validi['domanda'], 'risposta' => $dati_validi['risposta']]);
 
         return redirect()->action('FaqController@pagina_faq');
     }
@@ -65,9 +63,8 @@ class FaqController extends Controller
     }
 
     public function elimina_faq(RichiestaEliminaFaq $richiesta) {
-        $faq = new Faq;
         $dati_validi = $richiesta->validated();
-        $faq::where('id', $dati_validi['id'])
+        $this->modello_faq::where('id', $dati_validi['id'])
             ->delete();
 
         return redirect()->action('FaqController@pagina_faq');

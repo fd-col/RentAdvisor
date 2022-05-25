@@ -38,8 +38,13 @@ Route::get('/user', 'UserController@index')
 
 // link locatore (proprietario)
 
-Route::get('/area_personale_locatore', 'ProfiloController@pagina_profilo_locatore')
+Route::get('/locatore/area_personale_locatore', 'ProfiloController@pagina_profilo_locatore')
         ->name('area_personale_locatore')->middleware('can:isLocatore');
+
+Route::post('/locatore/modifica_dati_locatore', 'ProfiloController@modifica_dati_locatore')
+    ->name('modifica_dati_locatore')->middleware('can:isLocatore');
+
+
 
 // link locatario (studente)
 
@@ -67,10 +72,6 @@ Route::get('/faq/elimina/{id_faq}', 'FaqController@pagina_elimina_faq')
 
 Route::post('faq/confermaeliminazione', 'FaqController@elimina_faq')
     ->name('conferma_elimina_faq')->middleware('can:isAdmin');
-
-
-
-
 
 
 // Rotte per l'autenticazione
