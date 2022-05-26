@@ -57,7 +57,7 @@
                             @endisset
                         </div>
                         @if($annuncio->disponibile == true)
-                            <div class="aa-tag for-rent">
+                            <div class="aa-tag for-sale">
                                 Affittasi
                             </div>
                         @else
@@ -93,6 +93,9 @@
                 @include('pagination.paginator', ['paginator' => $annunci])
             </div>
             </div>
+
+
+
             <!-- Start properties sidebar -->
             <div class="col-md-4">
             <aside class="aa-properties-sidebar">
@@ -110,23 +113,26 @@
                 <div class="col-md-12">
                 <div class="aa-comments-area">
                     <div class="comments">
-                    <ul class="commentlist">
-                        @isset($messaggi)
-                            @foreach($messaggi as $messaggio)
-                        <li>
-                        <div class="media">
-                            <div class="media-left">
-                                <img alt="img" src="{{ asset('images/generic-user-image.jpeg') }}" class="media-object news-img">
-                            </div>
-                            <div class="media-body">
-                            <h4 class="author-name">{{$messaggio->username_locatario}}</h4>
-                            <a class="reply-btn" href="#">Reply</a>
-                            </div>
-                        </div>
-                        </li>
-                            @endforeach
-                        @endisset
-                    </ul>
+                        <ul class="commentlist">
+                            @isset($messaggi)
+                                @foreach($messaggi as $messaggio)
+                                    <li>
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <span class="fa fa-user"></span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="author-name">{{$messaggio->username_locatario}}</h4>
+                                                <a class="reply-btn" href="#">Vai alla chat</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @endisset
+                            <li>
+                                <a href="#"><span class="fa fa-envelope"></span> Tutti i messaggi</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 </div>
@@ -240,9 +246,11 @@
                             </li>
                         </ul>
                     </div>
-                    <p class="form-submit" style="display: none" id="bottone_salva_dati">
-                        {{ Form::submit('Salva') }}
-                    </p>
+                    <div class="col-md-2 col-md-offset-5">
+                        <p class="form-submit" style="display: none" id="bottone_salva_dati">
+                            {{ Form::submit('Salva') }}
+                        </p>
+                    </div>
                     {{ Form::close() }}
                     <div class="col-md-2 col-md-offset-5">
                         <p class="form-submit">

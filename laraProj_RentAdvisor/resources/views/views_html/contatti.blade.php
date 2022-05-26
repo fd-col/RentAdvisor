@@ -25,7 +25,7 @@
                                 </p>
                                 <ul class="contact-info-list">
                                     <li><i class="fa fa-phone"></i> 1234567890</li>
-                                    <li><i class="fa fa-envelope-o"></i> info@rentadvisor.com</li>
+                                    <a href="mailto:info@rentadvisor.com"><li><i class="fa fa-envelope-o"></i> info@rentadvisor.com</li></a>
                                     <li><i class="fa fa-map-marker"></i> Ancona, AN, 60131, Italia</li>
                                 </ul>
                             </div>
@@ -36,7 +36,7 @@
                                     <h2>Email</h2>
                                     <p><strong>Servizio assistenza clienti </strong></p>
                                     <p></p>
-                                    <p>info@rentadvisor.com</p>
+                                    <a href="mailto:info@rentadvisor.com"><p>info@rentadvisor.com</p></a>
                                 </fieldset>
                             </div>
                             <div class="aa-title">

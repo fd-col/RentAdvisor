@@ -14,9 +14,10 @@ class CreateOpzioneAnnuncioTable extends Migration
     public function up()
     {
         Schema::create('Opzione_Annuncio', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('username_locatario', 40);
             $table->unsignedBigInteger('id_annuncio');
-            $table->primary(['username_locatario', 'id_annuncio']);
+            $table->unique(['username_locatario', 'id_annuncio']);
             $table->foreign('username_locatario')->references('username')->on('users')->onUpdate('cascade');
             $table->foreign('id_annuncio')->references('id')->on('Annuncio')->onUpdate('cascade');
         });

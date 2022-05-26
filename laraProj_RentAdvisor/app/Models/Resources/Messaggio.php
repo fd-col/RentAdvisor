@@ -11,7 +11,7 @@ class Messaggio extends Model
     public $timestamps = false;
 
     public function get_utenti_ultimi_messaggi_locatore($username_locatore) {
-        $messaggi = $this::select('username_locatore', 'username_locatario')->distinct()->where('username_locatore', $username_locatore)->take(3)->get();
+        $messaggi = $this::select('username_locatore', 'username_locatario')->distinct()->where('username_locatore', $username_locatore)->take(10)->get();
         return $messaggi;
     }
 }

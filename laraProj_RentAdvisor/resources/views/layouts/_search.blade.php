@@ -26,7 +26,7 @@ $('#tipologia').change(function(){
             <div class="row">
               <div class="col-md-4">
                 <div class="aa-single-advance-search">
-                  {{ Form::text('titolo', 'Titolo', ['class' => 'search-input','id' => 'titolo']) }}
+                  {{ Form::text('titolo', 'Parole chiave', ['class' => 'search-input','id' => 'titolo']) }}
 				                                  @if ($errors->first('titolo'))
                                     <ul>
                                         @foreach ($errors->get('username') as $message)
@@ -48,7 +48,7 @@ $('#tipologia').change(function(){
               <div class="col-md-2">
                  <div class="aa-single-advance-search">
 				 {{ Form::select('genere', array(
-				 'false' => 'Genere Preferito',
+				 'false' => 'Genere Preferito nell\'alloggio',
 				 'M' => 'Maschio',
 				 'F' => 'Femmina',))}}
               </div>

@@ -48,11 +48,14 @@ Route::post('/locatore/modifica_dati_locatore', 'ProfiloController@modifica_dati
 
 // link locatario (studente)
 
-Route::get('/visualizza_profilo_locatario', 'ProfiloController@pagina_profilo_locatario')
+Route::get('/locatario/visualizza_profilo_locatario', 'ProfiloController@pagina_profilo_locatario')
         ->name('visualizza_profilo_locatario')->middleware('can:isLocatario');
 
 Route::post('/catalogo', 'CatalogoController@catalogo_con_filtri')
 		->name('catalog_filtered')->middleware('can:isLocatario');
+
+Route::post('/locatario/modifica_dati_locatario', 'ProfiloController@modifica_dati_locatario')
+    ->name('modifica_dati_locatario')->middleware('can:isLocatario');
 // link amministratore
 
 Route::get('/faq/modifica/{id_faq}', 'FaqController@pagina_modifica_faq')

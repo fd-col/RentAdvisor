@@ -28,9 +28,9 @@
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
                                     <a href="{{ route('area_personale_locatore') }}" class="aa-login"><span class="fa fa-user"></span>  {{ auth()->user()->nome }} {{ auth()->user()->cognome }}</a> |
-                                    <a href="#" class="aa-login"><span class="fa fa-envelope"></span> </a>|
-                                    <a href="{{ Route::is('area_personale_locatore') ? '#aa-contact' : route('area_personale_locatore') }}" class="aa-login"><span class="fa fa-edit"></span> </a>|
-                                    <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span></a>
+                                    <a href="#" class="aa-login"><span class="fa fa-envelope"></span> Messaggi</a>|
+                                    <a href="{{ Route::is('area_personale_locatore') ? '#aa-contact' : route('area_personale_locatore') }}" class="aa-login"><span class="fa fa-edit"></span> Profilo</a>|
+                                    <a href="" title="Esci dal sito" class="aa-login" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> Logout</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
@@ -41,9 +41,9 @@
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
                                     <a href="{{ route('visualizza_profilo_locatario') }}" class="aa-login"><span class="fa fa-user"></span>  {{ auth()->user()->nome }} {{ auth()->user()->cognome }}</a> |
-                                    <a href="#" class="aa-login"><span class="fa fa-envelope"></span> </a>|
-                                    <a href="{{ Route::is('visualizza_profilo_locatario') ? '#aa-contact-form' : route('visualizza_profilo_locatario') }}" class="aa-login"><span class="fa fa-edit"></span> </a>|
-                                    <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span></a>
+                                    <a href="#" class="aa-login"><span class="fa fa-envelope"></span> Messaggi</a>|
+                                    <a href="{{ Route::is('visualizza_profilo_locatario') ? '#aa-contact' : route('visualizza_profilo_locatario') }}" class="aa-login"><span class="fa fa-edit"></span> Profilo</a>|
+                                    <a href="" title="Esci dal sito" class="aa-login" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> Logout</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
@@ -54,7 +54,7 @@
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
                                     <a href="" class="aa-login"><span class="fa fa-user"></span>  {{ auth()->user()->nome }} {{ auth()->user()->cognome }}</a> |
-                                    <a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span></a>
+                                    <a href="" title="Esci dal sito" class="aa-login" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> Logout</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
@@ -93,7 +93,7 @@
                     <li class="{{ Route::is('home') ? 'active' : '' }}"><a href="{{ route('home') }}">HOME</a></li>
 
                     @can('isLocatario')
-                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="{{ route('catalog') }}">RICERCA</a></li>
+                        <li class="{{ Route::is('catalog') ? 'active' : '' }}"><a href="{{ route('catalog') }}">RICERCA</a></li>
                         <li class="{{ Route::is('visualizza_profilo_locatario') ? 'active' : '' }}"><a href="{{ route('visualizza_profilo_locatario') }}">VISUALIZZA PROFILO</a></li>
                     @else
                         <li class="{{ Route::is('catalog') ? 'active' : '' }}"><a href="{{ route('catalog') }}">CATALOGO</a></li>
