@@ -60,62 +60,62 @@ class Catalogo extends Model
         return $annunci;
     }
 	public function get_annunci_filtrati($filtri){
-	$annunci=Annuncio::join('Appartamento', 'Annuncio.id', 'Appartamento.id_annuncio');
-	$annunci=$annunci->join('Posto_Letto'. 'Annuncio.id', 'Posto_Letto.id_annuncio');
-	if(isset($filtri['titolo']))
-		$annunci=$annunci->where('Annuncio.titolo',$filtri['titolo']);
+	$annunci=Annuncio::join('Appartamento', 'Annuncio.id', 'Appartamento.id_annuncio')
+			->join('Posto_Letto'. 'Annuncio.id', 'Posto_Letto.id_annuncio');
+	if(!is_null($filtri['titolo']))
+		$annunci->where('Annuncio.titolo',$filtri['titolo']);
 	if($filtri['tipologia'])
-		$annunci=$annunci->where('Annuncio.tipologia', $filtri['tipologia']);
+		$annunci->where('Annuncio.tipologia', $filtri['tipologia']);
 	if($filtri['genere'])
-		$annunci=$annunci->where('Annuncio.genere_preferito', $filtri['genere']);
-	if(isset($filtri['citta']))
-		$annunci=$annunci->where('Annuncio.citta', $filtri['citta']);
-	if(isset($filtri['zona']))
-		$annunci=$annunci->where('Annuncio.zona_di_localizzazione', $filtri['zona']);
-	if(isset($filtri['caparra_max']))
-		$annunci=$annunci->where('Annuncio.caparra','<=', $filtri['caparra_max']);
-	if(isset($filtri['affitto_max']))
-		$annunci=$annunci->where('Annuncio.affitto','<=', $filtri['affitto_max']);
-	if(isset($filtri['locazione_inizio']))
-		$annunci=$annunci->where('Annuncio.periodo_disponibilita_inizio','<', $filtri['locazione_inizio']);
-	if(isset($filtri['locazione_fine']))
-		$annunci=$annunci->where('Annuncio.periodo_disponibilita_fine','>', $filtri['locazione_fine']);
-	if(isset($filtri['bagni']))
-		$annunci=$annunci->where('Annuncio.numero_bagni', $filtri['bagni']);
-	if(isset($filtri['n_posti_letto_totali']))
-		$annunci=$annunci->where('Annuncio.numero_posti_letto_totali_alloggio', $filtri['n_posti_letto_totali']);
-	if(isset($filtri['piano']))
-		$annunci=$annunci->where('Annuncio.piano', $filtri['piano']);
-	if(isset($filtri['fumatori']))
-		$annunci=$annunci->where('Annuncio.fumatori', $filtri['fumatori']);
-	if(isset($filtri['parcheggio']))
-		$annunci=$annunci->where('Annuncio.parcheggio', $filtri['parcheggio']);
-	if(isset($filtri['wi_fi']))
-		$annunci=$annunci->where('Annuncio.wi_fi', $filtri['wi_fi']);
-	if(isset($filtri['ascensore']))
-		$annunci=$annunci->where('Annuncio.ascensore', $filtri['ascensore']);
-	if(isset($filtri['numero_camere']))
-		$annunci=$annunci->where('Appartamento.numero_camere', $filtri['numero_camere']);
-	if(isset($filtri['appartamento_min']))
-		$annunci=$annunci->where('Appartamento.dimensioni_appartamento','>=', $filtri['appartamento_min']);
-	if(isset($filtri['appartamento_max']))
-		$annunci=$annunci->where('Appartamento.dimensioni_appartamento','<=', $filtri['appartamento_max']);
-	if(isset($filtri['locazione_inizio']))
-		$annunci=$annunci->where('Appartamento.periodo_disponibilita_inizio', $filtri['locazione_inizio']);
+		$annunci->where('Annuncio.genere_preferito', $filtri['genere']);
+	if(!is_null($filtri['citta']))
+		$annunci->where('Annuncio.citta', $filtri['citta']);
+	if(!is_null($filtri['zona']))
+		$annunci->where('Annuncio.zona_di_localizzazione', $filtri['zona']);
+	if(!is_null($filtri['caparra_max']))
+		$annunci->where('Annuncio.caparra','<=', $filtri['caparra_max']);
+	if(!is_null($filtri['affitto_max']))
+		$annunci->where('Annuncio.affitto','<=', $filtri['affitto_max']);
+	if(!is_null($filtri['locazione_inizio']))
+		$annunci->where('Annuncio.periodo_disponibilita_inizio','<', $filtri['locazione_inizio']);
+	if(!is_null($filtri['locazione_fine']))
+		$annunci->where('Annuncio.periodo_disponibilita_fine','>', $filtri['locazione_fine']);
+	if(!is_null($filtri['bagni']))
+		$annunci->where('Annuncio.numero_bagni', $filtri['bagni']);
+	if(!is_null($filtri['n_posti_letto_totali']))
+		$annunci->where('Annuncio.numero_posti_letto_totali_alloggio', $filtri['n_posti_letto_totali']);
+	if(!is_null($filtri['piano']))
+		$annunci->where('Annuncio.piano', $filtri['piano']);
+	if(!is_null($filtri['fumatori']))
+		$annunci->where('Annuncio.fumatori', $filtri['fumatori']);
+	if(!is_null($filtri['parcheggio']))
+		$annunci->where('Annuncio.parcheggio', $filtri['parcheggio']);
+	if(!is_null($filtri['wi_fi']))
+		$annunci->where('Annuncio.wi_fi', $filtri['wi_fi']);
+	if(!is_null($filtri['ascensore']))
+		$annunci->where('Annuncio.ascensore', $filtri['ascensore']);
+	if(!is_null($filtri['numero_camere']))
+		$annunci->where('Appartamento.numero_camere', $filtri['numero_camere']);
+	if(!is_null($filtri['appartamento_min']))
+		$annunci->where('Appartamento.dimensioni_appartamento','>=', $filtri['appartamento_min']);
+	if(!is_null($filtri['appartamento_max']))
+		$annunci->where('Appartamento.dimensioni_appartamento','<=', $filtri['appartamento_max']);
+	if(!is_null($filtri['locazione_inizio']))
+		$annunci->where('Appartamento.periodo_disponibilita_inizio', $filtri['locazione_inizio']);
 	if($filtri['tipologia_appartamento'])
-		$annunci=$annunci->where('Appartamento.tipologia_appartamento', $filtri['tipologia_appartamento']);
-	if(isset($filtri['locale_ricreativo']))
-		$annunci=$annunci->where('Appartamento.periodo_disponibilita_inizio', $filtri['locazione_inizio']);
-	if(isset($filtri['letti_camera']))
-		$annunci=$annunci->where('Posto_Letto.letti_nella_camera', $filtri['letti_camera']);
-	if(isset($filtri['dim_camera_min']))
-		$annunci=$annunci->where('Posto_Letto.dimensioni_camera','>=', $filtri['dim_camera_min']);
-	if(isset($filtri['dim_camera_max']))
-		$annunci=$annunci->where('Posto_Letto.dimensioni_camera', $filtri['dim_camera_max']);
+		$annunci->where('Appartamento.tipologia_appartamento', $filtri['tipologia_appartamento']);
+	if(!is_null($filtri['locale_ricreativo']))
+		$annunci->where('Appartamento.periodo_disponibilita_inizio', $filtri['locazione_inizio']);
+	if(!is_null($filtri['letti_camera']))
+		$annunci->where('Posto_Letto.letti_nella_camera', $filtri['letti_camera']);
+	if(!is_null($filtri['dim_camera_min']))
+		$annunci->where('Posto_Letto.dimensioni_camera','>=', $filtri['dim_camera_min']);
+	if(!is_null($filtri['dim_camera_max']))
+		$annunci->where('Posto_Letto.dimensioni_camera', $filtri['dim_camera_max']);
 	if($filtri['tipologia_posto_letto'])
-		$annunci=$annunci->where('Posto_Letto.tipologia_posto_letto', $filtri['tipologia_posto_letto']);
-	if(isset($filtri['angolo_studio']))
-		$annunci=$annunci->where('Posto_Letto.presenza_angolo_studio', $filtri['angolo_studio']);
+		$annunci->where('Posto_Letto.tipologia_posto_letto', $filtri['tipologia_posto_letto']);
+	if(!is_null($filtri['angolo_studio']))
+		$annunci->where('Posto_Letto.presenza_angolo_studio', $filtri['angolo_studio']);
 
 	return $annunci;
 	}

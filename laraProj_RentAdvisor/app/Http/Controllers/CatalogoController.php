@@ -55,8 +55,11 @@ class CatalogoController extends Controller
 	public function catalogo_con_filtri(RichiestaFiltro $richiesta){
 		$dati_validi=$richiesta->validated();
 		$annunci=$this->modello_catalogo->get_annunci_filtrati($dati_validi);
+		$immagini = $this->modello_catalogo->get_immagini_annunci($annunci);
 		return view('views_html/catalogo')
-			->with('annunci', $annunci);
+			->with('annunci', $annunci)
+			->with('immagini', $immagini)
+			->paginate(9);
 		
 	}
 }
