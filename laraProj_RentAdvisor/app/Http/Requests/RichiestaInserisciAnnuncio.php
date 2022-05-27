@@ -56,8 +56,8 @@ class RichiestaInserisciAnnuncio extends FormRequest {
             'genere_preferito' => 'required|in:M,F,ND',
             'eta_preferita_min' => 'nullable|numeric|min:18|max:100',
             'eta_preferita_max' => 'nullable|numeric|min:18|max:100',
-            'periodo_disponibilita_inizio' => 'required|date',
-            'periodo_disponibilita_fine' => 'nullable|date',
+            'periodo_disponibilita_inizio' => 'required|date_format:d/m/Y',
+            'periodo_disponibilita_fine' => 'nullable|date_format:d-m-Y|after:periodo_disponibilita_inizio',
             'foto_annuncio' => 'nullable|file|mimes:jpeg,jpg,png|max:5120',
         ];
     }

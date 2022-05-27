@@ -291,7 +291,7 @@
                                     <fieldset id="caratteristiche_appartamento_fieldset" style="display: none">
                                         <legend>CARATTERISTICHE DELL'APPARTAMENTO</legend>
                                         <p class="comment-form-author">
-                                            {{ Form::label('numero_camere', 'Numero camere presenti nell\'appartamento*', []) }}
+                                            {{ Form::label('numero_camere', 'Numero camere presenti nell\'appartamento', []) }}
                                             {{ Form::number('numero_camere', '', ['id' => 'numero_camere', 'min' => '1', 'max' => '20']) }}
                                         @if ($errors->first('numero_camere'))
                                             <ul>
@@ -302,7 +302,7 @@
                                             @endif
                                         </p>
                                         <p class="comment-form-author">
-                                            {{ Form::label('dimensioni_appartamento', 'Dimensioni dell\'appartamento (Metri quadri)*', []) }}
+                                            {{ Form::label('dimensioni_appartamento', 'Dimensioni dell\'appartamento (Metri quadri)', []) }}
                                             {{ Form::number('dimensioni_appartamento', '', ['id' => 'dimensioni_appartamento', 'min' => '1', 'max' => '1000']) }}
                                             @if ($errors->first('dimensioni_appartamento'))
                                                 <ul>
@@ -357,7 +357,7 @@
                                     <fieldset id="caratteristiche_posto_letto_fieldset" style="display: none">
                                         <legend>CARATTERISTICHE CAMERA</legend>
                                         <p class="comment-form-author">
-                                            {{ Form::label('dimensioni_camera', 'Dimensioni della camera (Metri quadri)*', []) }}
+                                            {{ Form::label('dimensioni_camera', 'Dimensioni della camera (Metri quadri)', []) }}
                                             {{ Form::number('dimensioni_camera', '', ['id' => 'dimensioni_camera', 'min' => '1', 'max' => '100']) }}
                                         @if ($errors->first('dimensioni_camera'))
                                             <ul>
@@ -368,7 +368,7 @@
                                             @endif
                                         </p>
                                         <p class="comment-form-author">
-                                            {{ Form::label('letti_nella_camera', 'Numero di letti presenti nella camera*', []) }}
+                                            {{ Form::label('letti_nella_camera', 'Numero di letti presenti nella camera', []) }}
                                             {{ Form::number('letti_nella_camera', '', ['id' => 'letti_nella_camera', 'min' => '1', 'max' => '10']) }}
                                             @if ($errors->first('letti_nella_camera'))
                                                 <ul>
