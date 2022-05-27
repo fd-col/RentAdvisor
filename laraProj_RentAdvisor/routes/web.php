@@ -64,6 +64,9 @@ Route::post('/locatario/modifica_dati_locatario', 'ProfiloController@modifica_da
     ->name('modifica_dati_locatario')->middleware('can:isLocatario');
 // link amministratore
 
+Route::view('/statistiche', 'views_html/statistiche')
+    ->name('statistiche')->middleware('can:isAdmin');
+
 Route::get('/faq/modifica/{id_faq}', 'FaqController@pagina_modifica_faq')
     ->name('modifica_faq')->middleware('can:isAdmin');
 

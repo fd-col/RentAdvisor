@@ -100,7 +100,7 @@
                     @endcan
 
                     @can('isAdmin')
-                        <li class="{{ Route::is('   DA MODIFICARE   ') ? 'active' : '' }}"><a href="#">STATISTICHE</a></li>
+                        <li class="{{ Route::is('statistiche') ? 'active' : '' }}"><a href="{{ route('statistiche') }}">STATISTICHE</a></li>
                     @endcan
 
                     @can('isLocatore')
