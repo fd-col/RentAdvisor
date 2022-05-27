@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RichiestaFiltro;
 use App\Models\Resources\Immagine;
-
+use App\Http\Requests\RichiestaInserisciAnnuncio;
 use Illuminate\Http\Request;
 use App\Models\Catalogo;
+use Illuminate\Support\Facades\Log;
 
 class CatalogoController extends Controller
 {
@@ -60,6 +61,35 @@ class CatalogoController extends Controller
 			->with('annunci', $annunci)
 			->with('immagini', $immagini)
 			->paginate(9);
-		
+
 	}
+
+    public function inserisci_annuncio(RichiestaInserisciAnnuncio $richiesta) {
+
+        $dati_validi = $richiesta->validated();
+
+        Log::info('Dati validi: '.$dati_validi);
+        $annuncio_inserito = $this->modello_catalogo->inserisci_dati_annuncio($dati_validi);
+        $id_annuncio_inserito = $annuncio_inserito->id;
+
+        if ($dati_validi['tipologia'] == 'appartamento')
+            $this->modello_catalogo->inserisci_dati_appartamento($dati_validi, $id_annuncio_inserito);
+
+        if ($dati_validi['tipologia'] == 'posto_letto')
+            $this->modello_catalogo->inserisci_dati_posto_letto($dati_validi, $id_annuncio_inserito);
+
+        if ($richiesta->hasFile('foto_annuncio')) {
+            $i = 0;
+            foreach ($richiesta->file('foto_annuncio') as $foto) {
+                $nome_foto = $id_annuncio_inserito.'_'.$i.'.'.$foto->getClientOriginalExtension();
+                $foto->move(public_path().'/images', $nome_foto);
+                $this->modello_catalogo->inserisci_dati_immagine($nome_foto, $id_annuncio_inserito);
+                $i++;
+            }
+        } else {
+            $this->modello_catalogo->inserisci_dati_immagine('image_not_avaiable.jpg', $id_annuncio_inserito);
+        }
+
+        return redirect()->action('ProfiloController@pagina_profilo_locatore');
+    }
 }

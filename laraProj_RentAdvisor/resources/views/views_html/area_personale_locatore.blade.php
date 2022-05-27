@@ -101,7 +101,7 @@
             <aside class="aa-properties-sidebar">
                 <!-- Start Single properties sidebar -->
                 <div class="aa-properties-single-sidebar">
-                    <a href="inserimento_annuncio.html" class="round-button">INSERISCI ANNUNCIO</a>
+                    <a href="{{ route('inserisci_annuncio') }}" class="round-button">INSERISCI ANNUNCIO</a>
                     <br>
                     <div class="aa-title">
                         <span></span>

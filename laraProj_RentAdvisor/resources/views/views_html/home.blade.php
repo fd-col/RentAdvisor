@@ -42,7 +42,7 @@
                                             </div>
                                             <div class="aa-properties-about">
                                                 <h3>
-                                                    <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}">{{ substr($annuncio->titolo, 0, 50) }}</a>
+                                                    <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}">{{ substr($annuncio->titolo, 0, 50) }}...</a>
                                                 </h3>
                                                 <p>{{ substr($annuncio->descrizione, 0, 150) }} ...</p>
                                             </div>
