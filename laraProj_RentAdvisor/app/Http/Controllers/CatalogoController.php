@@ -62,4 +62,8 @@ class CatalogoController extends Controller
 			->paginate(9);
 		
 	}
+
+    public function catalogo_statistiche() {
+        
+    }
 }
