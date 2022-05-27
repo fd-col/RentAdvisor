@@ -15,6 +15,14 @@ $('#tipologia').change(function(){
 					break;
 		}
 	});
+$('#filter-button').click(function(){
+		$('#filter-content').toggle('slow');
+		$val=$('#filter-button').attr('class');
+		if($val=='fa fa-2x fa-inverse fa-arrow-down')
+			$('#filter-button').attr('class', 'fa fa-2x fa-inverse fa-arrow-up');
+		else
+			$('#filter-button').attr('class', 'fa fa-2x fa-inverse fa-arrow-down');
+})
 })
 </script>
   <section id="aa-advance-search">
@@ -59,8 +67,12 @@ $('#tipologia').change(function(){
 				{{Form::submit('CERCA' ,['class' => 'aa-search-btn'] )}}
                 </div>
               </div>
+			  <div class="col-md-2">
+			   <span class="fa fa-2x fa-inverse fa-arrow-down" id="filter-button">
+			  </div>
             </div>
           </div>
+		  <div id="filter-content" hidden>
          <div class="aa-advance-search-bottom">
            <div class="row">
             <div class="col-md-3">
@@ -360,7 +372,7 @@ $('#tipologia').change(function(){
 		  </div>
 		  {{Form::close()}}
         </div>
-
+		</div>
       </div>
     </div>
   </section>
