@@ -42,8 +42,7 @@
                                                 <table>
                                                     <tr>
                                                         <td>
-                                                            <li><span class="fa fa-bed"></span> Posti letto totali nell'alloggio: {{ $annuncio->numero_posti_letto_totali_alloggio }}
-                                                            </li>
+                                                            <li><span class="fa fa-bed"></span> Posti letto totali nell'alloggio: {{ $annuncio->numero_posti_letto_totali_alloggio }}</li>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -59,7 +58,7 @@
                                                     @else
                                                         <tr>
                                                             <td>
-                                                                <li><span class="fa fa-fire-extinguisher"></span>Fumatori non accetti</li>
+                                                                <li><span class="fa fa-fire-extinguisher"></span> Fumatori non accetti</li>
                                                             </td>
                                                         </tr>
                                                     @endif
@@ -98,13 +97,16 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
+                                                                @if(!is_null($caratteristiche->numero_camere))
                                                                 <li><span class="fa fa-bed"></span> Numero camere: {{$caratteristiche->numero_camere}}</li>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <li><span class="fa fa-arrows-h"></span> Dimensioni appartamento: {{$caratteristiche->dimensioni_appartamento}}mq
-                                                                </li>
+                                                                @if(!is_null($caratteristiche->dimensioni_appartamento))
+                                                                <li><span class="fa fa-arrows-h"></span> Dimensioni appartamento: {{$caratteristiche->dimensioni_appartamento}}mq</li>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         @if($caratteristiche->presenza_cucina == true)
@@ -135,12 +137,16 @@
                                                             </td>
                                                         <tr>
                                                             <td>
+                                                                @if(!is_null($caratteristiche->dimensioni_camera))
                                                                 <li><span class="fa fa-arrows-h"></span> Dimensioni camera: {{$caratteristiche->dimensioni_camera}}mq</li>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
+                                                                @if(!is_null($caratteristiche->letti_nella_camera))
                                                                 <li><span class="fa fa-bed"></span> Letti nella camera: {{$caratteristiche->letti_nella_camera}}</li>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         @if($caratteristiche->presenza_angolo_studio == true)
@@ -180,9 +186,8 @@
                                             <p>■ Piano: {{$annuncio->piano}}</p>
                                             <h4>Mappa</h4>
                                             <iframe
-                                                src="https://maps.google.com/maps?q={{str_replace(' ','%20',$annuncio->indirizzo)}},{{$annuncio->numero_civico}},{{$annuncio->cap}},{{$annuncio->citta}},{{$annuncio->provincia}}&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                                width="100%" height="450" frameborder="0" style="border:0"
-                                                allowfullscreen>
+                                                src="https://maps.google.com/maps?q={{str_replace(' ','%20',$annuncio->indirizzo)}},{{str_replace(' ','%20',$annuncio->numero_civico)}},{{str_replace(' ','%20',$annuncio->cap)}},{{str_replace(' ','%20',$annuncio->citta)}},{{$annuncio->provincia}}&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                                width="100%" height="450" frameborder="0" style="border:0" allowfullscreen>
                                             </iframe>
                                         </div>
                                     </div>

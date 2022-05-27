@@ -2,8 +2,11 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\Response;
 
 class RichiestaInserisciAnnuncio extends FormRequest {
 
@@ -40,7 +43,7 @@ class RichiestaInserisciAnnuncio extends FormRequest {
             'fumatori' => 'required|boolean',
             'parcheggio' => 'required|boolean',
             'wi_fi' => 'required|boolean',
-            'acensore' => 'required|boolean',
+            'ascensore' => 'required|boolean',
             'tipologia_appartamento' => 'nullable|in:appartamento,casa_indipendente',
             'dimensioni_appartamento' => 'nullable|numeric|min:1|max:1000',
             'numero_camere' => 'nullable|min:1|max:20',
@@ -52,14 +55,20 @@ class RichiestaInserisciAnnuncio extends FormRequest {
             'presenza_angolo_studio' => 'nullable|boolean',
             'canone_affitto' => 'required|numeric|min:1|max:10000',
             'caparra' => 'required|numeric|min:1|max:10000',
-            'durata_minima_locazione' => 'required|numeric|min:1',
+            'durata_minima_locazione' => 'required|numeric|min:1|max:500',
             'genere_preferito' => 'required|in:M,F,ND',
             'eta_preferita_min' => 'nullable|numeric|min:18|max:100',
             'eta_preferita_max' => 'nullable|numeric|min:18|max:100',
-            'periodo_disponibilita_inizio' => 'required|date_format:d/m/Y',
-            'periodo_disponibilita_fine' => 'nullable|date_format:d-m-Y|after:periodo_disponibilita_inizio',
+            'periodo_disponibilita_inizio' => 'required|date_format:Y-m-d',
+            'periodo_disponibilita_fine' => 'nullable|date_format:Y-m-d|after:periodo_disponibilita_inizio',
             'foto_annuncio' => 'nullable|file|mimes:jpeg,jpg,png|max:5120',
         ];
     }
+
+    /*protected function failedValidation(Validator $validator)
+    {
+        Log:info('Errore: '.$validator->errors());
+        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
+    }*/
 
 }

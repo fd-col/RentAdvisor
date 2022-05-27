@@ -26,6 +26,9 @@
 
 
                             @foreach($annunci as $annuncio)
+                                @if($loop->index % 3 == 0)
+                                    <div class="row">
+                                        @endif
                                 <div class="col-md-4">
                                     <article class="aa-properties-item">
                                         <div href="{{ route('dettagli_annuncio', [$annuncio->id]) }}"
@@ -60,6 +63,9 @@
                                         </div>
                                     </article>
                                 </div>
+                                        @if($loop->index % 3 == 2)
+                                            </div>
+                                        @endif
                             @endforeach
                         </div>
                     </div>

@@ -9,4 +9,5 @@ class Annuncio extends Model
     protected $table = 'Annuncio';
     protected $primaryKey = 'id';
     public $timestamps = false;
+    protected $guarded = ['id'];
 }

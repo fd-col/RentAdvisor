@@ -142,7 +142,7 @@
                                         </p>
                                         <p class="comment-form-author">
                                             {{ Form::label('cap', 'CAP*', []) }}
-                                            {{ Form::text('cap', '', ['id' => 'citta', 'size' => '30', 'maxlength' => '5']) }}
+                                            {{ Form::text('cap', '', ['id' => 'cap', 'size' => '30', 'maxlength' => '5']) }}
                                                 @if ($errors->first('cap'))
                                                     <ul>
                                                         @foreach ($errors->get('cap') as $message)
@@ -165,9 +165,9 @@
                                         <p class="comment-form-author">
                                             {{ Form::label('indirizzo', 'Indirizzo*', []) }}
                                             {{ Form::text('indirizzo', '', ['id' => 'indirizzo', 'size' => '30', 'maxlength' => '100']) }}
-                                                    @if ($errors->first('zona_di_localizzazione'))
+                                                    @if ($errors->first('indirizzo'))
                                                         <ul>
-                                                            @foreach ($errors->get('zona_di_localizzazione') as $message)
+                                                            @foreach ($errors->get('indirizzo') as $message)
                                                                 <li class="richiesta">{{ $message }}</li>
                                                             @endforeach
                                                         </ul>
@@ -459,7 +459,7 @@
                                         </p>
                                         <p class="comment-form-author">
                                             {{ Form::label('periodo_disponibilita_inizio', 'L\'alloggio è disponibile dal:*', []) }}
-                                            {{ Form::date('periodo_disponibilita_inizio', '2022-01-01',['id' => 'periodo_disponibilita_inizio']) }}
+                                            {{ Form::date('periodo_disponibilita_inizio',date('Y-m-d'),['id' => 'periodo_disponibilita_inizio']) }}
                                                             @if ($errors->first('periodo_disponibilita_inizio'))
                                                                 <ul>
                                                                     @foreach ($errors->get('periodo_disponibilita_inizio') as $message)
@@ -470,7 +470,7 @@
                                         </p>
                                         <p class="comment-form-author">
                                             {{ Form::label('periodo_disponibilita_fine', 'L\'alloggio è disponibile fino al:', []) }}
-                                            {{ Form::date('periodo_disponibilita_fine', '2022-01-01',['id' => 'periodo_disponibilita_fine']) }}
+                                            {{ Form::date('periodo_disponibilita_fine', '',['id' => 'periodo_disponibilita_fine']) }}
                                                                 @if ($errors->first('periodo_disponibilita_fine'))
                                                                     <ul>
                                                                         @foreach ($errors->get('periodo_disponibilita_fine') as $message)

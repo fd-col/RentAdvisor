@@ -69,9 +69,7 @@ class CatalogoController extends Controller
 
         $dati_validi = $richiesta->validated();
 
-        Log::info('Dati validi: ' . $dati_validi);
-        $annuncio_inserito = $this->modello_catalogo->inserisci_dati_annuncio($dati_validi);
-        $id_annuncio_inserito = $annuncio_inserito->id;
+        $id_annuncio_inserito = $this->modello_catalogo->inserisci_dati_annuncio($dati_validi);
 
         if ($dati_validi['tipologia'] == 'appartamento')
             $this->modello_catalogo->inserisci_dati_appartamento($dati_validi, $id_annuncio_inserito);
@@ -82,6 +80,7 @@ class CatalogoController extends Controller
         if ($richiesta->hasFile('foto_annuncio')) {
             $i = 0;
             foreach ($richiesta->file('foto_annuncio') as $foto) {
+                Log::info("Foto: ".$foto->getClientOriginalName());
                 $nome_foto = $id_annuncio_inserito . '_' . $i . '.' . $foto->getClientOriginalExtension();
                 $foto->move(public_path() . '/images', $nome_foto);
                 $this->modello_catalogo->inserisci_dati_immagine($nome_foto, $id_annuncio_inserito);
