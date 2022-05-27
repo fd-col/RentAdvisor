@@ -1,6 +1,10 @@
 @extends('layouts.layout')
 
-@section('title', 'FAQ')
+@can('isAdmin')
+    @section('title', 'FAQ')
+@else
+    @section('title', 'Modifica FAQ')
+@endcan
 
 @section('content')
     @isset($faq)

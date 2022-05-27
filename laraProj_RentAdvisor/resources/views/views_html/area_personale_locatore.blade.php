@@ -212,7 +212,7 @@
                                     <div class="aa-single-field">
                                         {{ Form::label('data_nascita', 'Data di nascita* (AAAA-MM-GG)') }}
                                         {{ Form::text('data_nascita', "$user->data_nascita", ['id' => 'data_nascita', 'aria-required' => 'true', 'readonly' => 'true']) }}
-                                        @if ($errors->first('cognome'))
+                                        @if ($errors->first('data_nascita'))
                                             <ul>
                                                 @foreach ($errors->get('data_nascita') as $message)
                                                     <li class="richiesta">{{ $message }}</li>

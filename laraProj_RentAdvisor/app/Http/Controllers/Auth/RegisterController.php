@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'nome' => ['required', 'string', 'max:191'],
             'cognome' => ['required', 'string', 'max:191'],
             'genere' => ['required', 'in:M,F,ND'],
-            'data_nascita' => ['required', 'date'],
+            'data_nascita' => ['required', 'date_format:d-m-Y'],
             'email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
             'telefono' => ['nullable', 'string','max:13'],
             'password' => ['required', 'string', 'min:8', 'max:191', 'confirmed'],
