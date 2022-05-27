@@ -29,7 +29,7 @@ class RichiestaModificaDati extends FormRequest {
             'nome' => 'required|max:191',
             'cognome' => 'required|max:191',
             'genere' => 'required|in:M,F,ND',
-            'data_nascita' => 'required|date_format:Y-m-g',
+            'data_nascita' => 'required|date_format:Y-m-d',
             'email' => 'required',
             'telefono' => 'nullable|string'
         ];

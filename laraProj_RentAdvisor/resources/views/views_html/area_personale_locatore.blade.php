@@ -26,10 +26,12 @@
     <!-- Start Properties  -->
     <section id="aa-properties">
         <div class="aa-title">
+        <br>
         <h2>La tua area personale</h2>
         <div class="col-md-10 col-md-offset-1">
             <span></span>
-            <p>In questa pagina puoi trovare tutte le informazioni sui tuoi annunci pubblicati, la possibilità di inserire un annuncio, di comunicare con le persone interessate e, in fondo alla pagina, di visualizzare e modificare i dati relativi al tuo profilo. </p>
+            <p>In questa pagina puoi trovare tutte le informazioni sui tuoi annunci pubblicati, la possibilità di inserire un annuncio, 
+                di comunicare con le persone interessate e, in fondo alla pagina, di visualizzare e modificare i dati relativi al tuo profilo.<br><br> </p>
         </div>
         </div>
         <div class="container">

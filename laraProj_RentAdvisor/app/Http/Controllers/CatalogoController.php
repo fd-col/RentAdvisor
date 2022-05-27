@@ -81,8 +81,8 @@ class CatalogoController extends Controller
             $i = 0;
             foreach ($richiesta->file('foto_annuncio') as $foto) {
                 Log::info("Foto: ".$foto->getClientOriginalName());
-                $nome_foto = $id_annuncio_inserito . '_' . $i . '.' . $foto->getClientOriginalExtension();
-                $foto->move(public_path() . '/images', $nome_foto);
+                $nome_foto = $id_annuncio_inserito.'_'.$i.'.'.$foto->getClientOriginalExtension();
+                $foto->move(public_path().'/images', $nome_foto);
                 $this->modello_catalogo->inserisci_dati_immagine($nome_foto, $id_annuncio_inserito);
                 $i++;
             }
