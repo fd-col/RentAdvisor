@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RichiestaFiltro;
-use App\Models\Resources\Immagine;
 use App\Http\Requests\RichiestaInserisciAnnuncio;
+use ErrorException;
 use Illuminate\Http\Request;
 use App\Models\Catalogo;
-use Illuminate\Support\Facades\Log;
 
 class CatalogoController extends Controller
 {
@@ -39,16 +38,20 @@ class CatalogoController extends Controller
 
     public function dettagli_annuncio($id_annuncio) {
 
-        $annuncio = $this->modello_catalogo->get_annuncio($id_annuncio);
-        $caratteristiche = $this->modello_catalogo->get_caratteristiche_annuncio($annuncio);
-        $locatore = $this->modello_catalogo->get_locatore_annuncio($annuncio);
-        $immagini = $this->modello_catalogo->get_immagini_annuncio($id_annuncio);
+        try {
+            $annuncio = $this->modello_catalogo->get_annuncio($id_annuncio);
+            $caratteristiche = $this->modello_catalogo->get_caratteristiche_annuncio($annuncio);
+            $locatore = $this->modello_catalogo->get_locatore_annuncio($annuncio);
+            $immagini = $this->modello_catalogo->get_immagini_annuncio($id_annuncio);
 
-        return view('views_html/dettagli_annuncio')
-            ->with('annuncio', $annuncio)
-            ->with('caratteristiche', $caratteristiche)
-            ->with('locatore', $locatore)
-            ->with('immagini', $immagini);
+            return view('views_html/dettagli_annuncio')
+                ->with('annuncio', $annuncio)
+                ->with('caratteristiche', $caratteristiche)
+                ->with('locatore', $locatore)
+                ->with('immagini', $immagini);
+        } catch (ErrorException $e) {
+            return view('views_html/404');
+        }
 
     }
 
@@ -81,7 +84,6 @@ class CatalogoController extends Controller
             $foto = $richiesta->file('foto_annuncio');
             $i = 0;
                 foreach ($foto as $foto_singola) {
-                    Log::info("Foto: ".$foto_singola->getClientOriginalName());
                     $nome_foto = $id_annuncio_inserito.'_'.$i.'.'.$foto_singola->getClientOriginalExtension();
                     $foto_singola->move(public_path().'/images/annunci', $nome_foto);
                     $this->modello_catalogo->inserisci_dati_immagine($nome_foto, $id_annuncio_inserito);

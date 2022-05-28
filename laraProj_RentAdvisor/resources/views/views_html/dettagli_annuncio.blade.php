@@ -206,6 +206,16 @@
                                             @endif
                                         </p>
                                         <br><br>
+                                        @can('isLocatore')
+                                            @if(auth()->user()->username == $locatore->username)
+                                                <h4><a href=""><span class="fa fa-edit"></span> Modifica annuncio</a></h4>
+                                                <h4><a href=""><span class="fa fa-trash"></span> Elimina annuncio</a></h4>
+                                            @endif
+                                        @endcan
+                                        @can('isLocatario')
+                                                <h4><a href=""><span class="fa fa-envelope"></span> Contatta il locatore</a></h4>
+                                                <h4><a href=""><span class="fa fa-check-square"></span> Opziona l'annuncio</a></h4>
+                                        @endcan
                                     </div>
                                 </aside>
                             </div>
