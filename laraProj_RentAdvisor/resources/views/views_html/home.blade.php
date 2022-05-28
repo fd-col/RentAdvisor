@@ -180,7 +180,7 @@
                                 <li>
                                     <div class="aa-single-agents">
                                         <div class="aa-agents-img">
-                                            <img src="{{ asset('images/agents/agent-5.png') }}"
+                                            <img src="{{ asset('images/agents/camplese.png') }}"
                                                  alt="agent member image">
                                         </div>
                                         <div class="aa-agetns-info">
