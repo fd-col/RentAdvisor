@@ -4,9 +4,9 @@
 
 @section('content')
 	@can('isLocatario')
-	<!-- Advance Search -->
-	@include('layouts._search')
-	<!-- / Advance Search -->
+	    <!-- Advance Search -->
+	    @include('layouts._search')
+	    <!-- / Advance Search -->
 	@endcan
 
     @isset($annunci)

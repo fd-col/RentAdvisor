@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\Annuncio;
 use App\Models\Resources\Posto_Letto;
@@ -60,8 +61,8 @@ class Catalogo extends Model
         return $annunci;
     }
 	public function get_annunci_filtrati($filtri){
-	$annunci=Annuncio::join('Appartamento', 'Annuncio.id', 'Appartamento.id_annuncio')
-			->join('Posto_Letto', 'Annuncio.id', 'Posto_Letto.id_annuncio');
+	$annunci=Annuncio::leftJoin('Appartamento', 'Annuncio.id', '=', 'Appartamento.id_annuncio')
+			->leftJoin('Posto_Letto', 'Annuncio.id', '=', 'Posto_Letto.id_annuncio');
 	if(!is_null($filtri['titolo']))
 		$annunci->where('Annuncio.titolo',$filtri['titolo']);
 	if($filtri['tipologia'])
@@ -116,7 +117,8 @@ class Catalogo extends Model
 		$annunci->where('Posto_Letto.tipologia_posto_letto', $filtri['tipologia_posto_letto']);
 	if(isset($filtri['angolo_studio']))
 		$annunci->where('Posto_Letto.presenza_angolo_studio', $filtri['angolo_studio']);
-		$annunci->paginate(9);
+    $annunci->orderBy('data_inserimento', 'DESC');
+    $annunci->paginate(9);
 	return $annunci;
 	}
 

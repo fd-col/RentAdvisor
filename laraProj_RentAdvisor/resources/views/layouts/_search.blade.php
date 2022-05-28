@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-			   <span class="fa fa-2x fa-inverse fa-arrow-down" id="filter-button">
+                            <span class="fa fa-2x fa-inverse fa-arrow-down" id="filter-button"></span>
                         </div>
                     </div>
                 </div>
