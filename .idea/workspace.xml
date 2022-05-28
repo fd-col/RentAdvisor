@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c9ab169a-61bf-4097-97ed-d4c4cdbdf081" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/24fa3457fef2c7a8dd499a16da444ff5da93fd79/_footer.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/24fa3457fef2c7a8dd499a16da444ff5da93fd79/_header.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/24fa3457fef2c7a8dd499a16da444ff5da93fd79/_nav.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/92e65d89f02a31c41a04d8a86d76125d70b1e445/_buttons.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/92e65d89f02a31c41a04d8a86d76125d70b1e445/_responsive.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/92e65d89f02a31c41a04d8a86d76125d70b1e445/_sections.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/92e65d89f02a31c41a04d8a86d76125d70b1e445/_theme-color.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/92e65d89f02a31c41a04d8a86d76125d70b1e445/_typography.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/b17cfc8f2f692ca944bdfcaed15220cf78b09c99/style.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/d69ec8be0a74b90aa26ec05a08d2f01daa24c3bd/_base.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/d69ec8be0a74b90aa26ec05a08d2f01daa24c3bd/_mixins.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentAdvisor/RentAdvisor/.sass-cache/d69ec8be0a74b90aa26ec05a08d2f01daa24c3bd/_variables.scssc" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/laraProj_RentAdvisor/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/jakub-onderka/php-console-color" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/facade/ignition-contracts" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/facade/flare-client-php" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/facade/ignition" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/scrivo/highlight.php" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/composer" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/laraProj_RentAdvisor/vendor/sebastian/global-state" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="29CAowl1OzLUHHD4IkEoIjFXBU3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c9ab169a-61bf-4097-97ed-d4c4cdbdf081" name="Changes" comment="" />
+      <created>1652606872202</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652606872202</updated>
+      <workItem from="1652606873757" duration="1605000" />
+      <workItem from="1652613791215" duration="73000" />
+      <workItem from="1652613926063" duration="15522000" />
+      <workItem from="1652633817939" duration="108000" />
+      <workItem from="1652650874682" duration="3301000" />
+      <workItem from="1652691317931" duration="340000" />
+      <workItem from="1652692027640" duration="616000" />
+      <workItem from="1652717440729" duration="71000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
