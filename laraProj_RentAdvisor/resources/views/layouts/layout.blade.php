@@ -189,7 +189,7 @@
                                 <a href="https://github.com/AndreaCiv/RentAdvisor"><i class="fa fa-github"></i></a>
                                 <a href="https://www.univpm.it/Entra/"><i class="fa fa-university"></i></a>
                                 <a href="https://www.free-css.com/free-css-templates/page236/home-property"><i class="fa fa-html5"></i></a>
-                                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fa fa-youtube"></i></a>
+                                <a href="https://www.youtube.com/shorts/96GnOB1iZQI"><i class="fa fa-youtube"></i></a>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">

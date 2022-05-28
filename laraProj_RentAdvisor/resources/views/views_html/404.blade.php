@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', '404 Page Not Found')
+@section('title', 'Error 404 | Page Not Found')
 
 @section('content')
     <section id="aa-latest-property">
