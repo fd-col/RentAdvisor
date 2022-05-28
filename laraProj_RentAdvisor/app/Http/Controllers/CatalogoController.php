@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Requests\RichiestaFiltro;
 use App\Models\Resources\Immagine;
 use App\Http\Requests\RichiestaInserisciAnnuncio;
@@ -78,14 +77,16 @@ class CatalogoController extends Controller
             $this->modello_catalogo->inserisci_dati_posto_letto($dati_validi, $id_annuncio_inserito);
 
         if ($richiesta->hasFile('foto_annuncio')) {
+
+            $foto = $richiesta->file('foto_annuncio');
             $i = 0;
-            foreach ($richiesta->file('foto_annuncio') as $foto) {
-                Log::info("Foto: ".$foto->getClientOriginalName());
-                $nome_foto = $id_annuncio_inserito.'_'.$i.'.'.$foto->getClientOriginalExtension();
-                $foto->move(public_path().'/images', $nome_foto);
-                $this->modello_catalogo->inserisci_dati_immagine($nome_foto, $id_annuncio_inserito);
-                $i++;
-            }
+                foreach ($foto as $foto_singola) {
+                    Log::info("Foto: ".$foto_singola->getClientOriginalName());
+                    $nome_foto = $id_annuncio_inserito.'_'.$i.'.'.$foto_singola->getClientOriginalExtension();
+                    $foto_singola->move(public_path().'/images/annunci', $nome_foto);
+                    $this->modello_catalogo->inserisci_dati_immagine($nome_foto, $id_annuncio_inserito);
+                    $i++;
+                }
         } else {
             $this->modello_catalogo->inserisci_dati_immagine('image_not_avaiable.jpg', $id_annuncio_inserito);
         }

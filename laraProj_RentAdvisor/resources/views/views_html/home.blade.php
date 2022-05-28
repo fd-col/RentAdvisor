@@ -28,11 +28,11 @@
                                             @isset($immagini)
                                                 @foreach($immagini as $immagine)
                                                     @if($annuncio->id == $immagine->id_annuncio)
-                                                        <img src="{{ asset("images/$immagine->nome_immagine") }}" alt="img">
+                                                        <img src="{{ asset("images/annunci/$immagine->nome_immagine") }}" alt="img">
                                                     @endif
                                                 @endforeach
                                             @else
-                                                <img src="{{ asset('images/image_not_avaiable.jpg') }}" alt="img">
+                                                <img src="{{ asset('images/annunci/image_not_avaiable.jpg') }}" alt="img">
                                             @endisset
                                         </div>
                                         <div class="aa-tag for-sale">
@@ -45,9 +45,9 @@
                                             </div>
                                             <div class="aa-properties-about">
                                                 <h3>
-                                                    <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}">{{ substr($annuncio->titolo, 0, 50) }}...</a>
+                                                    <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}">{{ substr($annuncio->titolo, 0, 80) }}...</a>
                                                 </h3>
-                                                <p>{{ substr($annuncio->descrizione, 0, 150) }} ...</p>
+                                                <p>{{ substr($annuncio->descrizione, 0, 200) }} ...</p>
                                             </div>
                                             <div class="aa-properties-detial">
                     <span class="aa-price">

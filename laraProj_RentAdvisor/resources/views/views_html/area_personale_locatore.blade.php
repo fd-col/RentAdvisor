@@ -30,7 +30,7 @@
         <h2>La tua area personale</h2>
         <div class="col-md-10 col-md-offset-1">
             <span></span>
-            <p>In questa pagina puoi trovare tutte le informazioni sui tuoi annunci pubblicati, la possibilità di inserire un annuncio, 
+            <p>In questa pagina puoi trovare tutte le informazioni sui tuoi annunci pubblicati, la possibilità di inserire un annuncio,
                 di comunicare con le persone interessate e, in fondo alla pagina, di visualizzare e modificare i dati relativi al tuo profilo.<br><br> </p>
         </div>
         </div>
@@ -45,17 +45,20 @@
                     <p>Qui puoi trovare tutti gli annunci che hai inserito, per modificare un annuncio premi sul pulsante "Dettagli"</p>
                 <ul class="aa-properties-nav">
                     @foreach($annunci as $annuncio)
+                        @if($loop->index % 2 == 0)
+                            <div class="row">
+                                @endif
                     <li>
                     <article class="aa-properties-item">
                         <div class="aa-properties-details-img">
                             @isset($immagini)
                                 @foreach($immagini as $immagine)
                                     @if($immagine->id_annuncio == $annuncio->id)
-                                        <img src="{{ asset("images/$immagine->nome_immagine") }}" alt="img">
+                                        <img src="{{ asset("images/annunci/$immagine->nome_immagine") }}" alt="img">
                                     @endif
                                 @endforeach
                             @else
-                                <img src="{{ asset("images/image_not_avaiable.jpg") }}" alt="img">
+                                <img src="{{ asset("images/annunci/image_not_avaiable.jpg") }}" alt="img">
                             @endisset
                         </div>
                         @if($annuncio->disponibile == true)
@@ -74,9 +77,9 @@
                         </div>
                         <div class="aa-properties-about">
                             <h3>
-                                <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}">{{ substr($annuncio->titolo, 0, 50) }}</a>
+                                <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}">{{ substr($annuncio->titolo, 0, 80) }}</a>
                             </h3>
-                            <p>{{ substr($annuncio->descrizione, 0, 150) }} ...</p>
+                            <p>{{ substr($annuncio->descrizione, 0, 200) }} ...</p>
                         </div>
                         <div class="aa-properties-detial">
                             <span class="aa-price">
@@ -87,6 +90,9 @@
                         </div>
                     </article>
                     </li>
+                                @if($loop->index % 2 == 1)
+                            </div>
+                        @endif
                     @endforeach
                 </ul>
                 @endisset

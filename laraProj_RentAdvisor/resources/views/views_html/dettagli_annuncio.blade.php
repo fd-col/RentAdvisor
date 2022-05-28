@@ -23,10 +23,10 @@
                                         <div class="aa-properties-details-img">
                                             @isset($immagini)
                                                 @foreach($immagini as $immagine)
-                                                    <img src="{{ asset("images/$immagine->nome_immagine") }}" alt="img">
+                                                    <img src="{{ asset("images/annunci/$immagine->nome_immagine") }}" alt="img">
                                                 @endforeach
                                             @else
-                                                <img src="{{ asset('images/image_not_avaiable.jpg') }}" alt="img">
+                                                <img src="{{ asset('images/annunci/image_not_avaiable.jpg') }}" alt="img">
                                             @endisset
                                         </div>
                                         <div class="aa-properties-info">

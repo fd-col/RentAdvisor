@@ -12,22 +12,22 @@
                 $val= $('select[name="tipologia"]').val();
                 switch($val) {
                     case 'appartamento':
-                        $('#tipologia_appartamento_fieldset').show();
-                        $('#caratteristiche_appartamento_fieldset').show();
-                        $('#tipologia_posto_letto_fieldset').hide();
-                        $('#caratteristiche_posto_letto_fieldset').hide();
+                        $('#tipologia_appartamento_fieldset').show('slow');
+                        $('#caratteristiche_appartamento_fieldset').show('slow');
+                        $('#tipologia_posto_letto_fieldset').hide('slow');
+                        $('#caratteristiche_posto_letto_fieldset').hide('slow');
                         break;
                     case 'posto_letto':
-                        $('#tipologia_appartamento_fieldset').hide();
-                        $('#caratteristiche_appartamento_fieldset').hide();
-                        $('#tipologia_posto_letto_fieldset').show();
-                        $('#caratteristiche_posto_letto_fieldset').show();
+                        $('#tipologia_appartamento_fieldset').hide('slow');
+                        $('#caratteristiche_appartamento_fieldset').hide('slow');
+                        $('#tipologia_posto_letto_fieldset').show('slow');
+                        $('#caratteristiche_posto_letto_fieldset').show('slow');
                         break;
                     default:
-                        $('#tipologia_appartamento_fieldset').hide();
-                        $('#caratteristiche_appartamento_fieldset').hide();
-                        $('#tipologia_posto_letto_fieldset').hide();
-                        $('#caratteristiche_posto_letto_fieldset').hide();
+                        $('#tipologia_appartamento_fieldset').hide('slow');
+                        $('#caratteristiche_appartamento_fieldset').hide('slow');
+                        $('#tipologia_posto_letto_fieldset').hide('slow');
+                        $('#caratteristiche_posto_letto_fieldset').hide('slow');
 
                 }
             });
@@ -71,7 +71,7 @@
                                 <p>I campi obbligatori sono marcati con <strong class="required">*</strong></p>
                             </div>
                             <div class="aa-contact-form">
-                                {{ Form::open(array('route' => 'conferma_inserimento_annuncio', 'id' => 'addproduct', 'files' => true, 'class' => 'contactform')) }}
+                                {{ Form::open(array('route' => 'conferma_inserimento_annuncio', 'id' => 'inserisci_annuncio', 'files' => true, 'class' => 'contactform')) }}
                                 {{ Form::token() }}
                                     <fieldset name="intestazione">
                                         <p class="comment-form-author">
@@ -213,7 +213,7 @@
                                         </p>
                                         <p class="comment-form-author">
                                             {{ Form::label('numero_bagni', 'Bagni presenti nell\'alloggio*', []) }}
-                                            {{ Form::number('numero_bagni', '', ['id' => 'numero_bagni', 'min' => '1', 'max' => '10']) }}
+                                            {{ Form::number('numero_bagni', '', ['id' => 'numero_bagni', 'min' => '1', 'max' => '100']) }}
                                             @if ($errors->first('numero_bagni'))
                                                 <ul>
                                                     @foreach ($errors->get('numero_bagni') as $message)
@@ -292,7 +292,7 @@
                                         <legend>CARATTERISTICHE DELL'APPARTAMENTO</legend>
                                         <p class="comment-form-author">
                                             {{ Form::label('numero_camere', 'Numero camere presenti nell\'appartamento', []) }}
-                                            {{ Form::number('numero_camere', '', ['id' => 'numero_camere', 'min' => '1', 'max' => '20']) }}
+                                            {{ Form::number('numero_camere', '', ['id' => 'numero_camere', 'min' => '1', 'max' => '100']) }}
                                         @if ($errors->first('numero_camere'))
                                             <ul>
                                                 @foreach ($errors->get('numero_camere') as $message)
@@ -369,7 +369,7 @@
                                         </p>
                                         <p class="comment-form-author">
                                             {{ Form::label('letti_nella_camera', 'Numero di letti presenti nella camera', []) }}
-                                            {{ Form::number('letti_nella_camera', '', ['id' => 'letti_nella_camera', 'min' => '1', 'max' => '10']) }}
+                                            {{ Form::number('letti_nella_camera', '', ['id' => 'letti_nella_camera', 'min' => '1', 'max' => '100']) }}
                                             @if ($errors->first('letti_nella_camera'))
                                                 <ul>
                                                     @foreach ($errors->get('letti_nella_camera') as $message)
@@ -395,7 +395,7 @@
                                         <legend>CONDIZIONI PER L'AFFITTO</legend>
                                         <p class="comment-form-author">
                                             {{ Form::label('canone_affitto', 'Canone di affitto mensile (€)*', []) }}
-                                            {{ Form::number('canone_affitto', '', ['id' => 'canone_affitto', 'min' => '1', 'max' => '10000', 'step' => '0.01']) }}
+                                            {{ Form::number('canone_affitto', '', ['id' => 'canone_affitto', 'min' => '1', 'max' => '9999', 'step' => '0.01']) }}
                                         @if ($errors->first('canone_affitto'))
                                             <ul>
                                                 @foreach ($errors->get('canone_affitto') as $message)
@@ -406,7 +406,7 @@
                                         </p>
                                         <p class="comment-form-author">
                                             {{ Form::label('caparra', 'Caparra (€)*', []) }}
-                                            {{ Form::number('caparra', '', ['id' => 'caparra', 'min' => '1', 'max' => '10000', 'step' => '0.01']) }}
+                                            {{ Form::number('caparra', '', ['id' => 'caparra', 'min' => '1', 'max' => '9999', 'step' => '0.01']) }}
                                             @if ($errors->first('caparra'))
                                                 <ul>
                                                     @foreach ($errors->get('caparra') as $message)
@@ -417,7 +417,7 @@
                                         </p>
                                         <p class="comment-form-author">
                                             {{ Form::label('durata_minima_locazione', 'Durata minima dell\'affitto (mesi)*', []) }}
-                                            {{ Form::number('durata_minima_locazione', '', ['id' => 'durata_minima_locazione', 'min' => '1']) }}
+                                            {{ Form::number('durata_minima_locazione', '', ['id' => 'durata_minima_locazione', 'min' => '1', 'max' => '500']) }}
                                                 @if ($errors->first('durata_minima_locazione'))
                                                     <ul>
                                                         @foreach ($errors->get('durata_minima_locazione') as $message)
@@ -484,11 +484,11 @@
                                     <fieldset name="foto">
                                         <legend>FOTO DELL'ALLOGGIO</legend>
                                         <p class="comment-form-author">
-                                            {{ Form::label('foto_annuncio', 'Inserisci le foto del tuo annuncio', []) }}
-                                            {{ Form::file('foto_annuncio', ['class' => 'input', 'id' => 'foto_annuncio', 'multiple' => 'true', 'accept' => 'image/jpeg, image/jpg, image/png']) }}
-                                        @if ($errors->first('foto_annuncio'))
+                                            {{ Form::label('foto_annuncio[]', 'Inserisci le foto del tuo annuncio', []) }}
+                                            {{ Form::file('foto_annuncio[]', ['class' => 'input', 'id' => 'foto_annuncio[]', 'multiple' => 'true', 'accept' => 'image/jpeg, image/jpg, image/png']) }}
+                                        @if ($errors->first('foto_annuncio[]'))
                                             <ul>
-                                                @foreach ($errors->get('foto_annuncio') as $message)
+                                                @foreach ($errors->get('foto_annuncio[]') as $message)
                                                     <li class="richiesta">{{ $message }}</li>
                                                 @endforeach
                                             </ul>

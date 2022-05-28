@@ -122,7 +122,8 @@ class Catalogo extends Model
 
     public function inserisci_dati_annuncio($dati_validi) {
         date_default_timezone_set('Europe/Rome');
-        Annuncio::insert(['username_locatore' => auth()->user()->username, 'titolo' => $dati_validi['titolo'], 'descrizione' => $dati_validi['descrizione'], 'tipologia' =>$dati_validi['tipologia'], 'data_inserimento' => date('Y-m-d H:m:s'), 'provincia' => $dati_validi['provincia'],
+        //Ritorno l''annuncio appena inserito per utilizzarlo nell'inserimento dei dati nelle altre tabelle
+        return Annuncio::insertGetId(['username_locatore' => auth()->user()->username, 'titolo' => $dati_validi['titolo'], 'descrizione' => $dati_validi['descrizione'], 'tipologia' =>$dati_validi['tipologia'], 'data_inserimento' => date('Y-m-d H:m:s'), 'provincia' => $dati_validi['provincia'],
             'citta' => $dati_validi['citta'], 'cap' => $dati_validi['cap'], 'zona_di_localizzazione' => $dati_validi['zona_di_localizzazione'], 'indirizzo' => $dati_validi['indirizzo'],
             'numero_civico' => $dati_validi['numero_civico'], 'piano' => $dati_validi['piano'], 'numero_posti_letto_totali_alloggio' => $dati_validi['numero_posti_letto_totali_alloggio'],
             'numero_bagni' => $dati_validi['numero_bagni'], 'fumatori' => $dati_validi['fumatori'], 'parcheggio' => $dati_validi['parcheggio'], 'wi_fi' => $dati_validi['wi_fi'],
@@ -130,9 +131,6 @@ class Catalogo extends Model
             'genere_preferito' => $dati_validi['genere_preferito'], 'eta_preferita_min' => $dati_validi['eta_preferita_min'], 'eta_preferita_max' => $dati_validi['eta_preferita_max'],
             'periodo_disponibilita_inizio' => $dati_validi['periodo_disponibilita_inizio'], 'periodo_disponibilita_fine' => $dati_validi['periodo_disponibilita_fine']]);
 
-
-        //Ritorno l''annuncio appena inserito per utilizzarlo nell'inserimento dei dati nelle altre tabelle
-        return Annuncio::where('username_locatore', auth()->user()->username)->orderBy('data_inserimento', 'DESC')->get()->first()->id;
     }
 
     public function inserisci_dati_appartamento($dati_validi, $id_annuncio_inserito) {
