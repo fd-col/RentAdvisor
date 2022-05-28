@@ -29,7 +29,7 @@ class RichiestaFiltro extends FormRequest {
 			'tipologia' => 'string|required',
 			'genere' => 'string|required',
 			'citta' => 'nullable|max:100',
-			'zona' => 'nullable|max:100',
+			'zona_localizzazione' => 'nullable|max:100',
 			'caparra_max' => 'nullable|numeric',
 			'affitto_max' => 'nullable|numeric',
 			'locazione_inizio' => 'nullable|date_format:d/m/Y',

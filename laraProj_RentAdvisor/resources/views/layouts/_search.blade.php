@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="aa-single-advance-search">
-                                {{ Form::text('titolo', 'Parole chiave', ['class' => 'search-input','id' => 'titolo']) }}
+                                {{ Form::text('titolo', '', ['class' => 'search-input','id' => 'titolo', 'placeholder'=>'Parole chiave']) }}
                                 @if ($errors->first('titolo'))
                                     <ul>
                                         @foreach ($errors->get('username') as $message)
@@ -76,7 +76,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::text('citta', 'Città', ['class' => 'search-input','id' => 'cap',]) }}
+                                    {{ Form::text('citta', '', ['class' => 'search-input','id' => 'cap', 'placeholder'=> 'Città']) }}
                                     @if ($errors->first('citta'))
                                         <ul>
                                             @foreach ($errors->get('citta') as $message)
@@ -88,7 +88,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::text('zona_localizzazione', 'Zona', ['class' => 'search-input','id' => 'zona_localizzazione',]) }}
+                                    {{ Form::text('zona_localizzazione', '', ['class' => 'search-input','id' => 'zona_localizzazione', 'placeholder' => 'Zona di localizzazione']) }}
                                     @if ($errors->first('zona_localizzazione'))
                                         <ul>
                                             @foreach ($errors->get('zona_localizzazione') as $message)
@@ -151,7 +151,7 @@
 
                                 <div class="aa-single-advance-search">
 
-                                    {{ Form::date('locazione_inizio', '1990-01-01',['id' => 'locazione_inizio']) }}
+                                    {{ Form::date('locazione_inizio', '',['id' => 'locazione_inizio']) }}
                                     @if ($errors->first('locazione_inizio'))
                                         <ul>
                                             @foreach ($errors->get('locazione_inizio') as $message)
@@ -166,7 +166,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::date('locazione_fine', '1990-01-01',['id' => 'locazione_fine']) }}
+                                    {{ Form::date('locazione_fine', '',['id' => 'locazione_fine']) }}
                                     @if ($errors->first('locazione_fine'))
                                         <ul>
                                             @foreach ($errors->get('locazione_fine') as $message)
@@ -269,7 +269,7 @@
                             </div>
                             <div class="col-md-1">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::text('appartamento_min', 'Min', ['class' => 'search-input','id' => 'appartamento_min',]) }}
+                                    {{ Form::text('appartamento_min', '', ['class' => 'search-input','id' => 'appartamento_min', 'placeholder' => 'Min']) }}
                                     @if ($errors->first('appartamento_min'))
                                         <ul>
                                             @foreach ($errors->get('appartamento_min') as $message)
@@ -281,7 +281,7 @@
                             </div>
                             <div class="col-md-1">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::text('appartamento_max', 'Max', ['class' => 'search-input','id' => 'appartamento_max',]) }}
+                                    {{ Form::text('appartamento_max', '', ['class' => 'search-input','id' => 'appartamento_max', 'placeholder'=>'Max']) }}
                                     @if ($errors->first('appartamento_max'))
                                         <ul>
                                             @foreach ($errors->get('appartamento_max') as $message)
@@ -331,7 +331,7 @@
                                 <label>Dimensioni della camera</label>
                             </div>
                             <div class="col-md-1">
-                                {{ Form::text('dim_camera_min', 'Min', ['class' => 'search-input','id' => 'dim_camera_min',]) }}
+                                {{ Form::text('dim_camera_min', '', ['class' => 'search-input','id' => 'dim_camera_min', 'placeholder' => 'Min']) }}
                                 @if ($errors->first('dim_camera_min'))
                                     <ul>
                                         @foreach ($errors->get('dim_camera_min') as $message)
@@ -342,7 +342,7 @@
                             </div>
                             <div class="col-md-1">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::text('dim_camera_max', 'Max', ['class' => 'search-input','id' => 'dim_camera_max',]) }}
+                                    {{ Form::text('dim_camera_max', '', ['class' => 'search-input','id' => 'dim_camera_max', 'placeholder' => 'Max']) }}
                                     @if ($errors->first('dim_camera_max'))
                                         <ul>
                                             @foreach ($errors->get('dim_camera_max') as $message)
