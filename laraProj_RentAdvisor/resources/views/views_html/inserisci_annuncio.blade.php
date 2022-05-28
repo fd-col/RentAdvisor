@@ -72,7 +72,7 @@
                             </div>
                             <div class="aa-contact-form">
                                 {{ Form::open(array('route' => 'conferma_inserimento_annuncio', 'id' => 'inserisci_annuncio', 'files' => true, 'class' => 'contactform')) }}
-                                {{ Form::token() }}
+                                {{ csrf_field() }}
                                     <fieldset name="intestazione">
                                         <p class="comment-form-author">
                                             {{ Form::label('titolo', 'Titolo*', []) }}

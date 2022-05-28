@@ -47,8 +47,11 @@ Route::post('/locatore/modifica_dati_locatore', 'ProfiloController@modifica_dati
 Route::view('/locatore/inserisci_annuncio', 'views_html/inserisci_annuncio')
     ->name('inserisci_annuncio')->middleware('can:isLocatore');
 
-Route::post('/locatore/confermainserimento', 'CatalogoController@inserisci_annuncio')
+Route::post('/locatore/conferma_inserimento', 'CatalogoController@inserisci_annuncio')
     ->name('conferma_inserimento_annuncio')->middleware('can:isLocatore');
+
+Route::post('/locatore/elimina_annuncio', 'CatalogoController@elimina_annuncio')
+    ->name('elimina_annuncio')->middleware('can:isLocatore');
 
 
 

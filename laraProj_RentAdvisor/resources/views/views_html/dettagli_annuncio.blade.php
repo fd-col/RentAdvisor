@@ -7,6 +7,20 @@
         @isset($caratteristiche)
             @isset($locatore)
 
+                <script>
+                    jQuery(function(){
+                        $('#ancora_elimina_annuncio').click(function(){
+                            $var = confirm('Sei sicuro di voler eliminare l\'annuncio?');
+                            if ($var == true) {
+                                event.preventDefault();
+                                document.getElementById('elimina_annuncio_form').submit();
+                            } else {
+                                alert('Eliminazione annullata');
+                            }
+                        });
+                    })
+                </script>
+
                 <!-- Start Properties  -->
                 <section id="aa-properties">
                     <div class="container">
@@ -209,7 +223,11 @@
                                         @can('isLocatore')
                                             @if(auth()->user()->username == $locatore->username)
                                                 <h4><a href=""><span class="fa fa-edit"></span> Modifica annuncio</a></h4>
-                                                <h4><a href=""><span class="fa fa-trash"></span> Elimina annuncio</a></h4>
+                                                <h4><a href="" id="ancora_elimina_annuncio"><span class="fa fa-trash"></span> Elimina annuncio</a></h4>
+                                                <form id="elimina_annuncio_form" action="{{ route('elimina_annuncio') }}" method="POST" style="display: none;">
+                                                    {{ csrf_field() }}
+                                                    {{ Form::text('id', "$annuncio->id",['style' => 'display: none']) }}
+                                                </form>
                                             @endif
                                         @endcan
                                         @can('isLocatario')

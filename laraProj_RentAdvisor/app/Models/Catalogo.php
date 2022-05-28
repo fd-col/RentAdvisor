@@ -8,6 +8,7 @@ use App\Models\Resources\Annuncio;
 use App\Models\Resources\Posto_Letto;
 use App\Models\Resources\Appartamento;
 use App\Models\Resources\Immagine;
+use App\Models\Resources\Opzione_Annuncio;
 use App\User;
 use Illuminate\Support\Facades\Log;
 
@@ -60,6 +61,17 @@ class Catalogo extends Model
         $annunci = Annuncio::where('username_locatore', $username_locatore)->orderBy('data_inserimento', 'DESC')->paginate(4);
         return $annunci;
     }
+
+    public function get_annunci_opzionati_locatario ($username_locatario) {
+        $opzioni_annunci = Opzione_Annuncio::where('username_locatario', $username_locatario)->get();
+        $array_id_annunci_opzionati = array();
+        foreach ($opzioni_annunci as $opzione_annuncio)
+            array_push($array_id_annunci_opzionati, $opzione_annuncio->id_annuncio);
+
+        $annunci_opzionati = Annuncio::whereIn('id', $array_id_annunci_opzionati)->orderBy('data_inserimento', 'DESC')->paginate(6);
+        return $annunci_opzionati;
+    }
+
 	public function get_annunci_filtrati($filtri){
 	$annunci=Annuncio::leftJoin('Appartamento', 'Annuncio.id', '=', 'Appartamento.id_annuncio')
 			->leftJoin('Posto_Letto', 'Annuncio.id', '=', 'Posto_Letto.id_annuncio');
@@ -142,12 +154,22 @@ class Catalogo extends Model
     }
 
     public function inserisci_dati_posto_letto($dati_validi, $id_annuncio_inserito) {
-
         Posto_Letto::insert(['id_annuncio' => $id_annuncio_inserito, 'tipologia_posto_letto' => $dati_validi['tipologia_posto_letto'], 'dimensioni_camera' => $dati_validi['dimensioni_camera'],
             'letti_nella_camera' => $dati_validi['letti_nella_camera'], 'presenza_angolo_studio' => $dati_validi['presenza_angolo_studio']]);
     }
 
     public function inserisci_dati_immagine($nome_immagine, $id_annuncio_inserito) {
         Immagine::insert(['id_annuncio' => $id_annuncio_inserito, 'nome_immagine' => $nome_immagine]);
+    }
+
+    public function elimina_annuncio ($id_annuncio) {
+        Immagine::where('id_annuncio', $id_annuncio)->delete();
+
+        if ($this->get_annuncio($id_annuncio)->tipologia == 'appartamento')
+            Appartamento::where('id_annuncio', $id_annuncio)->delete();
+        else
+            Posto_Letto::where('id_annuncio', $id_annuncio)->delete();
+
+        Annuncio::where('id', $id_annuncio)->delete();
     }
 }

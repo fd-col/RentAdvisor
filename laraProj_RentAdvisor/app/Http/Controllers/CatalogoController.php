@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RichiestaEliminaAnnuncio;
 use App\Http\Requests\RichiestaFiltro;
 use App\Http\Requests\RichiestaInserisciAnnuncio;
 use ErrorException;
@@ -95,6 +96,25 @@ class CatalogoController extends Controller
         } else {
             $this->modello_catalogo->inserisci_dati_immagine('image_not_avaiable.jpg', $id_annuncio_inserito);
         }
+
+        return redirect()->action('ProfiloController@pagina_profilo_locatore');
+    }
+
+    public function elimina_annuncio(RichiestaEliminaAnnuncio $richiesta) {
+        $dati_validi = $richiesta->validated();
+        $id_annuncio = $dati_validi['id'];
+
+        if($this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore != auth()->user()->username)
+            return view('views_html/404');
+
+        $immagini = $this->modello_catalogo->get_immagini_annuncio($id_annuncio);
+        foreach ($immagini as $immagine) {
+            $nome_immagine = $immagine->nome_immagine;
+            if ($nome_immagine != 'image_not_avaiable.jpg')
+                unlink(public_path() . '/images/annunci/' . $nome_immagine);
+        }
+
+        $this->modello_catalogo->elimina_annuncio($id_annuncio);
 
         return redirect()->action('ProfiloController@pagina_profilo_locatore');
     }

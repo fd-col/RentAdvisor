@@ -20,11 +20,17 @@ class ProfiloController extends Controller
         $this->modello_catalogo = new Catalogo;
         $this->modello_messaggio = new Messaggio;
     }
+
     public function pagina_profilo_locatario(){
 
         $user = $this->modello_user::where('username', auth()->user()->username)->get()->first();
+        $annunci_opzionati = $this->modello_catalogo->get_annunci_opzionati_locatario(auth()->user()->username);
+        $immagini = $this->modello_catalogo->get_immagini_annunci($annunci_opzionati);
+
         return view('views_html/visualizza_profilo_locatario')
-        ->with('user', $user);
+            ->with('user', $user)
+            ->with('annunci_opzionati', $annunci_opzionati)
+            ->with('immagini', $immagini);
     }
 
     public function pagina_profilo_locatore(){
