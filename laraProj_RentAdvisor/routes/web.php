@@ -25,16 +25,6 @@ Route::view('/contatti', 'views_html/contatti')
 Route::get('/dettagliannuncio/{id_annuncio}', 'CatalogoController@dettagli_annuncio')
         ->name('dettagli_annuncio');
 
-// link del progetto del prof
-
-Route::post('/admin/newproduct', 'AdminController@storeProduct')
-        ->name('newproduct.store');
-
-Route::get('/admin', 'AdminController@index')
-        ->name('admin');
-
-Route::get('/user', 'UserController@index')
-        ->name('user')->middleware('can:isUser');
 
 // link locatore (proprietario)
 
@@ -58,7 +48,6 @@ Route::get('/locatore/modifica_annuncio/{id_annuncio}', 'CatalogoController@pagi
 
 Route::post('/locatore/conferma_modifica_annuncio', 'CatalogoController@modifica_annuncio')
     ->name('conferma_modifica_annuncio')->middleware('can:isLocatore');
-
 
 Route::get('/locatore/modifica_disponibile/{id_annuncio}', 'CatalogoController@toggle_disponibile_annuncio')
     ->name('toggle_disponibile_annuncio')->middleware('can:isLocatore');

@@ -141,8 +141,7 @@ class Catalogo extends Model
 		$annunci->where('Posto_Letto.tipologia_posto_letto', $filtri['tipologia_posto_letto']);
 	if(isset($filtri['angolo_studio']))
 		$annunci->where('Posto_Letto.presenza_angolo_studio', $filtri['angolo_studio']);
-    $annunci->orderBy('data_inserimento', 'DESC');
-    $annunci->paginate(9);
+    $annunci->orderBy('data_inserimento', 'DESC')->paginate(9);
 	return $annunci;
 	}
 
