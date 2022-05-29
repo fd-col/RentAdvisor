@@ -28,7 +28,7 @@
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
                                     <a href="{{ route('area_personale_locatore') }}" class="aa-login"><span class="fa fa-user"></span>  {{ auth()->user()->nome }} {{ auth()->user()->cognome }}</a> |
-                                    <a href="#" class="aa-login"><span class="fa fa-envelope"></span> Messaggi</a>|
+                                    <a href="" class="aa-login"><span class="fa fa-envelope"></span> Messaggi</a>|
                                     <a href="{{ Route::is('area_personale_locatore') ? '#aa-contact' : route('area_personale_locatore') }}" class="aa-login"><span class="fa fa-edit"></span> Profilo</a>|
                                     <a href="" title="Esci dal sito" class="aa-login" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> Logout</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -34,7 +34,7 @@
                   </div>
                     @else
                   <div class="messaggi-ricevuti">
-                    <li><h3>{{&messaggio->username_locatario}}</h3>
+                    <li><h3>{{$messaggio->username_locatario}}</h3>
                     <p>{{$messaggio->testo}}</p></li>
                   </div>
                     @endif
