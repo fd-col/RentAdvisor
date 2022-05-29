@@ -13,7 +13,7 @@ class MessaggiController extends Controller
     protected $modello_user;
 
     public function __construct(){
-        $this->$modello_user = new User;
+        $this->modello_user = new User;
         $this->modello_messaggio = new Messaggio;
     }
 
