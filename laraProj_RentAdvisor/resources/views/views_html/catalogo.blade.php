@@ -4,9 +4,9 @@
 
 @section('content')
 	@can('isLocatario')
-	<!-- Advance Search -->
-	@include('layouts._search')
-	<!-- / Advance Search -->
+	    <!-- Advance Search -->
+	    @include('layouts._search')
+	    <!-- / Advance Search -->
 	@endcan
 
     @isset($annunci)
@@ -23,8 +23,6 @@
 
                     <div class="aa-latest-properties-content">
                         <div class="row">
-
-
                             @foreach($annunci as $annuncio)
                                 @if($loop->index % 3 == 0)
                                     <div class="row">
@@ -72,6 +70,7 @@
                     <!--Paginazione-->
                     @include('pagination.paginator', ['paginator' => $annunci])
                 </div>
+            </div>
         </section>
         <!-- / Latest property -->
     @endisset()

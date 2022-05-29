@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\Annuncio;
 use App\Models\Resources\Posto_Letto;
 use App\Models\Resources\Appartamento;
 use App\Models\Resources\Immagine;
+use App\Models\Resources\Opzione_Annuncio;
 use App\User;
-
+use Illuminate\Support\Facades\Log;
 
 class Catalogo extends Model
 {
@@ -59,9 +61,20 @@ class Catalogo extends Model
         $annunci = Annuncio::where('username_locatore', $username_locatore)->orderBy('data_inserimento', 'DESC')->paginate(4);
         return $annunci;
     }
+
+    public function get_annunci_opzionati_locatario ($username_locatario) {
+        $opzioni_annunci = Opzione_Annuncio::where('username_locatario', $username_locatario)->get();
+        $array_id_annunci_opzionati = array();
+        foreach ($opzioni_annunci as $opzione_annuncio)
+            array_push($array_id_annunci_opzionati, $opzione_annuncio->id_annuncio);
+
+        $annunci_opzionati = Annuncio::whereIn('id', $array_id_annunci_opzionati)->orderBy('data_inserimento', 'DESC')->paginate(6);
+        return $annunci_opzionati;
+    }
+
 	public function get_annunci_filtrati($filtri){
-	$annunci=Annuncio::join('Appartamento', 'Annuncio.id', 'Appartamento.id_annuncio')
-			->join('Posto_Letto'. 'Annuncio.id', 'Posto_Letto.id_annuncio');
+	$annunci=Annuncio::leftJoin('Appartamento', 'Annuncio.id', '=', 'Appartamento.id_annuncio')
+			->leftJoin('Posto_Letto', 'Annuncio.id', '=', 'Posto_Letto.id_annuncio');
 	if(!is_null($filtri['titolo']))
 		$annunci->where('Annuncio.titolo',$filtri['titolo']);
 	if($filtri['tipologia'])
@@ -70,8 +83,8 @@ class Catalogo extends Model
 		$annunci->where('Annuncio.genere_preferito', $filtri['genere']);
 	if(!is_null($filtri['citta']))
 		$annunci->where('Annuncio.citta', $filtri['citta']);
-	if(!is_null($filtri['zona']))
-		$annunci->where('Annuncio.zona_di_localizzazione', $filtri['zona']);
+	if(!is_null($filtri['zona_localizzazione']))
+		$annunci->where('Annuncio.zona_di_localizzazione', $filtri['zona_localizzazione']);
 	if(!is_null($filtri['caparra_max']))
 		$annunci->where('Annuncio.caparra','<=', $filtri['caparra_max']);
 	if(!is_null($filtri['affitto_max']))
@@ -86,13 +99,13 @@ class Catalogo extends Model
 		$annunci->where('Annuncio.numero_posti_letto_totali_alloggio', $filtri['n_posti_letto_totali']);
 	if(!is_null($filtri['piano']))
 		$annunci->where('Annuncio.piano', $filtri['piano']);
-	if(!is_null($filtri['fumatori']))
+	if(isset($filtri['fumatori']))
 		$annunci->where('Annuncio.fumatori', $filtri['fumatori']);
-	if(!is_null($filtri['parcheggio']))
+	if(isset($filtri['parcheggio']))
 		$annunci->where('Annuncio.parcheggio', $filtri['parcheggio']);
-	if(!is_null($filtri['wi_fi']))
+	if(isset($filtri['wi_fi']))
 		$annunci->where('Annuncio.wi_fi', $filtri['wi_fi']);
-	if(!is_null($filtri['ascensore']))
+	if(isset($filtri['ascensore']))
 		$annunci->where('Annuncio.ascensore', $filtri['ascensore']);
 	if(!is_null($filtri['numero_camere']))
 		$annunci->where('Appartamento.numero_camere', $filtri['numero_camere']);
@@ -100,11 +113,11 @@ class Catalogo extends Model
 		$annunci->where('Appartamento.dimensioni_appartamento','>=', $filtri['appartamento_min']);
 	if(!is_null($filtri['appartamento_max']))
 		$annunci->where('Appartamento.dimensioni_appartamento','<=', $filtri['appartamento_max']);
-	if(!is_null($filtri['locazione_inizio']))
-		$annunci->where('Appartamento.periodo_disponibilita_inizio', $filtri['locazione_inizio']);
+	if(isset($filtri['cucina']))
+		$annunci->where('Appartamento.presenza_cucina', $filtri['cucina']);
 	if($filtri['tipologia_appartamento'])
 		$annunci->where('Appartamento.tipologia_appartamento', $filtri['tipologia_appartamento']);
-	if(!is_null($filtri['locale_ricreativo']))
+	if(isset($filtri['locale_ricreativo']))
 		$annunci->where('Appartamento.periodo_disponibilita_inizio', $filtri['locazione_inizio']);
 	if(!is_null($filtri['letti_camera']))
 		$annunci->where('Posto_Letto.letti_nella_camera', $filtri['letti_camera']);
@@ -114,9 +127,10 @@ class Catalogo extends Model
 		$annunci->where('Posto_Letto.dimensioni_camera', $filtri['dim_camera_max']);
 	if($filtri['tipologia_posto_letto'])
 		$annunci->where('Posto_Letto.tipologia_posto_letto', $filtri['tipologia_posto_letto']);
-	if(!is_null($filtri['angolo_studio']))
+	if(isset($filtri['angolo_studio']))
 		$annunci->where('Posto_Letto.presenza_angolo_studio', $filtri['angolo_studio']);
-
+    $annunci->orderBy('data_inserimento', 'DESC');
+    $annunci->paginate(9);
 	return $annunci;
 	}
 
@@ -140,12 +154,22 @@ class Catalogo extends Model
     }
 
     public function inserisci_dati_posto_letto($dati_validi, $id_annuncio_inserito) {
-
         Posto_Letto::insert(['id_annuncio' => $id_annuncio_inserito, 'tipologia_posto_letto' => $dati_validi['tipologia_posto_letto'], 'dimensioni_camera' => $dati_validi['dimensioni_camera'],
             'letti_nella_camera' => $dati_validi['letti_nella_camera'], 'presenza_angolo_studio' => $dati_validi['presenza_angolo_studio']]);
     }
 
     public function inserisci_dati_immagine($nome_immagine, $id_annuncio_inserito) {
         Immagine::insert(['id_annuncio' => $id_annuncio_inserito, 'nome_immagine' => $nome_immagine]);
+    }
+
+    public function elimina_annuncio ($id_annuncio) {
+        Immagine::where('id_annuncio', $id_annuncio)->delete();
+
+        if ($this->get_annuncio($id_annuncio)->tipologia == 'appartamento')
+            Appartamento::where('id_annuncio', $id_annuncio)->delete();
+        else
+            Posto_Letto::where('id_annuncio', $id_annuncio)->delete();
+
+        Annuncio::where('id', $id_annuncio)->delete();
     }
 }
