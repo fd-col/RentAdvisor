@@ -21,7 +21,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers; // è un trait, la versione sviluppata è un ovverride
 
     /**
      * Where to redirect users after registration.
@@ -38,8 +38,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
-    }
+        $this->middleware('guest'); //attiva il middleware di autenticazione, il middleware è in grado di riconoscere l'utente guest (che esiste già)
+    }                               //questo fa sì che se un utente già loggato accede a questo controller, esso viene rifiutato
 
     /**
      * Get a validator for an incoming registration request.
@@ -47,7 +47,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data) //oltre le request, è possibile definire delle r. di validazione anche nel controller
     {
         return Validator::make($data, [
             'username' => ['required', 'string', 'min:8', 'max:40', 'unique:users'],

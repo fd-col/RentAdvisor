@@ -74,7 +74,7 @@
                             <h4 class="author-name">Adam Barney</h4>
                             <span class="comments-date"> 20th April, 2016</span>
                             <p>Messaggio 1</p>
-                            <a class="reply-btn" href="#">Reply</a>
+                            <a class="reply-btn" href="#">Rispondi</a>
                           </div>
                         </div>
                       </li>
