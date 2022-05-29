@@ -50,9 +50,14 @@ Route::view('/locatore/inserisci_annuncio', 'views_html/inserisci_annuncio')
 Route::post('/locatore/conferma_inserimento', 'CatalogoController@inserisci_annuncio')
     ->name('conferma_inserimento_annuncio')->middleware('can:isLocatore');
 
-Route::post('/locatore/elimina_annuncio', 'CatalogoController@elimina_annuncio')
-    ->name('elimina_annuncio')->middleware('can:isLocatore');
+Route::post('/locatore/conferma_elimina_annuncio', 'CatalogoController@elimina_annuncio')
+    ->name('conferma_elimina_annuncio')->middleware('can:isLocatore');
 
+Route::get('/locatore/modifica_annuncio/{id_annuncio}', 'CatalogoController@pagina_modifica_annuncio')
+    ->name('modifica_annuncio')->middleware('can:isLocatore');
+
+Route::post('/locatore/conferma_modifica_annuncio', 'CatalogoController@modifica_annuncio')
+    ->name('conferma_modifica_annuncio')->middleware('can:isLocatore');
 
 
 // link locatario (studente)
@@ -73,19 +78,19 @@ Route::view('/statistiche', 'views_html/statistiche')
 Route::get('/faq/modifica/{id_faq}', 'FaqController@pagina_modifica_faq')
     ->name('modifica_faq')->middleware('can:isAdmin');
 
-Route::post('faq/confermamodifica', 'FaqController@modifica_faq')
+Route::post('faq/conferma_modifica_faq', 'FaqController@modifica_faq')
     ->name('conferma_modifica_faq')->middleware('can:isAdmin');
 
 Route::get('/faq/aggiungi', 'FaqController@pagina_aggiungi_faq')
     ->name('aggiungi_faq')->middleware('can:isAdmin');
 
-Route::post('faq/confermaaggiunta', 'FaqController@aggiungi_faq')
+Route::post('faq/conferma_aggiunta_faq', 'FaqController@aggiungi_faq')
     ->name('conferma_aggiunta_faq')->middleware('can:isAdmin');
 
 Route::get('/faq/elimina/{id_faq}', 'FaqController@pagina_elimina_faq')
     ->name('elimina_faq')->middleware('can:isAdmin');
 
-Route::post('faq/confermaeliminazione', 'FaqController@elimina_faq')
+Route::post('faq/conferma_eliminazione_faq', 'FaqController@elimina_faq')
     ->name('conferma_elimina_faq')->middleware('can:isAdmin');
 
 

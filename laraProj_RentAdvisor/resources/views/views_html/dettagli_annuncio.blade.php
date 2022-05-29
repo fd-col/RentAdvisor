@@ -222,9 +222,12 @@
                                         <br><br>
                                         @can('isLocatore')
                                             @if(auth()->user()->username == $locatore->username)
-                                                <h4><a href=""><span class="fa fa-edit"></span> Modifica annuncio</a></h4>
+                                                <!-- Link per la modifica dell'annuncio -->
+                                                <h4><a href="{{ route('modifica_annuncio', [$annuncio->id]) }}"><span class="fa fa-edit"></span> Modifica annuncio</a></h4>
+
+                                                <!-- Link per l'eliminazione dell'annuncio -->
                                                 <h4><a href="" id="ancora_elimina_annuncio"><span class="fa fa-trash"></span> Elimina annuncio</a></h4>
-                                                <form id="elimina_annuncio_form" action="{{ route('elimina_annuncio') }}" method="POST" style="display: none;">
+                                                <form id="elimina_annuncio_form" action="{{ route('conferma_elimina_annuncio') }}" method="POST" style="display: none;">
                                                     {{ csrf_field() }}
                                                     {{ Form::text('id', "$annuncio->id",['style' => 'display: none']) }}
                                                 </form>

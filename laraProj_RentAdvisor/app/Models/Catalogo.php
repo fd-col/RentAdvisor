@@ -135,9 +135,11 @@ class Catalogo extends Model
 	}
 
     public function inserisci_dati_annuncio($dati_validi) {
+        //Imposto la timezone per settare bene la data di inserimento dell'annuncio
         date_default_timezone_set('Europe/Rome');
+
         //Ritorno l''annuncio appena inserito per utilizzarlo nell'inserimento dei dati nelle altre tabelle
-        return Annuncio::insertGetId(['username_locatore' => auth()->user()->username, 'titolo' => $dati_validi['titolo'], 'descrizione' => $dati_validi['descrizione'], 'tipologia' =>$dati_validi['tipologia'], 'data_inserimento' => date('Y-m-d H:m:s'), 'provincia' => $dati_validi['provincia'],
+        $id_annuncio_inserito = Annuncio::insertGetId(['username_locatore' => auth()->user()->username, 'titolo' => $dati_validi['titolo'], 'descrizione' => $dati_validi['descrizione'], 'tipologia' =>$dati_validi['tipologia'], 'data_inserimento' => date('Y-m-d H:m:s'), 'provincia' => $dati_validi['provincia'],
             'citta' => $dati_validi['citta'], 'cap' => $dati_validi['cap'], 'zona_di_localizzazione' => $dati_validi['zona_di_localizzazione'], 'indirizzo' => $dati_validi['indirizzo'],
             'numero_civico' => $dati_validi['numero_civico'], 'piano' => $dati_validi['piano'], 'numero_posti_letto_totali_alloggio' => $dati_validi['numero_posti_letto_totali_alloggio'],
             'numero_bagni' => $dati_validi['numero_bagni'], 'fumatori' => $dati_validi['fumatori'], 'parcheggio' => $dati_validi['parcheggio'], 'wi_fi' => $dati_validi['wi_fi'],
@@ -145,31 +147,54 @@ class Catalogo extends Model
             'genere_preferito' => $dati_validi['genere_preferito'], 'eta_preferita_min' => $dati_validi['eta_preferita_min'], 'eta_preferita_max' => $dati_validi['eta_preferita_max'],
             'periodo_disponibilita_inizio' => $dati_validi['periodo_disponibilita_inizio'], 'periodo_disponibilita_fine' => $dati_validi['periodo_disponibilita_fine']]);
 
-    }
+        if ($dati_validi['tipologia'] == 'appartamento')
+            Appartamento::insert(['id_annuncio' => $id_annuncio_inserito, 'numero_camere' => $dati_validi['numero_camere'], 'dimensioni_appartamento' => $dati_validi['dimensioni_appartamento'], 'presenza_cucina' => $dati_validi['presenza_cucina'],
+                'presenza_locale_ricreativo' => $dati_validi['presenza_locale_ricreativo'],'tipologia_appartamento' => $dati_validi['tipologia_appartamento']]);
+        else
+            Posto_Letto::insert(['id_annuncio' => $id_annuncio_inserito, 'tipologia_posto_letto' => $dati_validi['tipologia_posto_letto'], 'dimensioni_camera' => $dati_validi['dimensioni_camera'],
+                'letti_nella_camera' => $dati_validi['letti_nella_camera'], 'presenza_angolo_studio' => $dati_validi['presenza_angolo_studio']]);
 
-    public function inserisci_dati_appartamento($dati_validi, $id_annuncio_inserito) {
-        Appartamento::insert(['id_annuncio' => $id_annuncio_inserito, 'numero_camere' => $dati_validi['numero_camere'], 'dimensioni_appartamento' => $dati_validi['dimensioni_appartamento'], 'presenza_cucina' => $dati_validi['presenza_cucina'],
-                 'presenza_locale_ricreativo' => $dati_validi['presenza_locale_ricreativo'],'tipologia_appartamento' => $dati_validi['tipologia_appartamento']]);
-
-    }
-
-    public function inserisci_dati_posto_letto($dati_validi, $id_annuncio_inserito) {
-        Posto_Letto::insert(['id_annuncio' => $id_annuncio_inserito, 'tipologia_posto_letto' => $dati_validi['tipologia_posto_letto'], 'dimensioni_camera' => $dati_validi['dimensioni_camera'],
-            'letti_nella_camera' => $dati_validi['letti_nella_camera'], 'presenza_angolo_studio' => $dati_validi['presenza_angolo_studio']]);
+        return $id_annuncio_inserito;
     }
 
     public function inserisci_dati_immagine($nome_immagine, $id_annuncio_inserito) {
         Immagine::insert(['id_annuncio' => $id_annuncio_inserito, 'nome_immagine' => $nome_immagine]);
     }
 
-    public function elimina_annuncio ($id_annuncio) {
-        Immagine::where('id_annuncio', $id_annuncio)->delete();
+    public function modifica_dati_annuncio($dati_validi) {
+        Annuncio::where('id', $dati_validi['id'])->limit(1)->update(['titolo' => $dati_validi['titolo'], 'descrizione' => $dati_validi['descrizione'], 'provincia' => $dati_validi['provincia'],
+            'citta' => $dati_validi['citta'], 'cap' => $dati_validi['cap'], 'zona_di_localizzazione' => $dati_validi['zona_di_localizzazione'], 'indirizzo' => $dati_validi['indirizzo'],
+            'numero_civico' => $dati_validi['numero_civico'], 'piano' => $dati_validi['piano'], 'numero_posti_letto_totali_alloggio' => $dati_validi['numero_posti_letto_totali_alloggio'],
+            'numero_bagni' => $dati_validi['numero_bagni'], 'fumatori' => $dati_validi['fumatori'], 'parcheggio' => $dati_validi['parcheggio'], 'wi_fi' => $dati_validi['wi_fi'],
+            'ascensore' => $dati_validi['ascensore'], 'canone_affitto' => $dati_validi['canone_affitto'], 'caparra' => $dati_validi['caparra'], 'durata_minima_locazione' => $dati_validi['durata_minima_locazione'],
+            'genere_preferito' => $dati_validi['genere_preferito'], 'eta_preferita_min' => $dati_validi['eta_preferita_min'], 'eta_preferita_max' => $dati_validi['eta_preferita_max'],
+            'periodo_disponibilita_inizio' => $dati_validi['periodo_disponibilita_inizio'], 'periodo_disponibilita_fine' => $dati_validi['periodo_disponibilita_fine']]);
 
+        if ($dati_validi['tipologia'] == 'appartamento')
+            Appartamento::where('id_annuncio', $dati_validi['id'])->limit(1)->update(['numero_camere' => $dati_validi['numero_camere'], 'dimensioni_appartamento' => $dati_validi['dimensioni_appartamento'], 'presenza_cucina' => $dati_validi['presenza_cucina'],
+                'presenza_locale_ricreativo' => $dati_validi['presenza_locale_ricreativo'],'tipologia_appartamento' => $dati_validi['tipologia_appartamento']]);
+        else
+            Posto_Letto::where('id_annuncio', $dati_validi['id'])->limit(1)->update(['tipologia_posto_letto' => $dati_validi['tipologia_posto_letto'], 'dimensioni_camera' => $dati_validi['dimensioni_camera'],
+                'letti_nella_camera' => $dati_validi['letti_nella_camera'], 'presenza_angolo_studio' => $dati_validi['presenza_angolo_studio']]);
+    }
+
+    public function elimina_dati_immagini($id_annuncio) {
+        Immagine::where('id_annuncio', $id_annuncio)->delete();
+    }
+
+    public function elimina_annuncio ($id_annuncio) {
+        //Elimina i riperimenti alle immagini di quell'annuncio
+        Immagine::where('id_annuncio', $id_annuncio)->delete();
+        //Elimina le opzioni riferite a quell'annuncio
+        Opzione_Annuncio::where('id_annuncio', $id_annuncio)->delete();
+
+        //Elimina le caratteristiche specifiche al tipo di alloggio di quell'annuncio
         if ($this->get_annuncio($id_annuncio)->tipologia == 'appartamento')
             Appartamento::where('id_annuncio', $id_annuncio)->delete();
         else
             Posto_Letto::where('id_annuncio', $id_annuncio)->delete();
 
+        //Elimina l'annuncio
         Annuncio::where('id', $id_annuncio)->delete();
     }
 }

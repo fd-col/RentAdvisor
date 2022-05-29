@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RichiestaEliminaAnnuncio;
 use App\Http\Requests\RichiestaFiltro;
 use App\Http\Requests\RichiestaInserisciAnnuncio;
+use App\Http\Requests\RichiestaModificaAnnuncio;
 use ErrorException;
 use Illuminate\Http\Request;
 use App\Models\Catalogo;
@@ -70,18 +71,15 @@ class CatalogoController extends Controller
 
 	}
 
+
+    //FUNZIONI PER L'INSERIMENTO, LA MODIFICA E L'ELIMINAZIONE DEGLI ANNUNCI
+
+
     public function inserisci_annuncio(RichiestaInserisciAnnuncio $richiesta)
     {
-
         $dati_validi = $richiesta->validated();
 
         $id_annuncio_inserito = $this->modello_catalogo->inserisci_dati_annuncio($dati_validi);
-
-        if ($dati_validi['tipologia'] == 'appartamento')
-            $this->modello_catalogo->inserisci_dati_appartamento($dati_validi, $id_annuncio_inserito);
-
-        if ($dati_validi['tipologia'] == 'posto_letto')
-            $this->modello_catalogo->inserisci_dati_posto_letto($dati_validi, $id_annuncio_inserito);
 
         if ($richiesta->hasFile('foto_annuncio')) {
 
@@ -100,17 +98,69 @@ class CatalogoController extends Controller
         return redirect()->action('ProfiloController@pagina_profilo_locatore');
     }
 
+    public function pagina_modifica_annuncio($id_annuncio) {
+        $annuncio = $this->modello_catalogo->get_annuncio($id_annuncio);
+
+        if($annuncio->username_locatore != auth()->user()->username)
+            return view('views_html/non_autorizzato');
+
+        $caratteristiche = $this->modello_catalogo->get_caratteristiche_annuncio($annuncio);
+
+        return view('views_html/modifica_annuncio')
+            ->with('annuncio', $annuncio)
+            ->with('caratteristiche', $caratteristiche);
+    }
+
+    public function modifica_annuncio(RichiestaModificaAnnuncio $richiesta) {
+        $dati_validi = $richiesta->validated();
+        $id_annuncio = $dati_validi['id'];
+
+        //Controllo se l'utente loggato è effettivamente colui che ha inserito l'annuncio
+        if($this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore != auth()->user()->username)
+            return view('views_html/non_autorizzato');
+
+        $this->modello_catalogo->modifica_dati_annuncio($dati_validi);
+
+        //Elimina le immagini dell'annuncio presenti prima della modifica
+        $immagini = $this->modello_catalogo->get_immagini_annuncio($id_annuncio);
+        foreach ($immagini as $immagine) {
+            $nome_immagine = $immagine->nome_immagine;
+            if ($nome_immagine != 'image_not_avaiable.jpg')
+                //La funzione unlink cancella i file passati come parametro
+                unlink(public_path() . '/images/annunci/' . $nome_immagine);
+        }
+        $this->modello_catalogo->elimina_dati_immagini($id_annuncio);
+
+        //Inserisco le nuove immagini
+        if ($richiesta->hasFile('foto_annuncio')) {
+            $foto = $richiesta->file('foto_annuncio');
+            $i = 0;
+            foreach ($foto as $foto_singola) {
+                $nome_foto = $id_annuncio.'_'.$i.'.'.$foto_singola->getClientOriginalExtension();
+                $foto_singola->move(public_path().'/images/annunci', $nome_foto);
+                $this->modello_catalogo->inserisci_dati_immagine($nome_foto, $id_annuncio);
+                $i++;
+            }
+        } else {
+            $this->modello_catalogo->inserisci_dati_immagine('image_not_avaiable.jpg', $id_annuncio);
+        }
+
+        return redirect()->action('CatalogoController@dettagli_annuncio', [$id_annuncio]);
+
+    }
+
     public function elimina_annuncio(RichiestaEliminaAnnuncio $richiesta) {
         $dati_validi = $richiesta->validated();
         $id_annuncio = $dati_validi['id'];
 
         if($this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore != auth()->user()->username)
-            return view('views_html/404');
+            return view('views_html/non_autorizzato');
 
         $immagini = $this->modello_catalogo->get_immagini_annuncio($id_annuncio);
         foreach ($immagini as $immagine) {
             $nome_immagine = $immagine->nome_immagine;
             if ($nome_immagine != 'image_not_avaiable.jpg')
+                //La funzione unlink cancella i file passati come parametro
                 unlink(public_path() . '/images/annunci/' . $nome_immagine);
         }
 
@@ -118,6 +168,13 @@ class CatalogoController extends Controller
 
         return redirect()->action('ProfiloController@pagina_profilo_locatore');
     }
+
+
+
+
+
+
+
 
     public function catalogo_statistiche() {
 
