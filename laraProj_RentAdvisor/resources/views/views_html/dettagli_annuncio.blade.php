@@ -9,13 +9,13 @@
 
                 <script>
                     jQuery(function(){
-                        $('#ancora_elimina_annuncio').click(function(){
+                        $('#ancora_elimina_annuncio').click(function(evt){
                             $var = confirm('Sei sicuro di voler eliminare l\'annuncio?');
                             if ($var == true) {
                                 event.preventDefault();
                                 document.getElementById('elimina_annuncio_form').submit();
                             } else {
-                                alert('Eliminazione annullata');
+                                evt.preventDefault();
                             }
                         });
                     })
@@ -46,6 +46,12 @@
                                         <div class="aa-properties-info">
 
                                             <span class="aa-price">Canone d'affitto : {{ $annuncio->canone_affitto }}€</span>
+                                            @if($annuncio->disponibile)
+                                                <h4>Disponibile</h4>
+                                            @else
+                                                <h4>Non disponibile</h4>
+                                                <h5>Data assegnazione: {{ $annuncio->data_assegnazione }}</h5>
+                                            @endif
                                             <h4>■ Descrizione :<br></h4>
                                             <h5>{{ $annuncio->descrizione }}</h5>
                                             <p>■ Tipologia: {{ str_replace('_', ' ', $annuncio->tipologia) }}</p>
@@ -220,6 +226,8 @@
                                             @endif
                                         </p>
                                         <br><br>
+
+                                        <!-- Ancore Locatore -->
                                         @can('isLocatore')
                                             @if(auth()->user()->username == $locatore->username)
                                                 <!-- Link per la modifica dell'annuncio -->
@@ -231,11 +239,60 @@
                                                     {{ csrf_field() }}
                                                     {{ Form::text('id', "$annuncio->id",['style' => 'display: none']) }}
                                                 </form>
+
+                                                <!-- Ancora per rendere l'annuncio non disponibile -->
+                                                <br>
+                                                @if($annuncio->disponibile)
+                                                    <p>Se hai affittato il tuo alloggio puoi rendere l'annuncio non disponibile, gli altri utenti potranno visualizzarlo ma non opzionarlo </p>
+                                                    <h4><a href="{{ route('toggle_disponibile_annuncio', [$annuncio->id]) }}"><span class="fa fa-hand-o-down"></span> Rendi non disponibile</a></h4>
+                                                @else
+                                                    <p>Il tuo annuncio è tornato disponibile? Rendilo nuovamente opzionabile</p>
+                                                    <h4><a href="{{ route('toggle_disponibile_annuncio', [$annuncio->id]) }}"><span class="fa fa-hand-o-up"></span> Rendi disponibile</a></h4>
+                                                @endif
+
+                                                <!-- Locatari che hanno opzionato l'annuncio -->
+                                                @isset($utenti_che_hanno_opzionato)
+                                                    <br>
+                                                    <h2>Opzioni</h2>
+                                                    <p>Ecco gli utenti che hanno opzionato questo annuncio</p>
+                                                    <div class="col-md-12">
+                                                        <div class="aa-comments-area">
+                                                            <div class="comments">
+                                                                <ul class="commentlist">
+                                                                    @foreach($utenti_che_hanno_opzionato as $utente)
+                                                                        <li>
+                                                                            <div class="media">
+                                                                                <div class="media-left">
+                                                                                    <span class="fa fa-user"></span>
+                                                                                </div>
+                                                                                <div class="media-body">
+                                                                                    <h4 class="author-name">{{$utente->username}}</h4>
+                                                                                    <p>
+                                                                                        {{$utente->nome}} {{$utente->cognome}} <br>
+                                                                                        Sesso: {{$utente->genere}} <br>
+                                                                                        Età: {{ (new DateTime($utente->data_nascita))->diff((new DateTime(now())))->y }}
+                                                                                        Email: {{ $utente->email }}
+                                                                                    </p>
+                                                                                    <a class="reply-btn" href="#">Vai alla chat</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endisset
+
                                             @endif
                                         @endcan
+
+                                        <!-- Ancore Locatario -->
                                         @can('isLocatario')
                                                 <h4><a href=""><span class="fa fa-envelope"></span> Contatta il locatore</a></h4>
+                                            @if($annuncio->disponibile)
                                                 <h4><a href=""><span class="fa fa-check-square"></span> Opziona l'annuncio</a></h4>
+                                            @endif
                                         @endcan
                                     </div>
                                 </aside>

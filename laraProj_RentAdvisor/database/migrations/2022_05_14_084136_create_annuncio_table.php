@@ -21,6 +21,7 @@ class CreateAnnuncioTable extends Migration
             $table->enum('tipologia', ['appartamento', 'posto_letto']);
             $table->dateTime('data_inserimento');
             $table->boolean('disponibile')->default(true);
+            $table->dateTime('data_assegnazione')->nullable();
             $table->char('provincia', 2);
             $table->string('citta', 50);
             $table->char('cap', 5);

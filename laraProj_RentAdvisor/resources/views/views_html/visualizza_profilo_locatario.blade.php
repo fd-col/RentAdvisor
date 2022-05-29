@@ -50,9 +50,15 @@
                                                         <img src="{{ asset('images/annunci/image_not_avaiable.jpg') }}" alt="img">
                                                     @endisset
                                                 </div>
-                                                <div class="aa-tag for-sale">
-                                                    Affittasi
-                                                </div>
+                                                @if($annuncio->disponibile)
+                                                    <div class="aa-tag for-sale">
+                                                        Affittasi
+                                                    </div>
+                                                @else
+                                                    <div class="aa-tag sold-out">
+                                                        Non disponibile
+                                                    </div>
+                                                @endif
                                                 <div class="aa-properties-item-content">
                                                     <div class="aa-properties-info">
                                                         <span><strong>Città</strong> : {{ $annuncio->citta }}</span>
@@ -87,7 +93,7 @@
     <!-- /Section annunci opzionati -->
 
 
-    
+
     @isset($user)
         <!-- Start profile section -->
         <section id="aa-contact">

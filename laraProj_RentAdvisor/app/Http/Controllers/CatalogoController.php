@@ -46,12 +46,14 @@ class CatalogoController extends Controller
             $caratteristiche = $this->modello_catalogo->get_caratteristiche_annuncio($annuncio);
             $locatore = $this->modello_catalogo->get_locatore_annuncio($annuncio);
             $immagini = $this->modello_catalogo->get_immagini_annuncio($id_annuncio);
+            $utenti_che_hanno_opzionato = $this->modello_catalogo->get_utenti_opzioni_annuncio_locatore($id_annuncio);
 
             return view('views_html/dettagli_annuncio')
                 ->with('annuncio', $annuncio)
                 ->with('caratteristiche', $caratteristiche)
                 ->with('locatore', $locatore)
-                ->with('immagini', $immagini);
+                ->with('immagini', $immagini)
+                ->with('utenti_che_hanno_opzionato', $utenti_che_hanno_opzionato);
         } catch (ErrorException $e) {
             return view('views_html/404');
         }
@@ -169,12 +171,15 @@ class CatalogoController extends Controller
         return redirect()->action('ProfiloController@pagina_profilo_locatore');
     }
 
+    public function toggle_disponibile_annuncio($id_annuncio) {
+        if($this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore != auth()->user()->username)
+            return view('views_html/non_autorizzato');
 
+        $this->modello_catalogo->toggle_disponibile_annuncio($id_annuncio);
 
+        return redirect()->action('CatalogoController@dettagli_annuncio', [$id_annuncio]);
 
-
-
-
+    }
 
     public function catalogo_statistiche() {
 

@@ -59,7 +59,8 @@ Route::get('/locatore/modifica_annuncio/{id_annuncio}', 'CatalogoController@pagi
 Route::post('/locatore/conferma_modifica_annuncio', 'CatalogoController@modifica_annuncio')
     ->name('conferma_modifica_annuncio')->middleware('can:isLocatore');
 
-
+Route::get('/locatore/modifica_disponibile/{id_annuncio}', 'CatalogoController@toggle_disponibile_annuncio')
+    ->name('toggle_disponibile_annuncio')->middleware('can:isLocatore');
 // link locatario (studente)
 
 Route::get('/locatario/visualizza_profilo_locatario', 'ProfiloController@pagina_profilo_locatario')

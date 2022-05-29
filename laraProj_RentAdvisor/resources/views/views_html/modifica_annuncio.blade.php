@@ -5,6 +5,23 @@
 <!-- CONTENT -->
 @section('content')
 
+    <script>
+        //Script per controllare le dimensioni e l'estensione delle immagini
+        jQuery(document).ready(function($) {
+            $('form input[type=file]').each(function(){
+                $(this).change(function(evt){
+                    var input = $(this);
+                    var file = input.prop('files')[0];
+                    if( file && file.size < 2 * 1048576 && (file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") ) { // 2 MB (this size is in bytes)
+                    }else{
+                        alert( 'File non ammesso - Tipo: ' + file.type + '; Dimensioni: ' + file.size  + '\nFile troppo grande o tipo di file non accettato');
+                        input.replaceWith( input.val('').clone(true) );
+                        evt.preventDefault();
+                    }
+                })
+            });
+        });
+    </script>
     @isset($annuncio)
     <section id="aa-contact">
         <div class="container">

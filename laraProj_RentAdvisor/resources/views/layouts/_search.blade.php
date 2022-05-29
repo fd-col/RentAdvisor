@@ -46,7 +46,7 @@
                         <div class="col-md-2">
                             <div class="aa-single-advance-search">
                                 {{Form::select('tipologia', array(
-                                  'false' => 'Alloggio',
+                                  false => 'Alloggio',
                                   'appartamento' => 'Appartamento',
                                 'posto_letto' => 'Posto letto',), null, ['class' =>'tipologia', 'id'=>'tipologia'] ) }}
                             </div>
@@ -55,7 +55,7 @@
                         <div class="col-md-2">
                             <div class="aa-single-advance-search">
                                 {{ Form::select('genere', array(
-                                'false' => 'Genere Preferito nell\'alloggio',
+                                false => 'Genere Preferito nell\'alloggio',
                                 'M' => 'Maschio',
                                 'F' => 'Femmina',))}}
                             </div>
@@ -294,7 +294,7 @@
                             <div class="col-md-2">
                                 <div class="aa-single-advance-search">
                                     {{ Form::select('tipologia_appartamento', array(
-                                      'false'=> 'Tipologia',
+                                      false=> 'Tipologia',
                                       'appartamento' => 'Appartamento',
                                     'casa_indipendente' => 'Casa indipendente',)) }}
                                 </div>
@@ -355,7 +355,7 @@
                             <div class="col-md-2">
                                 <div class="aa-single-advance-search">
                                     {{Form::select('tipologia_posto_letto', array(
-                                        'false' => 'Tipologia',
+                                        false => 'Tipologia',
                                         'camera_singola' => 'Camera singola',
                                     'camera_condivisa' => 'Camera condivisa'))}}
                                 </div>

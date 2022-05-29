@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\Annuncio;
 use App\Models\Resources\Posto_Letto;
@@ -12,13 +11,14 @@ use App\Models\Resources\Opzione_Annuncio;
 use App\User;
 use Illuminate\Support\Facades\Log;
 
+
 class Catalogo extends Model
 {
     public function get_annunci($numero_annunci=null) {
-        if (is_null($numero_annunci))
-            $annunci = Annuncio::select()->where('disponibile', true)->orderBy('data_inserimento', 'DESC')->paginate(9);
-        else
-            $annunci = Annuncio::select()->where('disponibile', true)->orderBy('data_inserimento', 'DESC')->get()->take($numero_annunci);
+        if (is_null($numero_annunci)) {
+            $annunci = Annuncio::select()->orderBy('data_inserimento', 'DESC')->paginate(9);
+        }else
+            $annunci = Annuncio::select()->orderBy('data_inserimento', 'DESC')->get()->take($numero_annunci);
         return $annunci;
     }
 
@@ -62,6 +62,7 @@ class Catalogo extends Model
         return $annunci;
     }
 
+    // Restituisce gli annunci che un locatario ha opzionato
     public function get_annunci_opzionati_locatario ($username_locatario) {
         $opzioni_annunci = Opzione_Annuncio::where('username_locatario', $username_locatario)->get();
         $array_id_annunci_opzionati = array();
@@ -72,8 +73,19 @@ class Catalogo extends Model
         return $annunci_opzionati;
     }
 
+    // Restituisce gli utenti che hanno opzionato unn determinato annuncio
+    public function get_utenti_opzioni_annuncio_locatore ($id_annuncio) {
+        $opzioni_annunci = Opzione_Annuncio::where('id_annuncio', $id_annuncio)->get();
+        $array_username_opzioni = array();
+        foreach ($opzioni_annunci as $opzione_annuncio)
+            array_push($array_username_opzioni, $opzione_annuncio->username_locatario);
+
+        $locatari_opzione = User::whereIn('username', $array_username_opzioni)->get();
+        return $locatari_opzione;
+    }
+
 	public function get_annunci_filtrati($filtri){
-	$annunci=Annuncio::leftJoin('Appartamento', 'Annuncio.id', '=', 'Appartamento.id_annuncio')
+	$annunci = Annuncio::leftJoin('Appartamento', 'Annuncio.id', '=', 'Appartamento.id_annuncio')
 			->leftJoin('Posto_Letto', 'Annuncio.id', '=', 'Posto_Letto.id_annuncio');
 	if(!is_null($filtri['titolo']))
 		$annunci->where('Annuncio.titolo',$filtri['titolo']);
@@ -196,5 +208,14 @@ class Catalogo extends Model
 
         //Elimina l'annuncio
         Annuncio::where('id', $id_annuncio)->delete();
+    }
+
+    public function toggle_disponibile_annuncio ($id_annuncio) {
+        //Imposto la timezone per settare bene la data di assegnazione dell'annuncio
+        date_default_timezone_set('Europe/Rome');
+        if(Annuncio::where('id', $id_annuncio)->get()->first()->disponibile)
+            Annuncio::where('id', $id_annuncio)->limit(1)->update(['disponibile' => '0', 'data_assegnazione' => date('Y-m-d H:m:s')]);
+        else
+            Annuncio::where('id', $id_annuncio)->limit(1)->update(['disponibile' => '1', 'data_assegnazione' => null]);
     }
 }
