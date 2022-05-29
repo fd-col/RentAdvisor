@@ -62,6 +62,9 @@ Route::post('/locatore/conferma_modifica_annuncio', 'CatalogoController@modifica
 Route::view('/locatore/messaggi', 'views_html/messaggi')
     ->name('messaggi')->middleware('can:isLocatore');
 
+Route::get('/locatore/messaggi', 'MessaggiController@mostra_messaggi_chat')
+    ->name('chat')->middleware('can:isLocatore');
+
 // link locatario (studente)
 
 Route::get('/locatario/visualizza_profilo_locatario', 'ProfiloController@pagina_profilo_locatario')
