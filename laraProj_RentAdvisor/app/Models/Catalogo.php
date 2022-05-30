@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateTime;
 use ErrorException;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\Annuncio;
@@ -129,7 +130,7 @@ class Catalogo extends Model
         $query->whereIn('id', $id_annunci_filtrati);
 	if(!is_null($filtri['titolo'])) {
         foreach (explode(' ', $filtri['titolo']) as $stringa) {
-            $query->where('titolo', 'like', '%'.$stringa.'%');
+            $query->where('titolo', 'like', '%'.$stringa.'%')->orWhere('descrizione', 'like', '%'.$stringa.'%');
         }
     }
 	if($filtri['genere'])
@@ -145,7 +146,7 @@ class Catalogo extends Model
 	if(!is_null($filtri['locazione_inizio']))
 		$query->where('periodo_disponibilita_inizio','<', $filtri['locazione_inizio']);
 	if(!is_null($filtri['locazione_fine']))
-		$query->where('periodo_disponibilita_fine','>', $filtri['locazione_fine']);
+		$query->where('periodo_disponibilita_fine','>', $filtri['locazione_fine'])->orWhere('periodo_disponibilita_fine', null);
 	if(!is_null($filtri['bagni']))
 		$query->where('numero_bagni', '>=', $filtri['bagni']);
 	if(!is_null($filtri['n_posti_letto_totali']))
