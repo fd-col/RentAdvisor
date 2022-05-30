@@ -76,7 +76,7 @@ Route::get('/locatario/aggiungi_opzione_annuncio/{id_annuncio}', 'CatalogoContro
     ->name('aggiungi_opzione_annuncio')->middleware('can:isLocatario');
 // link amministratore
 
-Route::view('/statistiche', 'views_html/statistiche')
+Route::get('/statistiche', 'StatisticheController@pagina_statistiche')
     ->name('statistiche')->middleware('can:isAdmin');
 
 Route::get('/faq/modifica/{id_faq}', 'FaqController@pagina_modifica_faq')

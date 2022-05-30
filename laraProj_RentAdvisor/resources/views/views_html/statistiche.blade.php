@@ -3,6 +3,8 @@
 @section('title', 'Statistiche')
 
 @section('content')
+
+
     <section id="aa-contact">
         <div class="container">
             <div class="row">
@@ -62,10 +64,11 @@
                 <div class="aa-contact-bottom"> <!-- da modicare il nome nel .css-->
                     <div class="aa-title">
                         <fieldset style="border: 1px solid black">
+                        @isset($numero_annunci)
                         <h2><br>Numero di annunci</h2>
                             
                             <p>gli annunci pubblicati nel periodo scelto sono : </p> 
-                            <h3>22</h3>
+                            <h3>{{$numero_annunci}}</h3>
 
                             <h2>Numero di richieste</h2>
                             <p>gli appartamenti richiesti nel periodo scelto sono : </p>  
@@ -73,12 +76,14 @@
 
                             <h2>Alloggi affittati</h2>                           
                             <p>gli alloggi totali assegnati nel periodo scelto sono : </p>  
-                            <h3>8</h3>                                    
+                            <h3>8</h3>
+                        @endisset                                    
                         </fieldset>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 @endsection
 
