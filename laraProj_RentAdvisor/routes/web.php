@@ -97,7 +97,11 @@ Route::get('/faq/elimina/{id_faq}', 'FaqController@pagina_elimina_faq')
 Route::post('faq/conferma_eliminazione_faq', 'FaqController@elimina_faq')
     ->name('conferma_elimina_faq')->middleware('can:isAdmin');
 
-
+Route::post('/locatario/chat', 'MessaggiController@mostra_chat_locatario')
+		->name('mostra_chat')->middleware('can:isLocatario');
+		
+Route::get('/locatario/messaggi', 'MessaggiController@mostra_messaggi_chat')
+		->name('chat')->middleware('can:isLocatario');
 // Rotte per l'autenticazione
 Route::get('login', 'Auth\LoginController@showLoginForm')
     ->name('login');

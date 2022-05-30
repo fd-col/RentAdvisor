@@ -19,5 +19,12 @@ class Messaggio extends Model
 		$messaggi= $this::select('*')->where('username_locatore', auth()->user()->username)->where('username_locatario', $username)->orderBy('data_invio')->get();
 		return $messaggi;
 	}
-		
+	public function get_utenti_ultimi_messaggi_locatario($username_locatario) {
+		$messaggi=$this::select('username_locatore', 'username_locatario')->distinct()->where('username_locatario', $username_locatario)->get();
+		return $messaggi;
+	}
+	public function get_chat_locatario($username) {
+		$messaggi= $this::select('*')->where('username_locatario', auth()->user()->username)->where('username_locatore', $username)->orderBy('data_invio')->get();
+		return $messaggi;
+	}
 }

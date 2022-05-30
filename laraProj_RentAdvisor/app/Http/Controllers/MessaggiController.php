@@ -21,7 +21,10 @@ class MessaggiController extends Controller
 
     public function mostra_messaggi_chat(){
         $user = $this->modello_user::where('username', auth()->user()->username)->get()->first();
-        $messaggi = $this->modello_messaggio->get_utenti_ultimi_messaggi_locatore(auth()->user()->username);
+		if($this->modello_user->hasRole('locatore'))
+			$messaggi = $this->modello_messaggio->get_utenti_ultimi_messaggi_locatore(auth()->user()->username);
+		else
+			$messaggi= $this->modello_messaggio->get_utenti_ultimi_messaggi_locatario(auth()->user()->username);
         return view('views_html/messaggi')
             ->with('user', $user)
             ->with('messaggi', $messaggi);
@@ -31,4 +34,10 @@ class MessaggiController extends Controller
 		$messaggi=$this->modello_messaggio->get_chat_locatore($dati_validi);
 		return response()->json($messaggi->toJson());
 	}
+	public function mostra_chat_locatario(RichiestaChat $data) {
+		$dati_validi=$data->validated();
+		$messaggi=$this->modello_messaggio->get_chat_locatario($dati_validi);
+		return response()->json($messaggi->toJson());
+	}
+		
 }
