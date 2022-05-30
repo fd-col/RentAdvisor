@@ -235,13 +235,13 @@
                     <div class="aa-advance-search-bottom">
                         <div class="row">
                             <div class="col-md-12">
-                                {{Form::checkbox('fumatori', 'true')}}
+                                {{Form::checkbox('fumatori', true)}}
                                 <label>Fumatori</label>
-                                {{Form::checkbox('parcheggio', 'true')}}
+                                {{Form::checkbox('parcheggio', true)}}
                                 <label>Parcheggio</label>
-                                {{Form::checkbox('wi_fi', 'true')}}
+                                {{Form::checkbox('wi_fi', true)}}
                                 <label>Wi-fi</label>
-                                {{Form::checkbox('ascensore', 'true')}}
+                                {{Form::checkbox('ascensore', true)}}
                                 <label>Ascensore</label>
                             </div>
                         </div>
@@ -303,9 +303,9 @@
 
                         <div id="row" style="margin-top:25px;">
                             <div id="col-md-12">
-                                {{Form::checkbox('cucina', 'true')}}
+                                {{Form::checkbox('cucina', true)}}
                                 <label>Presenza cucina</label>
-                                {{Form::checkbox('locale_ricreativo', 'true')}}
+                                {{Form::checkbox('locale_ricreativo', true)}}
                                 <label>Presenza locale ricreativo</label>
                             </div>
                         </div>
@@ -363,7 +363,7 @@
                         </div>
                         <div id="row" style="margin-top:25px;">
                             <div id="col-md-12">
-                                {{ Form::checkbox('angolo_studio', 'true')}}
+                                {{ Form::checkbox('angolo_studio', true)}}
                                 <label>Presenza angolo studio</label>
                             </div>
                         </div>

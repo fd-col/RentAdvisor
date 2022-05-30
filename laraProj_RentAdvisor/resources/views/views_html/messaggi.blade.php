@@ -23,14 +23,12 @@
 				})
 				function setChat(data){
 					$('#chat').find('div').remove();
-					$('#chat').append('<p> Richiesta eseguita con successo</p>');
-					$.each(data, function(key, val){
-						$('#chat').append('<p> Richiesta eseguita con successo</p>');
+					$.each($.parseJSON(data), function (key, val) {
 						if(val.mittente=="locatore")
-							$('#chat').append("<div class=\"messaggi-inviati\">"+$val.testo+"</div>");
+							$('#chat').append("<div class=\"messaggi-inviati\">"+val.testo+"</div>");
 						else
-							$('#chat').append("<div class=\"messaggi-ricevuti\">"+$val.testo+"</div>");
-					})
+							$('#chat').append("<div class=\"messaggi-ricevuti\">"+val.testo+"</div>");
+					});
 				}
 		
 		})
@@ -58,7 +56,7 @@
                   <div class="aa-blog-area">
                   {{ Form::open(array('route' => 'home', 'class' => 'contactform')) }}
                       <div style="margin-top: 20px; margin-bottom: 20px">
-                      {{ Form::textarea('messaggio', '', ['class' => 'input','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
+                      {{ Form::textarea('messaggio', '', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
                       {{ Form::submit('Invia', ['class' => 'send-button']) }}
                       </div>
                   {{ Form::close() }}
