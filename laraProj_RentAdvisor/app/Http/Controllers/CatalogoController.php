@@ -47,13 +47,15 @@ class CatalogoController extends Controller
             $locatore = $this->modello_catalogo->get_locatore_annuncio($annuncio);
             $immagini = $this->modello_catalogo->get_immagini_annuncio($id_annuncio);
             $utenti_che_hanno_opzionato = $this->modello_catalogo->get_utenti_opzioni_annuncio_locatore($id_annuncio);
+            $opzionato = $this->modello_catalogo->controlla_opzione($id_annuncio);
 
             return view('views_html/dettagli_annuncio')
                 ->with('annuncio', $annuncio)
                 ->with('caratteristiche', $caratteristiche)
                 ->with('locatore', $locatore)
                 ->with('immagini', $immagini)
-                ->with('utenti_che_hanno_opzionato', $utenti_che_hanno_opzionato);
+                ->with('utenti_che_hanno_opzionato', $utenti_che_hanno_opzionato)
+                ->with('opzionato', $opzionato);
         } catch (ErrorException $e) {
             return view('views_html/404');
         }
@@ -176,6 +178,20 @@ class CatalogoController extends Controller
             return view('views_html/non_autorizzato');
 
         $this->modello_catalogo->toggle_disponibile_annuncio($id_annuncio);
+
+        return redirect()->action('CatalogoController@dettagli_annuncio', [$id_annuncio]);
+
+    }
+
+    public function aggiungi_opzione_annuncio ($id_annuncio) {
+        if(!($this->modello_catalogo->get_annuncio($id_annuncio)->disponibile))
+            return view('views_html/non_autorizzato');
+
+        try {
+            $this->modello_catalogo->aggiungi_opzione_annuncio($id_annuncio);
+        } catch (ErrorException $e) {
+            return view('views_html/non_autorizzato');
+        }
 
         return redirect()->action('CatalogoController@dettagli_annuncio', [$id_annuncio]);
 

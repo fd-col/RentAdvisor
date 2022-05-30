@@ -34,9 +34,10 @@
                             <div class="aa-title">
                                 <fieldset style="border: 1px solid black">
                                     <h2>Email</h2>
-                                    <p><strong>Servizio assistenza clienti </strong></p>
                                     <p></p>
-                                    <a href="mailto:info@rentadvisor.com"><p>info@rentadvisor.com</p></a>
+                                    Informazioni: <a href="mailto:info@rentadvisor.com"><p>info@rentadvisor.com</p></a>
+                                    Reclami: <a href="mailto:reclami@rentadvisor.com"><p>reclami@rentadvisor.com</p></a>
+                                    Assistenza: <a href="mailto:assistenza@rentadvisor.com"><p>assistenza@rentadvisor.com</p></a>
                                 </fieldset>
                             </div>
                             <div class="aa-title">

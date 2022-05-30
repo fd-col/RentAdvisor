@@ -85,8 +85,6 @@
                 <!-- LOGO -->
                 <!-- Text based logo -->
                 <a class="navbar-brand aa-logo" href="{{ route('home') }}"> <span>RentAdvisor</span> </a>
-                <!-- Image based logo -->
-                <!-- <a class="navbar-brand aa-logo-img" href="home.blade.php"><img src="img/logo.png" alt="logo"></a> -->
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">

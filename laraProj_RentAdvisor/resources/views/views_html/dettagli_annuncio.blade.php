@@ -35,7 +35,7 @@
                         });
                     })
                     @else
-                    //Funzione alert rendi annuncio  disponibile
+                    //Funzione alert rendi annuncio disponibile
                     jQuery(function(){
                         $('#ancora_rendi_disponibile').click(function(evt){
                             $var = confirm('Sei sicuro di voler rendere l\'annuncio disponibile?');
@@ -48,6 +48,21 @@
                         });
                     })
                     @endif
+
+                    @can('isLocatario')
+                    //Funzione alert opziona annuncio
+                    jQuery(function(){
+                        $('#ancora_opziona_annuncio').click(function(evt){
+                            $var = confirm('Sei sicuro di voler opzionare l\'annuncio?');
+                            if ($var == true) {
+                                event.preventDefault();
+                                $(location).attr('href', "{{ route('aggiungi_opzione_annuncio', [$annuncio->id]) }}" );
+                            } else {
+                                evt.preventDefault();
+                            }
+                        });
+                    })
+                    @endcan
                 </script>
 
                 <!-- Start Properties  -->
@@ -226,7 +241,7 @@
                                             <p>■ Inizio disponibilità
                                                 alloggio: {{$annuncio->periodo_disponibilita_inizio}}</p>
                                             @if(!is_null($annuncio->periodo_disponibilita_fine))
-                                                <p>Fine disponibilità
+                                                <p>■ Fine disponibilità
                                                     alloggio: {{$annuncio->periodo_disponibilita_fine}}</p>
                                             @endif
                                             <p>■ Indirizzo: {{$annuncio->indirizzo}},{{$annuncio->numero_civico}}
@@ -256,7 +271,7 @@
                                         </p>
                                         <br><br>
 
-                                        <!-- Ancore Locatore -->
+                                        <!-- Ancore alle funzioni del Locatore -->
                                         @can('isLocatore')
                                             @if(auth()->user()->username == $locatore->username)
                                                 <!-- Link per la modifica dell'annuncio -->
@@ -316,12 +331,18 @@
                                             @endif
                                         @endcan
 
-                                        <!-- Ancore Locatario -->
+                                        <!-- Ancore alle funzioni del Locatario -->
                                         @can('isLocatario')
                                                 <h4><a href=""><span class="fa fa-envelope"></span> Contatta il locatore</a></h4>
-                                            @if($annuncio->disponibile)
-                                                <h4><a href=""><span class="fa fa-check-square"></span> Opziona l'annuncio</a></h4>
-                                            @endif
+                                            @isset($opzionato)
+                                                @if($annuncio->disponibile)
+                                                    @if(!$opzionato)
+                                                        <h4><a id="ancora_opziona_annuncio"><span class="fa fa-check-square"></span> Opziona l'annuncio</a></h4>
+                                                    @else
+                                                        <p>Hai già opzionato questo annuncio, lo puoi visualizzare anche nel tuo profilo</p>
+                                                    @endif
+                                                @endif
+                                            @endisset
                                         @endcan
                                     </div>
                                 </aside>

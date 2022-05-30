@@ -9,7 +9,7 @@
                 <div class="aa-title">
                     <h2>Errore</h2>
                     <span></span>
-                    <p>La paginna che stavi cercando non è stata trovata</p>
+                    <p>La pagina che stavi cercando non è stata trovata</p>
                 </div>
             </div>
         </div>
