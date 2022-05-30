@@ -13,7 +13,8 @@
                 </div>
 
                 <fieldset style="border: 1px solid black; padding: 10px">    
-                    <h3> Scegli il periodo per il filtraggio :</h3>
+                    <h3>&nbsp Scegli il periodo per il filtraggio :</h3>
+                    <h4>&nbsp (se il periodo o la tipologia di locazione non vengono specificati si riferisce a tutti gli annunci del sito)<br><br></h4> 
                     <div class="col-md-0">
                         <label>Periodo locazione:</label>
                     </div>
@@ -22,7 +23,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="aa-single-advance-search">
-                            {{ Form::date('locazione_inizio', '1990-01-01',['id' => 'locazione_inizio']) }}
+                            {{ Form::date('locazione_inizio', '',['id' => 'locazione_inizio']) }}
                                 @if ($errors->first('locazione_inizio'))
                                     <ul>
                                         @foreach ($errors->get('locazione_inizio') as $message)
@@ -37,7 +38,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="aa-single-advance-search">
-                            {{ Form::date('locazione_fine', '1990-01-01',['id' => 'locazione_fine']) }}
+                            {{ Form::date('locazione_fine', '',['id' => 'locazione_fine']) }}
                                 @if ($errors->first('locazione_fine'))
                                     <ul>
                                         @foreach ($errors->get('locazione_fine') as $message)
@@ -55,7 +56,7 @@
                     {{Form::select('tipologia', array('false' => 'Alloggio','appartamento' => 'Appartamento',
                     'posto_letto' => 'Posto letto',), null, ['class' =>'tipologia', 'id'=>'tipologia'] ) }}
                     </div>
-                    
+                    <br>
                 </fieldset>
 
                 <div class="aa-contact-bottom"> <!-- da modicare il nome nel .css-->

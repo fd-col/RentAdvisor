@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Resources\Statistiche;
 
-class FaqController extends Controller
+class StatisticheController extends Controller
 {
     protected $modello_statistiche;
 
