@@ -118,7 +118,9 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 Route::post('register', 'Auth\RegisterController@register');
 
 
-
+//Rotte per i messaggi
+Route::post('send_messagge', 'MessaggiController@invia_messaggio')
+		->name('send')->middleware('can:isLocatario');
 // Rotte inserite dal comando artisan "ui vue --auth"
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
