@@ -335,12 +335,12 @@
                                         @can('isLocatario')
                                                 <h4><a href=""><span class="fa fa-envelope"></span> Contatta il locatore</a></h4>
                                             @isset($opzionato)
-                                                @if($annuncio->disponibile)
-                                                    @if(!$opzionato)
+                                                @if(!$opzionato)
+                                                    @if($annuncio->disponibile)
                                                         <h4><a id="ancora_opziona_annuncio"><span class="fa fa-check-square"></span> Opziona l'annuncio</a></h4>
-                                                    @else
-                                                        <p>Hai già opzionato questo annuncio, lo puoi visualizzare anche nel tuo profilo</p>
                                                     @endif
+                                                @else
+                                                    <p>Hai già opzionato questo annuncio, lo puoi visualizzare anche nel tuo profilo</p>
                                                 @endif
                                             @endisset
                                         @endcan
