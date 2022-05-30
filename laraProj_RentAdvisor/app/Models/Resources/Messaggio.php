@@ -3,6 +3,7 @@
 namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Messaggio extends Model
 {
@@ -14,4 +15,9 @@ class Messaggio extends Model
         $messaggi = $this::select('username_locatore', 'username_locatario')->distinct()->where('username_locatore', $username_locatore)->take(10)->get();
         return $messaggi;
     }
+	public function get_chat_locatore($username){
+		$messaggi= $this::select('*')->where('username_locatore', auth()->user()->username)->where('username_locatario', $username)->orderBy('data_invio')->get();
+		return $messaggi;
+	}
+		
 }
