@@ -176,7 +176,7 @@
                                                  alt="agent member image">
                                         </div>
                                         <div class="aa-agetns-info">
-                                            <h4><a href="#">Andrea Civitarese</a></h4>
+                                            <h4><a href="https://www.linkedin.com/in/andrea-civitarese-2432511b9/">Andrea Civitarese</a></h4>
                                             <span>Ingegnere</span>
                                             <div class="aa-agent-social">
                                             </div>
