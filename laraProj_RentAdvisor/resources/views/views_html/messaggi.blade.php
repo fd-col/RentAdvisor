@@ -20,15 +20,27 @@
                         success: setChat
 						
                     });
+					if('{{$user->role}}'=='locatario')
+						{
+							$('#locatario').attr('value', '{{$user->username}}');
+							$('#locatore').attr('value', $user);
+						}
+					else
+						{
+							$('#locatario').attr('value', $user);
+							$('#locatore').attr('value', '{{$user->username}}');
+						}
 				})
 				function setChat(data){
 					$('#chat').find('div').remove();
 					$.each($.parseJSON(data), function (key, val) {
-						if(val.mittente=="locatore")
+						if(val.mittente=='{{$user->role}}')
 							$('#chat').append("<div class=\"messaggi-inviati\">"+val.testo+"</div>");
 						else
 							$('#chat').append("<div class=\"messaggi-ricevuti\">"+val.testo+"</div>");
 					});
+					
+					
 				}
 		
 		})
@@ -53,11 +65,13 @@
                 </div>
                 </fieldset>
 
-                  <div class="aa-blog-area">
-                  {{ Form::open(array('route' => 'home', 'class' => 'contactform')) }}
+                  <div class="aa-blog-area" id="messaggio">
+                  {{ Form::open(array('route' => 'send', 'class' => 'contactform')) }}
                       <div style="margin-top: 20px; margin-bottom: 20px">
-                      {{ Form::textarea('messaggio', '', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
+                      {{ Form::textarea('testo', '', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
                       {{ Form::submit('Invia', ['class' => 'send-button']) }}
+					  {{ Form::hidden('locatario', '', ['id'=>'locatario'])}}
+					  {{ Form::hidden('locatore', '', ['id'=>'locatore'])}}					  
                       </div>
                   {{ Form::close() }}
                   </div>
@@ -90,8 +104,8 @@
                                     <span class="fa fa-user"></span>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="author-name">{{$utenti->username_locatario}}</h4>
-                                        <a class="reply-btn" id="{{$utenti->username_locatario}}">Vedi chat</a>
+                                    <h4 class="author-name">{{$utenti->username}}</h4>
+                                        <a class="reply-btn" id="{{$utenti->username}}">Vedi chat</a>
                                 </div>
                                         </div>
                                     </li>

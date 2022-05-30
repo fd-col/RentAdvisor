@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Resources\Messaggio;
 use App\Http\Requests\RichiestaChat;
-
+use App\Http\Requests\RichiestaInvioMessaggio;
+use Illuminate\Support\Facades\Log;
 use App\User;
 
 class MessaggiController extends Controller
@@ -39,5 +40,11 @@ class MessaggiController extends Controller
 		$messaggi=$this->modello_messaggio->get_chat_locatario($dati_validi);
 		return response()->json($messaggi->toJson());
 	}
+	public function invia_messaggio(RichiestaInvioMessaggio $data){
+		$dati_validi=$data->validated();
+		Log::debug($dati_validi);
+		$this->modello_messaggio::insert(['username_locatore'=>$dati_validi['locatore'], 'username_locatario'=>$dati_validi['locatario'], 'data_invio'=>date("Y-m-d H:i:s"), 'testo'=>$dati_validi['testo'], 'mittente'=>auth()->user()->role]);
 		
+		return redirect()->action('MessaggiController@mostra_messaggi_chat');
+	}
 }

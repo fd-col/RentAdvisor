@@ -12,7 +12,7 @@ class Messaggio extends Model
     public $timestamps = false;
 
     public function get_utenti_ultimi_messaggi_locatore($username_locatore) {
-        $messaggi = $this::select('username_locatore', 'username_locatario')->distinct()->where('username_locatore', $username_locatore)->take(10)->get();
+        $messaggi = $this::select('username_locatario as username')->distinct()->where('username_locatore', $username_locatore)->take(10)->get();
         return $messaggi;
     }
 	public function get_chat_locatore($username){
@@ -20,7 +20,7 @@ class Messaggio extends Model
 		return $messaggi;
 	}
 	public function get_utenti_ultimi_messaggi_locatario($username_locatario) {
-		$messaggi=$this::select('username_locatore', 'username_locatario')->distinct()->where('username_locatario', $username_locatario)->get();
+		$messaggi=$this::select('username_locatore as username')->distinct()->where('username_locatario', $username_locatario)->get();
 		return $messaggi;
 	}
 	public function get_chat_locatario($username) {
