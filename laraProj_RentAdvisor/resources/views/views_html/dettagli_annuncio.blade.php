@@ -8,6 +8,7 @@
             @isset($locatore)
 
                 <script>
+                    //Funzione alert elimina annuncio
                     jQuery(function(){
                         $('#ancora_elimina_annuncio').click(function(evt){
                             $var = confirm('Sei sicuro di voler eliminare l\'annuncio?');
@@ -19,6 +20,34 @@
                             }
                         });
                     })
+
+                    @if($annuncio->disponibile)
+                    //Funzione alert rendi annuncio non disponibile
+                    jQuery(function(){
+                        $('#ancora_rendi_non_disponibile').click(function(evt){
+                            $var = confirm('Sei sicuro di voler rendere l\'annuncio non disponibile?');
+                            if ($var == true) {
+                                event.preventDefault();
+                                $(location).attr('href',"{{ route('toggle_disponibile_annuncio', [$annuncio->id]) }}" );
+                            } else {
+                                evt.preventDefault();
+                            }
+                        });
+                    })
+                    @else
+                    //Funzione alert rendi annuncio  disponibile
+                    jQuery(function(){
+                        $('#ancora_rendi_disponibile').click(function(evt){
+                            $var = confirm('Sei sicuro di voler rendere l\'annuncio disponibile?');
+                            if ($var == true) {
+                                event.preventDefault();
+                                $(location).attr('href', "{{ route('toggle_disponibile_annuncio', [$annuncio->id]) }}" );
+                            } else {
+                                evt.preventDefault();
+                            }
+                        });
+                    })
+                    @endif
                 </script>
 
                 <!-- Start Properties  -->
@@ -244,10 +273,10 @@
                                                 <br>
                                                 @if($annuncio->disponibile)
                                                     <p>Se hai affittato il tuo alloggio puoi rendere l'annuncio non disponibile, gli altri utenti potranno visualizzarlo ma non opzionarlo </p>
-                                                    <h4><a href="{{ route('toggle_disponibile_annuncio', [$annuncio->id]) }}"><span class="fa fa-hand-o-down"></span> Rendi non disponibile</a></h4>
+                                                    <h4><a id="ancora_rendi_non_disponibile"><span class="fa fa-hand-o-down"></span> Rendi non disponibile</a></h4>
                                                 @else
                                                     <p>Il tuo annuncio è tornato disponibile? Rendilo nuovamente opzionabile</p>
-                                                    <h4><a href="{{ route('toggle_disponibile_annuncio', [$annuncio->id]) }}"><span class="fa fa-hand-o-up"></span> Rendi disponibile</a></h4>
+                                                    <h4><a id="ancora_rendi_disponibile"><span class="fa fa-hand-o-up"></span> Rendi disponibile</a></h4>
                                                 @endif
 
                                                 <!-- Locatari che hanno opzionato l'annuncio -->
