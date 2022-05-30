@@ -128,15 +128,15 @@
                                                             <span class="fa fa-user"></span>
                                                         </div>
                                                         <div class="media-body">
-                                                            <h4 class="author-name">{{$messaggio->username_locatario}}</h4>
-                                                            <a class="reply-btn" href="{{ route('mostra_chat') }}">Vai alla chat</a>
+                                                            <h4 class="author-name">{{$messaggio->username}}</h4>
+                                                            <a class="reply-btn" href="{{ route('mostra_chat_locatario') }}">Vai alla chat</a>
                                                         </div>
                                                     </div>
                                                 </li>
                                             @endforeach
                                         @endisset
                                         <li>
-                                            <a href="{{route('chat')}}"><span class="fa fa-envelope"></span> Tutti i messaggi</a>
+                                            <a href="{{route('chat_locatario')}}"><span class="fa fa-envelope"></span> Tutti i messaggi</a>
                                         </li>
                                     </ul>
                                 </div>

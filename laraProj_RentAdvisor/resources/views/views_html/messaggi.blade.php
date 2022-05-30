@@ -11,9 +11,13 @@
 		jQuery(function(){
 				$('a').click(function(){
 					$user=$(this).attr('id');
+					if('{{$user->role}}'=='locatario')
+						$route="{{route('mostra_chat_locatario')}}";
+					else
+						$route="{{route('mostra_chat_locatore')}}";
 					$.ajax({
                         type: 'POST',
-                        url: "{{ route('mostra_chat') }}",
+                        url: $route,
                         data: {"user": $user,
 							   "_token": "{{csrf_token()}}"},
                         dataType: 'json',
@@ -69,9 +73,30 @@
                   {{ Form::open(array('route' => 'send', 'class' => 'contactform')) }}
                       <div style="margin-top: 20px; margin-bottom: 20px">
                       {{ Form::textarea('testo', '', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
+					  @if ($errors->first('testo'))
+                                    <ul>
+                                        @foreach ($errors->get('username') as $message)
+                                            <li class="richiesta">{{ $message }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                       {{ Form::submit('Invia', ['class' => 'send-button']) }}
 					  {{ Form::hidden('locatario', '', ['id'=>'locatario'])}}
-					  {{ Form::hidden('locatore', '', ['id'=>'locatore'])}}					  
+					@if ($errors->first('locatario'))
+                                    <ul>
+                                        @foreach ($errors->get('username') as $message)
+                                            <li class="richiesta">{{ $message }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+					  {{ Form::hidden('locatore', '', ['id'=>'locatore'])}}			
+						@if ($errors->first('titolo'))
+                                    <ul>
+                                        @foreach ($errors->get('username') as $message)
+                                            <li class="richiesta">{{ $message }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                       </div>
                   {{ Form::close() }}
                   </div>

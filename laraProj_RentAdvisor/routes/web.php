@@ -56,10 +56,10 @@ Route::view('/locatore/messaggi', 'views_html/messaggi')
     ->name('messaggi')->middleware('can:isLocatore');
 
 Route::get('/locatore/messaggi', 'MessaggiController@mostra_messaggi_chat')
-    ->name('chat')->middleware('can:isLocatore');
+    ->name('chat_locatore')->middleware('can:isLocatore');
 
 Route::post('/locatore/chat', 'MessaggiController@mostra_chat_locatore')
-	->name('mostra_chat')->middleware('can:isLocatore');
+	->name('mostra_chat_locatore')->middleware('can:isLocatore');
 
 // link locatario (studente)
 
@@ -74,6 +74,13 @@ Route::post('/locatario/modifica_dati_locatario', 'ProfiloController@modifica_da
 
 Route::get('/locatario/aggiungi_opzione_annuncio/{id_annuncio}', 'CatalogoController@aggiungi_opzione_annuncio')
     ->name('aggiungi_opzione_annuncio')->middleware('can:isLocatario');
+
+Route::post('/locatario/chat', 'MessaggiController@mostra_chat_locatario')
+		->name('mostra_chat_locatario')->middleware('can:isLocatario');
+		
+Route::get('/locatario/messaggi', 'MessaggiController@mostra_messaggi_chat')
+		->name('chat_locatario')->middleware('can:isLocatario');
+
 // link amministratore
 
 Route::view('/statistiche', 'views_html/statistiche')
@@ -97,11 +104,6 @@ Route::get('/faq/elimina/{id_faq}', 'FaqController@pagina_elimina_faq')
 Route::post('faq/conferma_eliminazione_faq', 'FaqController@elimina_faq')
     ->name('conferma_elimina_faq')->middleware('can:isAdmin');
 
-Route::post('/locatario/chat', 'MessaggiController@mostra_chat_locatario')
-		->name('mostra_chat')->middleware('can:isLocatario');
-		
-Route::get('/locatario/messaggi', 'MessaggiController@mostra_messaggi_chat')
-		->name('chat')->middleware('can:isLocatario');
 // Rotte per l'autenticazione
 Route::get('login', 'Auth\LoginController@showLoginForm')
     ->name('login');
@@ -121,6 +123,8 @@ Route::post('register', 'Auth\RegisterController@register');
 //Rotte per i messaggi
 Route::post('send_messagge', 'MessaggiController@invia_messaggio')
 		->name('send')->middleware('can:isLocatario');
+Route::post('send_messagge', 'MessaggiController@invia_messaggio')
+		->name('send')->middleware('can:isLocatore');
 // Rotte inserite dal comando artisan "ui vue --auth"
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
