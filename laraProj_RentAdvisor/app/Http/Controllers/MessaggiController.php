@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Resources\Messaggio;
+use App\Http\Requests\RichiestaChat;
+
 use App\User;
 
 class MessaggiController extends Controller
@@ -24,4 +26,9 @@ class MessaggiController extends Controller
             ->with('user', $user)
             ->with('messaggi', $messaggi);
     }
+	public function mostra_chat_locatore(RichiestaChat $data){
+		$dati_validi=$data->validated();
+		$messaggi=$this->modello_messaggio->get_chat_locatore($dati_validi);
+		return response()->json($messaggi->toJson());
+	}
 }

@@ -12,16 +12,20 @@
 				$('a').click(function(){
 					$user=$(this).attr('id');
 					$.ajax({
-                        type: 'GET',
-                        url: '',
-                        data: "user=" + $user,
+                        type: 'POST',
+                        url: "{{ route('mostra_chat') }}",
+                        data: {"user": $user,
+							   "_token": "{{csrf_token()}}"},
                         dataType: 'json',
                         success: setChat
+						
                     });
 				})
 				function setChat(data){
 					$('#chat').find('div').remove();
+					$('#chat').append('<p> Richiesta eseguita con successo</p>');
 					$.each(data, function(key, val){
+						$('#chat').append('<p> Richiesta eseguita con successo</p>');
 						if(val.mittente=="locatore")
 							$('#chat').append("<div class=\"messaggi-inviati\">"+$val.testo+"</div>");
 						else

@@ -58,6 +58,8 @@ Route::view('/locatore/messaggi', 'views_html/messaggi')
 Route::get('/locatore/messaggi', 'MessaggiController@mostra_messaggi_chat')
     ->name('chat')->middleware('can:isLocatore');
 
+Route::post('/locatore/chat', 'MessaggiController@mostra_chat_locatore')
+	->name('mostra_chat')->middleware('can:isLocatore');
 
 // link locatario (studente)
 
