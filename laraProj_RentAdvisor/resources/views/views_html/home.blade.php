@@ -186,7 +186,7 @@
                                 <li>
                                     <div class="aa-single-agents">
                                         <div class="aa-agents-img">
-                                            <img src="{{ asset('images/agents/camplese.png') }}"
+                                            <img src="{{ asset('images/agents/camplese_f.png') }}"
                                                  alt="agent member image">
                                         </div>
                                         <div class="aa-agetns-info">
@@ -200,7 +200,7 @@
                                 <li>
                                     <div class="aa-single-agents">
                                         <div class="aa-agents-img">
-                                            <img src="{{ asset('images/agents/colleluori.jpg') }}"
+                                            <img src="{{ asset('images/agents/colleluori.png') }}"
                                                  alt="agent member image">
                                         </div>
                                         <div class="aa-agetns-info">
