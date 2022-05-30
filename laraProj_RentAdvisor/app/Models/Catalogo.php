@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use ErrorException;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\Annuncio;
 use App\Models\Resources\Posto_Letto;
@@ -226,8 +227,13 @@ class Catalogo extends Model
     }
 
     public function controlla_opzione ($id_annuncio) {
-        if(!is_null(Opzione_Annuncio::where('username_locatario', auth()->user()->username)->where('id_annuncio', $id_annuncio)->get()->first()))
-            return true;
+        try{
+            if(!is_null(Opzione_Annuncio::where('username_locatario', auth()->user()->username)->where('id_annuncio', $id_annuncio)->get()->first()))
+                return true;
+        } catch (ErrorException $e) {
+            return false;
+        }
+
         return false;
     }
 }
