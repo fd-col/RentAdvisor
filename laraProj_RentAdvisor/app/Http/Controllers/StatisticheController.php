@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Resources\Statistiche;
+use App\Models\Statistiche;
 
 class StatisticheController extends Controller
 {
@@ -14,10 +14,12 @@ class StatisticheController extends Controller
     }
 
     public function pagina_statistiche() {
-        $statistiche = $this->modello_faq->get_statistiche();
+        $numero_annunci = $this->modello_statistiche->get_numero_annunci();
+        //$numero_richieste = $this->modello_statistiche->get_numero_richieste();
 
         return view('views_html/statistiche')
-            ->with('statistiche', $statistiche);
+            ->with('numero_annunci', $numero_annunci);
+            //->with('numero_richieste', $numero_richieste);
     }
 
  

@@ -83,7 +83,7 @@ Route::get('/locatario/messaggi', 'MessaggiController@mostra_messaggi_chat')
 
 // link amministratore
 
-Route::view('/statistiche', 'views_html/statistiche')
+Route::get('/statistiche', 'StatisticheController@pagina_statistiche')
     ->name('statistiche')->middleware('can:isAdmin');
 
 Route::get('/faq/modifica/{id_faq}', 'FaqController@pagina_modifica_faq')
