@@ -69,6 +69,9 @@ Route::post('/catalogo', 'CatalogoController@catalogo_con_filtri')
 
 Route::post('/locatario/modifica_dati_locatario', 'ProfiloController@modifica_dati_locatario')
     ->name('modifica_dati_locatario')->middleware('can:isLocatario');
+
+Route::get('/locatario/aggiungi_opzione_annuncio/{id_annuncio}', 'CatalogoController@aggiungi_opzione_annuncio')
+    ->name('aggiungi_opzione_annuncio')->middleware('can:isLocatario');
 // link amministratore
 
 Route::view('/statistiche', 'views_html/statistiche')
