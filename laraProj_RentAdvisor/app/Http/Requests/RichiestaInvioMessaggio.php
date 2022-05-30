@@ -31,5 +31,11 @@ class RichiestaInvioMessaggio extends FormRequest {
 			
         ];
     }
+	public function messages(){
+		return [
+			'locatore.required'=>'Selezionare un locatore a cui inviare il messaggio',
+			'locatario.required'=>'Selezionare un locatario a cui inviare il messaggio',
+		];
+	}
 
 }
