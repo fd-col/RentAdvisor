@@ -23,14 +23,12 @@
 				})
 				function setChat(data){
 					$('#chat').find('div').remove();
-					$('#chat').append('<p> Richiesta eseguita con successo</p>');
-					$.each(data, function(key, val){
-						$('#chat').append('<p> Richiesta eseguita con successo</p>');
+					$.each($.parseJSON(data), function (key, val) {
 						if(val.mittente=="locatore")
-							$('#chat').append("<div class=\"messaggi-inviati\">"+$val.testo+"</div>");
+							$('#chat').append("<div class=\"messaggi-inviati\">"+val.testo+"</div>");
 						else
-							$('#chat').append("<div class=\"messaggi-ricevuti\">"+$val.testo+"</div>");
-					})
+							$('#chat').append("<div class=\"messaggi-ricevuti\">"+val.testo+"</div>");
+					});
 				}
 		
 		})
