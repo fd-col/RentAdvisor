@@ -261,7 +261,6 @@
                             <div class="col-md-4">
                                 <aside class="aa-properties-sidebar">
                                     <div class="aa-properties-single-sidebar">
-                                        <br><br>
                                         <h3>Locatore</h3>
                                         <h4>{{$locatore->nome}} {{$locatore->cognome}}</h4>
                                         <p>e-mail: {{$locatore->email}}<br>
@@ -270,30 +269,39 @@
                                             @endif
                                         </p>
                                         <br><br>
+                                    </div>
+                                </aside>
 
+                                <aside class="aa-properties-sidebar">
+                                    <div class="aa-properties-single-sidebar">
                                         <!-- Ancore alle funzioni del Locatore -->
                                         @can('isLocatore')
                                             @if(auth()->user()->username == $locatore->username)
-                                                <!-- Link per la modifica dell'annuncio -->
-                                                <h4><a href="{{ route('modifica_annuncio', [$annuncio->id]) }}"><span class="fa fa-edit"></span> Modifica annuncio</a></h4>
-
-                                                <!-- Link per l'eliminazione dell'annuncio -->
-                                                <h4><a href="" id="ancora_elimina_annuncio"><span class="fa fa-trash"></span> Elimina annuncio</a></h4>
-                                                <form id="elimina_annuncio_form" action="{{ route('conferma_elimina_annuncio') }}" method="POST" style="display: none;">
-                                                    {{ csrf_field() }}
-                                                    {{ Form::text('id', "$annuncio->id",['style' => 'display: none']) }}
-                                                </form>
 
                                                 <!-- Ancora per rendere l'annuncio non disponibile -->
                                                 <br>
                                                 @if($annuncio->disponibile)
-                                                    <p>Se hai affittato il tuo alloggio puoi rendere l'annuncio non disponibile, gli altri utenti potranno visualizzarlo ma non opzionarlo </p>
-                                                    <h4><a id="ancora_rendi_non_disponibile"><span class="fa fa-hand-o-down"></span> Rendi non disponibile</a></h4>
+                                                    <p>Se hai affittato il tuo alloggio puoi rendere l'annuncio non disponibile. Gli utenti del sito potranno visualizzarlo, ma non opzionarlo. <br></p>
+                                                    <h4><a id="ancora_rendi_non_disponibile"><span class="fa fa-hand-o-down"></span> Rendi non disponibile<br><br></a></h4>
                                                 @else
                                                     <p>Il tuo annuncio è tornato disponibile? Rendilo nuovamente opzionabile</p>
-                                                    <h4><a id="ancora_rendi_disponibile"><span class="fa fa-hand-o-up"></span> Rendi disponibile</a></h4>
+                                                    <h4><a id="ancora_rendi_disponibile"><span class="fa fa-hand-o-up"></span> Rendi disponibile<br><br></a></h4>
                                                 @endif
 
+                                                <!-- Link per la modifica dell'annuncio -->
+                                                <h4><a href="{{ route('modifica_annuncio', [$annuncio->id]) }}"><span class="fa fa-edit"></span> Modifica annuncio<br><br></a></h4>
+
+                                                <!-- Link per l'eliminazione dell'annuncio -->
+                                                <h4><a href="" id="ancora_elimina_annuncio"><span class="fa fa-trash"></span> Elimina annuncio<br><br></a></h4>
+                                                <form id="elimina_annuncio_form" action="{{ route('conferma_elimina_annuncio') }}" method="POST" style="display: none;">
+                                                    {{ csrf_field() }}
+                                                    {{ Form::text('id', "$annuncio->id",['style' => 'display: none']) }}
+                                                </form>     
+                                    </div>
+                                </aside>
+
+                                <aside class="aa-properties-sidebar">
+                                    <div class="aa-properties-single-sidebar">
                                                 <!-- Locatari che hanno opzionato l'annuncio -->
                                                 @isset($utenti_che_hanno_opzionato)
                                                     <br>
