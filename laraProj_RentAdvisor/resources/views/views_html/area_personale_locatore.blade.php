@@ -35,118 +35,116 @@
         </div>
         </div>
         <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="aa-properties-content">
-                @isset($annunci)
-                <!-- Start properties content body -->
-                <div class="aa-properties-content-body">
-                    <h2>I tuoi annunci</h2>
-                    <p>Qui puoi trovare tutti gli annunci che hai inserito, per modificare un annuncio premi sul pulsante "Dettagli"</p>
-                <ul class="aa-properties-nav">
-                    @foreach($annunci as $annuncio)
-                        @if($loop->index % 2 == 0)
-                            <div class="row">
-                                @endif
-                    <li>
-                    <article class="aa-properties-item">
-                        <div class="aa-properties-details-img">
-                            @isset($immagini)
-                                @foreach($immagini as $immagine)
-                                    @if($immagine->id_annuncio == $annuncio->id)
-                                        <img src="{{ asset("images/annunci/$immagine->nome_immagine") }}" alt="img">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="aa-properties-content">
+                    @isset($annunci)
+                    <!-- Start properties content body -->
+                    <div class="aa-properties-content-body">
+                        <h2>I tuoi annunci</h2>
+                        <p>Qui puoi trovare tutti gli annunci che hai inserito, per modificare un annuncio premi sul pulsante "Dettagli"</p>
+                    <ul class="aa-properties-nav">
+                        @foreach($annunci as $annuncio)
+                            @if($loop->index % 2 == 0)
+                                <div class="row">
                                     @endif
-                                @endforeach
+                        <li>
+                        <article class="aa-properties-item">
+                            <div class="aa-properties-details-img">
+                                @isset($immagini)
+                                    @foreach($immagini as $immagine)
+                                        @if($immagine->id_annuncio == $annuncio->id)
+                                            <img src="{{ asset("images/annunci/$immagine->nome_immagine") }}" alt="img">
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <img src="{{ asset("images/annunci/image_not_avaiable.jpg") }}" alt="img">
+                                @endisset
+                            </div>
+                            @if($annuncio->disponibile == true)
+                                <div class="aa-tag for-sale">
+                                    Affittasi
+                                </div>
                             @else
-                                <img src="{{ asset("images/annunci/image_not_avaiable.jpg") }}" alt="img">
-                            @endisset
-                        </div>
-                        @if($annuncio->disponibile == true)
-                            <div class="aa-tag for-sale">
-                                Affittasi
+                                <div class="aa-tag sold-out">
+                                    Non disponibile
+                                </div>
+                            @endif
+                            <div class="aa-properties-item-content">
+                            <div class="aa-properties-info">
+                                <span><strong>Città</strong> : {{ $annuncio->citta }}</span>
+                                <span><strong>Tipologia</strong> : {{ str_replace('_', ' ', $annuncio->tipologia) }}</span>
                             </div>
-                        @else
-                            <div class="aa-tag sold-out">
-                                Non disponibile
+                            <div class="aa-properties-about">
+                                <h3>
+                                    <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}">{{ substr($annuncio->titolo, 0, 80) }}...</a>
+                                </h3>
+                                <p>{{ substr($annuncio->descrizione, 0, 200) }} ...</p>
                             </div>
-                        @endif
-                        <div class="aa-properties-item-content">
-                        <div class="aa-properties-info">
-                            <span><strong>Città</strong> : {{ $annuncio->citta }}</span>
-                            <span><strong>Tipologia</strong> : {{ str_replace('_', ' ', $annuncio->tipologia) }}</span>
-                        </div>
-                        <div class="aa-properties-about">
-                            <h3>
-                                <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}">{{ substr($annuncio->titolo, 0, 80) }}...</a>
-                            </h3>
-                            <p>{{ substr($annuncio->descrizione, 0, 200) }} ...</p>
-                        </div>
-                        <div class="aa-properties-detial">
-                            <span class="aa-price">
-                                {{$annuncio->canone_affitto}}€
-                            </span>
-                            <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}" class="aa-secondary-btn">Dettagli</a>
-                        </div>
-                        </div>
-                    </article>
-                    </li>
-                                @if($loop->index % 2 == 1)
+                            <div class="aa-properties-detial">
+                                <span class="aa-price">
+                                    {{$annuncio->canone_affitto}}€
+                                </span>
+                                <a href="{{ route('dettagli_annuncio', [$annuncio->id]) }}" class="aa-secondary-btn">Dettagli</a>
                             </div>
-                        @endif
-                    @endforeach
-                </ul>
-                @endisset
-                </div>
-                <!-- Paginazione annunci locatore -->
-                @include('pagination.paginator', ['paginator' => $annunci])
-            </div>
-            </div>
-
-
-
-            <!-- Start properties sidebar -->
-            <div class="col-md-4">
-            <aside class="aa-properties-sidebar">
-                <!-- Start Single properties sidebar -->
-                <div class="aa-properties-single-sidebar">
-                    <a href="{{ route('inserisci_annuncio') }}" class="round-button">INSERISCI ANNUNCIO</a>
-                    <br>
-                    <div class="aa-title">
-                        <span></span>
-                        <h2>Chat</h2>
-                        <p>Le tue ultime chat</p>
+                            </div>
+                        </article>
+                        </li>
+                                    @if($loop->index % 2 == 1)
+                                </div>
+                            @endif
+                        @endforeach
+                    </ul>
+                    @endisset
                     </div>
-                </div>
-                <!-- chat threats -->
-                <div class="col-md-12">
-                <div class="aa-comments-area">
-                    <div class="comments">
-                        <ul class="commentlist">
-                            @isset($messaggi)
-                                @foreach($messaggi as $messaggio)
-                                    <li>
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <span class="fa fa-user"></span>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="author-name">{{$messaggio->username_locatario}}</h4>
-                                                <a class="reply-btn" href="{{ route('chat') }}">Vai alla chat</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            @endisset
-                            <li>
-                                <a href="#"><span class="fa fa-envelope"></span> Tutti i messaggi</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <!-- Paginazione annunci locatore -->
+                    @include('pagination.paginator', ['paginator' => $annunci])
                 </div>
                 </div>
-            </aside>
+
+                <!-- Start properties sidebar -->
+                <div class="col-md-4">
+                    <aside class="aa-properties-sidebar">
+                        <!-- Start Single properties sidebar -->
+                        <div class="aa-properties-single-sidebar">
+                            <a href="{{ route('inserisci_annuncio') }}" class="round-button">INSERISCI ANNUNCIO</a>
+                            <br>
+                            <div class="aa-title">
+                                <span></span>
+                                <h2>Chat</h2>
+                                <p>Le tue ultime chat</p>
+                            </div>
+                        </div>
+                        <!-- chat threats -->
+                        <div class="col-md-12">
+                            <div class="aa-comments-area">
+                                <div class="comments">
+                                    <ul class="commentlist">
+                                        @isset($messaggi)
+                                            @foreach($messaggi as $messaggio)
+                                                <li>
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <span class="fa fa-user"></span>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h4 class="author-name">{{$messaggio->username_locatario}}</h4>
+                                                            <a class="reply-btn" href="{{ route('chat') }}">Vai alla chat</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        @endisset
+                                        <li>
+                                            <a href="#"><span class="fa fa-envelope"></span> Tutti i messaggi</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
             </div>
-        </div>
         </div>
     </section>
     <!-- / Properties  -->
