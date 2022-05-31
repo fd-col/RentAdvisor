@@ -2737,15 +2737,19 @@ img {
 
 .messaggi-inviati {
   text-align: right;
-  background-color:#20ceb3;
+  background-color: rgba(89, 171, 227, 0.7);
   border-radius: 10px;
+  margin-top:10px;
+  padding:0px 5px;
 
 }
 
 .messaggi-ricevuti {
   text-align: left;
-  background-color:greenyellow;
+  background-color:#f5f5f5;
   border-radius: 10px;
+  margin-top: 10px;
+  padding:0px 5px;
 }
 
 .send-button {
@@ -3551,3 +3555,9 @@ img {
 }
 .search-input{
 width: 100%;}
+
+.errors{
+	color:red;
+	font-size:10px;
+	
+}
