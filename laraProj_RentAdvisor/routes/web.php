@@ -86,6 +86,9 @@ Route::get('/locatario/messaggi', 'MessaggiController@mostra_messaggi_chat')
 Route::get('/statistiche', 'StatisticheController@pagina_statistiche')
     ->name('statistiche')->middleware('can:isAdmin');
 
+Route::post('/statistiche', 'StatisticheController@pagina_statistiche')
+    ->name('statistiche_calcolate')->middleware('can:isAdmin');
+
 Route::get('/faq/modifica/{id_faq}', 'FaqController@pagina_modifica_faq')
     ->name('modifica_faq')->middleware('can:isAdmin');
 

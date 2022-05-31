@@ -13,7 +13,7 @@
                     <h2>Pagina delle Statistiche</h2>
                     <span></span>
                 </div>
-                {{ Form::open(array('route' => 'statistiche'))}}   
+                {{ Form::open(array('route' => 'statistiche_calcolate'))}}   
                 <fieldset style="border: 1px solid black; padding: 10px"> 
                     <h3>&nbsp Scegli il periodo per il filtraggio :</h3>
                     <h4>&nbsp (se il periodo o la tipologia di locazione non vengono specificati si riferisce a tutti gli annunci del sito)<br><br></h4> 
@@ -58,7 +58,12 @@
                     {{Form::select('tipologia', array('false' => 'Alloggio','appartamento' => 'Appartamento',
                     'posto_letto' => 'Posto letto',), null, ['class' =>'tipologia', 'id'=>'tipologia'] ) }}
                     </div>
+
+                    <div class="form-submit" style = 'display:inline'>
+                        {{Form::submit('CERCA' ,['class' => 'aa-search-btn'] )}}
+                    </div>
                     <br>
+                    
                 </fieldset>
                 {{ Form::close()}} 
                 <div class="aa-contact-bottom"> <!-- da modicare il nome nel .css-->
