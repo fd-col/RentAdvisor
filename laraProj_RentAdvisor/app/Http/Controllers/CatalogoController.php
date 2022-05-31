@@ -60,11 +60,8 @@ class CatalogoController extends Controller
     }
 
 	public function catalogo_con_filtri(RichiestaFiltro $richiesta){
-		Log::debug($richiesta);
 		$dati_validi=$richiesta->validated();
-		Log::debug($dati_validi);
 		$annunci=$this->modello_catalogo->get_annunci_filtrati($dati_validi);
-        Log::info('Tipo annunci: '.get_class($annunci));
 		$immagini = $this->modello_catalogo->get_immagini_annunci($annunci);
 		return view('views_html/catalogo')
 			->with('annunci', $annunci)

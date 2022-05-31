@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Statistiche;
 use App\Http\Requests\RichiestaStatistiche;
+use Illuminate\Support\Facades\Log;
 
 class StatisticheController extends Controller
 {
@@ -15,7 +16,9 @@ class StatisticheController extends Controller
     }
 
     public function pagina_statistiche(RichiestaStatistiche $richiesta) {
+        Log::debug($richiesta);
         $dati_validi=$richiesta->validated();
+        Log::debug($dati_validi);
         $numero_annunci = $this->modello_statistiche->get_numero_annunci();
         $numero_richieste = $this->modello_statistiche->get_numero_richieste($dati_validi);
 
