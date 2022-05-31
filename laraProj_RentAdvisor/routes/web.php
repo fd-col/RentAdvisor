@@ -72,8 +72,8 @@ Route::post('/catalogo', 'CatalogoController@catalogo_con_filtri')
 Route::post('/locatario/modifica_dati_locatario', 'ProfiloController@modifica_dati_locatario')
     ->name('modifica_dati_locatario')->middleware('can:isLocatario');
 
-Route::get('/locatario/aggiungi_opzione_annuncio/{id_annuncio}', 'CatalogoController@aggiungi_opzione_annuncio')
-    ->name('aggiungi_opzione_annuncio')->middleware('can:isLocatario');
+Route::get('/locatario/toggle_opzione_annuncio/{id_annuncio}', 'CatalogoController@toggle_opzione_annuncio')
+    ->name('toggle_opzione_annuncio')->middleware('can:isLocatario');
 
 Route::post('/locatario/chat', 'MessaggiController@mostra_chat_locatario')
 		->name('mostra_chat_locatario')->middleware('can:isLocatario');

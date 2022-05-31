@@ -177,12 +177,12 @@ class CatalogoController extends Controller
 
     }
 
-    public function aggiungi_opzione_annuncio ($id_annuncio) {
+    public function toggle_opzione_annuncio ($id_annuncio) {
         if(!($this->modello_catalogo->get_annuncio($id_annuncio)->disponibile))
             return view('views_html/non_autorizzato');
 
         try {
-            $this->modello_catalogo->aggiungi_opzione_annuncio($id_annuncio);
+            $this->modello_catalogo->toggle_opzione_annuncio($id_annuncio);
         } catch (ErrorException $e) {
             return view('views_html/non_autorizzato');
         }

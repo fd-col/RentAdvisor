@@ -240,11 +240,13 @@ class Catalogo extends Model
             Annuncio::where('id', $id_annuncio)->limit(1)->update(['disponibile' => '1', 'data_assegnazione' => null]);
     }
 
-    public function aggiungi_opzione_annuncio($id_annuncio) {
+    public function toggle_opzione_annuncio($id_annuncio) {
         //Imposto la timezone per settare bene la data di assegnazione dell'annuncio
         date_default_timezone_set('Europe/Rome');
-
-        Opzione_Annuncio::insert(['id_annuncio' => $id_annuncio, 'username_locatario' => auth()->user()->username, 'data_opzione' => date('Y-m-d H:m:s')]);
+        if(!is_null(Opzione_Annuncio::where('id_annuncio', $id_annuncio)->where('username_locatario', auth()->user()->username)->get()->first()))
+            Opzione_Annuncio::where('id_annuncio', $id_annuncio)->where('username_locatario', auth()->user()->username)->limit(1)->delete();
+        else
+            Opzione_Annuncio::insert(['id_annuncio' => $id_annuncio, 'username_locatario' => auth()->user()->username, 'data_opzione' => date('Y-m-d H:m:s')]);
     }
 
     public function controlla_opzione ($id_annuncio) {

@@ -56,7 +56,18 @@
                             $var = confirm('Sei sicuro di voler opzionare l\'annuncio?');
                             if ($var == true) {
                                 event.preventDefault();
-                                $(location).attr('href', "{{ route('aggiungi_opzione_annuncio', [$annuncio->id]) }}" );
+                                $(location).attr('href', "{{ route('toggle_opzione_annuncio', [$annuncio->id]) }}" );
+                            } else {
+                                evt.preventDefault();
+                            }
+                        });
+                    })
+                    jQuery(function(){
+                        $('#ancora_togli_opzione_annuncio').click(function(evt){
+                            $var = confirm('Sei sicuro di voler eliminare l\'opzione per l\'annuncio?');
+                            if ($var == true) {
+                                event.preventDefault();
+                                $(location).attr('href', "{{ route('toggle_opzione_annuncio', [$annuncio->id]) }}" );
                             } else {
                                 evt.preventDefault();
                             }
@@ -268,7 +279,6 @@
                                                 telefono: {{$locatore->telefono}}<br>
                                             @endif
                                         </p>
-                                        <br><br>
                                     </div>
                                 </aside>
 
@@ -281,10 +291,10 @@
                                                 <!-- Ancora per rendere l'annuncio non disponibile -->
                                                 <br>
                                                 @if($annuncio->disponibile)
-                                                    <p>Se hai affittato il tuo alloggio puoi rendere l'annuncio non disponibile. Gli utenti del sito potranno visualizzarlo, ma non opzionarlo. <br></p>
+                                                    <p>Se hai affittato il tuo alloggio al di fuori di RentAdvisor puoi rendere l'annuncio non disponibile. Gli utenti del sito potranno visualizzarlo, ma non opzionarlo. <br></p>
                                                     <h4><a id="ancora_rendi_non_disponibile"><span class="fa fa-hand-o-down"></span> Rendi non disponibile<br><br></a></h4>
                                                 @else
-                                                    <p>Il tuo annuncio è tornato disponibile? Rendilo nuovamente opzionabile</p>
+                                                    <p>Il tuo alloggio è tornato disponibile? Rendilo nuovamente opzionabile</p>
                                                     <h4><a id="ancora_rendi_disponibile"><span class="fa fa-hand-o-up"></span> Rendi disponibile<br><br></a></h4>
                                                 @endif
 
@@ -296,7 +306,7 @@
                                                 <form id="elimina_annuncio_form" action="{{ route('conferma_elimina_annuncio') }}" method="POST" style="display: none;">
                                                     {{ csrf_field() }}
                                                     {{ Form::text('id', "$annuncio->id",['style' => 'display: none']) }}
-                                                </form>     
+                                                </form>
                                     </div>
                                 </aside>
 
@@ -345,10 +355,14 @@
                                             @isset($opzionato)
                                                 @if(!$opzionato)
                                                     @if($annuncio->disponibile)
+                                                        <br>
+                                                        <p>Opziona questo annuncio per far sapere al proprietario di essere interessato ad affittarlo, lui potrà sceglierti per stipulare un contratto</p>
                                                         <h4><a id="ancora_opziona_annuncio"><span class="fa fa-check-square"></span> Opziona l'annuncio</a></h4>
                                                     @endif
                                                 @else
-                                                    <p>Hai già opzionato questo annuncio, lo puoi visualizzare anche nel tuo profilo</p>
+                                                    <br>
+                                                    <p>Hai già opzionato questo annuncio, lo puoi visualizzare anche nel tuo profilo <br>Se non sei più interessato puoi eliminare la tua opzione</p>
+                                                    <h4><a id="ancora_togli_opzione_annuncio"><span class="fa fa-square-o"></span> Togli l'opzione all'annuncio</a></h4>
                                                 @endif
                                             @endisset
                                         @endcan
