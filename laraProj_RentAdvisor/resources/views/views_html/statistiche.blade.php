@@ -13,9 +13,8 @@
                     <h2>Pagina delle Statistiche</h2>
                     <span></span>
                 </div>
-
+                {{ Form::open(array('route' => 'statistiche'))}}   
                 <fieldset style="border: 1px solid black; padding: 10px"> 
-                    {{ Form::open(array('route' => 'statistiche'))}}   
                     <h3>&nbsp Scegli il periodo per il filtraggio :</h3>
                     <h4>&nbsp (se il periodo o la tipologia di locazione non vengono specificati si riferisce a tutti gli annunci del sito)<br><br></h4> 
                     <div class="col-md-0">
@@ -26,10 +25,10 @@
                     </div>
                     <div class="col-md-2">
                         <div class="aa-single-advance-search">
-                            {{ Form::date('locazione_inizio', '',['id' => 'locazione_inizio']) }}
-                                @if ($errors->first('locazione_inizio'))
+                            {{ Form::date('data_inizio_filtro', '',['id' => 'data_inizio_filtro']) }}
+                                @if ($errors->first('data_inizio_filtro'))
                                     <ul>
-                                        @foreach ($errors->get('locazione_inizio') as $message)
+                                        @foreach ($errors->get('data_inizio_filtro') as $message)
                                             <li class="richiesta">{{ $message }}</li>
                                         @endforeach
                                     </ul>
@@ -41,10 +40,10 @@
                     </div>
                     <div class="col-md-2">
                         <div class="aa-single-advance-search">
-                            {{ Form::date('locazione_fine', '',['id' => 'locazione_fine']) }}
-                                @if ($errors->first('locazione_fine'))
+                            {{ Form::date('data_fine_filtro', '',['id' => 'data_fine_filtro']) }}
+                                @if ($errors->first('data_fine_filtro'))
                                     <ul>
-                                        @foreach ($errors->get('locazione_fine') as $message)
+                                        @foreach ($errors->get('data_fine_filtro') as $message)
                                             <li class="richiesta">{{ $message }}</li>
                                         @endforeach
                                     </ul>
@@ -61,7 +60,7 @@
                     </div>
                     <br>
                 </fieldset>
-
+                {{ Form::close()}} 
                 <div class="aa-contact-bottom"> <!-- da modicare il nome nel .css-->
                     <div class="aa-title">
                         <fieldset style="border: 1px solid black">

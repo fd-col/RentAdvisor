@@ -26,10 +26,10 @@ class RichiestaStatistiche extends FormRequest
     public function rules()
     {
         return [
-            'locazione_inizio' => 'nullable|date_format:Y-m-d',
-            'locazione_fine' =>  'nullable|date_format:Y-m-d'|'after:locazione_inizio',
-            'tipologia' => 'nullable|string',
+            'data_inizio_filtro' => 'nullable|date_format:Y-m-d',
+            'data_fine_filtro' =>  'nullable|date_format:Y-m-d'|'after:data_inizio_filtro',
+            'tipologia' => 'nullable|string'
         ];
-            //
+            
     }
 }

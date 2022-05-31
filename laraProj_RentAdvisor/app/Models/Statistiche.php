@@ -20,10 +20,10 @@ class Statistiche extends Model
         $annunci_richiesti = Opzione_Annuncio::select()
                             ->join('Annuncio', 'Annuncio.id', '=', 'id_annuncio');
 
-        if(!is_null($filtri['locazione_inizio']))
-            $annunci_richiesti->where('data_opzione','<', $filtri['locazione_inizio']);
-        if(!is_null($filtri['locazione_fine']))
-            $annunci_richiesti->where('data_opzione','>', $filtri['locazione_fine']);
+        if(!is_null($filtri['data_inizio_filtro']))
+            $annunci_richiesti->where('data_opzione','<', $filtri['data_inizio_filtro']);
+        if(!is_null($filtri['data_fine_filtro']))
+            $annunci_richiesti->where('data_opzione','>', $filtri['data_fine_filtro']);
         if($filtri['tipologia']=='appartamento') 
             $annunci_richiesti->where('appartamento');
         if($filtri['tipologia']=='posto_letto')
