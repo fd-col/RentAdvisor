@@ -9,6 +9,11 @@
 @isset($user)
 	<script>
 		jQuery(function(){
+				if('{{$user->role}}'=='locatario')
+					$('#locatario').attr('value', '{{$user->username}}');
+				else
+					$('#locatore').attr('value', '{{$user->username}}');
+				
 				$('a').click(function(){
 					$user=$(this).attr('id');
 					if('{{$user->role}}'=='locatario')
@@ -24,16 +29,11 @@
                         success: setChat
 						
                     });
-					if('{{$user->role}}'=='locatario')
-						{
-							$('#locatario').attr('value', '{{$user->username}}');
-							$('#locatore').attr('value', $user);
-						}
+					if('{{$user->role}}'=='locatario')	
+							$('#locatore').attr('value', $user);	
 					else
-						{
-							$('#locatario').attr('value', $user);
-							$('#locatore').attr('value', '{{$user->username}}');
-						}
+							$('#locatario').attr('value', $user);	
+						
 				})
 				function setChat(data){
 					$('#chat').find('div').remove();
@@ -70,33 +70,19 @@
                 </fieldset>
 
                   <div class="aa-blog-area" id="messaggio">
-                  {{ Form::open(array('route' => 'send', 'class' => 'contactform')) }}
+				  @if($user->role == 'locatario')
+                  {{ Form::open(array('route' => 'send_locatario', 'class' => 'contactform')) }}
+				  @else
+				  {{ Form::open(array('route' => 'send_locatore', 'class' => 'contactform')) }}	  
+				  @endif
                       <div style="margin-top: 20px; margin-bottom: 20px">
                       {{ Form::textarea('testo', '', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
-					  @if ($errors->first('testo'))
-                                    <ul>
-                                        @foreach ($errors->get('username') as $message)
-                                            <li class="richiesta">{{ $message }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
                       {{ Form::submit('Invia', ['class' => 'send-button']) }}
 					  {{ Form::hidden('locatario', '', ['id'=>'locatario'])}}
-					@if ($errors->first('locatario'))
-                                    <ul>
-                                        @foreach ($errors->get('username') as $message)
-                                            <li class="richiesta">{{ $message }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
 					  {{ Form::hidden('locatore', '', ['id'=>'locatore'])}}			
-						@if ($errors->first('titolo'))
-                                    <ul>
-                                        @foreach ($errors->get('username') as $message)
-                                            <li class="richiesta">{{ $message }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
+                        @foreach ($errors->all() as $message)
+                            <p class="errors">{{ $message }}</p>
+                        @endforeach
                       </div>
                   {{ Form::close() }}
                   </div>
@@ -121,8 +107,9 @@
                   <div class="comments">
                     <ul class="commentlist">
                       @isset($messaggi)
-					  
+					  <!-- message set -->
 						@foreach($messaggi as $utenti)
+						<!-- foreach enter-->
 						<li>
                             <div class="media">
                                 <div class="media-left">

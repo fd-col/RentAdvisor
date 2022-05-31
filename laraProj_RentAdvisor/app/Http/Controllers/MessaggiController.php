@@ -22,7 +22,7 @@ class MessaggiController extends Controller
 
     public function mostra_messaggi_chat(){
         $user = $this->modello_user::where('username', auth()->user()->username)->get()->first();
-		if($this->modello_user->hasRole('locatore'))
+		if(auth()->user()->role=="locatore")
 			$messaggi = $this->modello_messaggio->get_utenti_ultimi_messaggi_locatore(auth()->user()->username);
 		else
 			$messaggi= $this->modello_messaggio->get_utenti_ultimi_messaggi_locatario(auth()->user()->username);
