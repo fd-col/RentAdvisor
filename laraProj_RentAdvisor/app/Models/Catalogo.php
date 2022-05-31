@@ -94,7 +94,7 @@ class Catalogo extends Model
         if($filtri['tipologia_appartamento'])
             $appartamenti->where('tipologia_appartamento', $filtri['tipologia_appartamento']);
         if(!is_null($filtri['numero_camere']))
-            $appartamenti->where('numero_camere', $filtri['numero_camere']);
+            $appartamenti->where('numero_camere', '>=', $filtri['numero_camere']);
         if(!is_null($filtri['appartamento_min']))
             $appartamenti->where('dimensioni_appartamento','>=', $filtri['appartamento_min']);
         if(!is_null($filtri['appartamento_max']))
@@ -113,7 +113,7 @@ class Catalogo extends Model
         if($filtri['tipologia_posto_letto'])
             $posti_letto->where('tipologia_posto_letto', $filtri['tipologia_posto_letto']);
         if(!is_null($filtri['letti_camera']))
-            $posti_letto->where('letti_nella_camera', $filtri['letti_camera']);
+            $posti_letto->where('letti_nella_camera', '>=', $filtri['letti_camera']);
         if(!is_null($filtri['dim_camera_min']))
             $posti_letto->where('dimensioni_camera','>=', $filtri['dim_camera_min']);
         if(!is_null($filtri['dim_camera_max']))
@@ -144,9 +144,9 @@ class Catalogo extends Model
 	if(!is_null($filtri['affitto_max']))
 		$query->where('canone_affitto','<=', $filtri['affitto_max']);
 	if(!is_null($filtri['locazione_inizio']))
-		$query->where('periodo_disponibilita_inizio','<', $filtri['locazione_inizio']);
+		$query->where('periodo_disponibilita_inizio','<=', $filtri['locazione_inizio']);
 	if(!is_null($filtri['locazione_fine']))
-		$query->where('periodo_disponibilita_fine','>', $filtri['locazione_fine'])->orWhere('periodo_disponibilita_fine', null);
+		$query->where('periodo_disponibilita_fine','>=', $filtri['locazione_fine'])->orWhere('periodo_disponibilita_fine', null);
 	if(!is_null($filtri['bagni']))
 		$query->where('numero_bagni', '>=', $filtri['bagni']);
 	if(!is_null($filtri['n_posti_letto_totali']))
@@ -163,6 +163,7 @@ class Catalogo extends Model
 		$query->where('ascensore', $filtri['ascensore']);
 
     $annunci = $query->orderBy('data_inserimento', 'DESC')->paginate(9);
+    Log::debug('Dati validi: ', $filtri);
 	return $annunci;
 	}
 
