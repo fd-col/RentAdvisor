@@ -27,7 +27,7 @@ class RichiestaStatistiche extends FormRequest
     {
         return [
             'data_inizio_filtro' => 'nullable|date_format:Y-m-d',
-            'data_fine_filtro' =>  'nullable|date_format:Y-m-d'|'after:data_inizio_filtro',
+            'data_fine_filtro' =>  'nullable|date_format:Y-m-d|after:data_inizio_filtro',
             'tipologia' => 'nullable|string'
         ];
             
