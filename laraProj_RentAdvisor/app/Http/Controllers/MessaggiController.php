@@ -42,9 +42,10 @@ class MessaggiController extends Controller
 	}
 	public function invia_messaggio(RichiestaInvioMessaggio $data){
 		$dati_validi=$data->validated();
-		Log::debug($dati_validi);
 		$this->modello_messaggio::insert(['username_locatore'=>$dati_validi['locatore'], 'username_locatario'=>$dati_validi['locatario'], 'data_invio'=>date("Y-m-d H:i:s"), 'testo'=>$dati_validi['testo'], 'mittente'=>auth()->user()->role]);
-		
-		return redirect()->action('MessaggiController@mostra_messaggi_chat');
+		if(auth()->user()->role=="locatario")
+			return mostra_chat_locatario(["user"=>$dati_validi['locatore'],"_token"=>csrf_token()]);
+		else
+			return mostra_chat_locatore(["user"=>$dati_validi['locatore'],"_token"=>csrf_token()]);
 	}
 }

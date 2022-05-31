@@ -3,14 +3,14 @@
         $('#tipologia').change(function(){
             $val= $('select[name="tipologia"]').val();
             switch($val){
-                case 'appartamento': $("#appartamento").show();
-                    $("#posti_letto").hide();
+                case 'appartamento': $("#appartamento").show('slow');
+                    $("#posti_letto").hide('slow');
                     break;
-                case 'posto_letto':	 $("#appartamento").hide();
-                    $("#posti_letto").show();
+                case 'posto_letto':	 $("#appartamento").hide('slow');
+                    $("#posti_letto").show('slow');
                     break;
-                default:  $("#appartamento").hide();
-                    $("#posti_letto").hide();
+                default:  $("#appartamento").hide('slow');
+                    $("#posti_letto").hide('slow');
                     break;
             }
         });
@@ -46,7 +46,7 @@
                         <div class="col-md-2">
                             <div class="aa-single-advance-search">
                                 {{Form::select('tipologia', array(
-                                  false => 'Alloggio',
+                                  false => 'Tipologia alloggio',
                                   'appartamento' => 'Appartamento',
                                 'posto_letto' => 'Posto letto',), null, ['class' =>'tipologia', 'id'=>'tipologia'] ) }}
                             </div>
@@ -54,10 +54,14 @@
 
                         <div class="col-md-2">
                             <div class="aa-single-advance-search">
-                                {{ Form::select('genere', array(
-                                false => 'Genere Preferito nell\'alloggio',
-                                'M' => 'Maschio',
-                                'F' => 'Femmina',))}}
+                                {{ Form::text('citta', '', ['class' => 'search-input','id' => 'cap', 'placeholder'=> 'Città']) }}
+                                @if ($errors->first('citta'))
+                                    <ul>
+                                        @foreach ($errors->get('citta') as $message)
+                                            <li class="richiesta">{{ $message }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                             </div>
                         </div>
 
@@ -76,16 +80,13 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::text('citta', '', ['class' => 'search-input','id' => 'cap', 'placeholder'=> 'Città']) }}
-                                    @if ($errors->first('citta'))
-                                        <ul>
-                                            @foreach ($errors->get('citta') as $message)
-                                                <li class="richiesta">{{ $message }}</li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
+                                    {{ Form::select('genere', array(
+                                    false => 'Genere preferito dei locatari',
+                                    'M' => 'Maschio',
+                                    'F' => 'Femmina',))}}
                                 </div>
                             </div>
+
                             <div class="col-md-3">
                                 <div class="aa-single-advance-search">
                                     {{ Form::text('zona_localizzazione', '', ['class' => 'search-input','id' => 'zona_localizzazione', 'placeholder' => 'Zona di localizzazione']) }}
@@ -105,7 +106,6 @@
                             <div class="col-md-0">
                                 <label>Caparra massima</label>
                             </div>
-
                             <div class="col-md-1">
                                 <div class="aa-single-advance-search">
                                     {{ Form::text('caparra_max', '', ['class' => 'search-input','id' => 'caparra_max',]) }}
@@ -185,7 +185,7 @@
                             </div>
                             <div class="col-md-1">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::text('bagni', '', ['class' => 'search-input','id' => 'bagni',]) }}
+                                    {{ Form::text('bagni', '', ['class' => 'search-input','id' => 'bagni', 'placeholder' => 'min']) }}
                                     @if ($errors->first('bagni'))
                                         <ul>
                                             @foreach ($errors->get('bagni') as $message)
@@ -203,7 +203,7 @@
                             <div class="col-md-1">
                                 <div class="aa-single-advance-search">
 
-                                    {{ Form::text('n_posti_letto_totali', '', ['class' => 'search-input','id' => 'n_posti_letto_totali',]) }}
+                                    {{ Form::text('n_posti_letto_totali', '', ['class' => 'search-input','id' => 'n_posti_letto_totali', 'placeholder' => 'min']) }}
                                     @if ($errors->first('n_posti_letto_totali'))
                                         <ul>
                                             @foreach ($errors->get('n_posti_letto_totali') as $message)
@@ -218,7 +218,7 @@
                             </div>
                             <div class="col-md-1">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::text('piano', '', ['class' => 'search-input','id' => 'piano',]) }}
+                                    {{ Form::text('piano', '', ['class' => 'search-input','id' => 'piano', 'placeholder' => 'max']) }}
                                     @if ($errors->first('piano'))
                                         <ul>
                                             @foreach ($errors->get('piano') as $message)
@@ -254,7 +254,7 @@
                             </div>
                             <div class="col-md-1">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::text('numero_camere', '', ['class' => 'search-input','id' => 'numero_camere',]) }}
+                                    {{ Form::text('numero_camere', '', ['class' => 'search-input','id' => 'numero_camere', 'placeholder' => 'min']) }}
                                     @if ($errors->first('numero_camere'))
                                         <ul>
                                             @foreach ($errors->get('numero_camere') as $message)
@@ -318,7 +318,7 @@
                                 <label>Letti nella camera</label>
                             </div>
                             <div class="col-md-1">
-                                {{ Form::text('letti_camera', '', ['class' => 'search-input','id' => 'letti_camera',]) }}
+                                {{ Form::text('letti_camera', '', ['class' => 'search-input','id' => 'letti_camera', 'plceholder' => 'min']) }}
                                 @if ($errors->first('letti_camera'))
                                     <ul>
                                         @foreach ($errors->get('letti_camera') as $message)
@@ -356,8 +356,8 @@
                                 <div class="aa-single-advance-search">
                                     {{Form::select('tipologia_posto_letto', array(
                                         false => 'Tipologia',
-                                        'camera_singola' => 'Camera singola',
-                                    'camera_condivisa' => 'Camera condivisa'))}}
+                                        'singola' => 'Camera singola',
+                                    'condivisa' => 'Camera condivisa'))}}
                                 </div>
                             </div>
                         </div>

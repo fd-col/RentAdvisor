@@ -77,7 +77,7 @@ Route::get('/locatario/aggiungi_opzione_annuncio/{id_annuncio}', 'CatalogoContro
 
 Route::post('/locatario/chat', 'MessaggiController@mostra_chat_locatario')
 		->name('mostra_chat_locatario')->middleware('can:isLocatario');
-		
+
 Route::get('/locatario/messaggi', 'MessaggiController@mostra_messaggi_chat')
 		->name('chat_locatario')->middleware('can:isLocatario');
 
@@ -121,7 +121,6 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
     ->name('register');
 
 Route::post('register', 'Auth\RegisterController@register');
-
 
 //Rotte per i messaggi
 Route::post('send_messagge', 'MessaggiController@invia_messaggio')
