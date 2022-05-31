@@ -16,6 +16,7 @@
 				
 				$('a').click(function(){
 					$user=$(this).attr('id');
+					//$.('#user_chat').append($user);
 					if('{{$user->role}}'=='locatario')
 						$route="{{route('mostra_chat_locatario')}}";
 					else
@@ -44,7 +45,23 @@
 							$('#chat').append("<div class=\"messaggi-ricevuti\">"+val.testo+"</div>");
 					});
 					
-					
+				function sendMessagge(){
+					if('{{$user->role}}'=='locatario')
+						$route="{{route('send_locatario')}}";
+					else
+						$route="{{route('send_locatore')}}";
+					$.ajax({
+						type:'POST',
+						url:$route,
+						data:{"_token":"{{csrf_token()}}",
+							  "locatore": $.('#locatore').val();
+							  "locatario":$.('#locatario').val();
+							  "testo":$.('#messaggio').val();
+							}
+						dataType:'json',
+						success: setChat
+					})
+				}
 				}
 		
 		})
@@ -61,7 +78,7 @@
           </div>
             <div class="aa-properties-content-body">
             <!-- Sezione messaggi inviati-->
-
+			<p class="user_chat" id="user_chat">$message_user</p>
               <fieldset style="border: 1px solid black; padding-top:60px">
                 <div class="aa-blog-area" id="chat">
                 
@@ -71,15 +88,15 @@
 
                   <div class="aa-blog-area" id="messaggio">
 				  @if($user->role == 'locatario')
-                  {{ Form::open(array('route' => 'send_locatario', 'class' => 'contactform')) }}
+                  {{ Form::open(array('action' => 'sendMessagge()', 'class' => 'contactform')) }}
 				  @else
-				  {{ Form::open(array('route' => 'send_locatore', 'class' => 'contactform')) }}	  
+				  {{ Form::open(array('action' => 'sendMessagge()', 'class' => 'contactform')) }}	  
 				  @endif
                       <div style="margin-top: 20px; margin-bottom: 20px">
                       {{ Form::textarea('testo', '', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
                       {{ Form::submit('Invia', ['class' => 'send-button']) }}
-					  {{ Form::hidden('locatario', '', ['id'=>'locatario'])}}
-					  {{ Form::hidden('locatore', '', ['id'=>'locatore'])}}			
+					  {{ Form::hidden('locatario', $message_user->username, ['id'=>'locatario'])}}
+					  {{ Form::hidden('locatore', $message_user->username, ['id'=>'locatore'])}}			
                         @foreach ($errors->all() as $message)
                             <p class="errors">{{ $message }}</p>
                         @endforeach
