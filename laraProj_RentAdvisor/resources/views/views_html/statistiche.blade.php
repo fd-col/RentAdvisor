@@ -55,8 +55,8 @@
                         <label>Tipologia di alloggio: &nbsp</label>
                     </div>
                     <div class="aa-single-advance-search">
-                    {{Form::select('tipologia', array('false' => 'Alloggio','appartamento' => 'Appartamento',
-                    'posto_letto' => 'Posto letto',), null, ['class' =>'tipologia', 'id'=>'tipologia'] ) }}
+                    {{Form::select('tipologia', [false => 'Alloggio','appartamento' => 'Appartamento',
+                    'posto_letto' => 'Posto letto'], ['class' =>'tipologia', 'id'=>'tipologia'] ) }}
                     </div>
 
                     <div class="form-submit" style = 'display:inline'>
