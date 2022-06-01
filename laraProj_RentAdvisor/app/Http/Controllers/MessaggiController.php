@@ -44,8 +44,9 @@ class MessaggiController extends Controller
 		$dati_validi=$data->validated();
 		$this->modello_messaggio::insert(['username_locatore'=>$dati_validi['locatore'], 'username_locatario'=>$dati_validi['locatario'], 'data_invio'=>date("Y-m-d H:i:s"), 'testo'=>$dati_validi['testo'], 'mittente'=>auth()->user()->role]);
 		if(auth()->user()->role=="locatario")
-			return mostra_chat_locatario(["user"=>$dati_validi['locatore'],"_token"=>csrf_token()]);
+			$user=["user"=>$dati_validi['locatore']];
 		else
-			return mostra_chat_locatore(["user"=>$dati_validi['locatore'],"_token"=>csrf_token()]);
+			$user=["user"=>$dati_validi['locatario']];
+		return response()->json(json_encode($user));
 	}
 }

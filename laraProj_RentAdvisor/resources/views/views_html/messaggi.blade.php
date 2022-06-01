@@ -9,17 +9,26 @@
 @isset($user)
 	<script>
 		jQuery(function(){
-				if('{{$user->role}}'=='locatario')
-					$('#locatario').attr('value', '{{$user->username}}');
+				$locatore=null;
+				$locatario=null;
+				$ruolo='{{$user->role}}';
+				if($ruolo=='locatario')
+					$locatario='{{$user->username}}';
 				else
-					$('#locatore').attr('value', '{{$user->username}}');
-				$('form').remove('action');
+					$locatore='{{$user->username}}';
 				$('a').click(function(){
+					$('#chat').find('div').remove();
 					$user=$(this).attr('id');
-					if('{{$user->role}}'=='locatario')
-						$route="{{route('mostra_chat_locatario')}}";
+					if($ruolo=='locatario')
+						{
+							$route="{{route('mostra_chat_locatario')}}";
+							$locatore=$(this).attr('id');
+						}
 					else
-						$route="{{route('mostra_chat_locatore')}}";
+						{
+							$route="{{route('mostra_chat_locatore')}}";
+							$locatario=$(this).attr('id');
+						}
 					$.ajax({
                         type: 'POST',
                         url: $route,
@@ -28,12 +37,9 @@
                         dataType: 'json',
                         success: setChat
 						
-                    });
-					if('{{$user->role}}'=='locatario')	
-							$('#locatore').attr('value', $user);	
-					else
-							$('#locatario').attr('value', $user);	
-						
+                    });	
+					$('#user_chat').find('p').remove();
+					$('#user_chat').append('<p>'+$user+'</p>');
 				})
 				function setChat(data){
 					$('#chat').find('div').remove();
@@ -44,7 +50,11 @@
 							$('#chat').append("<div class=\"messaggi-ricevuti\">"+val.testo+"</div>");
 				})};
 					
-				function send_Message(){
+				$('#button').click(function (){
+					if($ruolo=='locatario')
+						$locatore=$('#user_chat').find('p').text();
+					else
+						$locatario=$('#user_chat').find('p').text();
 					if('{{$user->role}}'=='locatario')
 						$route="{{route('send_locatore')}}";
 					else
@@ -52,16 +62,35 @@
 					$.ajax({
 						type:'POST',
 						url:$route,
-						data:{"_token":"{{csrf_token()}}",
-							  "locatore": $('#locatore').val(),
-							  "locatario":$('#locatario').val(),
-							  "testo":$('#messaggio').val(),
+						data:{"locatore": $locatore,
+							  "locatario":$locatario,
+							  "testo":$('textarea#messaggio').val(),
+							  "_token": "{{csrf_token()}}"
 						},
 						dataType:'json',
-						success: setChat
+						success: setSuccess,
+						error: setError
 					})
+				})
+				function setError(jqXHR, textStatus, errorThrown){
+					$parse=$.parseJSON(jqXHR.responseText);
+					
+					$('#banner').attr('class', 'banner_fail');
+					$('#banner').append($parse.errors.testo+'<br>');
+					$('#banner').append($parse.errors.locatario+'<br>');
+					$('#banner').append($parse.errors.locatore);
+					$('#banner').show('slow');
+					$('#banner').delay(5000).hide('slow');
+					$('#banner').delay(7000).find('p').remove();
+					};
+				function setSuccess(data){
+					$('#banner').attr('class', 'banner_success');
+					$('#banner').append('<p>Messaggio inviato con successo, <a id='+$.parseJSON(data).user+'> clicca qui per ricaricare la chat</a>')
+					$('#banner').show('slow');
+					$('#banner').delay(5000).hide('slow');
+					$('#banner').delay(7000).find('p').remove();
+					
 				}
-				
 		
 		})
 	</script>
@@ -77,11 +106,17 @@
           </div>
             <div class="aa-properties-content-body">
             <!-- Sezione messaggi inviati-->
+			
+			<div class="user_chat" id="user_chat">
 			@isset($message_user)
-			<p class="user_chat" id="user_chat">$message_user</p>
+			<p>$message_user</p>
 			@endisset
+			</div>
+			
 			<p class="user_chat" id="user_chat"></p>
               <fieldset style="border: 1px solid black; padding-top:60px">
+			  <div id="banner" hidden>
+			  </div>
                 <div class="aa-blog-area" id="chat">
                 
 
@@ -89,21 +124,15 @@
                 </fieldset>
 
                   <div class="aa-blog-area" id="messaggio">
-				  {{ Form::open(array('onsubmit'=>'return send_Message()','class' => 'contactform')) }}	  
+				   <form method="POST" accept-charset="UTF-8" onSubmit="return send_Message()" class="contactform">
+				  	  
                       <div style="margin-top: 20px; margin-bottom: 20px">
                       {{ Form::textarea('testo', '', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
-                      {{ Form::submit('Invia', ['class' => 'send-button']) }}
-					  @isset($message_user)
-					  {{ Form::hidden('locatario', $message_user->username, ['id'=>'locatario'])}}
-					  {{ Form::hidden('locatore', $message_user->username, ['id'=>'locatore'])}}	
-					@endisset
-					  {{ Form::hidden('locatario', '', ['id'=>'locatario'])}}
-					  {{ Form::hidden('locatore', '', ['id'=>'locatore'])}}
-                        @foreach ($errors->all() as $message)
-                            <p class="errors">{{ $message }}</p>
-                        @endforeach
+                      <div id="button" class="send-button" >INVIA</div>
+                        <div id="errors">
+                        </div>
                       </div>
-                  {{ Form::close() }}
+                  </form>
                   </div>
             </div>
           </div>
