@@ -98,7 +98,7 @@ Route::get('/faq/modifica/{id_faq}', 'FaqController@pagina_modifica_faq')
 Route::post('faq/conferma_modifica_faq', 'FaqController@modifica_faq')
     ->name('conferma_modifica_faq')->middleware('can:isAdmin');
 
-Route::get('/faq/aggiungi', 'FaqController@pagina_aggiungi_faq')
+Route::view('/faq/aggiungi', 'views_html/aggiungi_faq')
     ->name('aggiungi_faq')->middleware('can:isAdmin');
 
 Route::post('faq/conferma_aggiunta_faq', 'FaqController@aggiungi_faq')

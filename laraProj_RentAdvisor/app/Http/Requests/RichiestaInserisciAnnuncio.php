@@ -44,12 +44,12 @@ class RichiestaInserisciAnnuncio extends FormRequest {
             'parcheggio' => 'required|boolean',
             'wi_fi' => 'required|boolean',
             'ascensore' => 'required|boolean',
-            'tipologia_appartamento' => 'nullable|in:appartamento,casa_indipendente',
+            'tipologia_appartamento' => 'required|in:appartamento,casa_indipendente',
             'dimensioni_appartamento' => 'nullable|numeric|min:1|max:1000',
             'numero_camere' => 'nullable|min:1|max:100',
             'presenza_cucina' => 'nullable|boolean',
             'presenza_locale_ricreativo' => 'nullable|boolean',
-            'tipologia_posto_letto' => 'nullable|in:singola,condivisa',
+            'tipologia_posto_letto' => 'required|in:singola,condivisa',
             'dimensioni_camera' => 'nullable|numeric|min:1|max:1000',
             'letti_nella_camera' => 'nullable|numeric|min:1|max:100',
             'presenza_angolo_studio' => 'nullable|boolean',
@@ -65,10 +65,9 @@ class RichiestaInserisciAnnuncio extends FormRequest {
         ];
     }
 
-    /*protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator)
     {
-        Log:info('Errore: '.$validator->errors());
         throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
-    }*/
+    }
 
 }

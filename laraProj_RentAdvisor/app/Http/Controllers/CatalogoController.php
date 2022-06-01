@@ -93,7 +93,7 @@ class CatalogoController extends Controller
             $this->modello_catalogo->inserisci_dati_immagine('image_not_avaiable.jpg', $id_annuncio_inserito);
         }
 
-        return redirect()->action('ProfiloController@pagina_profilo_locatore');
+        return response()->json(['redirect' => route('area_personale_locatore')]);
     }
 
     public function pagina_modifica_annuncio($id_annuncio) {
@@ -143,7 +143,7 @@ class CatalogoController extends Controller
             $this->modello_catalogo->inserisci_dati_immagine('image_not_avaiable.jpg', $id_annuncio);
         }
 
-        return redirect()->action('CatalogoController@dettagli_annuncio', [$id_annuncio]);
+        return response()->json(['redirect' => route('dettagli_annuncio', [$id_annuncio])]);
 
     }
 
