@@ -64,6 +64,9 @@ Route::post('/locatore/messaggi', 'MessaggiController@mostra_messaggi_chat')
 Route::post('/locatore/chat', 'MessaggiController@mostra_chat_locatore')
 	->name('mostra_chat_locatore')->middleware('can:isLocatore');
 
+Route::post('/locatore/inserisci_contratto', 'ContrattoController@inserisci_contratto')
+    ->name('inserisci_contratto')->middleware('can:isLocatore');
+
 // link locatario (studente)
 
 Route::get('/locatario/visualizza_profilo_locatario', 'ProfiloController@pagina_profilo_locatario')
@@ -75,8 +78,8 @@ Route::post('/catalogo', 'CatalogoController@catalogo_con_filtri')
 Route::post('/locatario/modifica_dati_locatario', 'ProfiloController@modifica_dati_locatario')
     ->name('modifica_dati_locatario')->middleware('can:isLocatario');
 
-Route::get('/locatario/aggiungi_opzione_annuncio/{id_annuncio}', 'CatalogoController@aggiungi_opzione_annuncio')
-    ->name('aggiungi_opzione_annuncio')->middleware('can:isLocatario');
+Route::get('/locatario/toggle_opzione_annuncio/{id_annuncio}', 'CatalogoController@toggle_opzione_annuncio')
+    ->name('toggle_opzione_annuncio')->middleware('can:isLocatario');
 
 Route::post('/locatario/chat', 'MessaggiController@mostra_chat_locatario')
 		->name('mostra_chat_locatario')->middleware('can:isLocatario');
@@ -98,7 +101,7 @@ Route::get('/faq/modifica/{id_faq}', 'FaqController@pagina_modifica_faq')
 Route::post('faq/conferma_modifica_faq', 'FaqController@modifica_faq')
     ->name('conferma_modifica_faq')->middleware('can:isAdmin');
 
-Route::get('/faq/aggiungi', 'FaqController@pagina_aggiungi_faq')
+Route::view('/faq/aggiungi', 'views_html/aggiungi_faq')
     ->name('aggiungi_faq')->middleware('can:isAdmin');
 
 Route::post('faq/conferma_aggiunta_faq', 'FaqController@aggiungi_faq')

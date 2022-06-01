@@ -109,13 +109,14 @@ class DatabaseSeeder extends Seeder {
             ['id_annuncio' => 4, 'nome_immagine' => '4_0.jpeg'],
             ['id_annuncio' => 5, 'nome_immagine' => '5_0.jpeg'],
             ['id_annuncio' => 6, 'nome_immagine' => '6_0.jpeg'],
-            ['id_annuncio' => 7, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 7, 'nome_immagine' => '7_0.jpeg'],
             ['id_annuncio' => 8, 'nome_immagine' => 'image_not_avaiable.jpg'],
-            ['id_annuncio' => 9, 'nome_immagine' => 'image_not_avaiable.jpg'],
-            ['id_annuncio' => 10, 'nome_immagine' => 'image_not_avaiable.jpg'],
-            ['id_annuncio' => 11, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 9, 'nome_immagine' => '9_0.jpeg'],
+            ['id_annuncio' => 10, 'nome_immagine' => '10_0.jpeg'],
+            ['id_annuncio' => 10, 'nome_immagine' => '10_1.jpeg'],
+            ['id_annuncio' => 11, 'nome_immagine' => '11_0.jpeg'],
             ['id_annuncio' => 12, 'nome_immagine' => 'image_not_avaiable.jpg'],
-            ['id_annuncio' => 13, 'nome_immagine' => 'image_not_avaiable.jpg'],
+            ['id_annuncio' => 13, 'nome_immagine' => '13_0.jpeg'],
         ]);
 
     }

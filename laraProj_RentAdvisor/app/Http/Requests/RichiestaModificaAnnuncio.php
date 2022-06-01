@@ -66,10 +66,9 @@ class RichiestaModificaAnnuncio extends FormRequest {
         ];
     }
 
-    /*protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator)
     {
-        Log:info('Errore: '.$validator->errors());
         throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
-    }*/
+    }
 
 }

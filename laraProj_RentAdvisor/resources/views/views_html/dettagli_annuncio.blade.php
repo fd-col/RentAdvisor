@@ -8,6 +8,7 @@
             @isset($locatore)
 
                 <script>
+                    @can('isLocatore')
                     //Funzione alert elimina annuncio
                     jQuery(function(){
                         $('#ancora_elimina_annuncio').click(function(evt){
@@ -34,6 +35,13 @@
                             }
                         });
                     })
+                    jQuery(function(){
+                        $('a.ancora_form_contratto').click(function(evt){
+                            var string = "#form_contratto_".concat(evt.target.id);
+                            $(string).toggle('slow');
+                        });
+                    })
+
                     @else
                     //Funzione alert rendi annuncio disponibile
                     jQuery(function(){
@@ -48,6 +56,7 @@
                         });
                     })
                     @endif
+                    @endcan
 
                     @can('isLocatario')
                     //Funzione alert opziona annuncio
@@ -56,7 +65,18 @@
                             $var = confirm('Sei sicuro di voler opzionare l\'annuncio?');
                             if ($var == true) {
                                 event.preventDefault();
-                                $(location).attr('href', "{{ route('aggiungi_opzione_annuncio', [$annuncio->id]) }}" );
+                                $(location).attr('href', "{{ route('toggle_opzione_annuncio', [$annuncio->id]) }}" );
+                            } else {
+                                evt.preventDefault();
+                            }
+                        });
+                    })
+                    jQuery(function(){
+                        $('#ancora_togli_opzione_annuncio').click(function(evt){
+                            $var = confirm('Sei sicuro di voler eliminare l\'opzione per l\'annuncio?');
+                            if ($var == true) {
+                                event.preventDefault();
+                                $(location).attr('href', "{{ route('toggle_opzione_annuncio', [$annuncio->id]) }}" );
                             } else {
                                 evt.preventDefault();
                             }
@@ -268,7 +288,6 @@
                                                 telefono: {{$locatore->telefono}}<br>
                                             @endif
                                         </p>
-                                        <br><br>
                                     </div>
                                 </aside>
 
@@ -281,10 +300,10 @@
                                                 <!-- Ancora per rendere l'annuncio non disponibile -->
                                                 <br>
                                                 @if($annuncio->disponibile)
-                                                    <p>Se hai affittato il tuo alloggio puoi rendere l'annuncio non disponibile. Gli utenti del sito potranno visualizzarlo, ma non opzionarlo. <br></p>
+                                                    <p>Se hai affittato il tuo alloggio al di fuori di RentAdvisor puoi rendere l'annuncio non disponibile. Gli utenti del sito potranno visualizzarlo, ma non opzionarlo. <br></p>
                                                     <h4><a id="ancora_rendi_non_disponibile"><span class="fa fa-hand-o-down"></span> Rendi non disponibile<br><br></a></h4>
                                                 @else
-                                                    <p>Il tuo annuncio è tornato disponibile? Rendilo nuovamente opzionabile</p>
+                                                    <p>Il tuo alloggio è tornato disponibile? Rendilo nuovamente opzionabile</p>
                                                     <h4><a id="ancora_rendi_disponibile"><span class="fa fa-hand-o-up"></span> Rendi disponibile<br><br></a></h4>
                                                 @endif
 
@@ -296,7 +315,7 @@
                                                 <form id="elimina_annuncio_form" action="{{ route('conferma_elimina_annuncio') }}" method="POST" style="display: none;">
                                                     {{ csrf_field() }}
                                                     {{ Form::text('id', "$annuncio->id",['style' => 'display: none']) }}
-                                                </form>     
+                                                </form>
                                     </div>
                                 </aside>
 
@@ -322,10 +341,37 @@
                                                                                     <p>
                                                                                         {{$utente->nome}} {{$utente->cognome}} <br>
                                                                                         Sesso: {{$utente->genere}} <br>
-                                                                                        Età: {{ (new DateTime($utente->data_nascita))->diff((new DateTime(now())))->y }}
+                                                                                        Età: {{ (new DateTime($utente->data_nascita))->diff((new DateTime(now())))->y }} <br>
                                                                                         Email: {{ $utente->email }}
                                                                                     </p>
-                                                                                    <a class="reply-btn" href="#">Vai alla chat</a>
+                                                                                    <a class="reply-btn" href="">Vai alla chat</a>
+                                                                                    @if($annuncio->disponibile)
+                                                                                        <a class="ancora_form_contratto" id={{ $utente->username }}><span class="fa fa-edit"></span> Crea contratto</a>
+                                                                                        {{ Form::open(array('route' => 'inserisci_contratto', 'class' => 'contactform', 'style' => 'display:none', 'id' => "form_contratto_$utente->username")) }}
+                                                                                        {{ Form::text('id_annuncio', "$annuncio->id",['style' => 'display: none']) }}
+                                                                                        {{ Form::text('username_locatore', auth()->user()->username, ['style' => 'display: none']) }}
+                                                                                        {{ Form::text('username_locatario',  $utente->username , ['style' => 'display: none']) }}
+                                                                                        {{ Form::label('data_inizio', 'Data di inizio del contratto*') }}
+                                                                                        {{ Form::date('data_inizio', '',['id' => 'data_inizio', 'aria-required' => 'true']) }}
+                                                                                        @if ($errors->first('data_inizio'))
+                                                                                            <ul>
+                                                                                                @foreach ($errors->get('data_inizio') as $message)
+                                                                                                    <li class="richiesta">{{ $message }}</li>
+                                                                                                @endforeach
+                                                                                            </ul>
+                                                                                        @endif
+                                                                                        {{ Form::label('data_fine', 'Data di fine del contratto*') }}
+                                                                                        {{ Form::date('data_fine', '',['id' => 'data_fine', 'aria-required' => 'true']) }}
+                                                                                        @if ($errors->first('data_fine'))
+                                                                                            <ul>
+                                                                                                @foreach ($errors->get('data_fine') as $message)
+                                                                                                    <li class="richiesta">{{ $message }}</li>
+                                                                                                @endforeach
+                                                                                            </ul>
+                                                                                        @endif
+                                                                                        {{ Form::submit('Stipula contratto') }}
+                                                                                        {{ Form::close() }}
+                                                                                    @endif
                                                                                 </div>
                                                                             </div>
                                                                         </li>
@@ -345,10 +391,14 @@
                                             @isset($opzionato)
                                                 @if(!$opzionato)
                                                     @if($annuncio->disponibile)
+                                                        <br>
+                                                        <p>Opziona questo annuncio per far sapere al proprietario di essere interessato ad affittarlo, lui potrà sceglierti per stipulare un contratto</p>
                                                         <h4><a id="ancora_opziona_annuncio"><span class="fa fa-check-square"></span> Opziona l'annuncio</a></h4>
                                                     @endif
                                                 @else
-                                                    <p>Hai già opzionato questo annuncio, lo puoi visualizzare anche nel tuo profilo</p>
+                                                    <br>
+                                                    <p>Hai già opzionato questo annuncio, lo puoi visualizzare anche nel tuo profilo <br>Se non sei più interessato puoi eliminare la tua opzione</p>
+                                                    <h4><a id="ancora_togli_opzione_annuncio"><span class="fa fa-square-o"></span> Togli l'opzione all'annuncio</a></h4>
                                                 @endif
                                             @endisset
                                         @endcan
