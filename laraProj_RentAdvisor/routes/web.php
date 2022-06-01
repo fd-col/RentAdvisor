@@ -58,6 +58,9 @@ Route::view('/locatore/messaggi', 'views_html/messaggi')
 Route::get('/locatore/messaggi', 'MessaggiController@mostra_messaggi_chat')
     ->name('chat_locatore')->middleware('can:isLocatore');
 
+Route::post('/locatore/messaggi', 'MessaggiController@mostra_messaggi_chat')
+    ->name('chat_locatore')->middleware('can:isLocatore');
+
 Route::post('/locatore/chat', 'MessaggiController@mostra_chat_locatore')
 	->name('mostra_chat_locatore')->middleware('can:isLocatore');
 
@@ -129,7 +132,7 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::post('send_messagge', 'MessaggiController@invia_messaggio')
 		->name('send_locatario')->middleware('can:isLocatario');
 Route::post('send_messagge', 'MessaggiController@invia_messaggio')
-		->name('send_locatore')->middleware('can:isLocatore');
+		->name('send_locatore');
 // Rotte inserite dal comando artisan "ui vue --auth"
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
