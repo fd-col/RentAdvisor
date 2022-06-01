@@ -61,6 +61,9 @@ Route::get('/locatore/messaggi', 'MessaggiController@mostra_messaggi_chat')
 Route::post('/locatore/chat', 'MessaggiController@mostra_chat_locatore')
 	->name('mostra_chat_locatore')->middleware('can:isLocatore');
 
+Route::post('/locatore/inserisci_contratto', 'ContrattoController@inserisci_contratto')
+    ->name('inserisci_contratto')->middleware('can:isLocatore');
+
 // link locatario (studente)
 
 Route::get('/locatario/visualizza_profilo_locatario', 'ProfiloController@pagina_profilo_locatario')

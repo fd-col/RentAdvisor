@@ -8,6 +8,7 @@
             @isset($locatore)
 
                 <script>
+                    @can('isLocatore')
                     //Funzione alert elimina annuncio
                     jQuery(function(){
                         $('#ancora_elimina_annuncio').click(function(evt){
@@ -34,6 +35,13 @@
                             }
                         });
                     })
+                    jQuery(function(){
+                        $('a.ancora_form_contratto').click(function(evt){
+                            var string = "#form_contratto_".concat(evt.target.id);
+                            $(string).toggle('slow');
+                        });
+                    })
+
                     @else
                     //Funzione alert rendi annuncio disponibile
                     jQuery(function(){
@@ -48,6 +56,7 @@
                         });
                     })
                     @endif
+                    @endcan
 
                     @can('isLocatario')
                     //Funzione alert opziona annuncio
@@ -332,10 +341,37 @@
                                                                                     <p>
                                                                                         {{$utente->nome}} {{$utente->cognome}} <br>
                                                                                         Sesso: {{$utente->genere}} <br>
-                                                                                        Età: {{ (new DateTime($utente->data_nascita))->diff((new DateTime(now())))->y }}
+                                                                                        Età: {{ (new DateTime($utente->data_nascita))->diff((new DateTime(now())))->y }} <br>
                                                                                         Email: {{ $utente->email }}
                                                                                     </p>
-                                                                                    <a class="reply-btn" href="#">Vai alla chat</a>
+                                                                                    <a class="reply-btn" href="">Vai alla chat</a>
+                                                                                    @if($annuncio->disponibile)
+                                                                                        <a class="ancora_form_contratto" id={{ $utente->username }}><span class="fa fa-edit"></span> Crea contratto</a>
+                                                                                        {{ Form::open(array('route' => 'inserisci_contratto', 'class' => 'contactform', 'style' => 'display:none', 'id' => "form_contratto_$utente->username")) }}
+                                                                                        {{ Form::text('id_annuncio', "$annuncio->id",['style' => 'display: none']) }}
+                                                                                        {{ Form::text('username_locatore', auth()->user()->username, ['style' => 'display: none']) }}
+                                                                                        {{ Form::text('username_locatario',  $utente->username , ['style' => 'display: none']) }}
+                                                                                        {{ Form::label('data_inizio', 'Data di inizio del contratto*') }}
+                                                                                        {{ Form::date('data_inizio', '',['id' => 'data_inizio', 'aria-required' => 'true']) }}
+                                                                                        @if ($errors->first('data_inizio'))
+                                                                                            <ul>
+                                                                                                @foreach ($errors->get('data_inizio') as $message)
+                                                                                                    <li class="richiesta">{{ $message }}</li>
+                                                                                                @endforeach
+                                                                                            </ul>
+                                                                                        @endif
+                                                                                        {{ Form::label('data_fine', 'Data di fine del contratto*') }}
+                                                                                        {{ Form::date('data_fine', '',['id' => 'data_fine', 'aria-required' => 'true']) }}
+                                                                                        @if ($errors->first('data_fine'))
+                                                                                            <ul>
+                                                                                                @foreach ($errors->get('data_fine') as $message)
+                                                                                                    <li class="richiesta">{{ $message }}</li>
+                                                                                                @endforeach
+                                                                                            </ul>
+                                                                                        @endif
+                                                                                        {{ Form::submit('Stipula contratto') }}
+                                                                                        {{ Form::close() }}
+                                                                                    @endif
                                                                                 </div>
                                                                             </div>
                                                                         </li>
