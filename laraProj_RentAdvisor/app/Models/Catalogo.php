@@ -235,9 +235,9 @@ class Catalogo extends Model
         //Imposto la timezone per settare bene la data di assegnazione dell'annuncio
         date_default_timezone_set('Europe/Rome');
         if(Annuncio::where('id', $id_annuncio)->get()->first()->disponibile)
-            Annuncio::where('id', $id_annuncio)->limit(1)->update(['disponibile' => '0', 'data_assegnazione' => date('Y-m-d H:m:s')]);
+            Annuncio::where('id', $id_annuncio)->limit(1)->update(['disponibile' => '0']);
         else
-            Annuncio::where('id', $id_annuncio)->limit(1)->update(['disponibile' => '1', 'data_assegnazione' => null]);
+            Annuncio::where('id', $id_annuncio)->limit(1)->update(['disponibile' => '1']);
     }
 
     public function toggle_opzione_annuncio($id_annuncio) {
