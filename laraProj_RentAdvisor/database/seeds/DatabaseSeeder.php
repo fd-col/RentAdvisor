@@ -47,13 +47,13 @@ class DatabaseSeeder extends Seeder {
 		]);
 
         DB::table('Opzione_Annuncio')->insert([
-            ['username_locatario' => 'lucaluca', 'id_annuncio' => 1, 'data_opzione' => '2021-12-11 14:50:00'],
-            ['username_locatario' => 'noeminoemi', 'id_annuncio' => 4, 'data_opzione' => '2021-12-13 14:50:00'],
-			['username_locatario' => 'lariolario', 'id_annuncio' => 5, 'data_opzione' => '2021-12-14 15:50:00'],
-			['username_locatario' => 'lariolario', 'id_annuncio' => 1, 'data_opzione' => '2021-12-15 13:22:00'],
-			['username_locatario' => 'lucaluca', 'id_annuncio' => 10, 'data_opzione' => '2021-12-16 16:56:00'],
-			['username_locatario' => 'noeminoemi', 'id_annuncio' =>13, 'data_opzione' => '2021-12-17 14:23:00'],
-			['username_locatario' => 'lariolario', 'id_annuncio' => 11, 'data_opzione' => '2021-12-18 07:50:00']
+            ['username_locatario' => 'lucaluca', 'id_annuncio' => 1, 'data_opzione' => '2022-10-11 14:50:00'],
+            ['username_locatario' => 'noeminoemi', 'id_annuncio' => 4, 'data_opzione' => '2022-12-13 14:50:00'],
+			['username_locatario' => 'lariolario', 'id_annuncio' => 5, 'data_opzione' => '2022-08-14 15:50:00'],
+			['username_locatario' => 'lariolario', 'id_annuncio' => 1, 'data_opzione' => '2022-09-15 13:22:00'],
+			['username_locatario' => 'lucaluca', 'id_annuncio' => 10, 'data_opzione' => '2022-12-16 16:56:00'],
+			['username_locatario' => 'noeminoemi', 'id_annuncio' =>13, 'data_opzione' => '2022-12-17 14:23:00'],
+			['username_locatario' => 'lariolario', 'id_annuncio' => 11, 'data_opzione' => '2022-07-18 07:50:00']
         ]);
 
         DB::table('Appartamento')->insert([
