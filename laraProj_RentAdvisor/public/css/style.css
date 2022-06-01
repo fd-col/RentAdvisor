@@ -3561,3 +3561,30 @@ width: 100%;}
 	font-size:10px;
 	
 }
+.user_chat{
+		text-transform: uppercase;
+		font-weight: bold;
+}
+.banner_success{
+	position: absolute;
+	width:100%;
+	background-color:green;
+	color:white;
+	padding-left:10px;
+	margin-top: -60px;
+}
+.banner_success .banner_fail a{
+	color:white;
+	text-decoration:none;
+}
+.banner_success .banner_fail a:hover{
+	text-decoration:underline;
+}
+.banner_fail{
+	position: absolute;
+	width:100%;
+	background-color:red;
+	color:white;
+	padding-left:10px;
+	margin-top:-60px;
+}
