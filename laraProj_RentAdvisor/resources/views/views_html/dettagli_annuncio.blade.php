@@ -8,7 +8,7 @@
             @isset($locatore)
 
                 <script>
-                    @can('isLocatore')
+
                     //Funzione alert elimina annuncio
                     jQuery(function(){
                         $('#ancora_elimina_annuncio').click(function(evt){
@@ -22,7 +22,6 @@
                         });
                     })
 
-                    @if($annuncio->disponibile)
                     //Funzione alert rendi annuncio non disponibile
                     jQuery(function(){
                         $('#ancora_rendi_non_disponibile').click(function(evt){
@@ -35,6 +34,8 @@
                             }
                         });
                     })
+
+                    //Funzione comparsa form date contratto
                     jQuery(function(){
                         $('a.ancora_form_contratto').click(function(evt){
                             var string = "#form_contratto_".concat(evt.target.id);
@@ -42,7 +43,6 @@
                         });
                     })
 
-                    @else
                     //Funzione alert rendi annuncio disponibile
                     jQuery(function(){
                         $('#ancora_rendi_disponibile').click(function(evt){
@@ -55,10 +55,8 @@
                             }
                         });
                     })
-                    @endif
-                    @endcan
 
-                    @can('isLocatario')
+
                     //Funzione alert opziona annuncio
                     jQuery(function(){
                         $('#ancora_opziona_annuncio').click(function(evt){
@@ -71,6 +69,8 @@
                             }
                         });
                     })
+
+                    //Funzione alert togli opzione annuncio
                     jQuery(function(){
                         $('#ancora_togli_opzione_annuncio').click(function(evt){
                             $var = confirm('Sei sicuro di voler eliminare l\'opzione per l\'annuncio?');
@@ -82,7 +82,6 @@
                             }
                         });
                     })
-                    @endcan
                 </script>
 
                 <!-- Start Properties  -->
