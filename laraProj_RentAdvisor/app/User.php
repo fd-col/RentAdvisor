@@ -42,4 +42,9 @@ class User extends Authenticatable {
         return in_array($this->role, $role);
     }
 
+    public function get_utente ($username) {
+        $utente = $this::where('username', $username)->get()->first();
+        return $utente;
+    }
+
 }

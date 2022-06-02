@@ -28,7 +28,7 @@ class RichiestaInserisciContratto extends FormRequest {
             'id_annuncio' => 'required',
             'username_locatore' => 'required',
             'username_locatario' => 'required',
-            'data_inizio' => 'required|date_format:Y-m-d',
+            'data_inizio' => 'required|date_format:Y-m-d|after:yesterday',
             'data_fine' => 'required|date_format:Y-m-d|after:data_inizio'
         ];
     }
