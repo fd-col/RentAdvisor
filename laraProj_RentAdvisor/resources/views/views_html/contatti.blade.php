@@ -31,25 +31,32 @@
                             </div>
                         </div>
                         <div class="aa-contact-bottom"> <!-- da modicare il nome nel .css-->
-                            <div class="aa-title">
-                                <fieldset style="border: 1px solid black">
-                                    <h2>Email</h2>
-                                    <p></p>
-                                    Informazioni: <a href="mailto:info@rentadvisor.com"><p>info@rentadvisor.com</p></a>
-                                    Reclami: <a href="mailto:reclami@rentadvisor.com"><p>reclami@rentadvisor.com</p></a>
-                                    Assistenza: <a href="mailto:assistenza@rentadvisor.com"><p>assistenza@rentadvisor.com</p></a>
-                                </fieldset>
-                            </div>
-                            <div class="aa-title">
-                                <fieldset style="border: 1px solid black">
-                                    <h2>Telefoni</h2>
-                                    <p><strong>Servizio assistenza clienti </strong></p>
-                                    <p></p>
-                                    <p>1234567890</p>
-                                    <p></p>
-                                    <p>1234567890</p>
-                                </fieldset>
-                            </div>
+                            
+                        <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                        <div class="col-sm-6">
+                            <fieldset>
+                                <h2>Email</h2>
+                                <p></p>
+                                <h4><i>Informazioni:</i></h4> <a href="mailto:info@rentadvisor.com"><p>info@rentadvisor.com</p></a><hr>
+                                <h4><i>Reclami:</i></h4> <a href="mailto:reclami@rentadvisor.com"><p>reclami@rentadvisor.com</p></a><hr>
+                                <h4><i>Assistenza clienti:</i></h4> <a href="mailto:assistenza@rentadvisor.com"><p>assistenza@rentadvisor.com</p></a>
+                            </fieldset>
+                        </div>
+                        <div class="col-sm-6">                          
+                            <fieldset>
+                                <h2>Telefoni</h2>
+                                <p></p>
+                                <p><strong>Servizio assistenza clienti </strong></p>
+                                <p>dal lunedì al venerdì, 8.00-19.00</p>
+                                <hr>
+                                <p>+39 071 31307</p>
+                                <hr>
+                                <p>+39 335 605 0243</p>
+                            </fieldset>
+                        </div>
+                        </div>
+                        </div>
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,9 @@
 @extends('layouts.layout')
 
 @can('isAdmin')
-    @section('title', 'FAQ')
-@else
     @section('title', 'Modifica FAQ')
+@else
+    @section('title', 'FAQ')
 @endcan
 
 @section('content')
