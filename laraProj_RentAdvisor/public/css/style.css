@@ -3566,22 +3566,22 @@ width: 100%;}
 		font-weight: bold;
 }
 .banner_success{
-	position: absolute;
+	
 	width:100%;
 	background-color:green;
 	color:white;
 	padding-left:10px;
 	margin-top: -60px;
 }
-.banner_success .banner_fail a{
+.banner_success  a{
 	color:white;
 	text-decoration:none;
 }
-.banner_success .banner_fail a:hover{
+.banner_success a:hover{
 	text-decoration:underline;
 }
 .banner_fail{
-	position: absolute;
+	
 	width:100%;
 	background-color:red;
 	color:white;
