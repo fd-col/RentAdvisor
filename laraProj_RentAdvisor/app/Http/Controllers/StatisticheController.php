@@ -21,10 +21,12 @@ class StatisticheController extends Controller
         Log::debug($dati_validi);
         $numero_annunci = $this->modello_statistiche->get_numero_annunci($dati_validi);
         $numero_richieste = $this->modello_statistiche->get_numero_richieste($dati_validi);
+        $numero_contratti = $this->modello_statistiche->get_numero_contratti($dati_validi);
 
         return view('views_html/statistiche')
             ->with('numero_annunci', $numero_annunci)
-            ->with('numero_richieste', $numero_richieste);
+            ->with('numero_richieste', $numero_richieste)
+            ->with('numero_contratti', $numero_contratti);
     }
 
  

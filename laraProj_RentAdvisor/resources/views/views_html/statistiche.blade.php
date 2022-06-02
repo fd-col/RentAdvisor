@@ -17,6 +17,7 @@
                 <fieldset style="border: 1px solid black; padding: 10px"> 
                     <h3>&nbsp Scegli il periodo per il filtraggio :</h3>
                     <h4>&nbsp (se il periodo o la tipologia di locazione non vengono specificati si riferisce a tutti gli annunci del sito)<br><br></h4> 
+                    
                     <div class="col-md-0">
                         <label>Periodo locazione:</label>
                     </div>
@@ -55,15 +56,12 @@
                         <label>Tipologia di alloggio: &nbsp</label>
                     </div>
                     <div class="aa-single-advance-search">
-                    {{Form::select('tipologia', [false => 'Alloggio','appartamento' => 'Appartamento',
-                    'posto_letto' => 'Posto letto'], ['class' =>'tipologia', 'id'=>'tipologia'] ) }}
+                        {{Form::select('tipologia', [false => 'Alloggio','appartamento' => 'Appartamento',
+                        'posto_letto' => 'Posto letto'], ['class' =>'tipologia', 'id'=>'tipologia'] ) }}
+                        <div style='margin-left:80px; display:inline'>
+                            {{Form::submit('CERCA' ,['class' => 'aa-search-btn'] )}}
+                        </div>
                     </div>
-
-                    <div class="form-submit" style = 'display:inline'>
-                        {{Form::submit('CERCA' ,['class' => 'aa-search-btn'] )}}
-                    </div>
-                    <br>
-                    
                 </fieldset>
                 {{ Form::close()}} 
                 <div class="aa-contact-bottom"> <!-- da modicare il nome nel .css-->
@@ -80,9 +78,11 @@
                             <p>gli appartamenti richiesti nel periodo scelto sono : </p>  
                             <h3>{{$numero_richieste}}</h3>
                         @endisset
+                        @isset($numero_contratti)
                             <h2>Alloggi affittati</h2>                           
                             <p>gli alloggi totali assegnati nel periodo scelto sono : </p>  
-                            <h3>8</h3>                                   
+                            <h3>{{$numero_contratti}}</h3>  
+                        @endisset                                 
                         </fieldset>
                     </div>
                 </div>
