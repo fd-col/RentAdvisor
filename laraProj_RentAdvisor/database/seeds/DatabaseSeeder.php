@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder {
     const DESCRIZIONE_APPARTAMENTO = 'Affittasi intero appartamento in centro città, 3 singole vicono a tutto' ;
     const TITOLO_POSTO_LETTO = 'Posto letto vicino la facoltà di ingegneria';
     const DESCRIZIONE_POSTO_LETTO = 'Affittasi stanza singola in un\' appartamento appena ristrutturato vicino ingegneria';
-    const DESCRIZIONE_POSTO_LETTO2 = 'Dispoibili 2 posti letto in via Romaa a Torino, uno in stanza doppia e l\'altro 
+    const DESCRIZIONE_POSTO_LETTO2 = 'Dispoibili 2 posti letto in via Romaa a Torino, uno in stanza doppia e l\'altro
                                     stanza singola. Gas e luce inclusi.';
 
     public function run() {
@@ -130,8 +130,6 @@ class DatabaseSeeder extends Seeder {
             ['id_annuncio' => 14, 'nome_immagine' => '14_0.jpeg'],
             ['id_annuncio' => 14, 'nome_immagine' => '14_1.jpeg'],
             ['id_annuncio' => 15, 'nome_immagine' => '15_0.jpg'],
-
-
         ]);
 
     }
