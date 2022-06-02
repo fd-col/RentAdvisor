@@ -9,7 +9,7 @@
                             <div class="aa-header-left">
                                 <div class="aa-telephone-no">
                                     <span class="fa fa-phone"></span>
-                                    1234567890
+                                    +39 071 31307
                                 </div>
                                 <div class="aa-email hidden-xs">
                                     <span class="fa fa-envelope-o"></span> info@rentadvisor.com

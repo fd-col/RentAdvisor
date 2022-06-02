@@ -16,7 +16,7 @@
 					$locatario='{{$user->username}}';
 				else
 					$locatore='{{$user->username}}';
-				$('a').click(function(){
+				$('#container').on('click','a',function (){
 					$('#chat').find('div').remove();
 					$user=$(this).attr('id');
 					if($ruolo=='locatario')
@@ -74,27 +74,31 @@
 				})
 				function setError(jqXHR, textStatus, errorThrown){
 					$parse=$.parseJSON(jqXHR.responseText);
-					
+					$('#banner').find('p').remove();
 					$('#banner').attr('class', 'banner_fail');
-					$('#banner').append($parse.errors.testo+'<br>');
-					$('#banner').append($parse.errors.locatario+'<br>');
-					$('#banner').append($parse.errors.locatore);
+					if($parse.errors.testo)
+						$('#banner').append('<p>'+$parse.errors.testo+'</p>');
+					if($parse.errors.locatario)
+						$('#banner').append('<p>'+$parse.errors.locatario+'</p>');
+					if($parse.errors.locatore)
+						$('#banner').append('<p>'+$parse.errors.locatore+'</p>');
 					$('#banner').show('slow');
 					$('#banner').delay(5000).hide('slow');
-					$('#banner').delay(7000).find('p').remove();
+					
 					};
 				function setSuccess(data){
+					$('#banner').find('p').remove();
 					$('#banner').attr('class', 'banner_success');
-					$('#banner').append('<p>Messaggio inviato con successo, <a id='+$.parseJSON(data).user+'> clicca qui per ricaricare la chat</a>')
+					$('#banner').append('<p>Messaggio inviato con successo, <a id='+$.parseJSON(data).user+'> clicca qui per ricaricare la chat</a>');
 					$('#banner').show('slow');
 					$('#banner').delay(5000).hide('slow');
-					$('#banner').delay(7000).find('p').remove();
+					
 					
 				}
 		
 		})
 	</script>
-  <div class="container">
+  <div id="container" class="container">
       <div class="row">
         <div class="col-md-8">
           
