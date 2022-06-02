@@ -114,7 +114,6 @@
                                                 <h4>Disponibile</h4>
                                             @else
                                                 <h4>Non disponibile</h4>
-                                                <h5>Data assegnazione: {{ $annuncio->data_assegnazione }}</h5>
                                             @endif
                                             <h4>■ Descrizione :<br></h4>
                                             <h5>{{ $annuncio->descrizione }}</h5>
