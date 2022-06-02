@@ -113,7 +113,7 @@
 			
 			<div class="user_chat" id="user_chat">
 			@isset($message_user)
-			<p>$message_user</p>
+			<p>{{$message_user}}</p>
 			@endisset
 			</div>
 			
@@ -131,7 +131,7 @@
 				   <form method="POST" accept-charset="UTF-8" onSubmit="return send_Message()" class="contactform">
 				  	  
                       <div style="margin-top: 20px; margin-bottom: 20px">
-                      {{ Form::textarea('testo', '', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
+					  {{ Form::textarea('testo', '{{$testo}}', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
                       <div id="button" class="send-button" >INVIA</div>
                         <div id="errors">
                         </div>

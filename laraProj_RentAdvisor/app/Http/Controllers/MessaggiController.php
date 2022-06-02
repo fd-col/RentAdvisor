@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Input;
 use App\Http\Controllers\Controller;
 use App\Models\Resources\Messaggio;
 use App\Http\Requests\RichiestaChat;
@@ -26,10 +27,24 @@ class MessaggiController extends Controller
 			$messaggi = $this->modello_messaggio->get_utenti_ultimi_messaggi_locatore(auth()->user()->username);
 		else
 			$messaggi= $this->modello_messaggio->get_utenti_ultimi_messaggi_locatario(auth()->user()->username);
+		
         return view('views_html/messaggi')
             ->with('user', $user)
-            ->with('messaggi', $messaggi);
+            ->with('messaggi', $messaggi);			
     }
+	public function mostra_messaggi_chat_opzione($user, $titolo){
+		$user = $this->modello_user::where('username', auth()->user()->username)->get()->first();
+		if(auth()->user()->role=="locatore")
+			$messaggi = $this->modello_messaggio->get_utenti_ultimi_messaggi_locatore(auth()->user()->username);
+		else
+			$messaggi= $this->modello_messaggio->get_utenti_ultimi_messaggi_locatario(auth()->user()->username);
+		$testo="Salve, sarei interessato all'alloggio\"".$titolo."\"";
+		return view('views_html/messaggi')
+            ->with('user', $user)
+            ->with('messaggi', $messaggi)
+			->with('user_message', $user)
+			->with('testo', $testo);	
+	}
 	public function mostra_chat_locatore(RichiestaChat $data){
 		$dati_validi=$data->validated();
 		$messaggi=$this->modello_messaggio->get_chat_locatore($dati_validi);
