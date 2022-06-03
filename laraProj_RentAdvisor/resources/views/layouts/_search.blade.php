@@ -75,18 +75,52 @@
                         </div>
                     </div>
                 </div>
+                
+
                 <div id="filter-content" hidden>
+
                     <div class="aa-advance-search-bottom">
                         <div class="row">
+                            
                             <div class="col-md-3">
+                                <label>Periodo locazione:</label>
+                            </div>
+                            <div class="col-md-1">
+                                <label>Inizio : </label>
+                            </div>
+                            <div class="col-md-2">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::select('genere', array(
-                                    false => 'Genere preferito dei locatari',
-                                    'M' => 'Maschio',
-                                    'F' => 'Femmina',))}}
+                                    {{ Form::date('locazione_inizio', '',['id' => 'locazione_inizio']) }}
+                                    @if ($errors->first('locazione_inizio'))
+                                        <ul>
+                                            @foreach ($errors->get('locazione_inizio') as $message)
+                                                <li class="richiesta">{{ $message }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </div>
                             </div>
+                            <div class="col-md-0">
+                                <label>Fine : </label>
+                            </div>
+                            <div class="col-md-0">
+                                <div class="aa-single-advance-search">
+                                    {{ Form::date('locazione_fine', '',['id' => 'locazione_fine']) }}
+                                    @if ($errors->first('locazione_fine'))
+                                        <ul>
+                                            @foreach ($errors->get('locazione_fine') as $message)
+                                                <li class="richiesta">{{ $message }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
 
+
+                    <div class="aa-advance-search-bottom">
+                        <div class="row">
                             <div class="col-md-3">
                                 <div class="aa-single-advance-search">
                                     {{ Form::text('zona_localizzazione', '', ['class' => 'search-input','id' => 'zona_localizzazione', 'placeholder' => 'Zona di localizzazione']) }}
@@ -99,10 +133,7 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="aa-advance-search-bottom">
-                        <div class="row">
+
                             <div class="col-md-0">
                                 <label>Caparra massima</label>
                             </div>
@@ -118,10 +149,7 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="aa-advance-search-bottom">
-                        <div class="row">
+
                             <div class="col-md-0">
                                 <label>Affitto massimo</label>
                             </div>
@@ -137,67 +165,28 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="aa-advance-search-bottom">
-                        <div class="row">
-                            <div class="col-md-0">
-                                <label>Periodo locazione:</label>
-                            </div>
-                            <div class="col-md-0">
-                                <label>Inizio</label>
-                            </div>
-                            <div class="col-md-2">
 
-                                <div class="aa-single-advance-search">
-
-                                    {{ Form::date('locazione_inizio', '',['id' => 'locazione_inizio']) }}
-                                    @if ($errors->first('locazione_inizio'))
-                                        <ul>
-                                            @foreach ($errors->get('locazione_inizio') as $message)
-                                                <li class="richiesta">{{ $message }}</li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-0">
-                                <label>Fine</label>
-                            </div>
                             <div class="col-md-2">
                                 <div class="aa-single-advance-search">
-                                    {{ Form::date('locazione_fine', '',['id' => 'locazione_fine']) }}
-                                    @if ($errors->first('locazione_fine'))
-                                        <ul>
-                                            @foreach ($errors->get('locazione_fine') as $message)
-                                                <li class="richiesta">{{ $message }}</li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
+                                            {{ Form::select('genere', array(
+                                            false => 'Sesso del locatario',
+                                            'M' => 'Maschio',
+                                            'F' => 'Femmina',)
+                                            ) }}
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    
                     <div class="aa-advance-search-bottom">
                         <div class="row">
-                            <div class="col-md-0">
-                                <label>Numero bagni</label>
+                            <div class="col-md-3">
                             </div>
-                            <div class="col-md-1">
-                                <div class="aa-single-advance-search">
-                                    {{ Form::text('bagni', '', ['class' => 'search-input','id' => 'bagni', 'placeholder' => 'min']) }}
-                                    @if ($errors->first('bagni'))
-                                        <ul>
-                                            @foreach ($errors->get('bagni') as $message)
-                                                <li class="richiesta">{{ $message }}</li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </div>
-                            </div>
+
                             <div class="col-md-0">
                                 <div class="aa-single-advance-search">
-                                    <label>Numero posti letto totali</label>
+                                    <label> Posti letto totali</label>
                                 </div>
                             </div>
                             <div class="col-md-1">
@@ -213,6 +202,23 @@
                                     @endif
                                 </div>
                             </div>
+
+                            <div class="col-md-0">
+                                <label> Numero di bagni</label>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="aa-single-advance-search">
+                                    {{ Form::text('bagni', '', ['class' => 'search-input','id' => 'bagni', 'placeholder' => 'min']) }}
+                                    @if ($errors->first('bagni'))
+                                        <ul>
+                                            @foreach ($errors->get('bagni') as $message)
+                                                <li class="richiesta">{{ $message }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </div>
+                            </div>
+                            
                             <div class="col-md-0">
                                 <label>Piano</label>
                             </div>
@@ -229,12 +235,14 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
 
                     <div class="aa-advance-search-bottom">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-9">
                                 {{Form::checkbox('fumatori', true)}}
                                 <label>Fumatori</label>
                                 {{Form::checkbox('parcheggio', true)}}
@@ -246,7 +254,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- parte solo appartamenti -->
+
+                    <!-- Sezione riguardante solo gli appartamenti -->
                     <div class="aa-advance-search-bottom" id="appartamento" hidden>
                         <div class="row">
                             <div class="col-md-0">
@@ -311,7 +320,7 @@
                         </div>
                     </div>
 
-                    <!-- parte solo posti letto -->
+                    <!-- Sezione riguardante solo i posti letto -->
                     <div class="aa-advance-search-bottom" id="posti_letto" hidden>
                         <div class="row">
                             <div class="col-md-0">

@@ -108,7 +108,7 @@
 
                     <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}"> CONTATTI</a></li>
                     <li class="{{ Route::is('faq') ? 'active' : '' }}"><a href="{{ route('faq') }}">@can('isAdmin')MODIFICA @endcan FAQ</a></li>
-                    <li><a href=""> DOCUMENTAZIONE SITO</a></li>
+                    <li><a href=""> DOCUMENTAZIONE</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

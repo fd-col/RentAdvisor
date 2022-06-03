@@ -75,7 +75,23 @@
             </div>
         </section>
         <!-- / Latest property -->
-    @endisset
+        @endisset
+
+    <!-- Login reminder -->
+    <section id="aa-latest-property">
+        <div class="col-md-12">
+            <aside class="aa-properties-sidebar">
+                <!-- Start Single properties sidebar -->
+                <div class="aa-properties-single-sidebar">
+                    <fieldset style="border: 1px ; padding:40px; background-color: white; text-align:center">
+                        <h3> Accedi ora o registrati per <b>cercare</b> il tuo alloggio perfetto o per <b>pubblicare</b> il tuo primo annuncio !!! <br><br><br></h3>    
+                        <a href="{{ route('login') }}" class="button-reminder"> ACCEDI </a>
+                    </fieldset>
+                </div>
+            </aside>
+        </div>
+    </section>
+    <!-- / Login reminder -->
 
     <!-- Service section -->
     <section id="aa-service">

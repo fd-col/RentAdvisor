@@ -16,9 +16,8 @@ class StatisticheController extends Controller
     }
 
     public function pagina_statistiche(RichiestaStatistiche $richiesta) {
-        Log::debug($richiesta);
         $dati_validi=$richiesta->validated();
-        Log::debug($dati_validi);
+        
         $numero_annunci = $this->modello_statistiche->get_numero_annunci($dati_validi);
         $numero_richieste = $this->modello_statistiche->get_numero_richieste($dati_validi);
         $numero_contratti = $this->modello_statistiche->get_numero_contratti($dati_validi);
