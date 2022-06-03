@@ -27,4 +27,8 @@ class Messaggio extends Model
 		$messaggi= $this::select('*')->where('username_locatario', auth()->user()->username)->where('username_locatore', $username)->orderBy('data_invio')->get();
 		return $messaggi;
 	}
+
+    public function inserisci_messaggio_opzione($username_locatore, $titolo_annuncio) {
+        $this::insert(['username_locatore'=>$username_locatore, 'username_locatario'=>auth()->user()->username, 'data_invio'=>date("Y-m-d H:i:s"), 'testo'=>"Salve, sono interessato all'alloggio \"".$titolo_annuncio."\"", 'mittente'=>auth()->user()->role]);
+    }
 }

@@ -106,9 +106,9 @@
                         <li class="{{ Route::is('area_personale_locatore') ? 'active' : '' }}"><a href="{{ route('area_personale_locatore') }}">AREA PERSONALE</a></li>
                     @endcan
 
-                    <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}"> CONTATTI</a></li>
+                    <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">CONTATTI</a></li>
                     <li class="{{ Route::is('faq') ? 'active' : '' }}"><a href="{{ route('faq') }}">@can('isAdmin')MODIFICA @endcan FAQ</a></li>
-                    <li><a href=""> DOCUMENTAZIONE</a></li>
+                    <li><a href="">DOCUMENTAZIONE</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

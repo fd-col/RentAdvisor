@@ -7,56 +7,8 @@
         @isset($caratteristiche)
             @isset($locatore)
 
+                <script src="{{ asset('js/funzioni.js') }}" ></script>
                 <script>
-
-                    //Funzione alert elimina annuncio
-                    jQuery(function(){
-                        $('#ancora_elimina_annuncio').click(function(evt){
-                            $var = confirm('Sei sicuro di voler eliminare l\'annuncio?');
-                            if ($var == true) {
-                                event.preventDefault();
-                                document.getElementById('elimina_annuncio_form').submit();
-                            } else {
-                                evt.preventDefault();
-                            }
-                        });
-                    })
-
-                    //Funzione alert rendi annuncio non disponibile
-                    jQuery(function(){
-                        $('#ancora_rendi_non_disponibile').click(function(evt){
-                            $var = confirm('Sei sicuro di voler rendere l\'annuncio non disponibile?');
-                            if ($var == true) {
-                                event.preventDefault();
-                                $(location).attr('href',"{{ route('toggle_disponibile_annuncio', [$annuncio->id]) }}" );
-                            } else {
-                                evt.preventDefault();
-                            }
-                        });
-                    })
-
-                    //Funzione comparsa form date contratto
-                    jQuery(function(){
-                        $('a.ancora_form_contratto').click(function(evt){
-                            var string = "#form_contratto_".concat(evt.target.id);
-                            $(string).toggle('slow');
-                        });
-                    })
-
-                    //Funzione alert rendi annuncio disponibile
-                    jQuery(function(){
-                        $('#ancora_rendi_disponibile').click(function(evt){
-                            $var = confirm('Sei sicuro di voler rendere l\'annuncio disponibile?');
-                            if ($var == true) {
-                                event.preventDefault();
-                                $(location).attr('href', "{{ route('toggle_disponibile_annuncio', [$annuncio->id]) }}" );
-                            } else {
-                                evt.preventDefault();
-                            }
-                        });
-                    })
-
-
                     //Funzione alert opziona annuncio
                     jQuery(function(){
                         $('#ancora_opziona_annuncio').click(function(evt){
@@ -77,6 +29,32 @@
                             if ($var == true) {
                                 event.preventDefault();
                                 $(location).attr('href', "{{ route('toggle_opzione_annuncio', [$annuncio->id]) }}" );
+                            } else {
+                                evt.preventDefault();
+                            }
+                        });
+                    })
+
+                    //Funzione alert rendi annuncio non disponibile
+                    jQuery(function(){
+                        $('#ancora_rendi_non_disponibile').click(function(evt){
+                            $var = confirm('Sei sicuro di voler rendere l\'annuncio non disponibile?');
+                            if ($var == true) {
+                                event.preventDefault();
+                                $(location).attr('href',"{{ route('toggle_disponibile_annuncio', [$annuncio->id]) }}" );
+                            } else {
+                                evt.preventDefault();
+                            }
+                        });
+                    })
+
+                    //Funzione alert rendi annuncio disponibile
+                    jQuery(function(){
+                        $('#ancora_rendi_disponibile').click(function(evt){
+                            $var = confirm('Sei sicuro di voler rendere l\'annuncio disponibile?');
+                            if ($var == true) {
+                                event.preventDefault();
+                                $(location).attr('href', "{{ route('toggle_disponibile_annuncio', [$annuncio->id]) }}" );
                             } else {
                                 evt.preventDefault();
                             }

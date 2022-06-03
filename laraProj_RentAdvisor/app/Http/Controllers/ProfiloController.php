@@ -49,18 +49,14 @@ class ProfiloController extends Controller
 
     public function modifica_dati_locatore(RichiestaModificaDati $richiesta){
         $dati_validi = $richiesta->validated();
-        $this->modello_user::where('username', $dati_validi['username'])
-            ->limit(1)
-            ->update(['nome' => $dati_validi['nome'], 'cognome' => $dati_validi['cognome'], 'genere' => $dati_validi['genere'], 'data_nascita' => $dati_validi['data_nascita'], 'telefono' => $dati_validi['telefono']]);
+        $this->modello_user->modifica_dati_utente($dati_validi);
 
         return redirect()->action('ProfiloController@pagina_profilo_locatore');
     }
 
     public function modifica_dati_locatario(RichiestaModificaDati $richiesta){
         $dati_validi = $richiesta->validated();
-        $this->modello_user::where('username', $dati_validi['username'])
-            ->limit(1)
-            ->update(['nome' => $dati_validi['nome'], 'cognome' => $dati_validi['cognome'], 'genere' => $dati_validi['genere'], 'data_nascita' => $dati_validi['data_nascita'], 'telefono' => $dati_validi['telefono']]);
+        $this->modello_user->modifica_dati_utente($dati_validi);
 
         return redirect()->action('ProfiloController@pagina_profilo_locatario');
     }

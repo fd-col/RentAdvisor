@@ -188,14 +188,14 @@ class CatalogoController extends Controller
             return view('views_html/non_autorizzato');
 		try {
             $this->modello_catalogo->toggle_opzione_annuncio($id_annuncio);
-			
+
 		} catch (ErrorException $e) {
             return view('views_html/non_autorizzato');
         }
 		if($this->modello_catalogo->controlla_opzione($id_annuncio))
 		{
-			$this->modello_messaggio::insert(['username_locatore'=>$this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore, 'username_locatario'=>auth()->user()->username, 'data_invio'=>date("Y-m-d H:i:s"), 'testo'=>"Salve, sono interessato all'alloggio \"".$this->modello_catalogo->get_annuncio($id_annuncio)->titolo."\"", 'mittente'=>auth()->user()->role]);
-		
+			$this->modello_messaggio->inserisci_messaggio_opzione($this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore, $this->modello_catalogo->get_annuncio($id_annuncio)->titolo);
+
 			return redirect()->action('MessaggiController@mostra_messaggi_chat_opzione', [$this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore]);
 		}
 		else
