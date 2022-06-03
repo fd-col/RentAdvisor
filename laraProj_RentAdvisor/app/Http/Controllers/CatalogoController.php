@@ -187,7 +187,7 @@ class CatalogoController extends Controller
             return view('views_html/non_autorizzato');
         }
 		if($this->modello_catalogo->controlla_opzione($id_annuncio))
-			return redirect()->action('MessaggiController@mostra_messaggi_chat_opzione', [$this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore,$this->modello_catalogo->get_annuncio($id_annuncio)->titolo ]);
+			return redirect()->action('MessaggiController@mostra_messaggi_chat_opzione', [$this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore, $this->modello_catalogo->get_annuncio($id_annuncio)->titolo]);
 		else
 			return redirect()->action('CatalogoController@dettagli_annuncio', [$id_annuncio]);
 
