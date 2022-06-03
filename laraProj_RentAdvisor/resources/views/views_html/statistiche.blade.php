@@ -75,7 +75,7 @@
                         @endisset
                         @isset($numero_richieste)
                             <h2>Numero di richieste</h2>
-                            <p>gli appartamenti richiesti nel periodo scelto sono : </p>  
+                            <p>gli alloggi richiesti nel periodo scelto sono : </p>  
                             <h3>{{$numero_richieste}}</h3>
                         @endisset
                         @isset($numero_contratti)
