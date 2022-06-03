@@ -136,7 +136,7 @@
                                             @endforeach
                                         @endisset
                                         <li>
-                                            <a href="{{route('chat_locatario')}}"><span class="fa fa-envelope"></span> Tutti i messaggi</a>
+                                            <a href="{{route('chat_locatore')}}"><span class="fa fa-envelope"></span> Tutti i messaggi</a>
                                         </li>
                                     </ul>
                                 </div>
