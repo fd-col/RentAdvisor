@@ -25,11 +25,11 @@ class RichiestaInserisciContratto extends FormRequest {
      */
     public function rules() {
         return [
-            'id_annuncio' => 'required',
+            'id_annuncio' => ['required', 'unique:Contratto,id_annuncio,NULL,data_inizio,data_inizio,'.$this->input('data_inizio').'data_fine,data_fine,'.$this->input('data_fine')],
             'username_locatore' => 'required',
             'username_locatario' => 'required',
-            'data_inizio' => 'required|date_format:Y-m-d|after:yesterday',
-            'data_fine' => 'required|date_format:Y-m-d|after:data_inizio'
+            'data_inizio' => ['required','date_format:Y-m-d','after:yesterday','unique:Contratto,data_inizio,NULL,data_fine,data_fine,'.$this->input('data_fine').'id_annuncio,id_annuncio,'.$this->input('id_annuncio')],
+            'data_fine' => ['required','date_format:Y-m-d','after:data_inizio','unique:Contratto,data_fine,NULL,data_inizio,data_inizio,'.$this->input('data_inizio').'id_annuncio,id_annuncio,'.$this->input('id_annuncio')]
         ];
     }
 
