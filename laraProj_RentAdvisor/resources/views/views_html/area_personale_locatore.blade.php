@@ -129,7 +129,7 @@
                                                         </div>
                                                         <div class="media-body">
                                                             <h4 class="author-name">{{$messaggio->username}}</h4>
-                                                            <a class="reply-btn" href="{{ route('mostra_chat_locatario') }}">Vai alla chat</a>
+                                                            <a class="reply-btn" href="{{ route('chat_locatario_opzione', '{{$messaggio->username}}') }}">Vai alla chat</a>
                                                         </div>
                                                     </div>
                                                 </li>

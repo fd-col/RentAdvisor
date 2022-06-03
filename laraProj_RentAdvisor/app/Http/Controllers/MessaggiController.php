@@ -32,18 +32,16 @@ class MessaggiController extends Controller
             ->with('user', $user)
             ->with('messaggi', $messaggi);			
     }
-	public function mostra_messaggi_chat_opzione($user, $titolo){
+	public function mostra_messaggi_chat_opzione($utente){
 		$user = $this->modello_user::where('username', auth()->user()->username)->get()->first();
 		if(auth()->user()->role=="locatore")
 			$messaggi = $this->modello_messaggio->get_utenti_ultimi_messaggi_locatore(auth()->user()->username);
 		else
 			$messaggi= $this->modello_messaggio->get_utenti_ultimi_messaggi_locatario(auth()->user()->username);
-		$testo="Salve, sarei interessato all'alloggio\"".$titolo."\"";
 		return view('views_html/messaggi')
             ->with('user', $user)
             ->with('messaggi', $messaggi)
-			->with('user_message', $user)
-			->with('testo', $testo);	
+			->with('user_message', $utente);	
 	}
 	public function mostra_chat_locatore(RichiestaChat $data){
 		$dati_validi=$data->validated();

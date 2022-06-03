@@ -16,6 +16,28 @@
 					$locatario='{{$user->username}}';
 				else
 					$locatore='{{$user->username}}';
+				if($('#user_chat').has('p'))
+				{
+					if($ruolo=='locatario')
+						{
+							$route="{{route('mostra_chat_locatario')}}";
+							
+						}
+					else
+						{
+							$route="{{route('mostra_chat_locatore')}}";
+							
+						}
+					$.ajax({
+                        type: 'POST',
+                        url: $route,
+                        data: {"user": $('#user_chat').find('p').text(),
+							   "_token": "{{csrf_token()}}"},
+                        dataType: 'json',
+                        success: setChat
+						
+                    });
+				}
 				$('#container').on('click','a',function (){
 					$('#chat').find('div').remove();
 					$user=$(this).attr('id');
@@ -112,8 +134,8 @@
             <!-- Sezione messaggi inviati-->
 			
 			<div class="user_chat" id="user_chat">
-			@isset($message_user)
-			<p>{{$message_user}}</p>
+			@isset($user_message)
+			<p>{{$user_message}}</p>
 			@endisset
 			</div>
 			
@@ -131,7 +153,7 @@
 				   <form method="POST" accept-charset="UTF-8" onSubmit="return send_Message()" class="contactform">
 				  	  
                       <div style="margin-top: 20px; margin-bottom: 20px">
-					  {{ Form::textarea('testo', '{{$testo}}', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
+					  {{ Form::textarea('testo', '', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
                       <div id="button" class="send-button" >INVIA</div>
                         <div id="errors">
                         </div>

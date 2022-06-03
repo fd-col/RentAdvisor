@@ -6,17 +6,23 @@ use App\Http\Requests\RichiestaEliminaAnnuncio;
 use App\Http\Requests\RichiestaFiltro;
 use App\Http\Requests\RichiestaInserisciAnnuncio;
 use App\Http\Requests\RichiestaModificaAnnuncio;
+
+use App\Http\Requests\RichiestaInvioMessaggio;
+use App\Models\Resources\Messaggio;
 use ErrorException;
 use Illuminate\Http\Request;
 use App\Models\Catalogo;
+use App\User;
 use Illuminate\Support\Facades\Log;
 
 class CatalogoController extends Controller
 {
     protected $modello_catalogo;
+	protected $modello_messaggio;
 
     public function __construct() {
         $this->modello_catalogo = new Catalogo;
+		$this->modello_messaggio = new Messaggio;
     }
 
     public function home() {
@@ -180,14 +186,18 @@ class CatalogoController extends Controller
     public function toggle_opzione_annuncio ($id_annuncio) {
         if(!($this->modello_catalogo->get_annuncio($id_annuncio)->disponibile))
             return view('views_html/non_autorizzato');
-
-        try {
+		try {
             $this->modello_catalogo->toggle_opzione_annuncio($id_annuncio);
-        } catch (ErrorException $e) {
+			
+		} catch (ErrorException $e) {
             return view('views_html/non_autorizzato');
         }
 		if($this->modello_catalogo->controlla_opzione($id_annuncio))
-			return redirect()->action('MessaggiController@mostra_messaggi_chat_opzione', [$this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore, $this->modello_catalogo->get_annuncio($id_annuncio)->titolo]);
+		{
+			$this->modello_messaggio::insert(['username_locatore'=>$this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore, 'username_locatario'=>auth()->user()->username, 'data_invio'=>date("Y-m-d H:i:s"), 'testo'=>"Salve, sono interessato all'alloggio \"".$this->modello_catalogo->get_annuncio($id_annuncio)->titolo."\"", 'mittente'=>auth()->user()->role]);
+		
+			return redirect()->action('MessaggiController@mostra_messaggi_chat_opzione', [$this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore]);
+		}
 		else
 			return redirect()->action('CatalogoController@dettagli_annuncio', [$id_annuncio]);
 
