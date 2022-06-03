@@ -21,12 +21,12 @@
 					if($ruolo=='locatario')
 						{
 							$route="{{route('mostra_chat_locatario')}}";
-							
+
 						}
 					else
 						{
 							$route="{{route('mostra_chat_locatore')}}";
-							
+
 						}
 					$.ajax({
                         type: 'POST',
@@ -35,7 +35,7 @@
 							   "_token": "{{csrf_token()}}"},
                         dataType: 'json',
                         success: setChat
-						
+
                     });
 				}
 				$('#container').on('click','a',function (){
@@ -58,8 +58,8 @@
 							   "_token": "{{csrf_token()}}"},
                         dataType: 'json',
                         success: setChat
-						
-                    });	
+
+                    });
 					$('#user_chat').find('p').remove();
 					$('#user_chat').append('<p>'+$user+'</p>');
 				})
@@ -71,7 +71,7 @@
 						else
 							$('#chat').append("<div class=\"messaggi-ricevuti\">"+val.testo+"</div>");
 				})};
-					
+
 				$('#button').click(function (){
 					if($ruolo=='locatario')
 						$locatore=$('#user_chat').find('p').text();
@@ -106,7 +106,7 @@
 						$('#banner').append('<p>'+$parse.errors.locatore+'</p>');
 					$('#banner').show('slow');
 					$('#banner').delay(5000).hide('slow');
-					
+
 					};
 				function setSuccess(data){
 					$('#banner').find('p').remove();
@@ -115,16 +115,16 @@
 					$('#banner').append('<p>Messaggio inviato con successo, <a id='+$.parseJSON(data).user+'> clicca qui per ricaricare la chat</a>');
 					$('#banner').show('slow');
 					$('#banner').delay(5000).hide('slow');
-					
-					
+
+
 				}
-		
+
 		})
 	</script>
   <div id="container" class="container">
       <div class="row">
         <div class="col-md-8">
-          
+
           <div class="aa-properties-content">
 			<div class="aa-title">
             <hr>
@@ -133,26 +133,26 @@
           </div>
             <div class="aa-properties-content-body">
             <!-- Sezione messaggi inviati-->
-			
+
 			<div class="user_chat" id="user_chat">
 			@isset($user_message)
 			<p>{{$user_message}}</p>
 			@endisset
 			</div>
-			
+
 			<p class="user_chat" id="user_chat"></p>
               <fieldset style="border: 1px solid black; padding-top:60px">
 			  <div id="banner" hidden>
 			  </div>
                 <div class="aa-blog-area" id="chat">
-                
+
 
                 </div>
                 </fieldset>
 
                   <div class="aa-blog-area" id="messaggio">
 				   <form method="POST" accept-charset="UTF-8" onSubmit="return send_Message()" class="contactform">
-				  	  
+
                       <div style="margin-top: 20px; margin-bottom: 20px">
 					  {{ Form::textarea('testo', '', ['class' => 'textarea-style','id' => 'messaggio', 'aria-required' => 'true', 'cols' => '45', 'rows' => '4', 'maxlength' => '1000', 'resize' => 'none']) }}
                       <div id="button" class="send-button" >INVIA</div>
@@ -198,18 +198,10 @@
                                     </li>
 						@endforeach
 					  @endisset
-                <!-- comments pagination -->
-                <nav>
-                  <ul class="pagination comments-pagination">
-                    <li>
-                      <a aria-label="Previous" href="#">
-                        <span aria-hidden="true">«</span>
-                        <span aria-hidden="true">»</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-
+                    </ul>
+                  </div>
+                </div>
+              </div>
               </div>
             </aside>
           </div>

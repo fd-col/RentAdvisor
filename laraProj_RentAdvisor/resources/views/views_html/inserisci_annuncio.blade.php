@@ -22,57 +22,6 @@
             });
         });
 
-        jQuery(function(){
-            $('#tipologia').change(function(){
-                $val= $('select[name="tipologia"]').val();
-                switch($val) {
-                    case 'appartamento':
-                        $('#tipologia_appartamento_fieldset').show('slow');
-                        $('#caratteristiche_appartamento_fieldset').show('slow');
-                        $('#tipologia_posto_letto_fieldset').hide('slow');
-                        $('#caratteristiche_posto_letto_fieldset').hide('slow');
-                        break;
-                    case 'posto_letto':
-                        $('#tipologia_appartamento_fieldset').hide('slow');
-                        $('#caratteristiche_appartamento_fieldset').hide('slow');
-                        $('#tipologia_posto_letto_fieldset').show('slow');
-                        $('#caratteristiche_posto_letto_fieldset').show('slow');
-                        break;
-                    default:
-                        $('#tipologia_appartamento_fieldset').hide('slow');
-                        $('#caratteristiche_appartamento_fieldset').hide('slow');
-                        $('#tipologia_posto_letto_fieldset').hide('slow');
-                        $('#caratteristiche_posto_letto_fieldset').hide('slow');
-
-                }
-            });
-        })
-
-        //  Script per modificare la form in base al tipo di alloggio anche al ricaricamento della pagina in caso di errore
-        $(document).ready(function(){
-            $val= $('select[name="tipologia"]').val();
-            switch($val) {
-                case 'appartamento':
-                    $('#tipologia_appartamento_fieldset').show();
-                    $('#caratteristiche_appartamento_fieldset').show();
-                    $('#tipologia_posto_letto_fieldset').hide();
-                    $('#caratteristiche_posto_letto_fieldset').hide();
-                    break;
-                case 'posto_letto':
-                    $('#tipologia_appartamento_fieldset').hide();
-                    $('#caratteristiche_appartamento_fieldset').hide();
-                    $('#tipologia_posto_letto_fieldset').show();
-                    $('#caratteristiche_posto_letto_fieldset').show();
-                    break;
-                default:
-                    $('#tipologia_appartamento_fieldset').hide();
-                    $('#caratteristiche_appartamento_fieldset').hide();
-                    $('#tipologia_posto_letto_fieldset').hide();
-                    $('#caratteristiche_posto_letto_fieldset').hide();
-
-            }
-        })
-
         //Script per controllare le dimensioni e l'estensione delle immagini
         jQuery(document).ready(function($) {
             $('form input[type=file]').each(function(){
