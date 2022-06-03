@@ -385,7 +385,7 @@
 
                                         <!-- Ancore alle funzioni del Locatario -->
                                         @can('isLocatario')
-                                                <h4><a href=""><span class="fa fa-envelope"></span> Contatta il locatore</a></h4>
+                                                <h4><a href="{{ route('chat_opzione', [$locatore->username]) }}"><span class="fa fa-envelope"></span> Contatta il locatore</a></h4>
                                             @isset($opzionato)
                                                 @if(!$opzionato)
                                                     @if($annuncio->disponibile)

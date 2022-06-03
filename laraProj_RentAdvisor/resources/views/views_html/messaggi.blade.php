@@ -110,6 +110,7 @@
 					};
 				function setSuccess(data){
 					$('#banner').find('p').remove();
+					$('textarea#messaggio').val('');
 					$('#banner').attr('class', 'banner_success');
 					$('#banner').append('<p>Messaggio inviato con successo, <a id='+$.parseJSON(data).user+'> clicca qui per ricaricare la chat</a>');
 					$('#banner').show('slow');
