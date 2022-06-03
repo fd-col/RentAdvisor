@@ -214,7 +214,7 @@
                                 <li>
                                     <div class="aa-single-agents">
                                         <div class="aa-agents-img">
-                                            <img src="{{ asset('images/agents/agent-4.png') }}"
+                                            <img src="{{ asset('images/agents/cappelletti.jpg') }}"
                                                  alt="agent member image">
                                         </div>
                                         <div class="aa-agetns-info">
