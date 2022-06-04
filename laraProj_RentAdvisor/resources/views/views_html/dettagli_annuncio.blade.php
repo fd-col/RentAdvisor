@@ -212,8 +212,7 @@
                                                         @if($caratteristiche->presenza_angolo_studio == true)
                                                             <tr>
                                                                 <td>
-                                                                    <li><span class="fa fa-book"></span> Angolo studio
-                                                                    </li>
+                                                                    <li><span class="fa fa-book"></span> Angolo studio</li>
                                                                 </td>
                                                             </tr>
                                                         @endif
@@ -324,6 +323,7 @@
                                                                                     @if($annuncio->disponibile)
                                                                                         <a class="ancora_form_contratto" id={{ $utente->username }}><span class="fa fa-edit"></span> Crea contratto</a>
                                                                                         {{ Form::open(array('route' => 'inserisci_contratto', 'class' => 'contactform', 'style' => 'display:none', 'id' => "form_contratto_$utente->username")) }}
+                                                                                        <p>Attenzione: per ogni annuncio non possono essere creati due o più contratti con le stesse date di inizio e fine</p>
                                                                                         {{ Form::text('id_annuncio', "$annuncio->id",['style' => 'display: none']) }}
                                                                                         {{ Form::text('username_locatore', auth()->user()->username, ['style' => 'display: none']) }}
                                                                                         {{ Form::text('username_locatario',  $utente->username , ['style' => 'display: none']) }}
