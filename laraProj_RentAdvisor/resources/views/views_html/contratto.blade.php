@@ -8,6 +8,7 @@
 
         <title>RentAdvisor | Contratto </title>
 
+        <link rel="shortcut icon" href="{{ asset('images/home_house.png') }}" type="image/x-icon">
         <link rel="stylesheet" href="{{ asset('css/contratto_paginazione.css') }}" type="text/css">
 
     <head>
@@ -28,7 +29,7 @@
                                 in qualità di proprietario della locazione menzionata.
                             <hr>CONCEDE IN LOCAZIONE<br>
                             al/alla Sig. {{$locatario->nome}} {{$locatario->cognome}}, nato/a il {{$locatario->data_nascita}}
-                            di seguito denominato/a locatore
+                            di seguito denominato/a locatario
                             che accetta, per sé e suoi aventi causa,
                             @if($annuncio->tipologia == 'appartamento')
                                 l'appartamento

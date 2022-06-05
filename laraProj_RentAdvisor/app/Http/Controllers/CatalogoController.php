@@ -47,13 +47,16 @@ class CatalogoController extends Controller
 
     public function dettagli_annuncio($id_annuncio) {
 
-        $annuncio = $this->modello_catalogo->get_annuncio($id_annuncio);
-        $caratteristiche = $this->modello_catalogo->get_caratteristiche_annuncio($annuncio);
-        $locatore = $this->modello_catalogo->get_locatore_annuncio($annuncio);
-        $immagini = $this->modello_catalogo->get_immagini_annuncio($id_annuncio);
-        $utenti_che_hanno_opzionato = $this->modello_catalogo->get_utenti_opzioni_annuncio_locatore($id_annuncio);
-        $opzionato = $this->modello_catalogo->controlla_opzione($id_annuncio);
-
+        try {
+            $annuncio = $this->modello_catalogo->get_annuncio($id_annuncio);
+            $caratteristiche = $this->modello_catalogo->get_caratteristiche_annuncio($annuncio);
+            $locatore = $this->modello_catalogo->get_locatore_annuncio($annuncio);
+            $immagini = $this->modello_catalogo->get_immagini_annuncio($id_annuncio);
+            $utenti_che_hanno_opzionato = $this->modello_catalogo->get_utenti_opzioni_annuncio_locatore($id_annuncio);
+            $opzionato = $this->modello_catalogo->controlla_opzione($id_annuncio);
+        } catch (ErrorException $e) {
+            return view('views_html/404');
+        }
 
         return view('views_html/dettagli_annuncio')
             ->with('annuncio', $annuncio)

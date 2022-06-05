@@ -76,7 +76,8 @@
         </section>
         <!-- / Latest property -->
         @endisset
-
+    
+    @guest()
     <!-- Login reminder -->
     <section id="aa-latest-property">
         <div class="col-md-12">
@@ -84,7 +85,7 @@
                 <!-- Start Single properties sidebar -->
                 <div class="aa-properties-single-sidebar">
                     <fieldset style="border: 1px ; padding:40px; background-color: white; text-align:center">
-                        <h3> Accedi ora o registrati per <b>cercare</b> il tuo alloggio perfetto o per <b>pubblicare</b> il tuo primo annuncio !!! <br><br><br></h3>    
+                        <h3> Accedi ora o registrati per <b>cercare</b> il tuo alloggio perfetto o per <b>pubblicare</b> il tuo primo annuncio! <br><br><br></h3>
                         <a href="{{ route('login') }}" class="button-reminder"> ACCEDI </a>
                     </fieldset>
                 </div>
@@ -92,6 +93,7 @@
         </div>
     </section>
     <!-- / Login reminder -->
+    @endguest
 
     <!-- Service section -->
     <section id="aa-service">
