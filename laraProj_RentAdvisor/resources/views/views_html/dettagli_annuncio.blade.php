@@ -268,6 +268,16 @@
 
                                 <aside class="aa-properties-sidebar">
                                     <div class="aa-properties-single-sidebar">
+                                        <!-- Ancora alle funzione di registrazione per l'utente non loggato --> 
+                                        @guest()
+                                        <div class='title'>
+                                            <fieldset style="border: 1px ; padding:40px; background-color: white; text-align:center">
+                                                <h3> Accedi ora o registrati per <b>prenotare</b> questo annuncio ora !!<br><br></h3>
+                                                <a href="{{ route('login') }}" class="button-reminder"> ACCEDI </a>
+                                            </fieldset>
+                                        </div>
+                                        @endguest()
+                                    
                                         <!-- Ancore alle funzioni del Locatore -->
                                         @can('isLocatore')
                                             @if(auth()->user()->username == $locatore->username)

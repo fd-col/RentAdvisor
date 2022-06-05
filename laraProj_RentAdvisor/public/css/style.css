@@ -2406,16 +2406,17 @@ img {
 
 
 .button-reminder {
-  position: absolute;
   top:50%;
+  margin:0 auto;
   background-color:#ff7f50;
   color: #fff;
+  text-align:center;
   border:none; 
   border-radius:10px; 
   padding:15px;
   margin-top:15px;
   min-height:30px; 
-  min-width: 120px;
+  min-width: 260px;
 }
 
 .button-reminder:active {
