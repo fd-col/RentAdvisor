@@ -9,7 +9,7 @@
         <title>RentAdvisor | Contratto </title>
 
         <link rel="shortcut icon" href="{{ asset('images/home_house.png') }}" type="image/x-icon">
-        <link rel="stylesheet" href="{{ asset('css/contratto_paginazione.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
 
     <head>
 
