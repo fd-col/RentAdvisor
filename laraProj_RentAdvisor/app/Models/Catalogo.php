@@ -163,7 +163,6 @@ class Catalogo extends Model
 		$query->where('ascensore', $filtri['ascensore']);
 
     $annunci = $query->orderBy('data_inserimento', 'DESC')->paginate(9);
-    Log::debug('Dati validi: ', $filtri);
 	return $annunci;
 	}
 

@@ -31,12 +31,8 @@
     <script src="{{ asset('js/bootstrap_layout.js') }}"></script>
     <!-- slick slider -->
     <script type="text/javascript" src="{{ asset('js/slick.js') }}"></script>
-    <!-- Price picker slider -->
-    <script type="text/javascript" src="{{ asset('js/nouislider.js') }}"></script>
     <!-- mixit slider -->
     <script type="text/javascript" src="{{ asset('js/jquery.mixitup.js') }}"></script>
-    <!-- Add fancyBox -->
-    <script type="text/javascript" src="{{ asset('js/jquery.fancybox.pack.js') }}"></script>
     <!-- Custom js -->
     <script src="{{ asset('js/custom.js') }}"></script>
 

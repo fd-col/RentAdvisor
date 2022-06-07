@@ -13,7 +13,6 @@ use ErrorException;
 use Illuminate\Http\Request;
 use App\Models\Catalogo;
 use App\User;
-use Illuminate\Support\Facades\Log;
 
 class CatalogoController extends Controller
 {
