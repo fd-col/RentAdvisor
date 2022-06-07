@@ -15,10 +15,6 @@
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <!-- slick slider -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
-    <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/nouislider.css') }}">
-    <!-- Fancybox slider -->
-    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}" type="text/css" media="screen" />
     <!-- Theme color -->
     <link id="switcher" href="{{ asset('css/theme-color/default-theme.css') }}" rel="stylesheet">
 
