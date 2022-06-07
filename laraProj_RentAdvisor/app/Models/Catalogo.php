@@ -256,7 +256,6 @@ class Catalogo extends Model
         } catch (ErrorException $e) {
             return false;
         }
-
         return false;
     }
 }
