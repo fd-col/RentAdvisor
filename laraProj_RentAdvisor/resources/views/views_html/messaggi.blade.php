@@ -83,9 +83,9 @@
 					else
 						$locatario=$('#user_chat').find('p').text();
 					if('{{$user->role}}'=='locatario')
-						$route="{{route('send_locatore')}}";
+						$route="{{route('send')}}";
 					else
-						$route="{{route('send_locatore')}}";
+						$route="{{route('send')}}";
 					$.ajax({
 						type:'POST',
 						url:$route,
