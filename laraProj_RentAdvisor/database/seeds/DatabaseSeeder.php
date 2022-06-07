@@ -93,11 +93,11 @@ class DatabaseSeeder extends Seeder {
             ['username_locatore' => 'mariomario', 'username_locatario' => 'lucaluca', 'data_invio' => '2022-05-17 15:12:00', 'testo' => 'Sisi, facciamo alle 10?', 'mittente' => 'locatario'],
             ['username_locatore' => 'mariomario', 'username_locatario' => 'lucaluca', 'data_invio' => '2022-05-17 15:15:34', 'testo' => 'Perfetto, a domattina', 'mittente' => 'locatore'],
             ['username_locatore' => 'giovannagiovanna', 'username_locatario' => 'noeminoemi', 'data_invio' => '2022-05-22 18:09:00', 'testo' => 'Salve, sarei interessata all\'annuncio sulla camera singola, è possibile venire a vederla?', 'mittente' => 'locatario'],
-			['username_locatore' => 'lorelore', 'username_locatario' => 'lariolario', 'data_invio' => '2022-06-06 15:00:00', 'testo' => 'Salve, sarei interessato all\'annuncio sulla camera singola.', 'mittente' => 'locatore'],
-			['username_locatore' => 'giovannagiovanna', 'username_locatario' => 'lariolario', 'data_invio' => '2022-06-07 18:00:00', 'testo' => 'Salve, sarei interessato all\'annuncio sull\'appartamento.', 'mittente' => 'locatore'],
-			['username_locatore' => 'lorelore', 'username_locatario' => 'lucaluca', 'data_invio' => '2022-06-11 15:01:59', 'testo' => 'Salve, sarei interessato all\'annuncio sull\'appartamento.', 'mittente' => 'locatore'],
-			['username_locatore' => 'lorelore', 'username_locatario' => 'noeminoemi', 'data_invio' => '2022-06-11 17:00:00', 'testo' => 'Salve, sarei interessato all\'annuncio sul posto letto.', 'mittente' => 'locatore'],
-			['username_locatore' => 'mariomario', 'username_locatario' => 'lariolario', 'data_invio' => '2022-06-11 20:02:31', 'testo' => 'Salve, sarei interessato all\'annuncio sulla camera condivisa.', 'mittente' => 'locatore'],
+			['username_locatore' => 'lorelore', 'username_locatario' => 'lariolario', 'data_invio' => '2022-06-06 15:00:00', 'testo' => 'Salve, sarei interessato all\'annuncio sulla camera singola.', 'mittente' => 'locatario'],
+			['username_locatore' => 'giovannagiovanna', 'username_locatario' => 'lariolario', 'data_invio' => '2022-06-07 18:00:00', 'testo' => 'Salve, sarei interessato all\'annuncio sull\'appartamento.', 'mittente' => 'locatario'],
+			['username_locatore' => 'lorelore', 'username_locatario' => 'lucaluca', 'data_invio' => '2022-06-11 15:01:59', 'testo' => 'Salve, sarei interessato all\'annuncio sull\'appartamento.', 'mittente' => 'locatario'],
+			['username_locatore' => 'lorelore', 'username_locatario' => 'noeminoemi', 'data_invio' => '2022-06-11 17:00:00', 'testo' => 'Salve, sarei interessato all\'annuncio sul posto letto.', 'mittente' => 'locatario'],
+			['username_locatore' => 'mariomario', 'username_locatario' => 'lariolario', 'data_invio' => '2022-06-11 20:02:31', 'testo' => 'Salve, sarei interessato all\'annuncio sulla camera condivisa.', 'mittente' => 'locatario'],
 		]);
 
         DB::table('FAQ')->insert([
