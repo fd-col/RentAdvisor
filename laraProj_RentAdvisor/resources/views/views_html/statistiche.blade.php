@@ -8,16 +8,16 @@
     <section id="aa-contact">
         <div class="container">
             <div class="row">
-                
+
                 <div class="aa-title">
                     <h2>Pagina delle Statistiche</h2>
                     <span></span>
                 </div>
-                {{ Form::open(array('route' => 'statistiche_calcolate'))}}   
-                <fieldset style="border: 1px solid black; padding: 10px"> 
+                {{ Form::open(array('route' => 'statistiche_calcolate'))}}
+                <fieldset style="border: 1px solid black; padding: 10px">
                     <h3>&nbsp Scegli il periodo per il filtraggio :</h3>
-                    <h4>&nbsp (se il periodo o la tipologia di locazione non vengono specificati si riferisce a tutti gli annunci del sito)<br><br></h4> 
-                    
+                    <h4>&nbsp (se il periodo o la tipologia di locazione non vengono specificati ci si riferisce a tutti gli annunci del sito)<br><br></h4>
+
                     <div class="col-md-0">
                         <label>Periodo locazione:</label>
                     </div>
@@ -63,26 +63,26 @@
                         </div>
                     </div>
                 </fieldset>
-                {{ Form::close()}} 
+                {{ Form::close()}}
                 <div class="aa-contact-bottom"> <!-- da modicare il nome nel .css-->
                     <div class="aa-title">
                         <fieldset style="border: 1px solid black">
-                        
+
                         <h2><br>Numero di annunci</h2>
                         @isset($numero_annunci)
-                            <p>gli annunci pubblicati nel periodo scelto sono : </p> 
+                            <p>gli annunci pubblicati nel periodo scelto sono : </p>
                             <h3>{{$numero_annunci}}</h3>
                         @endisset
                         @isset($numero_richieste)
                             <h2>Numero di richieste</h2>
-                            <p>gli alloggi richiesti nel periodo scelto sono : </p>  
+                            <p>gli alloggi richiesti nel periodo scelto sono : </p>
                             <h3>{{$numero_richieste}}</h3>
                         @endisset
                         @isset($numero_contratti)
-                            <h2>Alloggi affittati</h2>                           
-                            <p>gli alloggi totali assegnati nel periodo scelto sono : </p>  
-                            <h3>{{$numero_contratti}}</h3>  
-                        @endisset                                 
+                            <h2>Alloggi affittati</h2>
+                            <p>gli alloggi totali assegnati nel periodo scelto sono : </p>
+                            <h3>{{$numero_contratti}}</h3>
+                        @endisset
                         </fieldset>
                     </div>
                 </div>

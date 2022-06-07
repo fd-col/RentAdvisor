@@ -76,7 +76,7 @@
         </section>
         <!-- / Latest property -->
         @endisset
-    
+
     @guest()
     <!-- Login reminder -->
     <section id="aa-latest-property">
@@ -223,7 +223,7 @@
                                         </div>
                                         <div class="aa-agetns-info">
                                             <h4><a href="https://www.linkedin.com/in/federico-colleluori-8113b81bb/">Federico Colleluori</a></h4>
-                                            <span>Consulente Specializzato</span>
+                                            <span>Graphic Designer</span>
                                             <div class="aa-agent-social">
                                             </div>
                                         </div>

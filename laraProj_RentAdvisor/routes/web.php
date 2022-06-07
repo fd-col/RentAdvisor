@@ -86,13 +86,13 @@ Route::post('/locatario/chat', 'MessaggiController@mostra_chat_locatario')
 
 Route::get('/locatario/messaggi', 'MessaggiController@mostra_messaggi_chat')
 		->name('chat_locatario')->middleware('can:isLocatario');
-		
+
 Route::get('/chat/opzione/{user}', 'MessaggiController@mostra_messaggi_chat_opzione')
 		->name('chat_opzione')->middleware('can:isUtente');
 
 // link amministratore
 
-Route::get('/statistiche', 'StatisticheController@pagina_statistiche')
+Route::get('/admin/statistiche', 'StatisticheController@pagina_statistiche')
     ->name('statistiche')->middleware('can:isAdmin');
 
 Route::post('/statistiche', 'StatisticheController@pagina_statistiche')

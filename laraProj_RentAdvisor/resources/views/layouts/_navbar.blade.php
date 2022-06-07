@@ -54,7 +54,7 @@
                         @can('isAdmin')
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="aa-header-right">
-                                    <a href="" class="aa-login"><span class="fa fa-user"></span>  {{ auth()->user()->nome }} {{ auth()->user()->cognome }}</a> |
+                                    <a href="{{ route('statistiche') }}" class="aa-login"><span class="fa fa-user"></span>  {{ auth()->user()->nome }} {{ auth()->user()->cognome }}</a> |
                                     <a href="" title="Esci dal sito" class="aa-login" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> Logout</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
@@ -106,8 +106,8 @@
                         <li class="{{ Route::is('area_personale_locatore') ? 'active' : '' }}"><a href="{{ route('area_personale_locatore') }}">AREA PERSONALE</a></li>
                     @endcan
 
-                    <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">CONTATTI</a></li>
                     <li class="{{ Route::is('faq') ? 'active' : '' }}"><a href="{{ route('faq') }}">@can('isAdmin')MODIFICA @endcan FAQ</a></li>
+                    <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">CONTATTI</a></li>
                     <li><a href="">DOCUMENTAZIONE</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
