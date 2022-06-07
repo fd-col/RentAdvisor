@@ -19,7 +19,7 @@
                     <h4>&nbsp (se il periodo o la tipologia di locazione non vengono specificati ci si riferisce a tutti gli annunci del sito)<br><br></h4>
 
                     <div class="col-md-0">
-                        <label>Periodo locazione:</label>
+                        <label>Periodo :</label>
                     </div>
                     <div class="col-md-0">
                         <label>Inizio</label>
@@ -74,8 +74,8 @@
                             <h3>{{$numero_annunci}}</h3>
                         @endisset
                         @isset($numero_richieste)
-                            <h2>Numero di richieste</h2>
-                            <p>gli alloggi richiesti nel periodo scelto sono : </p>
+                            <h2>Numero di opzioni</h2>
+                            <p>gli alloggi opzionati nel periodo scelto sono : </p>
                             <h3>{{$numero_richieste}}</h3>
                         @endisset
                         @isset($numero_contratti)

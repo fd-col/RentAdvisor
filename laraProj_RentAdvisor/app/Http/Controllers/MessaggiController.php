@@ -27,13 +27,13 @@ class MessaggiController extends Controller
 			$messaggi = $this->modello_messaggio->get_utenti_ultimi_messaggi_locatore(auth()->user()->username);
 		else
 			$messaggi= $this->modello_messaggio->get_utenti_ultimi_messaggi_locatario(auth()->user()->username);
-		
+
         return view('views_html/messaggi')
             ->with('user', $user)
-            ->with('messaggi', $messaggi);			
+            ->with('messaggi', $messaggi);
     }
 	public function mostra_messaggi_chat_opzione($utente){
-		$user = $this->modello_user::where('username', auth()->user()->username)->get()->first();
+        $user = $this->modello_user->get_utente(auth()->user()->username);
 		if(auth()->user()->role=="locatore")
 			$messaggi = $this->modello_messaggio->get_utenti_ultimi_messaggi_locatore(auth()->user()->username);
 		else
@@ -41,7 +41,7 @@ class MessaggiController extends Controller
 		return view('views_html/messaggi')
             ->with('user', $user)
             ->with('messaggi', $messaggi)
-			->with('user_message', $utente);	
+			->with('user_message', $utente);
 	}
 	public function mostra_chat_locatore(RichiestaChat $data){
 		$dati_validi=$data->validated();
@@ -55,7 +55,7 @@ class MessaggiController extends Controller
 	}
 	public function invia_messaggio(RichiestaInvioMessaggio $data){
 		$dati_validi=$data->validated();
-		$this->modello_messaggio::insert(['username_locatore'=>$dati_validi['locatore'], 'username_locatario'=>$dati_validi['locatario'], 'data_invio'=>date("Y-m-d H:i:s"), 'testo'=>$dati_validi['testo'], 'mittente'=>auth()->user()->role]);
+		$this->modello_messaggio->inserisci_messaggio($dati_validi);
 		if(auth()->user()->role=="locatario")
 			$user=["user"=>$dati_validi['locatore']];
 		else

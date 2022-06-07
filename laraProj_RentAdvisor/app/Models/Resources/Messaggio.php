@@ -29,6 +29,12 @@ class Messaggio extends Model
 	}
 
     public function inserisci_messaggio_opzione($username_locatore, $titolo_annuncio) {
+        date_default_timezone_set('Europe/Rome');
         $this::insert(['username_locatore'=>$username_locatore, 'username_locatario'=>auth()->user()->username, 'data_invio'=>date("Y-m-d H:i:s"), 'testo'=>"Salve, sono interessato all'alloggio \"".$titolo_annuncio."\"", 'mittente'=>auth()->user()->role]);
+    }
+
+    public function inserisci_messaggio($dati_validi) {
+        date_default_timezone_set('Europe/Rome');
+        $this::insert(['username_locatore'=>$dati_validi['locatore'], 'username_locatario'=>$dati_validi['locatario'], 'data_invio'=>date("Y-m-d H:i:s"), 'testo'=>$dati_validi['testo'], 'mittente'=>auth()->user()->role]);
     }
 }
