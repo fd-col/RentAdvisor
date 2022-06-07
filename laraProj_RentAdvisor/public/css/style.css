@@ -2435,6 +2435,11 @@ img {
   transition: 0.7s;
 }
 
+#contratto{
+  margin:170px;
+  margin-top: 100px;
+}
+
 /*==================
  RESPONSIVE DESIGN
 ====================*/
