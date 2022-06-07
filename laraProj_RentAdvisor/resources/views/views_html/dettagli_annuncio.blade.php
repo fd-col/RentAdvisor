@@ -60,6 +60,7 @@
                             }
                         });
                     })
+
                 </script>
 
                 <!-- Start Properties  -->
@@ -268,7 +269,7 @@
 
                                 <aside class="aa-properties-sidebar">
                                     <div class="aa-properties-single-sidebar">
-                                        <!-- Ancora alle funzione di registrazione per l'utente non loggato --> 
+                                        <!-- Ancora alle funzione di registrazione per l'utente non loggato -->
                                         @guest()
                                         <div class='title'>
                                             <fieldset style="border: 1px ; padding:40px; background-color: white; text-align:center">
@@ -277,7 +278,7 @@
                                             </fieldset>
                                         </div>
                                         @endguest()
-                                    
+
                                         <!-- Ancore alle funzioni del Locatore -->
                                         @can('isLocatore')
                                             @if(auth()->user()->username == $locatore->username)
@@ -355,7 +356,7 @@
                                                                                                 @endforeach
                                                                                             </ul>
                                                                                         @endif
-                                                                                        {{ Form::submit('Stipula contratto') }}
+                                                                                        {{ Form::submit('Stipula contratto',['id' => 'stipula_contratto']) }}
                                                                                         {{ Form::close() }}
                                                                                     @endif
                                                                                 </div>
