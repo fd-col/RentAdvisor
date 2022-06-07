@@ -61,7 +61,12 @@
 
                     });
 					$('#user_chat').find('p').remove();
+					$('#user_chat').find('h6').remove();
 					$('#user_chat').append('<p>'+$user+'</p>');
+					if($ruolo=='locatario')
+					$('#user_chat').append('<h6>Locatore</h6>');
+					else
+					$('#user_chat').append('<h6>Locatario</h6>');
 				})
 				function setChat(data){
 					$('#chat').find('div').remove();
@@ -137,6 +142,11 @@
 			<div class="user_chat" id="user_chat">
 			@isset($user_message)
 			<p>{{$user_message}}</p>
+			@if($user->role=='locatario')
+			<h6>LOCATORE</h6>
+			@else
+			<h6>LOCATARIO</h6>
+			@endif
 			@endisset
 			</div>
 
