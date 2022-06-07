@@ -75,13 +75,13 @@
                         </div>
                     </div>
                 </div>
-                
+
 
                 <div id="filter-content" hidden>
 
                     <div class="aa-advance-search-bottom">
                         <div class="row">
-                            
+
                             <div class="col-md-3">
                                 <label>Periodo locazione:</label>
                             </div>
@@ -116,7 +116,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
 
 
                     <div class="aa-advance-search-bottom">
@@ -177,8 +177,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="aa-advance-search-bottom">
                         <div class="row">
                             <div class="col-md-3">
@@ -218,7 +218,7 @@
                                     @endif
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-0">
                                 <label>Piano</label>
                             </div>
