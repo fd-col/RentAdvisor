@@ -19,7 +19,7 @@
                     <h4>&nbsp (se il periodo o la tipologia di locazione non vengono specificati ci si riferisce a tutti gli annunci del sito)<br><br></h4>
 
                     <div class="col-md-0">
-                        <label>Periodo locazione:</label>
+                        <label>Periodo :</label>
                     </div>
                     <div class="col-md-0">
                         <label>Inizio</label>
