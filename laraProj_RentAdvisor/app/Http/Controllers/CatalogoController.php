@@ -205,8 +205,4 @@ class CatalogoController extends Controller
 			return redirect()->action('CatalogoController@dettagli_annuncio', [$id_annuncio]);
 
     }
-
-    public function catalogo_statistiche() {
-
-    }
 }
