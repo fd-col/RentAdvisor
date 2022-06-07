@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Resources\Contratto;
 use DateTime;
 use ErrorException;
 use Illuminate\Database\Eloquent\Model;
@@ -225,6 +226,9 @@ class Catalogo extends Model
             Appartamento::where('id_annuncio', $id_annuncio)->delete();
         else
             Posto_Letto::where('id_annuncio', $id_annuncio)->delete();
+
+        //Elimina i  contratti presenti per quell'annuncio
+        Contratto::where('id_annuncio', $id_annuncio)->delete();
 
         //Elimina l'annuncio
         Annuncio::where('id', $id_annuncio)->delete();
