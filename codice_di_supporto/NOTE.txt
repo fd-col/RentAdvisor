@@ -1,1 +1,0 @@
-L'IMMAGINE FISSA NELL'HEADER DI OGNI PAGINA SECONDARIA (DIVERSA DALLA HOME) <--> style.css cercando "aa-property-header"
