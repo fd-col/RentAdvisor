@@ -122,9 +122,9 @@
 					$('#banner').delay(5000).hide('slow');
 
 
-				}
+				} 
 
-		})
+		}) //rivedere bene questa funzione
 	</script>
   <div id="container" class="container">
       <div class="row">

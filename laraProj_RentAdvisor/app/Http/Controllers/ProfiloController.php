@@ -35,7 +35,7 @@ class ProfiloController extends Controller
 
     public function pagina_profilo_locatore(){
 
-        $user = $this->modello_user::where('username', auth()->user()->username)->get()->first();
+        $user = $this->modello_user::where('username', auth()->user()->username)->get()->first(); //auth() altro modo per richiamare la facade AUTH
         $annunci = $this->modello_catalogo->get_annunci_locatore(auth()->user()->username);
         $immagini = $this->modello_catalogo->get_immagini_annunci($annunci);
         $messaggi = $this->modello_messaggio->get_utenti_ultimi_messaggi_locatore(auth()->user()->username);
@@ -47,8 +47,8 @@ class ProfiloController extends Controller
 
     }
 
-    public function modifica_dati_locatore(RichiestaModificaDati $richiesta){
-        $dati_validi = $richiesta->validated();
+    public function modifica_dati_locatore(RichiestaModificaDati $richiesta){//permette di modificare i dati del locatore
+        $dati_validi = $richiesta->validated();                              //validazione tramite request
         $this->modello_user->modifica_dati_utente($dati_validi);
 
         return redirect()->action('ProfiloController@pagina_profilo_locatore');

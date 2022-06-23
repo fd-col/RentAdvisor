@@ -49,7 +49,7 @@ class User extends Authenticatable {
 
     public function modifica_dati_utente($dati_validi) {
         $this::where('username', $dati_validi['username'])
-            ->limit(1)
+            ->limit(1)//ulteriore parametro di sicurezza, con limit(1) si può modificare solo la tupla con quell'username (anche se è già unica)
             ->update(['nome' => $dati_validi['nome'], 'cognome' => $dati_validi['cognome'], 'genere' => $dati_validi['genere'], 'data_nascita' => $dati_validi['data_nascita'], 'telefono' => $dati_validi['telefono']]);
     }
 

@@ -15,7 +15,7 @@
                             $var = confirm('Sei sicuro di voler opzionare l\'annuncio?');
                             if ($var == true) {
                                 event.preventDefault();
-                                $(location).attr('href', "{{ route('toggle_opzione_annuncio', [$annuncio->id]) }}" );
+                                $(location).attr('href', "{{ route('toggle_opzione_annuncio', [$annuncio->id]) }}" );//ritorna l'url della pg corrente
                             } else {
                                 evt.preventDefault();
                             }

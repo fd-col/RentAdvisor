@@ -40,7 +40,7 @@
                                         <h3><a href="{{ route('aggiungi_faq') }}"><span class="fa fa-plus-square-o"></span> Aggiungi FAQ</a></h3>
                                         <p> </p>
                                     @endcan
-                                </div>
+                                </div> 
                             </div>
                         </fieldset>
                     </div>

@@ -17,7 +17,7 @@ class FaqController extends Controller
     }
 
     public function pagina_faq() {
-        $faq = $this->modello_faq->get_faq();
+        $faq = $this->modello_faq->get_faq(); //restituisce le faq
 
         return view('views_html/faq')
             ->with('faq', $faq);

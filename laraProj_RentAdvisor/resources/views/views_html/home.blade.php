@@ -19,7 +19,7 @@
 
 
                             @foreach($annunci as $annuncio)
-                                @if($loop->index % 3 == 0)
+                                @if($loop->index % 3 == 0) <!-- variabile per incolonnare a 3-->
                                     <div class="row">
                                         @endif
                                 <div class="col-md-4">
@@ -77,7 +77,7 @@
         <!-- / Latest property -->
         @endisset
 
-    @guest()
+    @guest() <!--sezione relativa agli utenti guest per accedere-->
     <!-- Login reminder -->
     <section id="aa-latest-property">
         <div class="col-md-12">

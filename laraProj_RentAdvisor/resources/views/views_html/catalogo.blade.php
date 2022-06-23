@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@can('isLocatario')
+@can('isLocatario')             
     @section('title', 'Ricerca')
 @else
     @section('title', 'Catalogo')

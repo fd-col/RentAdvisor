@@ -19,9 +19,9 @@ class Catalogo extends Model
 {
     public function get_annunci($numero_annunci=null) {
         if (is_null($numero_annunci)) {
-            $annunci = Annuncio::select()->orderBy('data_inserimento', 'DESC')->paginate(9);
+            $annunci = Annuncio::select()->orderBy('data_inserimento', 'DESC')->paginate(9); //prende nella tabella annunci gli elementi e li impagina per 9 elementi
         }else
-            $annunci = Annuncio::select()->orderBy('data_inserimento', 'DESC')->get()->take($numero_annunci);
+            $annunci = Annuncio::select()->orderBy('data_inserimento', 'DESC')->get()->take($numero_annunci);//stessa cosa, ma prende il numero di elementi indicato come parametro
         return $annunci;
     }
 

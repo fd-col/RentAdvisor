@@ -1,22 +1,22 @@
-@extends('layouts.layout')
+@extends('layouts.layout')            <!--estende il layout -->
 
-@section('title', 'Area Personale')
+@section('title', 'Area Personale')   <!--si riempie la yield definita nel layout  -->
 
 
 <!-- CONTENT -->
-@section('content')
+@section('content')                   <!--si riempie la yield definita nel layout con content -->
 
     <!-- Script per attivare la modifica dei dati -->
     <script>
         jQuery(function(){
-            $('#bottone_modifica').click(function(){
-                $('#nome').removeAttr('readonly');
-                $('#cognome').removeAttr('readonly');
-                $('#data_nascita').removeAttr('readonly');
-                $('#telefono').removeAttr('readonly');
-                $('#genere').removeAttr('readonly');
-                $('#bottone_salva_dati').show();
-                $('#bottone_modifica').hide();
+            $('#bottone_modifica').click(function(){      //f. jquery che agisce al click sul bottone modifica
+                $('#nome').removeAttr('readonly');        //
+                $('#cognome').removeAttr('readonly');     //
+                $('#data_nascita').removeAttr('readonly');// rimuove l'attributo readonly dagli input (li rende modificabili)
+                $('#telefono').removeAttr('readonly');    //
+                $('#genere').removeAttr('readonly');      //
+                $('#bottone_salva_dati').show();          //mostra il bottone "Salva"
+                $('#bottone_modifica').hide();            //nasconde il bottone "modifica dati personali"
             });
         })
     </script>

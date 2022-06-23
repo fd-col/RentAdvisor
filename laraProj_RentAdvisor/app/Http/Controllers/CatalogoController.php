@@ -26,9 +26,9 @@ class CatalogoController extends Controller
 
     public function home() {
 
-        $annunci = $this->modello_catalogo->get_annunci(6);
-        $immagini = $this->modello_catalogo->get_immagini_annunci($annunci);
-        return view('views_html/home')
+        $annunci = $this->modello_catalogo->get_annunci(6);                  //
+        $immagini = $this->modello_catalogo->get_immagini_annunci($annunci); //richiamano le funzioni get_annunci e get_immagini definite nell'appl. model
+        return view('views_html/home')     //ritorna la view corrispondente, settando annunci e immagini nella stessa
             ->with('annunci', $annunci)
             ->with('immagini', $immagini);
 
@@ -37,8 +37,8 @@ class CatalogoController extends Controller
     public function catalogo_senza_filtri() {
 
         $annunci = $this->modello_catalogo->get_annunci();
-        $immagini = $this->modello_catalogo->get_immagini_annunci($annunci);
-
+        $immagini = $this->modello_catalogo->get_immagini_annunci($annunci);//stesso metodo del precedente 
+                                                                            //senza filtri
         return view('views_html/catalogo')
             ->with('annunci', $annunci)
             ->with('immagini', $immagini);
@@ -92,7 +92,7 @@ class CatalogoController extends Controller
             $foto = $richiesta->file('foto_annuncio');
             $i = 0;
                 foreach ($foto as $foto_singola) {
-                    $nome_foto = $id_annuncio_inserito.'_'.$i.'.'.$foto_singola->getClientOriginalExtension();
+                    $nome_foto = $id_annuncio_inserito.'_'.$i.'.'.$foto_singola->getClientOriginalExtension(); //crea il nome della foto associata all'annuncio
                     $foto_singola->move(public_path().'/images/annunci', $nome_foto);
                     $this->modello_catalogo->inserisci_dati_immagine($nome_foto, $id_annuncio_inserito);
                     $i++;
@@ -185,17 +185,17 @@ class CatalogoController extends Controller
 
     }
 
-    public function toggle_opzione_annuncio ($id_annuncio) {
-        if(!($this->modello_catalogo->get_annuncio($id_annuncio)->disponibile))
-            return view('views_html/non_autorizzato');
+    public function toggle_opzione_annuncio ($id_annuncio) {                     //metodo che permette di modificare l'opzionamento dell'annuncio.
+        if(!($this->modello_catalogo->get_annuncio($id_annuncio)->disponibile))  //se l'opzione è già presente, toglie l'opzionamento. Se non è presente
+            return view('views_html/non_autorizzato');                           //inserisce l'opzione (entra in gioco anche il metodo nel Catalogo.php)
 		try {
             $this->modello_catalogo->toggle_opzione_annuncio($id_annuncio);
 
 		} catch (ErrorException $e) {
             return view('views_html/non_autorizzato');
         }
-		if($this->modello_catalogo->controlla_opzione($id_annuncio))
-		{
+		if($this->modello_catalogo->controlla_opzione($id_annuncio))  //se l'a. deve essere opzionato, si rimanda alla chat con messaggio annesso
+		{                                                             //se si deve togliere l'opzionamento, si ritorna alla pag. dettagli annuncio
 			$this->modello_messaggio->inserisci_messaggio_opzione($this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore, $this->modello_catalogo->get_annuncio($id_annuncio)->titolo);
 
 			return redirect()->action('MessaggiController@mostra_messaggi_chat_opzione', [$this->modello_catalogo->get_annuncio($id_annuncio)->username_locatore]);

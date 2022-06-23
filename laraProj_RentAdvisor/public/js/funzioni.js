@@ -107,7 +107,7 @@ jQuery(function(){
 })
 
 //  Script per modificare la form di inserimento dell'annuncio in base al tipo di alloggio anche al ricaricamento della pagina in caso di errore
-$(document).ready(function(){
+$(document).ready(function(){  //serve a mantenere la form modificata
     $val= $('select[name="tipologia"]').val();
     switch($val) {
         case 'appartamento':
