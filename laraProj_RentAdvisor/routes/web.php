@@ -54,13 +54,13 @@ Route::get('/locatore/modifica_disponibile/{id_annuncio}', 'CatalogoController@t
 
 Route::view('/locatore/messaggi', 'views_html/messaggi')
     ->name('messaggi')->middleware('can:isLocatore');
-
+// open messages'page without a message
 Route::get('/locatore/messaggi', 'MessaggiController@mostra_messaggi_chat')
     ->name('chat_locatore')->middleware('can:isLocatore');
-
+// open messages'page without a message
 Route::post('/locatore/messaggi', 'MessaggiController@mostra_messaggi_chat')
     ->name('chat_locatore')->middleware('can:isLocatore');
-
+//open user's chat with a Locatario
 Route::post('/locatore/chat', 'MessaggiController@mostra_chat_locatore')
 	->name('mostra_chat_locatore')->middleware('can:isLocatore');
 
@@ -80,7 +80,7 @@ Route::post('/locatario/modifica_dati_locatario', 'ProfiloController@modifica_da
 
 Route::get('/locatario/toggle_opzione_annuncio/{id_annuncio}', 'CatalogoController@toggle_opzione_annuncio')
     ->name('toggle_opzione_annuncio')->middleware('can:isLocatario');
-
+//open user's chat with a Locatore
 Route::post('/locatario/chat', 'MessaggiController@mostra_chat_locatario')
 		->name('mostra_chat_locatario')->middleware('can:isLocatario');
 

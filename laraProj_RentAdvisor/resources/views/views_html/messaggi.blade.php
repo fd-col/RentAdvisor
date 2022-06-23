@@ -16,7 +16,8 @@
 					$locatario='{{$user->username}}';
 				else
 					$locatore='{{$user->username}}';
-				if($('#user_chat').has('p'))
+				
+				if($('#user_chat').has('p')) // paragrafo contenente la chat
 				{
 					if($ruolo=='locatario')
 						{
@@ -30,7 +31,7 @@
 						}
 					$.ajax({
                         type: 'POST',
-                        url: $route,
+                        url: $route, //qui carico la rotta riguardante la chat da caricare, con al ruolo di locatario o locatore precedentemente settato
                         data: {"user": $('#user_chat').find('p').text(),
 							   "_token": "{{csrf_token()}}"},
                         dataType: 'json',
@@ -38,8 +39,10 @@
 
                     });
 				}
-				$('#container').on('click','a',function (){
+
+				$('#container').on('click','a',function (){  // onClick dell'ancora "Vedi chat" nella pagine "messaggi"
 					$('#chat').find('div').remove();
+					
 					$user=$(this).attr('id');
 					if($ruolo=='locatario')
 						{
@@ -51,6 +54,7 @@
 							$route="{{route('mostra_chat_locatore')}}";
 							$locatario=$(this).attr('id');
 						}
+
 					$.ajax({
                         type: 'POST',
                         url: $route,
@@ -60,16 +64,21 @@
                         success: setChat
 
                     });
+
 					$('#user_chat').find('p').remove();
 					$('#user_chat').find('h6').remove();
-					$('#user_chat').append('<p>'+$user+'</p>');
+
+					$('#user_chat').append('<p>'+$user+'</p>');  //user relativo al destinatario (locatore se io sono locatario) 
 					if($ruolo=='locatario')
-					$('#user_chat').append('<h6>Locatore</h6>');
+						$('#user_chat').append('<h6>Locatore</h6>');
 					else
-					$('#user_chat').append('<h6>Locatario</h6>');
+						$('#user_chat').append('<h6>Locatario</h6>');
 				})
+				
+				// funzione che setta la chat tra 2 utenti(locatario e locatore) richiamata nelle richieste ajax 
 				function setChat(data){
-					$('#chat').find('div').remove();
+					$('#chat').find('div').remove(); //elimina il div con id "chat"
+					
 					$.each($.parseJSON(data), function (key, val) {
 						if(val.mittente=='{{$user->role}}')
 							$('#chat').append("<div class=\"messaggi-inviati\">"+val.testo+"</div>");
@@ -77,15 +86,18 @@
 							$('#chat').append("<div class=\"messaggi-ricevuti\">"+val.testo+"</div>");
 				})};
 
+				// 
 				$('#button').click(function (){
 					if($ruolo=='locatario')
 						$locatore=$('#user_chat').find('p').text();
 					else
 						$locatario=$('#user_chat').find('p').text();
+					
 					if('{{$user->role}}'=='locatario')
 						$route="{{route('send')}}";
 					else
 						$route="{{route('send')}}";
+
 					$.ajax({
 						type:'POST',
 						url:$route,
@@ -99,6 +111,8 @@
 						error: setError
 					})
 				})
+
+				// messaggio di errore invio messaggio
 				function setError(jqXHR, textStatus, errorThrown){
 					$parse=$.parseJSON(jqXHR.responseText);
 					$('#banner').find('p').remove();
@@ -111,8 +125,8 @@
 						$('#banner').append('<p>'+$parse.errors.locatore+'</p>');
 					$('#banner').show('slow');
 					$('#banner').delay(5000).hide('slow');
-
 					};
+				// messaggio di riuscita invio messaggio
 				function setSuccess(data){
 					$('#banner').find('p').remove();
 					$('textarea#messaggio').val('');
@@ -120,8 +134,6 @@
 					$('#banner').append('<p>Messaggio inviato con successo, <a id='+$.parseJSON(data).user+'> clicca qui per ricaricare la chat</a>');
 					$('#banner').show('slow');
 					$('#banner').delay(5000).hide('slow');
-
-
 				}
 
 		})
@@ -130,24 +142,25 @@
       <div class="row">
         <div class="col-md-8">
 
-          <div class="aa-properties-content">
-			<div class="aa-title">
-            <hr>
-            <h2>Conversazione</h2>
-            <span></span>
-          </div>
+			<div class="aa-properties-content">
+				<div class="aa-title">
+				<hr>
+				<h2>Conversazione</h2>
+				<span></span>
+			</div>
+
             <div class="aa-properties-content-body">
             <!-- Sezione messaggi inviati-->
 
 			<div class="user_chat" id="user_chat">
-			@isset($user_message)
-			<p>{{$user_message}}</p>
-			@if($user->role=='locatario')
-			<h6>LOCATORE</h6>
-			@else
-			<h6>LOCATARIO</h6>
-			@endif
-			@endisset
+				@isset($user_message)
+					<p>{{$user_message}}</p>
+					@if($user->role=='locatario')
+						<h6>LOCATORE</h6>
+					@else
+						<h6>LOCATARIO</h6>
+					@endif
+				@endisset
 			</div>
 
 			<p class="user_chat" id="user_chat"></p>
@@ -176,7 +189,7 @@
 		  </div>
 
 
-          <!-- Start properties sidebar -->
+          <!-- Start Chat sidebar -->
           <div class="col-md-4">
             <aside class="aa-properties-sidebar">
               <!-- Start Single properties sidebar -->
@@ -191,6 +204,7 @@
                 <div class="aa-comments-area">
                   <div class="comments">
                     <ul class="commentlist">
+
                       @isset($messaggi)
 					  <!-- message set -->
 						@foreach($messaggi as $utenti)
@@ -208,6 +222,7 @@
                                     </li>
 						@endforeach
 					  @endisset
+
                     </ul>
                   </div>
                 </div>
@@ -219,6 +234,8 @@
       </div>
 	  </div>
     </section>
-    <!-- / Properties  -->
+    <!-- / Chat sidebar  -->
+
   @endisset
+
 @endsection
