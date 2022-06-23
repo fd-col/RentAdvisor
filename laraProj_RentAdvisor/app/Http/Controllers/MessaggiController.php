@@ -20,7 +20,7 @@ class MessaggiController extends Controller
         $this->modello_user = new User;
         $this->modello_messaggio = new Messaggio;
     }
-
+	//mostra i messaggi della chat nella pagina "messaggi" di un locatore / locatario
     public function mostra_messaggi_chat(){
         $user = $this->modello_user::where('username', auth()->user()->username)->get()->first();
 		if(auth()->user()->role=="locatore")
@@ -32,6 +32,7 @@ class MessaggiController extends Controller
             ->with('user', $user)
             ->with('messaggi', $messaggi);
     }
+	//mostra i messaggi della chat relativi ad un appartamento opzionato e accessibili da "Contatta il locatore"(nel caso del locatario)
 	public function mostra_messaggi_chat_opzione($utente){
         $user = $this->modello_user->get_utente(auth()->user()->username);
 		if(auth()->user()->role=="locatore")
@@ -53,6 +54,7 @@ class MessaggiController extends Controller
 		$messaggi=$this->modello_messaggio->get_chat_locatario($dati_validi);
 		return response()->json($messaggi->toJson());
 	}
+	//invio messaggio dalla pagina "messaggi"
 	public function invia_messaggio(RichiestaInvioMessaggio $data){
 		$dati_validi=$data->validated();
 		$this->modello_messaggio->inserisci_messaggio($dati_validi);
