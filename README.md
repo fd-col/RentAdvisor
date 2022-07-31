@@ -9,7 +9,7 @@ We have 3 different accounts typologies: the student, the owner and the administ
 Briefly, the student can message with the owner and request accomodation by specifing the period; while the owner can acept the request and stipulate a contract, as well as manage his ads in a personal page.
 
 <img width="50%" height="50%" src="https://github.com/fd-col/RentAdvisor/blob/main/Mock-ups/utente_visualizza_prenotazione.jpg" alt="Visualizzazione prenotazione studente" title="Visualizzazione prenotazione studente">
-<img width="50%" height="50%" src="https://github.com/fd-col/RentAdvisor/blob/main/Mock-ups/Proprietario_modifica_prenotazione.jpg" alt="Proprietario modifica prenotazione" title="Proprietario modifica prenotazione">
+<img width="50%" height="50%" src="https://github.com/fd-col/RentAdvisor/blob/main/Mock-ups/Area_personale_proprietario_Livello1.png" alt="Proprietario gestisci prenotazione" title="Proprietario gestisci prenotazione">
 
 Lastly, the administrator is the one who care the website from an higher point of view; he/she can generate statistics about th website's usage and modify the FAQ section.
 
